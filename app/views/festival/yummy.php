@@ -1,4 +1,4 @@
-this is the yummy password_get_info
+this is the yummy page 
 <?php
 
 ?>
