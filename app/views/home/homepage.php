@@ -1,9 +1,13 @@
 <? include __DIR__ . '/../header.php' ?>
 
 <!-- font families  -->
+
+<head>
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Corben" />
 <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
+<link rel="stylesheet" href="css\styels.css" />
+</head>
 
 
 
@@ -25,10 +29,10 @@
             <br>
         </h3>
         <h2>Haarlem really has it all.</h2>
-        <br><a class="btn-view-more" href="festival/overview">View Festival Activities</a>
+        <br><a class="btn-red" href="festival/overview">View Festival Activities</a>
     </section>
 
-    <div class="homepage-history container-fluid">
+    <div class="homepage-history">
         <div>
             <h2>Haarlem's History</h2>
         </div>
@@ -38,6 +42,7 @@
                 Haarlem truly amazing. Well known for its beer making, Haarlem is home to the wonderful Jopenkerk and
                 windmill de Adriaan from 1779.</h3>
         </div>
+
     </div>
 
     <section class="homepage-food">
@@ -69,7 +74,7 @@
         <section class="homepage-museums">
             <h2>Museums</h2>
             <h3>If you want to see some amazing historical artefacts and you want to learn their history, then come to
-                Haarlem’s museums!<br>Some great choices include:
+                Haarlem's museums!<br>Some great choices include:
                 <br>&#x2022;The corrie ten boom house
                 <br>&#x2022;Teylers Museum
                 <br>&#x2022;Frans hals museum
@@ -79,10 +84,11 @@
     </div>
 
 
-    <section class="homepage-festival">
-        <h2>Check out the festival here!</h2>
-        <a class="festival-button" href="festival/overview">See festival events</a>
-    </section>
+
+<section class="homepage-festival">
+    <h2>Check out the festival here!</h2>
+    <a class="btn-purple" href="festival/overview">See festival events</a>
+</section>
 
     <section class="homepage-mobile">
         <h2>Visit us on mobile.</h2>
