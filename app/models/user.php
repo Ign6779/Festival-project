@@ -4,8 +4,8 @@ require __DIR__ . '/roles.php';
 class User implements \JsonSerializable {
 
     private int $id;
-    private Role $role;
-    private string $name;
+    // private Role $role;
+    private string $username;
     private string $password;
     private int $phoneNumber;
     private string $address;
@@ -13,7 +13,7 @@ class User implements \JsonSerializable {
 
     #[ReturnTypeWillChange]
 
-    public function jsonSerializable() {
+    public function jsonSerialize() {
         $vars = get_object_vars($this);
 
         return $vars;
@@ -27,18 +27,18 @@ class User implements \JsonSerializable {
         return $this;
     }
 
-    public function getRole():Role {
-        return $this->role;
-    }
-    public function setRole(int $role):self { //i am really not sure if this works; must test
-        $this->role = Role::tryFrom($role);
-        return $this;
-    }
+    // public function getRole():Role {
+    //     return $this->role;
+    // }
+    // public function setRole(int $role):self { //i am really not sure if this works; must test
+    //     $this->role = Role::tryFrom($role);
+    //     return $this;
+    // }
 
-    public function getName():string {
-        return $this->name;
+    public function getUsername():string {
+        return $this->username;
     }
-    public function setName(string $username):self {
+    public function setUsername(string $username):self {
         $this->username = $username;
         return $this;
     }
