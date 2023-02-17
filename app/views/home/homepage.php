@@ -1,4 +1,9 @@
-this is the homepage
+<!-- font families  -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Corben" />
+<link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
+
+
 
 <ol>
     <li><a href="festival/overview">GOTO overview</a></li>
@@ -78,6 +83,6 @@ Don't miss out on the beautiful dramas and the high quality productions!</h3>
 
 </body>
 <?php
-include __DIR__ . '/../footer.php';
+include  __DIR__ . '/../footer.php';
 ?>
 
