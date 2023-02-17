@@ -1,7 +1,11 @@
 <!-- font families  -->
+
+<head>
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Corben" />
 <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
+<link rel="stylesheet" href="css\styels.css" />
+</head>
 
 
 
@@ -21,10 +25,10 @@
 <h3>Welcome to the city of endless possibilities: A charming historic district, fascinating museums, unique shops, a wide variety of dining options, and a lovely beach, 
 <br></h3>
 <h2>Haarlem really has it all.</h2>
-<br><a class="btn-view-more" href="festival/overview">View Festival Activities</a>
+<br><a class="btn-red" href="festival/overview">View Festival Activities</a>
 </section>
 
-<div class="homepage-history container-fluid">
+<div class="homepage-history">
     <div>
     <h2>Haarlem's History</h2>
     </div>
@@ -70,7 +74,7 @@ Don't miss out on the beautiful dramas and the high quality productions!</h3>
 
 <section class="homepage-festival">
     <h2>Check out the festival here!</h2>
-    <a class="festival-button" href="festival/overview">See festival events</a>
+    <a class="btn-purple" href="festival/overview">See festival events</a>
 </section>
 
 <section class="homepage-mobile">
