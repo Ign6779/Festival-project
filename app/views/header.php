@@ -6,9 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haarlem festival</title>
-    <link rel="stylesheet" href="/css/styels.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- font families  -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Corben" />
+    <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
 </head>
 
 <body>
@@ -28,13 +35,15 @@
                     <a href="/" class="remove-style text-in-selected-page">Home</a>
                 </div>
 
-                <select name="Events" id="" class="remove-style drop-down-menu text-in-drop-down-menu">
-                    <option value="">Festival</option>
-                    <option value="">Dining</option>
-                    <option value="">History</option>
-                    <option value="">Dance</option>
-                    <option value="">Jazz</option>
-                    <option value="">Kids</option>
+                <select name="Events" id="Events" onchange="redirct(this.value)"
+                    class="remove-style drop-down-menu text-in-drop-down-menu">
+                    <option selected disabled>Events</option>
+                    <option value="/festival/overview">Festival</option>
+                    <option value="/festival/yummy">Dining</option>
+                    <option value="/festival/history">History</option>
+                    <option value="/festival/dance">Dance</option>
+                    <option value="/festival/jazz">Jazz</option>
+                    <option value="/festival/kids">Kids</option>
                 </select>
 
                 <div class="unselected-page">
@@ -56,9 +65,13 @@
             </div>
 
             <div name="cart">
-                <button class="cart">
+                <button class="cart" onclick="showItemsInCart()">
                     <img src="/img/cart-icon.png" alt="cart-icon">
                 </button>
+
+                <div id="items-in-cart" class="items-in-cart">
+                    My cart
+                </div>
             </div>
 
 
@@ -66,3 +79,18 @@
 
 
     </nav>
+
+    <script>
+        function redirct(src) {
+            window.location = src;
+        }
+
+        function showItemsInCart() {
+            var x = document.getElementById("items-in-cart");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>

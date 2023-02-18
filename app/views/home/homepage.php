@@ -1,25 +1,5 @@
 <? include __DIR__ . '/../header.php' ?>
 
-<!-- font families  -->
-
-<!-- <head>
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Corben" />
-<link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
-<link rel="stylesheet" href="css\styels.css" />
-</head> -->
-
-
-
-<!-- <ol>
-    <li><a href="festival/overview">GOTO overview</a></li>
-    <li><a href="festival/dance">GOTO dance</a></li>
-    <li><a href="festival/history">GOTO history</a></li>
-    <li><a href="festival/jazz">GOTO jazz</a></li>
-    <li><a href="festival/kids">GOTO kids</a></li>
-    <li><a href="festival/yummy">GOTO yummy</a></li>
-</ol> -->
-
 <body>
     <!-- Header of the homepage -->
     <section class="homepage-header">
@@ -111,7 +91,7 @@
 
 
 
-</body>
+
 <?php
 include __DIR__ . '/../footer.php';
 ?>
