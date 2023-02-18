@@ -1,9 +1,6 @@
 <? include __DIR__ . '/../header.php' ?>
 
-<!-- font families  -->
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Corben" />
-<link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
+
 
 
 
