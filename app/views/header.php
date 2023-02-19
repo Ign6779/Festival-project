@@ -23,31 +23,36 @@
     <nav>
 
         <div class="nav-section1">
-            <img src="/img/english-option.png" alt="english-option" class="english-option">
-            <img src="/img/dutch-option.png" alt="dutch-option" class="dutch-option">
+
+            <div class="language-options">
+                <img src="/img/english-option.png" alt="english-option">
+                <img src="/img/dutch-option.png" alt="dutch-option">
+            </div>
         </div>
 
         <div class="nav-section2">
 
             <div class="menu-list">
 
-                <div class="selected-page">
-                    <a href="/" class="remove-style text-in-selected-page">Home</a>
+                <div class="selected-page text-in-selected-page">
+                    <a href="/" class="remove-style">Home</a>
                 </div>
 
-                <select name="Events" id="Events" onchange="redirct(this.value)"
-                    class="remove-style drop-down-menu text-in-drop-down-menu">
-                    <option selected disabled>Events</option>
-                    <option value="/festival/overview">Festival</option>
-                    <option value="/festival/yummy">Dining</option>
-                    <option value="/festival/history">History</option>
-                    <option value="/festival/dance">Dance</option>
-                    <option value="/festival/jazz">Jazz</option>
-                    <option value="/festival/kids">Kids</option>
-                </select>
+                <div>
+                    <select name="Events" id="Events" onchange="redirct(this.value)"
+                        class="remove-style drop-down-menu text-in-drop-down-menu">
+                        <option selected disabled>Events</option>
+                        <option value="/festival/overview">Festival</option>
+                        <option value="/festival/yummy">Dining</option>
+                        <option value="/festival/history">History</option>
+                        <option value="/festival/dance">Dance</option>
+                        <option value="/festival/jazz">Jazz</option>
+                        <option value="/festival/kids">Kids</option>
+                    </select>
+                </div>
 
-                <div class="unselected-page">
-                    <a href="festival/tickets" class="remove-style  text-in-unselected-page">Tickets</a>
+                <div class="unselected-page text-in-unselected-page">
+                    <a href="festival/tickets" class="remove-style ">Tickets</a>
                 </div>
 
             </div>
@@ -55,6 +60,8 @@
             <div name="Logo" class="logo">
                 <img src="/img/logo-of-page.png" alt="Logo">
             </div>
+
+
 
             <div name="search">
                 <input type="text" class="search-input" placeholder="Search here ...">
@@ -69,12 +76,11 @@
                     <img src="/img/cart-icon.png" alt="cart-icon">
                 </button>
 
-                <div id="items-in-cart" class="items-in-cart">
-                    My cart
-                </div>
             </div>
 
-
+            <div id="items-in-cart" class="items-in-cart">
+                My cart
+            </div>
         </div>
 
 
