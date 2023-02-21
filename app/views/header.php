@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haarlem festival</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/kids.css?v=<?php echo time(); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -16,6 +17,7 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Corben" />
     <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Baloo+Chettan' rel='stylesheet'>
 </head>
 
 <body>
@@ -70,7 +72,7 @@
                     <img class="search-button-picture" src="/img/search-icon2.png" alt="search icon">
                 </button>
             </div>
-
+            
             <div name="cart">
                 <button class="cart" onclick="showItemsInCart()">
                     <img src="/img/cart-icon.png" alt="cart-icon">
