@@ -1,19 +1,10 @@
 <?php
 include __DIR__ . '/../header.php';
 ?>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jazz page</title>
-    <link rel="stylesheet" href="/css/jazz.css">
-</head>
-
-<body>
     <!-- Header of the jazz page -->
     <div>
         <section class="jazz-header">
-            <img src="/img/jazz-1.png" alt="Jazz">
+            <img class="img-responsive" src="/img/jazz-1.png" alt="Jazz">
             <img class="jazz-logo" src="/img/jazz-logo.png" alt="jazz">
             <button class="btn-jazz">Buy ticket!</button>
 
@@ -58,7 +49,6 @@ include __DIR__ . '/../header.php';
             </div>
         </section>
     </div>
-</body>
 <?php
 include __DIR__ . '/../footer.php';
 ?>

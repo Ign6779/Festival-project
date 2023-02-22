@@ -129,7 +129,6 @@
 }
 
 .search-input {
-
     width: 250px;
     height: 40px;
     right: 166px;
@@ -140,7 +139,6 @@
 }
 
 .search-button {
-
     width: 60px;
     height: 40px;
     right: 100px;
@@ -149,28 +147,31 @@
     background-color: #FFCF99;
 }
 
-.cart-and-items{
+.cart-and-items {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+.items-in-cart {
+    height: 35%;
+    border-radius: 0px;
+    background: white;
+    width: 30%;
+    display: none;
+    top: 13%;
+    position: absolute;
+    z-index: 200;
+}
+
 .cart {
     height: 54px;
     margin-left: 1%;
     top: 72px;
     border-radius: 0px;
     background: #111D4A;
-}
-
-.items-in-cart {
-    height: 377px;
-    width: 370px;
-    margin-top: 460px;
-    border-radius: 0px;
-    background: white;
-    display: none;
-    z-index: 200;
+    display: block;
 }
 
 body {
@@ -201,7 +202,6 @@ body {
     padding-top: 15px;
     display: grid;
     grid-template-columns: 66% 33%;
-
 }
 
 .homepage-food {
@@ -210,7 +210,6 @@ body {
     display: grid;
     grid-template-columns: 33% 33% 33%;
 }
-
 
 .homepage-music {
     background-color: #9EADEA;
@@ -271,7 +270,6 @@ body {
     font-size: 16px;
     box-shadow: 5px 10px #888888;
     font-weight: bold;
-
 }
 
 .btn-red {
@@ -313,4 +311,3 @@ body {
     margin-bottom: 300px;
     text-align: center;
 }
-
