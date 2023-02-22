@@ -1,0 +1,212 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+.intro-container {
+    /* position: absolute; */
+    background-image: url(/img/tropical-rain1.png);
+    background-repeat: no-repeat;
+    background-size: 150% 125%;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.h1-kids-app {
+    width: 100%;
+    height: auto;
+    margin-top: 38px;
+    font-family: 'Baloo Chettan';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 46px;
+    text-align: center;
+    -webkit-text-fill-color: #F5D042;
+    -webkit-text-stroke: 2px black;
+}
+
+.kidsAppLogo {
+    width: 260px;
+    height: 260px;
+    top: 204PX;
+    left: 78px;
+}
+
+.p-intro {
+    width: 100%;
+    height: auto;
+    margin-left: 7%;
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    color: #000000;
+    -webkit-text-stroke: 1px black;
+}
+
+.btn-intro-start {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 20px;
+    gap: 10px;
+    width: 126px;
+    height: 36px;
+    background: #F5D042;
+    border-radius: 20px;
+}
+
+.challenge-container {
+    height: 100vh;
+    background-color: #D6FFD8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(/img/Vector-for-challenges.png);
+}
+
+.h1-challenge {
+    width: 193px;
+    height: 31px;
+    font-family: 'Baloo Chettan';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    margin-top: 8%;
+}
+
+.challenges {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 6%;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.challengeBox {
+    box-sizing: border-box;
+    width: 38px;
+    height: 35px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.challenge-opened {
+    background: #27DD4F;
+}
+
+.challenge-ongoing {
+    background: #EFE4B0;
+}
+
+.challenge-locked {
+    background-color: #EE0256;
+}
+
+.h2-challenge-container {
+    margin-top: 7%;
+    width: 320px;
+    height: auto;
+    background: #FFD700;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.challenge-map {
+    width: 100%;
+    height: auto;
+}
+
+.challenge-instruction {
+    margin: 4% 0;
+    width: 320px;
+    height: auto;
+    background: #FFD700;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.challenge-story {
+    margin-top: 4%;
+    width: 320px;
+    height: auto;
+    background: #FFD700;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.sans-pro-font {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.hints {
+    width: 100%;
+    align-items: center;
+    margin: 5% 0;
+    height: auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.hint {
+    width: 72px;
+    height: 39px;
+    background: #FFD700;
+    box-shadow: 0px 4px 4px #000000;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 6px;
+}
+
+.row-hints {
+    gap: 3%;
+}
+
+.btn-scan {
+    width: 99.69px;
+    height: 40px;
+    background: #84FF9F;
+    border-radius: 20px;
+}
+
+.number-box {
+    width: 47px;
+    height: 39px;
+    background: #FFD700;
+    box-shadow: 0px 4px 4px #000000;
+    border-radius: 10px;
+}
