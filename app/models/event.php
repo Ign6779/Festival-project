@@ -11,6 +11,7 @@ require __DIR__ . '/types.php';
     private date $date;
     private int $availableSpots;
     private string $content;
+    private string $image;
 
     #[ReturnTypeWillChange]
 
@@ -73,6 +74,14 @@ require __DIR__ . '/types.php';
     }
     public function setContent(string $content):self {
         $this->content = $content;
+        return $this;
+    }
+
+    public function getImage():string {
+        return $this->image;
+    }
+    public function setImage(string $image):self {
+        $this->image = $image;
         return $this;
     }
  }
