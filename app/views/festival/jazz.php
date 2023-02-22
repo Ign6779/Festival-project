@@ -10,8 +10,8 @@ include __DIR__ . '/../header.php';
 </head>
 
 <body>
+    <!-- Header of the jazz page -->
     <div>
-        <!-- Header of the jazz page -->
         <section class="jazz-header">
             <img src="/img/jazz-1.png" alt="Jazz">
             <img class="jazz-logo" src="/img/jazz-logo.png" alt="jazz">
@@ -36,25 +36,28 @@ include __DIR__ . '/../header.php';
         </section>
     </div>
 
-    <section class="jazz-schedule">
-        <div class="title">
-            <h1>Haarlem Jazz</h1>
-            <p>26 July 2023 - 29 July 2023</p>
-        </div>
 
-        <div class="dates">
-            <p>select date</p>
-            <button class="flex-container">Date</button>
-            <button class="flex-container">Date</button>
-            <button class="flex-container">Date</button>
-            <button class="flex-container">Date</button>
-        </div>
+    <!-- Jazz Schedule -->
+    <div>
+        <section class="jazz-schedule">
+            <div class="title">
+                <h1>Haarlem Jazz</h1>
+                <p>26 July 2023 - 29 July 2023</p>
+            </div>
 
-        <div class="cards">
-            <p></p>
-        </div>
-    </section>
+            <div class="dates">
+                <p>select date</p>
+                <button class="flex-container">Date</button>
+                <button class="flex-container">Date</button>
+                <button class="flex-container">Date</button>
+                <button class="flex-container">Date</button>
+            </div>
 
+            <div class="cards">
+                <p></p>
+            </div>
+        </section>
+    </div>
 </body>
 <?php
 include __DIR__ . '/../footer.php';

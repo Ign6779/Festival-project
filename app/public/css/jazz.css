@@ -91,3 +91,8 @@
     width: 240px;
     height: 150px;
 }
+
+.flex-container:hover{
+    background-color: #CB8803;
+    border: none;
+}
