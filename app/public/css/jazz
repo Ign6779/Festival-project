@@ -1,0 +1,93 @@
+.btn-jazz{
+    position: absolute;
+    top: 70%;
+    left: 45%;
+    background-color: #92140C;
+    border-radius: 25px;
+    border: none;
+    color: white;
+    padding: 15px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    transition-duration: 0.4s;
+}
+
+.btn-jazz:hover{
+    box-shadow: 2px 5px #888888;
+}
+
+.jazz-logo{
+    position: absolute;
+    top: 20%;
+    left: 10%;
+}
+.section-1{
+    background-color: #7A86B6;
+    color: white;
+    height: 150px;
+    text-align: center;
+}
+
+.section-2{
+    background-color: white;
+    height: 50px;
+}
+
+.section-3{
+    padding: 25px;
+    background-color: white;
+    border-color: black;
+    border-style: solid;
+    width: 90%;
+    left: 5%;
+    position: relative;
+    border-radius: 20px;
+    height: 100px;
+    font-family: Source Sans Pro;
+    top: -100px;
+}
+
+
+.jazz-schedule{
+    background-color: #2E9B7B;
+    padding: 5px;
+    height: 1000px;
+}
+
+.title{
+    border-bottom: 2px solid white;
+    width: 60%;
+    left: 20%;
+    top: 50px;
+    position: relative;
+}
+
+.dates{
+    position: relative;
+    top: 100px;
+    left: 20%;
+    bottom: 100px;
+    border-bottom: 2px solid white;
+    width: 60%;
+    padding: 20px;
+}
+
+.flex-container{
+    background-color: white;
+    border-radius: 40px;
+    border: solid;
+    border-color: #111D4A;
+    color: #111D4A;
+    padding: 15px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    transition-duration: 0.4s;
+    width: 240px;
+    height: 150px;
+}
