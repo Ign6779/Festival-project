@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Corben" />
     <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Baloo+Chettan' rel='stylesheet'>
+    <script src="https://hammerjs.github.io/dist/hammer.js"></script>
 </head>
 
 <body>

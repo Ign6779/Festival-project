@@ -1,5 +1,3 @@
-this is dance page 
-<script src="https://hammerjs.github.io/dist/hammer.js"></script>
 <?php
 include __DIR__ . '/../header.php';
 ?>
