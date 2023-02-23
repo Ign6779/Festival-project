@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haarlem festival</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="/css/kids.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="/css/jazz.css?v=<?php echo time(); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -16,6 +18,7 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Corben" />
     <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Baloo+Chettan' rel='stylesheet'>
 </head>
 
 <body>
@@ -23,7 +26,6 @@
     <nav>
 
         <div class="nav-section1">
-
             <div class="language-options">
                 <img src="/img/english-option.png" alt="english-option">
                 <img src="/img/dutch-option.png" alt="dutch-option">
@@ -71,19 +73,21 @@
                 </button>
             </div>
 
-            <div name="cart">
+            <div name="cart" class="cart-and-items">
+
                 <button class="cart" onclick="showItemsInCart()">
                     <img src="/img/cart-icon.png" alt="cart-icon">
                 </button>
 
+
+                <div id="items-in-cart" class="items-in-cart">
+                    My cart
+                </div>
             </div>
 
-            <div id="items-in-cart" class="items-in-cart">
-                My cart
-            </div>
+
+
         </div>
-
-
     </nav>
 
     <script>

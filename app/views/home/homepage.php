@@ -3,7 +3,7 @@
 
 <!-- Header of the homepage -->
 <section class="homepage-header">
-    <img src="/img/homepage-main.png" alt="Haarlem-overview">
+    <img src="/img/homepage-main.png" alt="Haarlem-overview" class="img-responsive">
     <div class="homepage-context">
         <h1>Welcome to Haarlem</h1>
         <h3>Welcome to the city of endless possibilities: A charming historic district, fascinating museums, unique
