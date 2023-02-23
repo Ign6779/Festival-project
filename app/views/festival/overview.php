@@ -1,7 +1,6 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Corben" />
 <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
-<link rel="stylesheet" href="css\styels.css" />
 
 <!-- FIX BUTTON 1 TO GO TO TICKETS AND NOT FESTIVAL!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <body>
