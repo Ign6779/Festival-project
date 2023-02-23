@@ -22,22 +22,25 @@ include __DIR__ . '/../header.php';
 <!-- detail pages 1 -->
 <div class="text-center container-fluid" id="detailPage">
     <h1 class="Dance-Title"> Detail page 1 </h1>
-    <div class="text-center container" id="transparent-block">
-        <h1 class="artist-name">name</h1>
+    <div class="text-center container" id="detail-page-block">
+        <h1 class="artist-name">Hardwell</h1>
         <p class="artist-description">description</p>
-        <div class="polaroid"><img src="" alt="pic1">
-            <div class="caption"></div>
-        </div>
-        <div class="polaroid"><img src="" alt="pic2">
-            <div class="caption"></div>
-        </div>
-        <div class="polaroid"><img src="" alt="pic3">
-            <div class="caption"></div>
-        </div>
-        <div class="text-center" id="top3songs">
-            <img src="" alt="" class="songpic">
-            <img src="" alt="" class="songpic">
-            <img src="" alt="" class="songpic">
+        <!-- <div class="artist-polaroids"> -->
+          <div class="polaroid1"><img src="" alt="pic1">
+              <div class="caption"></div>
+          </div>
+          <div class="polaroid2"><img src="" alt="pic2">
+              <div class="caption"></div>
+          </div>
+          <div class="polaroid3"><img src="" alt="pic3">
+              <div class="caption"></div>
+          </div>
+        <!-- </div> -->
+
+        <div class="artist-songs" id="top3songs">
+            <img src="" alt="song1">
+            <img src="" alt="song2">
+            <img src="" alt="song3">
         </div>
         <!-- MEDIA PLAYER -->
         <script src="https://kit.fontawesome.com/7c33dff1d8.js" crossorigin="anonymous"></script>
@@ -67,8 +70,49 @@ include __DIR__ . '/../header.php';
 <!-- detail pages 2 -->
 <div class="text-center container-fluid" id="detailPage">
     <h1 class="Dance-Title"> Detail page 2 </h1>
-    <div class="text-center container" id="transparent-block">
+    <div class="text-center container" id="detail-page-block">
+        <h1 class="artist-name">Martin Garrix</h1>
+        <p class="artist-description">description</p>
+        <!-- <div class="artist-polaroids"> -->
+          <div class="polaroid1"><img src="" alt="pic1">
+              <div class="caption"></div>
+          </div>
+          <div class="polaroid2"><img src="" alt="pic2">
+              <div class="caption"></div>
+          </div>
+          <div class="polaroid3"><img src="" alt="pic3">
+              <div class="caption"></div>
+          </div>
+        <!-- </div> -->
 
+        <div class="artist-songs" id="top3songs">
+            <img src="" alt="song1">
+            <img src="" alt="song2">
+            <img src="" alt="song3">
+        </div>
+        <!-- MEDIA PLAYER -->
+        <script src="https://kit.fontawesome.com/7c33dff1d8.js" crossorigin="anonymous"></script>
+        <div id="overlay"></div>
+        <div class="song-container">
+            <div class="player" id="player">
+                <div id="music-info">
+                    <div class="title"></div>
+                    <div class="author"></div>
+                    <div class="album"></div>
+                    <div class="bg"></div>
+                </div>
+                <div class="timestamp">
+                    <div id="bar"></div>
+                    <div id="current-time"></div>
+                </div>
+                <div class="buttons">
+                    <div class="button button-medium"><i class="fas fa-step-backward"></i></div>
+                    <div class="button button-large" id="play"><i class="fas fa-play"></i></div>
+                    <div class="button button-medium"><i class="fas fa-step-forward"></i></div>
+                    <div class="button button-small" id="mute"><i class="fas fa-volume-up"></i></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -459,7 +503,7 @@ currentAudio.addEventListener("ended", function(){
 }
 #detailPage{
     background: radial-gradient(50% 50% at 50% 50%, rgba(46, 155, 123, 0.68) 26.35%, #9EADEA 100%);
-    height: 550px;
+    height: 700px;
 }
 #schedule{
     height: 600px;
@@ -625,6 +669,74 @@ currentAudio.addEventListener("ended", function(){
   transform: translate(-50%,-50%);
   opacity: 0;
 }
+#detail-page-block{
+  display: grid;
+  /* grid-auto-columns:1fr; */
+  position: relative;
+  width: 90%;
+  background: rgba(244, 237, 237, 0.3);
+  height: 550px;
+
+}
+.artist-name{
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row: 1;
+}
+.artist-description{
+  grid-column-start: 3;
+  grid-column-end: 7;
+  grid-row: 2;
+}
+/* .artist-polaroids{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 6;
+} */
+.polaroid1{
+  position: absolute;
+  height: 300px;
+  width: 250px;
+  background-color: grey;
+  z-index: 1;
+  grid-column: 1;
+  grid-row-start: 2;
+  grid-row-end: 4; 
+}
+.polaroid2{
+  position: absolute;
+  height: 300px;
+  width: 250px;
+  background-color: white;
+  z-index: 2;
+  grid-column: 2;
+  grid-row-start: 1;
+  grid-row-end: 3; 
+}
+.polaroid3{
+  position: absolute;
+  height: 300px;
+  width: 250px;
+  background-color: black;
+  z-index: 3;
+  grid-column: 3;
+  grid-row-start: 2;
+  grid-row-end: 4; 
+}
+.artist-songs{
+  display: table;
+  grid-column-start: 4;
+  grid-column-end: 7;
+  grid-row: 3;
+}
+.artist-songs img{
+  height: 100px;
+  width: 100px;
+  background-color: white;
+  border-radius: 20px;
+  margin: 10px;
+}
 /* AUDIO PLAYER */
 #overlay{
   position:relative;
@@ -640,11 +752,13 @@ currentAudio.addEventListener("ended", function(){
   width: 400px;
   height: 250px;
   position: absolute;
-  top:80%;
-  left:calc(50% - 250px);
   box-shadow:6px 6px 15px rgba(51,51,51,0.5);
   overflow:hidden;
-  background:#fff;
+  background:#7A86B6;
+  grid-column-start: 4;
+  grid-column-end: 7;
+  grid-row: 4;
+  display:none;
 }
 .player #music-info{
   padding: 15px;
@@ -739,4 +853,5 @@ currentAudio.addEventListener("ended", function(){
   background: #5453af;
   color: #fff;
 }
+
 
