@@ -740,10 +740,10 @@ currentAudio.addEventListener("ended", function(){
 /* AUDIO PLAYER */
 #overlay{
   position:relative;
-  top:0;
-  left:0;
-  bottom:0;
-  right:0;
+  /* top:0; */
+  /* left:0; */
+  /* bottom:0; */
+  /* right:0; */
   z-index:9999;
   display:none;
 }
@@ -758,7 +758,8 @@ currentAudio.addEventListener("ended", function(){
   grid-column-start: 4;
   grid-column-end: 7;
   grid-row: 4;
-  display:none;
+  z-index: 99;
+  display: none;
 }
 .player #music-info{
   padding: 15px;
