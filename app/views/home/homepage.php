@@ -52,6 +52,8 @@
     <!-- Food section -->
     <section class="homepage-food">
         <div>
+            
+    <img src="/img/outline-overview-food.png" alt="Haarlem-overview">
             <h3>No matter when, dining in Haarlem is guaranteed to be an incredible experience.
                 Not only does Haarlem have some of the best restaurants with quality food, the atmosphere of the city is
                 what makes it all the more special. </h3>
