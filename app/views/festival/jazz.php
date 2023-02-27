@@ -14,14 +14,7 @@ include __DIR__ . '/../header.php';
                 </div>
                 <div class="section-2"></div>
                 <div class="section-3">
-                    <p>
-                    The City of Haarlem values Haarlem Jazz as a significant musical 
-                    occasion. We want to replicate a portion of this festival during the 
-                    Haarlem festival, therefore we've invited some of the bands who have 
-                    previously played there to play at the Patronaat. Some of the bands 
-                    will perform on Sunday to the large stage of the Grote Markt to give 
-                    a free performance for all guests!
-                    </p>
+                    <p></p>
                 </div>
             </div>
         </section>
@@ -37,18 +30,91 @@ include __DIR__ . '/../header.php';
             </div>
 
             <div class="dates">
-                <p>select date</p>
-                <button class="flex-container">Date</button>
-                <button class="flex-container">Date</button>
-                <button class="flex-container">Date</button>
-                <button class="flex-container">Date</button>
+                <div class="row">
+                    <p>select date</p>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <button class="flex-container" onclick="createCard()">Date</button>
+                    </div>           
+                    <div class="col-sm-3">
+                        <button class="flex-container" onclick="createCard()">Date</button>
+                    </div>  
+                    <div class="col-sm-3">
+                        <button class="flex-container" onclick="createCard()">Date</button>
+                    </div>  
+                    <div class="col-sm-3">
+                        <button class="flex-container" onclick="createCard()">Date</button>
+                    </div>  
+                </div>
             </div>
 
-            <div class="cards">
-                <p></p>
-            </div>
+            <!-- Jazz Cards -->
+           <div class="cards">
+                <div class="row">
+                    <button class="col-sm-3">next</button>
+                    <div class="col-sm-2">
+                        <?php
+                            include __DIR__ . '/../card.php';
+                        ?>
+                    </div>           
+                    <div class="col-sm-2">
+                        <?php
+                            include __DIR__ . '/../card.php';
+                        ?>
+                    </div>  
+                    <div class="col-sm-2">
+                        <?php
+                            include __DIR__ . '/../card.php';
+                        ?>
+                    </div>  
+                    <button class="col-sm-3">next</button>  
+                </div>
+           </div>
         </section>
+
+        <!-- Jazz Detailed Pages -->
+        <section class="">
+            <div  class="detail-pages">
+                <?php
+                    include __DIR__ . '/../page.php';
+                ?>
+
+                <?php
+                    include __DIR__ . '/../page.php';
+                ?>
+           </div>
+        </section>
+
+        <!-- Jazz Map -->
+        <section class="venues">
+          <div class="venues-container">
+            <div id="map">
+            </div>
+            <div class="venues-details">
+              more details about the locations
+            </div>
+          </div>
+        </section>
+
+        <script>
+          function initMap() {
+            var location = {lat: 52.387, lng: 4.646};
+            var map = new google.maps.Map(document.getElementById("map"), {
+              zoom: 12, 
+              center: location
+            });
+            var marker = new google.maps.Marker({
+              position: location, 
+              map: map
+            });
+          }
+        </script>
+        
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC87xRP5re_yw-jqZE9wjTViX80gXYntHw&callback=initMap">
+        </script>
     </div>
 <?php
 include __DIR__ . '/../footer.php';
+
 ?>
