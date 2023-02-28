@@ -1,5 +1,5 @@
 <?php
-class History implements \JsonSerializable {
+class Tour implements \JsonSerializable {
     private int $id;
     private string $date;
     private string $time;
@@ -11,7 +11,6 @@ class History implements \JsonSerializable {
 
     public function jsonSerialize() {
         $vars = get_object_vars($this);
-
         return $vars;
     }
 

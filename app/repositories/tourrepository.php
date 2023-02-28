@@ -1,14 +1,14 @@
 <?php
 require __DIR__ . '/repository.php';
-require __DIR__ . '/../models/history.php';
+require __DIR__ . '/../models/tour.php';
 
-class HistoryRepository extends Repository {
+class TourRepository extends Repository {
     function getAll() {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM tours");
             $stmt->execute();
 
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'History');
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Tour');
             $tours = $stmt->fetchAll();
 
             return $tours;
@@ -23,7 +23,7 @@ class HistoryRepository extends Repository {
             $stmt = $this->connection->prepare("SELECT * FROM tours WHERE id = ?");
             $stmt->execute([$id]);
 
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'History');
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Tour');
             $tour = $stmt->fetch();
 
             return $tour;
@@ -33,3 +33,5 @@ class HistoryRepository extends Repository {
         }
     }
 }
+
+?>

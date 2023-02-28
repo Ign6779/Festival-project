@@ -1,11 +1,11 @@
 <?php
-require __DIR__ . '/../repositories/historyrepository.php';
+require __DIR__ . '/../repositories/tourrepository.php';
 
-class HistoryService {
+class TourService {
     private $repository;
 
     public function __construct() {
-        $this->repository = new HistoryRepository();
+        $this->repository = new TourRepository();
     }
 
     public function getAll() {

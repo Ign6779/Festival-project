@@ -1,17 +1,28 @@
 this is the test page.
 <div>
     <?php
-    foreach ($tours as $tour) {
-        ?>
-        
-        <h1><?php echo $tour->getId() ?></h1>
-        <h2><?php echo $tour->getDate() ?></h2>
-        <h2><?php echo $tour->getTime() ?></h2>
-        <p><?php echo $tour->getAvaliableSeatsEn() ?></p>
-        <p><?php echo $tour->getAvailableSeatsNl() ?></p>
-        <p><?php echo $tour->getAvailableSeatsCh() ?></p>
+        foreach ($restaurants as $restaurant) {
+            echo "<h1>{$restaurant->getName()}</h1>";
+            echo "<p>Description: {$restaurant->getDescription()}</p>";
+            echo "<p>Content: {$restaurant->getContent()}</p>";
+            echo "<p>Halal: {$restaurant->gettHalal()}</p>";
+            echo "<p>Vegan: {$restaurant->getVegan()}</p>";
+            echo "<p>Stars: {$restaurant->getStars()}</p>";
 
-        <?php
-    }
+            echo "<h2>Sessions</h2>";
+            echo "<ul>";
+
+            foreach ($restaurant->getSessions() as $session) {
+                echo "<li>Session ID: {$session->getId()}</li>";
+                echo "<li>Date: {$session->getDate()}</li>";
+                echo "<li>Start Time: {$session->getStartTime()}</li>";
+                echo "<li>Duration: {$session->getDuration()}</li>";
+                echo "<li>Seats: {$session->getSeats()}</li>";
+                echo "<li>Price: {$session->getPrice()}</li>";
+                echo "<li>Reduced Price: {$session->getReducedPrice()}</li>";
+            }
+
+            echo "</ul>";
+        }
     ?>
 </div>
