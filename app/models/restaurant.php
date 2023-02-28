@@ -10,6 +10,7 @@ class Restaurant implements \JsonSerializable {
     private bool $vegan;
     private int $stars;
     private array $sessions; //we store them in an array; its the only way i could bring the erd into php
+    private string $image;
 
     #[ReturnTypeWillChange]
     public function jsonSerialize() {
@@ -83,6 +84,14 @@ class Restaurant implements \JsonSerializable {
     }
     public function addSession(Session $session) {
         $this->sessions[] = $session;
+    }
+
+    public function getImage(): string {
+        return $this->image;
+    }
+    public function setImage(string $image): self {
+        $this->image = $image;
+        return $this;
     }
 }
 ?>

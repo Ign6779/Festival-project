@@ -5,9 +5,10 @@ this is the test page.
             echo "<h1>{$restaurant->getName()}</h1>";
             echo "<p>Description: {$restaurant->getDescription()}</p>";
             echo "<p>Content: {$restaurant->getContent()}</p>";
-            echo "<p>Halal: {$restaurant->gettHalal()}</p>";
+            echo "<p>Halal: {$restaurant->getHalal()}</p>";
             echo "<p>Vegan: {$restaurant->getVegan()}</p>";
             echo "<p>Stars: {$restaurant->getStars()}</p>";
+            echo "<p>Image: {$restaurant->getImage()}</p>";
 
             echo "<h2>Sessions</h2>";
             echo "<ul>";

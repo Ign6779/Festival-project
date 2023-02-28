@@ -25,6 +25,7 @@ class RestaurantRepository extends Repository {
                     $restaurant->setHalal($row['halal']);
                     $restaurant->setVegan($row['vegan']);
                     $restaurant->setStars($row['stars']);
+                    $restaurant->setImage($row['image']);
 
                     $restaurants[$restaurantId] = $restaurant;
                 }
