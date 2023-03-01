@@ -55,17 +55,17 @@ include __DIR__ . '/../header.php';
                     <button class="col-sm-3">next</button>
                     <div class="col-sm-2">
                         <?php
-                            include __DIR__ . '/../card.php';
+                            include __DIR__ . '/../components/card.php';
                         ?>
                     </div>           
                     <div class="col-sm-2">
                         <?php
-                            include __DIR__ . '/../card.php';
+                            include __DIR__ . '/../components/card.php';
                         ?>
                     </div>  
                     <div class="col-sm-2">
                         <?php
-                            include __DIR__ . '/../card.php';
+                            include __DIR__ . '/../components/card.php';
                         ?>
                     </div>  
                     <button class="col-sm-3">next</button>  
@@ -77,11 +77,11 @@ include __DIR__ . '/../header.php';
         <section class="">
             <div  class="detail-pages">
                 <?php
-                    include __DIR__ . '/../page.php';
+                    include __DIR__ . '/../components/page.php';
                 ?>
 
                 <?php
-                    include __DIR__ . '/../page.php';
+                    include __DIR__ . '/../components/page.php';
                 ?>
            </div>
         </section>
