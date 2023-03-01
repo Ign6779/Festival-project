@@ -86,7 +86,7 @@
     padding: 20px;
 }
 
-.flex-container{
+.button-container{
     background-color: white;
     border-radius: 40px;
     border: solid;
@@ -103,7 +103,7 @@
     height: 150px;
 }
 
-.flex-container:hover{
+.button-container:hover{
     background-color: #CB8803;
     border: none;
 }

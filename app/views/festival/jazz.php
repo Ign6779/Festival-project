@@ -35,16 +35,16 @@ include __DIR__ . '/../header.php';
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
-                        <button class="flex-container" onclick="createCard()">Date</button>
+                        <button class="button-container">Date</button>
                     </div>           
                     <div class="col-sm-3">
-                        <button class="flex-container" onclick="createCard()">Date</button>
+                        <button class="button-container">Date</button>
                     </div>  
                     <div class="col-sm-3">
-                        <button class="flex-container" onclick="createCard()">Date</button>
+                        <button class="button-container">Date</button>
                     </div>  
                     <div class="col-sm-3">
-                        <button class="flex-container" onclick="createCard()">Date</button>
+                        <button class="button-container">Date</button>
                     </div>  
                 </div>
             </div>
@@ -96,25 +96,31 @@ include __DIR__ . '/../header.php';
             </div>
           </div>
         </section>
+    </div>
+<?php
+include __DIR__ . '/../footer.php';
+?>
 
-        <script>
-          function initMap() {
+<script>
+    function initMap() {
             var location = {lat: 52.387, lng: 4.646};
+            var location1 = {lat: 52.38303958402897, lng: 4.6286939897737645};
+            var location2 = {lat: 52.38146385371384, lng: 4.636038419230462};
+
             var map = new google.maps.Map(document.getElementById("map"), {
               zoom: 12, 
               center: location
             });
-            var marker = new google.maps.Marker({
-              position: location, 
+            var marker1 = new google.maps.Marker({
+              position: location1, 
               map: map
             });
-          }
-        </script>
-        
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC87xRP5re_yw-jqZE9wjTViX80gXYntHw&callback=initMap">
-        </script>
-    </div>
-<?php
-include __DIR__ . '/../footer.php';
+            var marker2 = new google.maps.Marker({
+              position: location2, 
+              map: map
+            });
+          }      
+ </script>
 
-?>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC87xRP5re_yw-jqZE9wjTViX80gXYntHw&callback=initMap">
+</script>
