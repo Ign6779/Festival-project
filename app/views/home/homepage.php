@@ -88,10 +88,13 @@
     <h3> Scan the QR code with your phone.</h3>
 </section>
 <!-- instagram feed -->
+<div class="homepage-instagram">
+    <h2 class="ig-title">See our instragram below!</h2>
+</div>
 <?php 
 // query the user media
 $fields = "id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username";
-$token = "IGQVJWX3NNQmw3elNsdlhnZA21yMTRvSjNxaHd6eXJWOEpBbEQzNDZAyb1ZAIbUJ3V2dVcUFPTkRoZAmxyY3dEQ2g5NHVfcS1xYTFzSk1COTduY2Uxa1ZA4RHgyM3FGdG5RMUNsODFvcGRUT3UyRy1TTklkVAZDZD";
+$token = "IGQVJXMnVlWW1TNjNTX1JEM1VCVnhWQmdObzlkZAWhoam9nWGs2em5EUXNNeWZApRGxEUzhCeHBHZAmdvQ0ZAGNlBuRW84NU9fOUpxR3pZARE5JN005MWdYMml1c1VTNktfTW02SWZAjNFBtOGhjUUx0eE5OSAZDZD";
 $limit = 10;
 
 $json_feed_url="https://graph.instagram.com/me/media?fields={$fields}&access_token={$token}&limit={$limit}";
