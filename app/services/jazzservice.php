@@ -9,6 +9,7 @@ class JazzService {
     }
 
     public function getAll() {
-        $repository
+        $jazzEvents = $this->repository->getAll();
+        return $jazzEvents;
     }
 }

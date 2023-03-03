@@ -1,29 +1,21 @@
 this is the test page.
-<div>
-    <?php
-        foreach ($restaurants as $restaurant) {
-            echo "<h1>{$restaurant->getName()}</h1>";
-            echo "<p>Description: {$restaurant->getDescription()}</p>";
-            echo "<p>Content: {$restaurant->getContent()}</p>";
-            echo "<p>Halal: {$restaurant->getHalal()}</p>";
-            echo "<p>Vegan: {$restaurant->getVegan()}</p>";
-            echo "<p>Stars: {$restaurant->getStars()}</p>";
-            echo "<p>Image: {$restaurant->getImage()}</p>";
-
-            echo "<h2>Sessions</h2>";
-            echo "<ul>";
-
-            foreach ($restaurant->getSessions() as $session) {
-                echo "<li>Session ID: {$session->getId()}</li>";
-                echo "<li>Date: {$session->getDate()}</li>";
-                echo "<li>Start Time: {$session->getStartTime()}</li>";
-                echo "<li>Duration: {$session->getDuration()}</li>";
-                echo "<li>Seats: {$session->getSeats()}</li>";
-                echo "<li>Price: {$session->getPrice()}</li>";
-                echo "<li>Reduced Price: {$session->getReducedPrice()}</li>";
-            }
-
-            echo "</ul>";
-        }
-    ?>
-</div>
+<?php
+echo '<table>';
+echo '<thead><tr><th>Date</th><th>Start Time</th><th>End Time</th><th>Venue</th><th>Artists</th></tr></thead>';
+echo '<tbody>';
+foreach ($jazzEvents as $jazzEvent) {
+    echo '<tr>';
+    echo '<td>' . $jazzEvent->getDate() . '</td>';
+    echo '<td>' . $jazzEvent->getStartTime() . '</td>';
+    echo '<td>' . $jazzEvent->getEndTime() . '</td>';
+    echo '<td>' . $jazzEvent->getVenue()->getName() . ' (' . $jazzEvent->getVenue()->getLocation() . ')</td>';
+    echo '<td>';
+    foreach ($jazzEvent->getArtists() as $artist) {
+        echo $artist->getName() . '<br>';
+    }
+    echo '</td>';
+    echo '</tr>';
+}
+echo '</tbody>';
+echo '</table>';
+?>
