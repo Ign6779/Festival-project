@@ -18,3 +18,4 @@ class LoginController extends Controller{
         require __DIR__ . '/../views/login/forgotpassword.php';
     }
 }
+?>

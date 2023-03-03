@@ -22,7 +22,7 @@ include __DIR__ . '/../header.php';
             </button>
 
             <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-linkedin-in"></i>
+              <i class="fab fa-google"></i>
             </button>
           </div>
 
