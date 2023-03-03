@@ -10,7 +10,7 @@ include __DIR__ . '/../header.php';
           class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form name="form" action="" method="post">
+        <form>
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
             <p class="lead fw-normal mb-0 me-3">Sign in with</p>
             <button type="button" class="btn btn-primary btn-floating mx-1">
@@ -39,7 +39,7 @@ include __DIR__ . '/../header.php';
 
           <!-- Password input -->
           <div class="form-outline mb-3">
-            <input type="password" name="pass" id="pass" class="form-control form-control-lg"
+            <input type="password" id="form3Example4" class="form-control form-control-lg"
               placeholder="Enter password" />
             <label class="form-label" for="form3Example4">Password</label>
           </div>
@@ -75,6 +75,7 @@ include __DIR__ . '/../header.php';
 </script>
 
 <?php
+include __DIR__ . '/../footer.php';
 
 class Password{
   public function encryptPassword($password){
@@ -90,3 +91,5 @@ class Password{
   }
 }
 ?>
+
+
