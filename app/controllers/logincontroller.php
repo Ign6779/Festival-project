@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/controller.php';
+require __DIR__ . '/../services/userservice.php';
 
 class LoginController extends Controller{
     public function index(){

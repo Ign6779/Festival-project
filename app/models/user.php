@@ -4,12 +4,18 @@ require __DIR__ . '/roles.php';
 class User implements \JsonSerializable {
 
     private int $id;
-    //private Role $role;
+    // private Role $role;
+
+    private int $role;
     private string $username;
     private string $password;
     private int $phoneNumber;
     private string $address;
-    private date $registrationDate;
+    //private date $registrationDate;
+
+    private string $phone;
+    private string $email;
+    private string $registration;
 
     #[ReturnTypeWillChange]
 
