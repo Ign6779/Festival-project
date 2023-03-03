@@ -1,0 +1,87 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: mysql
+-- Generation Time: Mar 01, 2023 at 09:37 AM
+-- Server version: 10.9.4-MariaDB-1:10.9.4+maria~ubu2204
+-- PHP Version: 8.0.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `festival`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `id` int(11) NOT NULL,
+  `restaurantId` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `startTime` time NOT NULL,
+  `duration` int(11) NOT NULL,
+  `seats` int(11) NOT NULL,
+  `price` float NOT NULL,
+  `reducedPrice` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `restaurantId`, `date`, `startTime`, `duration`, `seats`, `price`, `reducedPrice`) VALUES
+(1, 1, '2023-07-26', '18:00:00', 2, 40, 45, 22.5),
+(2, 1, '2023-07-26', '20:00:00', 2, 40, 45, 22.5),
+(3, 1, '2023-07-26', '22:00:00', 2, 40, 45, 22.5),
+(4, 2, '2023-07-26', '17:00:00', 2, 52, 45, 22.5),
+(5, 2, '2023-07-26', '19:00:00', 2, 52, 45, 22.5),
+(6, 2, '2023-07-26', '21:00:00', 2, 52, 45, 22.5);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_restaurantId` (`restaurantId`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `sessions`
+--
+ALTER TABLE `sessions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `sessions`
+--
+ALTER TABLE `sessions`
+  ADD CONSTRAINT `fk_restaurantId` FOREIGN KEY (`restaurantId`) REFERENCES `restaurants` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

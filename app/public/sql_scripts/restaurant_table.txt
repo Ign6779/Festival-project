@@ -1,0 +1,72 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: mysql
+-- Generation Time: Mar 01, 2023 at 09:36 AM
+-- Server version: 10.9.4-MariaDB-1:10.9.4+maria~ubu2204
+-- PHP Version: 8.0.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `festival`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `restaurants`
+--
+
+CREATE TABLE `restaurants` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `content` text NOT NULL,
+  `halal` tinyint(1) NOT NULL,
+  `vegan` tinyint(1) NOT NULL,
+  `stars` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `restaurants`
+--
+
+INSERT INTO `restaurants` (`id`, `name`, `description`, `content`, `halal`, `vegan`, `stars`, `image`) VALUES
+(1, 'Restaurant Mr&Ms', 'Dutch, fish and seafood, European', 'Run by the lovely couple of Mark and Corina, Mr & Ms is a restaurant that emphasizes luxurious eating with honest ingredients, sourced locally whenever possible.\r\n By combining Mark’s cooking skills and Corina’s wine expertise, all aspects of the dinner are sure to be perfect.\r\n\r\n The restaurant offers variations on typical Dutch cuisine with an European twist,  as well as excellent seafood which will satisfy even the pickiest of eaters. They also offer vegan options which follow Halal regulations: there will be something for everyone!\r\n\r\nSessions last 1.5 hours; first session begins at 18:00.', 1, 1, 4, 'restaurant-mr&ms.png'),
+(2, 'Ratatouille', 'French, fish and seafood, European', 'Chef Joshua Jaring \'s successful 4-Michelin restaurant in Haarlem is,  just like Ratatouille, a mix of French cuisine in today\'s reality with an excellent price-quality ratio in a privileged location in Haarlem.\r\n\r\nOffering one of the most diverse and exclusive wine carts in the city, Ratatouille is the perfect location to plan a date with your partner, where you will enjoy a magnificent selection of both wines and delicate plates in a truly unique dining experience.\r\n\r\nSessions last 2 hours, first session begins at 17:00', 1, 1, 4, 'restaurant-ratatouille.png');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `restaurants`
+--
+ALTER TABLE `restaurants`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `restaurants`
+--
+ALTER TABLE `restaurants`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

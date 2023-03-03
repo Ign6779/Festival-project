@@ -28,7 +28,7 @@ class UserRepository extends Repository {
 
             return $user;
         }
-        catch (PDOException $e){
+        catch (PDOException $e) {
             echo $e;
         }
     }
