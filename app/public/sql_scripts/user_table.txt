@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Feb 23, 2023 at 01:40 PM
+-- Generation Time: Mar 03, 2023 at 10:28 AM
 -- Server version: 10.9.4-MariaDB-1:10.9.4+maria~ubu2204
 -- PHP Version: 8.0.25
 
@@ -34,6 +34,7 @@ CREATE TABLE `users` (
   `password` varchar(31) NOT NULL,
   `phone` int(15) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `registration` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -41,8 +42,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `role`, `username`, `password`, `phone`, `address`, `registration`) VALUES
-(1, 0, 'gnas', '0000', 123456789, 'PurePainStreet, 4', '2023-02-01');
+INSERT INTO `users` (`id`, `role`, `username`, `password`, `phone`, `address`, `email`, `registration`) VALUES
+(1, 0, 'gnas', '0000', 123456789, 'PurePainStreet, 4', NULL, '2023-02-01');
 
 --
 -- Indexes for dumped tables
