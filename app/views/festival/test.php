@@ -1,16 +1,17 @@
 this is the test page.
 <?php
 echo '<table>';
-echo '<thead><tr><th>Date</th><th>Start Time</th><th>End Time</th><th>Venue</th><th>Artists</th></tr></thead>';
+echo '<thead><tr><th>Date</th><th>Start Time</th><th>End Time</th><th>Session</th><th>Venue</th><th>Artists</th></tr></thead>';
 echo '<tbody>';
-foreach ($jazzEvents as $jazzEvent) {
+foreach ($danceEvents as $danceEvent) {
     echo '<tr>';
-    echo '<td>' . $jazzEvent->getDate() . '</td>';
-    echo '<td>' . $jazzEvent->getStartTime() . '</td>';
-    echo '<td>' . $jazzEvent->getEndTime() . '</td>';
-    echo '<td>' . $jazzEvent->getVenue()->getName() . ' (' . $jazzEvent->getVenue()->getLocation() . ')</td>';
+    echo '<td>' . $danceEvent->getDate() . '</td>';
+    echo '<td>' . $danceEvent->getStartTime() . '</td>';
+    echo '<td>' . $danceEvent->getEndTime() . '</td>';
+    echo '<td>' . $danceEvent->getSession() . '</td>';
+    echo '<td>' . $danceEvent->getVenue()->getName() . ' (' . $danceEvent->getVenue()->getLocation() . ')</td>';
     echo '<td>';
-    foreach ($jazzEvent->getArtists() as $artist) {
+    foreach ($danceEvent->getArtists() as $artist) {
         echo $artist->getName() . '<br>';
     }
     echo '</td>';
