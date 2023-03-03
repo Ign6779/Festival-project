@@ -10,7 +10,7 @@ include __DIR__ . '/../header.php';
           class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form>
+        <form name="form" action="" method="post">
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
             <p class="lead fw-normal mb-0 me-3">Sign in with</p>
             <button type="button" class="btn btn-primary btn-floating mx-1">
@@ -39,7 +39,7 @@ include __DIR__ . '/../header.php';
 
           <!-- Password input -->
           <div class="form-outline mb-3">
-            <input type="password" id="form3Example4" class="form-control form-control-lg"
+            <input type="password" name="pass" id="pass" class="form-control form-control-lg"
               placeholder="Enter password" />
             <label class="form-label" for="form3Example4">Password</label>
           </div>
@@ -75,44 +75,18 @@ include __DIR__ . '/../header.php';
 </script>
 
 <?php
-include __DIR__ . '/../footer.php';
-?>
 
-<?php //require ("vendor/autoload.php");
-//Step 1: Enter you google account credentials
+class Password{
+  public function encryptPassword($password){
+  $hash = password_hash($password, 
+          PASSWORD_DEFAULT);
+  return $hash;
+  }
 
-$g_client = new Google_Client();
-
-$g_client->setClientId("635746243599-n4uqgio77g1lgbkgkmjajoogd49o7e7k.apps.googleusercontent.com");
-$g_client->setClientSecret("Hgq0sN65ue-0E4dyGsS0WZlJ");
-$g_client->setRedirectUri("http://localhost/");
-$g_client->setScopes("email");
-
-//Step 2 : Create the url
-$auth_url = $g_client->createAuthUrl();
-echo "<a href='$auth_url'>Login Through Google </a>";
-
-//Step 3 : Get the authorization  code
-$code = isset($_GET['code']) ? $_GET['code'] : NULL;
-
-//Step 4: Get access token
-if(isset($code)) {
-    try {
-        $token = $g_client->fetchAccessTokenWithAuthCode($code);
-        $g_client->setAccessToken($token);
-
-    }catch (Exception $e){
-        echo $e->getMessage();
-    }
-    try {
-        $pay_load = $g_client->verifyIdToken();
-    }catch (Exception $e) {
-        echo $e->getMessage();
-    }
-} else{
-    $pay_load = null;
+  public function decryptPassword($hash){
+  $password = "Password@123"; // here should be the password that user insert
+  $verify = password_verify($password, $hash);
+  return $verify;
+  }
 }
-
-if(isset($pay_load)){
-
-}?>
+?>
