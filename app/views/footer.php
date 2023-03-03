@@ -7,26 +7,25 @@
     <!-- Section: Social media -->
     <section class="mb-4">
       <!-- Facebook -->
-      <a class="btn btn-link btn-floating btn-lg text-light m-1" href="#!" role="button"
+      <a class="btn btn-link btn-floating btn-lg text-light m-1" href="https://www.facebook.com/profile.php?id=100067099483537" role="button"
         data-mdb-ripple-color="light"><i class="fab fa-facebook-f"></i></a>
 
       <!-- Twitter -->
-      <a class="btn btn-link btn-floating btn-lg text-light m-1" href="#!" role="button"
+      <a class="btn btn-link btn-floating btn-lg text-light m-1" href="https://twitter.com/FestivalHaarlem" role="button"
         data-mdb-ripple-color="light"><i class="fab fa-twitter"></i></a>
 
       <!-- Instagram -->
-      <a class="btn btn-link btn-floating btn-lg text-light m-1" href="#!" role="button"
+      <a class="btn btn-link btn-floating btn-lg text-light m-1" href="https://www.instagram.com/hfest2023/?hl=en" role="button"
         data-mdb-ripple-color="light"><i class="fab fa-instagram"></i></a>
 
     </section>
     <!-- Section: Social media -->
   </div>
-  <!-- Grid container -->
 
   <!-- logo -->
   <div class="text-center text-light p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     © 2023 Copyright:
     <a class="text-light">Wander Haarlem inc</a>
-    <img src="..." class="card-img-top" alt="LOGO" style="width: 100px;">
+    <img src="/img/logo-of-page.png" alt="Logo" style="width: 200px;">
   </div>
 </footer>
