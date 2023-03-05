@@ -6,11 +6,11 @@ include __DIR__ . '/../header.php';
     <h1 class="Dance-Title"> Dance! </h1>
     <div class="text-center container" id="carousel">
         <ul class="list">
-            <li class="hide"></li>
-            <li class="prev"></li>
-            <li class="act"></li>
-            <li class="next"></li>
-            <li class="next new-next"></li>
+            <li class="hide"><img src="/img/dance-carousel-1.jpg"></li>
+            <li class="prev"><img src="/img/dance-carousel-2.jpg"></li>
+            <li class="act"><img src="/img/dance-carousel-3.jpg"></li>
+            <li class="next"><img src="/img/dance-carousel-4.jpg"></li>
+            <li class="next new-next"><img src="/img/dance-carousel-5.webp"></li>
         </ul>
     </div>
 
@@ -22,23 +22,23 @@ include __DIR__ . '/../header.php';
     <h1 class="Dance-Title"> Detail page 1 </h1>
     <div class="text-center container" id="detail-page-block">
         <h1 class="artist-name">Hardwell</h1>
-        <p class="artist-description">description</p>
+        <p class="artist-description">“Throughout his expansive career as a successful DJ, producer, remixer, label boss, filmmaker, and philanthropist, former 2 x World No.1 DJ, Hardwell has carved out a long-lasting legacy within the electronic music world.”<small><br>https://www.djhardwell.com/biography</small></p>
         <!-- <div class="artist-polaroids"> -->
-          <div class="polaroid1"><img src="" alt="pic1">
+          <div id="polaroid1" ><img class="polaroid-pic" src="/img/hardwell-pic-1.png" alt="pic1">
               <div class="caption"></div>
           </div>
-          <div class="polaroid2"><img src="" alt="pic2">
+          <div id="polaroid2"><img class="polaroid-pic" src="/img/hardwell-pic-2.png" alt="pic2">
               <div class="caption"></div>
           </div>
-          <div class="polaroid3"><img src="" alt="pic3">
+          <div id="polaroid3"><img class="polaroid-pic" src="/img/hardwell-pic-3.png" alt="pic3">
               <div class="caption"></div>
           </div>
         <!-- </div> -->
 
         <div class="artist-songs" id="top3songs">
-            <img src="" alt="song1">
-            <img src="" alt="song2">
-            <img src="" alt="song3">
+            <img src="/img/hardwell-song-1.png" alt="song1">
+            <img src="/img/hardwell-song-2.png" alt="song2">
+            <img src="/img/hardwell-song-3.png" alt="song3">
         </div>
         <!-- MEDIA PLAYER -->
         <script src="https://kit.fontawesome.com/7c33dff1d8.js" crossorigin="anonymous"></script>
@@ -70,23 +70,23 @@ include __DIR__ . '/../header.php';
     <h1 class="Dance-Title"> Detail page 2 </h1>
     <div class="text-center container" id="detail-page-block">
         <h1 class="artist-name">Martin Garrix</h1>
-        <p class="artist-description">description</p>
+        <p class="artist-description">“Martijn Gerard Garritsen, known professionally as Martin Garrix, is a Dutch DJ and record producer. Active since 2012, Garrix has had a number of hits. He was also ranked number one on DJ Mag’s Top 100 DJ list in 2016, 2017, and 2018. Garrix has performed at diverse festivals like Coachella, Electric Daisy Carnival, Ultra Music Festival, and Tomorrowland.”<small><br>https://nexus.radio/news/martin-garrix</small></p>
         <!-- <div class="artist-polaroids"> -->
-          <div class="polaroid1"><img src="" alt="pic1">
+          <div id="polaroid1"><img class="polaroid-pic" src="/img/MG-pic-1.png" alt="pic1">
               <div class="caption"></div>
           </div>
-          <div class="polaroid2"><img src="" alt="pic2">
+          <div id="polaroid2"><img class="polaroid-pic" src="/img/MG-pic-2.png" alt="pic2">
               <div class="caption"></div>
           </div>
-          <div class="polaroid3"><img src="" alt="pic3">
+          <div id="polaroid3"><img class="polaroid-pic" src="/img/MG-pic-3.png" alt="pic3">
               <div class="caption"></div>
           </div>
         <!-- </div> -->
 
         <div class="artist-songs" id="top3songs">
-            <img src="" alt="song1">
-            <img src="" alt="song2">
-            <img src="" alt="song3">
+          <div><img src="/img/MG-song-1.png" alt="song1"><p>In the name of love</p><small>1,192,854,477 streams on spotify</small></div>
+          <!-- <div><img src="/img/MG-song-2.png" alt="song2"><p>Scared to be lonely</p><small>1,080,844,389 streams on spotify</small></div> -->
+          <!-- <div><img src="/img/MG-song-3.png" alt="song3"><p>Summer days</p><small>560,694,909  streams on spotify</small></div> -->
         </div>
         <!-- MEDIA PLAYER -->
         <script src="https://kit.fontawesome.com/7c33dff1d8.js" crossorigin="anonymous"></script>
@@ -129,7 +129,7 @@ include __DIR__ . '/../header.php';
         <div class="text-center container" id="artist-list-right">Three day pass price</div>
     </div>
     <div class="text-center container justify-content-center" id="transparent-block">
-        <button class="btn-purple">3 Day Pass</button>
+        <button class="btn-purple" id="three-day-btn">3 Day Pass</button>
     </div>
 </div>
 
@@ -169,14 +169,14 @@ include __DIR__ . '/../header.php';
         </div>
     </div>
     <div class="text-left container" id="green-side-with-picture">
-        <img src="..." class="pictures" alt="picture">
+        <img src="/img/dance-pic-1.png" class="pictures" alt="picture">
     </div>
 </div>
 
 <!-- saturday tickets -->
 <div class="text-center container-fluid" id="saturday-schedule">
-<div class="text-right container" id="white-side-with-picture">
-            <img src="..." class="pictures" alt="picture">
+  <div class="text-right container" id="white-side-with-picture">
+            <img src="/img/dance-pic-2.png" class="picture-left" alt="picture">
         </div>
     <div class="text-left container" id="schedule-side">
             <h1 class="Dance-Title"> saturday tickets </h1>
@@ -250,7 +250,7 @@ include __DIR__ . '/../header.php';
         </div>
     </div>
     <div class="text-left container" id="white-side-with-picture-left">
-        <img src="..." class="pictures" alt="picture">
+        <img src="/img/dance-pic-3.png" class="pictures" alt="picture">
     </div>
 </div>
 
@@ -258,10 +258,21 @@ include __DIR__ . '/../header.php';
 <div class="text-center container-fluid" id="venue-section">
     <div class="card">
     <h1> venues </h1>
-    <div class="card-body">
+    <div class="card-body" style="float: left;">
         venues here
     </div>
-    <img src="" alt="picture" class="card-img-right">
+    <div class="map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.4373439418973!2d4.637868015802284!3d52.38062167978804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5ef691268e66d%3A0xfa51f5aae7c4d62d!2sTeylers%20Museum!5e0!3m2!1snl!2snl!4v1677013723273!5m2!1snl!2snl"
+            width="500px" height="500px" style="border:2px solid black; margin-right:2%;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p >e-mail:
+            info@teyeler.nl <br>
+            phone:
+            023 - 517 58 50 (office)<br>
+            <b>open from 10.00 - 17.00 </b>
+        </p>
+    </div>
     </div>
 </div>
 
