@@ -32,28 +32,28 @@ include __DIR__ . '/../header.php';
 
           <!-- Userame input -->
           <div class="form-outline mb-4">
-            <input type="text" id="form3Example3" class="form-control form-control-lg"
+            <input type="text" id="form3Example3" name="usernameInput" class="form-control form-control-lg"
               placeholder="Enter your username" />
             <label class="form-label" for="form3Example3">Username</label>
           </div>
 
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <input type="email" id="form3Example3" class="form-control form-control-lg"
+            <input type="email" id="form3Example3" name="emailInput" class="form-control form-control-lg"
               placeholder="Enter a valid email address" />
             <label class="form-label" for="form3Example3">Email address</label>
           </div>
 
           <!-- Password input -->
           <div class="form-outline mb-3">
-            <input type="password" id="form3Example4" class="form-control form-control-lg"
+            <input type="password" id="form3Example4" name="passInput"class="form-control form-control-lg"
               placeholder="Password" />
             <label class="form-label" for="form3Example4">Password</label>
           </div>
 
           <!-- Repeat Password input -->
           <div class="form-outline mb-3">
-            <input type="password" id="form3Example4" class="form-control form-control-lg"
+            <input type="password" id="form3Example4" name="repeatPassInput" class="form-control form-control-lg"
               placeholder="Repeat Password" />
             <label class="form-label" for="form3Example4">Password</label>
           </div>
@@ -86,5 +86,11 @@ include __DIR__ . '/../header.php';
 <?php
 include __DIR__ . '/../footer.php';
 
+$userService = new UserService();
 
+//register a new user
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+{
+
+}
 ?>

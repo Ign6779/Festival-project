@@ -88,9 +88,6 @@
                     My cart
                 </div>
             </div>
-
-
-
         </div>
     </nav>
 
