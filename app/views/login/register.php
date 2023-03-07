@@ -10,7 +10,7 @@ include __DIR__ . '/../header.php';
           class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form>
+        <form action="" method="post">
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
             <p class="lead fw-normal mb-0 me-3">Sign in with</p>
             <button type="button" class="btn btn-primary btn-floating mx-1">
@@ -30,7 +30,7 @@ include __DIR__ . '/../header.php';
             <p class="text-center fw-bold mx-3 mb-0">Or</p>
           </div>
 
-          <!-- Name input -->
+          <!-- Userame input -->
           <div class="form-outline mb-4">
             <input type="text" id="form3Example3" class="form-control form-control-lg"
               placeholder="Enter your username" />
@@ -67,15 +67,9 @@ include __DIR__ . '/../header.php';
 
             <div class="row">
                 <div class="col-sm-3 text-center text-lg-start mt-4 pt-2">
-                    <button type="button" class="btn btn-primary btn-lg"
-                    style="padding-left: 2.5rem; padding-right: 2.5rem;" onclick="redirct('/')">Register</button>
+                    <input type="submit" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;" >
                 </div>
-                <!-- Button for goin back to the login page
-                <div class="col-sm-3 text-center text-lg-start mt-4 pt-2">
-                    <button type="button" class="btn btn-primary btn-lg"
-                    style="padding-left: 2.5rem; padding-right: 2.5rem;" onclick="redirct('/login/login')">Back</button>
-                </div>
-                -->
             </div>
         </form>
       </div>
@@ -84,11 +78,13 @@ include __DIR__ . '/../header.php';
 </section>
 
 <script>
-        function redirct(src) {
+        function redirect(src) {
             window.location = src;
         }
 </script>
 
 <?php
 include __DIR__ . '/../footer.php';
+
+
 ?>
