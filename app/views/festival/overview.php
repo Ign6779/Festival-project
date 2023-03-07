@@ -50,6 +50,58 @@ include __DIR__ . '/../header.php';
     </div>
     <div class="left-text"><p>text</p><button class="btn-red">see event</button></div>
 </section>
+<!-- SCHEDULE OVERVIEW -->
+<section class="schedule-section">
+    <h1>Schedule</h1>
+    <div class="overview-schedule-container">
+        <div class="day-card" id="thursday-card">
+            <p class="date">July 27</p>
+            <h3>Thursday</h3>
+            <ul class="list-of-events">
+                <li></li>
+            </ul>
+        </div>
+        <div class="day-card" id="friday-card">
+            <p class="date">July 28</p>
+            <h3>Friday</h3>
+            <ul class="list-of-events">
+                <li></li>
+            </ul>
+        </div>
+        <div class="day-card" id="satday-card">
+            <p class="date">July 29</p>
+            <h3>Saturday</h3>
+            <ul class="list-of-events">
+                <li></li>
+            </ul>
+        </div>
+        <div class="day-card" id="sunday-card">
+            <p class="date">July 30</p>
+            <h3>Sunday</h3>
+            <ul class="list-of-events">
+                <li></li>
+            </ul>
+        </div>
+        <div class="day-card" id="monday-card">
+            <p class="date">July 31</p>
+            <h3>Monday</h3>
+            <ul class="list-of-events">
+                <li></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<!-- VENUES -->
+<section class="venue-section">
+    <div class="venue-map-container">
+        <!-- MAP HERE -->
+    </div>
+    <div class="venue-addresses">
+        <!-- ADDRESSES HERE -->
+    </div>
+</section>
 <?php
 include __DIR__ . '/../footer.php';
 ?>

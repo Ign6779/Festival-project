@@ -133,4 +133,24 @@
 #kids-picture-round{
     background-color: #7A86B6;
 }
+.schedule-section{
+    background-color: #2E9B7B;
+    height: 800px;
+    width: 100%;
+    position: relative;
+}
+.overview-schedule-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+}
+.day-card{
+    height: 150px;
+    width: 40%;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 2%;
+}
     
