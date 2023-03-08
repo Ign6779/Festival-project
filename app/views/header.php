@@ -31,6 +31,7 @@
 
         <div class="nav-section1">
             <div class="language-options">
+                <a href="/login" class="btn btn-primary">Log in</a>
                 <img src="/img/english-option.png" alt="english-option">
                 <img src="/img/dutch-option.png" alt="dutch-option">
             </div>

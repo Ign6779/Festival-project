@@ -10,7 +10,7 @@ include __DIR__ . '/../header.php';
           class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form action="" method="post">
+        <form action="/login/signUp" method="post">
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
             <p class="lead fw-normal mb-0 me-3">Sign in with</p>
 
@@ -60,8 +60,9 @@ include __DIR__ . '/../header.php';
 
             <div class="row">
                 <div class="col-sm-3 text-center text-lg-start mt-4 pt-2">
-                    <input type="submit" class="btn btn-primary btn-lg" value="Register"
-                    style="padding-left: 2.5rem; padding-right: 2.5rem;" >
+                    <input type="submit" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Sign-up" name="register">
+
                 </div>
             </div>
         </form>
@@ -79,11 +80,4 @@ include __DIR__ . '/../header.php';
 <?php
 include __DIR__ . '/../footer.php';
 
-$userService = new UserService();
-
-//register a new user
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
-
-}
 ?>
