@@ -50,13 +50,13 @@ class UserRepository extends Repository
         }
     }
 
-    function createUser($role, $email, $password, $registration)
+    function createUser($role, $email, $password, $registration, $username)
     {
         try {
             $hasedPassword = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $this->connection->prepare("INSERT INTO users (id, role, username, email, address, phone, password, registration) VALUES (NULL, :r, :username, :email, 'test', '12365489', :pass, :registration)");
             $stmt->bindParam(':r', $role);
-            $stmt->bindParam(':username', $email);
+            $stmt->bindParam(':username', $username);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':pass', $hasedPassword);
             $stmt->bindParam(':registration', $registration);

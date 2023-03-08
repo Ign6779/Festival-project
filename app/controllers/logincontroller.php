@@ -63,10 +63,10 @@ class LoginController extends Controller
     {
         if (isset($_POST['register'])) {
             if (!empty($_POST['usernameInput']) && !empty($_POST['emailInput']) && !empty($_POST['passInput'])) {
-                $userName = htmlspecialchars($_POST['usernameInput']);
+                $username = htmlspecialchars($_POST['usernameInput']);
                 $email = htmlspecialchars($_POST['emailInput']);
                 $password = htmlspecialchars($_POST['passInput']);
-                $this->userService->createUser(0, $email, $password, date("Y/m/d") );
+                $this->userService->createUser(0, $email, $password, date("Y/m/d"), $username);
                 //when address and phone input fields are added
                 // $this->userService->createUser($role, $email, $password, $address, $phone);
                 require_once __DIR__ . '/../views/home/homePage.php';

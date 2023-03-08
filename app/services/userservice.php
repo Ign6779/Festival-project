@@ -33,9 +33,9 @@ class UserService
         return null;
     }
 
-    public function createUser($role, $email, $password, $registration)
+    public function createUser($role, $email, $password, $registration, $username)
     {
-        $this->repository->createUser($role, $email, $password, $registration);
+        $this->repository->createUser($role, $email, $password, $registration, $username);
     }
 
 //when address and phone input fields are added
