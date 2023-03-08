@@ -1,22 +1,25 @@
 this is the test page.
 <?php
-echo '<table>';
-echo '<thead><tr><th>Date</th><th>Start Time</th><th>End Time</th><th>Session</th><th>Venue</th><th>Artists</th></tr></thead>';
-echo '<tbody>';
-foreach ($danceEvents as $danceEvent) {
-    echo '<tr>';
-    echo '<td>' . $danceEvent->getDate() . '</td>';
-    echo '<td>' . $danceEvent->getStartTime() . '</td>';
-    echo '<td>' . $danceEvent->getEndTime() . '</td>';
-    echo '<td>' . $danceEvent->getSession() . '</td>';
-    echo '<td>' . $danceEvent->getVenue()->getName() . ' (' . $danceEvent->getVenue()->getLocation() . ')</td>';
-    echo '<td>';
-    foreach ($danceEvent->getArtists() as $artist) {
-        echo $artist->getName() . '<br>';
+foreach ($restaurants as $restaurant) {
+    echo "<h1>{$restaurant->getName()}</h1>";
+    echo "<p>Description: {$restaurant->getDescription()}</p>";
+    echo "<p>Content: {$restaurant->getContent()}</p>";
+    echo "<p>Halal: {$restaurant->getHalal()}</p>";
+    echo "<p>Vegan: {$restaurant->getVegan()}</p>";
+    echo "<p>Stars: {$restaurant->getStars()}</p>";
+
+    echo "<h2>Sessions</h2>";
+    echo "<ul>";
+
+    foreach ($restaurant->getSessions() as $session) {
+        echo "<li>Session ID: {$session->getId()}</li>";
+        echo "<li>Start Time: {$session->getStartTime()}</li>";
+        echo "<li>End Time: {$session->getEndTime()}</li>";
+        echo "<li>Seats: {$session->getSeats()}</li>";
+        echo "<li>Price: {$session->getPrice()}</li>";
+        echo "<li>Reduced Price: {$session->getReducedPrice()}</li>";
     }
-    echo '</td>';
-    echo '</tr>';
+
+    echo "</ul>";
 }
-echo '</tbody>';
-echo '</table>';
 ?>
