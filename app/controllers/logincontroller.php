@@ -41,10 +41,9 @@ class LoginController extends Controller
                     //     break;
                 }
             } else {
-
-                // require_once __DIR__ . '/../views/login/login.php';
-                // $message = "Please fill in the required information!";
-                // include __DIR__ . '/../views/warning.php';
+                $message = "Please fill in the required information!";
+                include __DIR__ . '/../views/messages/warning.php';
+                require_once __DIR__ . '/../views/login/login.php';
             }
         }
     }

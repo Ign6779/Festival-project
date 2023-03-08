@@ -76,48 +76,6 @@ include __DIR__ . '/../header.php';
 
 <?php
  include __DIR__ . '/../footer.php';
-
-// $userService = new UserService();
-
-// //Chedck email/username and password for Login
-// if ($_SERVER["REQUEST_METHOD"] == "POST")
-// {
-//   $username = "";
-//   if ( isset($_POST['emailInput']))
-//   {
-//     $username = $_POST['emailInput']; 
-//   }
-
-//   $user = $userService -> getByUsername($username);
-
-//   if($user != null)
-//   {
-//     if (isset($_POST['passwordInput']))
-//     {
-//       if ($_POST['passwordInput'] == $user -> getPassword())
-//       {
-//         echo '<script type="text/javascript">redirect();</script>';
-//       }
-//     }
-//   } else {
-//     //display message for wrong email or password
-//   } 
-//}
-
-
-// class Password{
-//   public function encryptPassword($password){
-//   $hash = password_hash($password, 
-//           PASSWORD_DEFAULT);
-//   return $hash;
-//   }
-
-//   public function decryptPassword($hash){
-//   $password = "Password@123"; // here should be the password that user insert
-//   $verify = password_verify($password, $hash);
-//   return $verify;
-//   }
-// }
 ?>
 
 
