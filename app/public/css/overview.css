@@ -153,4 +153,29 @@
     border-radius: 10px;
     margin-top: 2%;
 }
+.venue-section{
+    height: 850px;
+    background-color: #2E9B7B;
+    position: relative;
+}
+.venue-section .card{
+    margin: 5%;
+    position: absolute;
+    width: 90%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5%;
+}
+.venue-section li{
+    margin-top: 20px;
+    list-style-type: none
+}
+.venue-map-container{
+    background-color: blue;
+    height: 400px;
+    width: 400px;
+    margin-left: 10%;
+}
     

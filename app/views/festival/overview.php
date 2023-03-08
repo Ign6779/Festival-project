@@ -52,7 +52,7 @@ include __DIR__ . '/../header.php';
 </section>
 <!-- SCHEDULE OVERVIEW -->
 <section class="schedule-section">
-    <h1>Schedule</h1>
+    <h1 class="schedule-title">Schedule</h1>
     <div class="overview-schedule-container">
         <div class="day-card" id="thursday-card">
             <p class="date">July 27</p>
@@ -95,11 +95,24 @@ include __DIR__ . '/../header.php';
 
 <!-- VENUES -->
 <section class="venue-section">
-    <div class="venue-map-container">
-        <!-- MAP HERE -->
-    </div>
-    <div class="venue-addresses">
-        <!-- ADDRESSES HERE -->
+    <div class="card">
+        <div class="venue-map-container">
+            <!-- MAP HERE -->
+            <img src="" alt="" class="map">
+        </div>
+        <div class="venue-addresses">
+            <!-- ADDRESSES HERE -->
+            <ul class="venue-list">
+                <li><img src="/img/dance-symbol.png" alt="dance icon"><br>Lichtfabriek (Minckelersweg 2, 2031 EM Haarlem)
+                    (09:00 - 17:00) <br> Jopenkerk (Gedempte Voldersgracht 2, 2011 WD Haarlem)
+                    (10:00 - 01:00) <br> XO the Club (Grote Markt 8, 2011 RD Haarlem)
+                    (09:00 - 04:00)</li>
+                <li><img src="/img/museum-symbol.png" alt="museum icon"><br>Teylers Museum(Spaarne 16, 2011 CH Haarlem) (10:00 - 17:00)<br>Patronaat (Zijlsingel 2 2013 DN Haarlem) (18:00 - 22:00)</li>
+                <li><img src="/img/jazz-symbol.png" alt="jazz icon"><br>Grote Markt, Haarlem (15:00 - 21:00)</li>
+                <li><img src="/img/history-symbol.png" alt="history icon"><br>De Adriaan (Papentorenvest 1a, 2011AV Haarlem) (13:00-17:00)<br>Proveniershof (Grote Houtstraat 142D, 2011 SV Haarlem) (00:00-00:00)</li>
+                <li><img src="/img/yummy-symbol.png" alt="yummy icon"><br>Ratatouille (Spaarne 96, 2011 CL Haarlem) (17:00-23:00)<br>Fris (Twijnderslaan 7, 2012 BG Haarlem) (17:30-22:00)</li>
+            </ul>
+        </div>
     </div>
 </section>
 <?php
