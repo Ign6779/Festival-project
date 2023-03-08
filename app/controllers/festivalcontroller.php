@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/controller.php';
 require __DIR__ . '/../services/userservice.php';
+require __DIR__ . '/../services/restaurantservice.php';
 
 class FestivalController extends Controller {
 
@@ -31,6 +32,7 @@ class FestivalController extends Controller {
     }
 
     public function yummy(){
+        $restaurantService = new RestaurantService();
         require __DIR__ . '/../views/festival/yummy.php';
     }
 }
