@@ -13,13 +13,6 @@ include __DIR__ . '/../header.php';
         <form action="" method="post">
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
             <p class="lead fw-normal mb-0 me-3">Sign in with</p>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-facebook-f"></i>
-            </button>
-
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-twitter"></i>
-            </button>
 
             <button type="button" class="btn btn-primary btn-floating mx-1">
               <i class="fab fa-google"></i>
@@ -67,7 +60,7 @@ include __DIR__ . '/../header.php';
 
             <div class="row">
                 <div class="col-sm-3 text-center text-lg-start mt-4 pt-2">
-                    <input type="submit" class="btn btn-primary btn-lg"
+                    <input type="submit" class="btn btn-primary btn-lg" value="Register"
                     style="padding-left: 2.5rem; padding-right: 2.5rem;" >
                 </div>
             </div>
