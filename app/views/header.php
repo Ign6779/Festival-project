@@ -1,3 +1,30 @@
+<?
+function returnStyle($id)
+{
+    $style = "";
+    $uri = $_SERVER['REQUEST_URI'];
+    $splitUri = explode('/', $uri);
+    if ($uri == $id || ($splitUri[1] == "festival" && $id == "festival")) {
+        $style = "bg-white txt-color-bleu";
+    } else {
+        $style = "bg-bleu txt-color-white";
+    }
+    return $style;
+}
+
+function returnSelected($id)
+{
+    $selected = "";
+    $uri = $_SERVER['REQUEST_URI'];
+    if ($uri == $id) {
+        $selected = "selected";
+    }
+
+    return $selected;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +40,7 @@
     <link rel="stylesheet" href="/css/login.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/dance.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/overview.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="/css/header.css?v=<?php echo time(); ?>">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -30,7 +58,6 @@
 <body>
 
     <nav>
-
         <div class="nav-section1">
             <div class="language-options">
                 <img src="/img/english-option.png" alt="english-option">
@@ -40,49 +67,42 @@
 
         <div class="nav-section2">
 
-            <div class="menu-list">
+            <div id="menu-list" class="menu-list">
+                <a href="/" class="remove-style menu-list-option <? echo returnStyle("/"); ?>">Home</a>
 
-                <div class="selected-page text-in-selected-page">
-                    <a href="/" class="remove-style">Home</a>
-                </div>
+                <select name="Events" id="Events" onchange="redirct(this.value)"
+                    class="menu-list-option <? echo returnStyle("festival"); ?>">
+                    <option <? echo returnSelected("/"); ?> disabled>Events</option>
+                    <option <? echo returnSelected("/festival/overview"); ?> value="/festival/overview">Festival
+                    </option>
+                    <option <? echo returnSelected("/festival/yummy"); ?> value="/festival/yummy">Dining</option>
+                    <option <? echo returnSelected("/festival/history"); ?> value="/festival/history">History
+                    </option>
+                    <option <? echo returnSelected("/festival/dance"); ?> value="/festival/dance">Dance</option>
+                    <option <? echo returnSelected("/festival/jazz"); ?>value="/festival/jazz">Jazz</option>
+                    <option <? echo returnSelected("/festival/kids"); ?> value="/festival/kids">Kids</option>
+                </select>
 
-                <div>
-                    <select name="Events" id="Events" onchange="redirct(this.value)"
-                        class="remove-style drop-down-menu text-in-drop-down-menu">
-                        <option selected disabled>Events</option>
-                        <option value="/festival/overview">Festival</option>
-                        <option value="/festival/yummy">Dining</option>
-                        <option value="/festival/history">History</option>
-                        <option value="/festival/dance">Dance</option>
-                        <option value="/festival/jazz">Jazz</option>
-                        <option value="/festival/kids">Kids</option>
-                    </select>
-                </div>
-
-                <div class="unselected-page text-in-unselected-page">
-                    <a href="festival/tickets" class="remove-style ">Tickets</a>
-                </div>
-
+                <a href="/tickets" class="remove-style menu-list-option <? echo returnStyle("tickets"); ?>">Tickets</a>
             </div>
 
-            <div name="Logo" class="logo">
+
+            <div class="logo">
                 <img src="/img/logo-of-page.png" alt="Logo">
             </div>
 
-
-
-            <div name="search">
+            <div>
                 <input type="text" class="search-input" placeholder="Search here ...">
 
                 <button class="search-button">
-                    <img class="search-button-picture" src="/img/search-icon2.png" alt="search icon">
+                    <img src="/img/search-icon2.png" alt="search icon">
                 </button>
             </div>
 
-            <div name="cart" class="cart-and-items">
+            <div class="cart-and-items">
 
                 <button class="cart" onclick="showItemsInCart()">
-                    <img src="/img/cart-icon.png" alt="cart-icon">
+                    <img id="cart-icon-img" src="/img/cart-icon.png" alt="cart-icon">
                 </button>
 
 
