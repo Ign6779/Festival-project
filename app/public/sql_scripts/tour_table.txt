@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Mar 01, 2023 at 09:34 AM
+-- Generation Time: Mar 09, 2023 at 02:44 PM
 -- Server version: 10.9.4-MariaDB-1:10.9.4+maria~ubu2204
 -- PHP Version: 8.0.25
 
@@ -42,7 +42,17 @@ CREATE TABLE `tours` (
 
 INSERT INTO `tours` (`id`, `date`, `time`, `availableSeatsEn`, `availableSeatsNl`, `availableSeatsCh`) VALUES
 (1, '2023-07-26', '10:00:00', 12, 12, 0),
-(2, '2023-07-26', '13:00:00', 12, 12, 0);
+(2, '2023-07-26', '13:00:00', 12, 12, 0),
+(3, '2023-07-26', '16:00:00', 12, 12, 0),
+(4, '2023-07-27', '10:00:00', 12, 12, 0),
+(5, '2023-07-27', '13:00:00', 12, 12, 12),
+(6, '2023-07-27', '16:00:00', 12, 12, 0),
+(7, '2023-07-28', '10:00:00', 24, 24, 0),
+(8, '2023-07-28', '13:00:00', 24, 24, 12),
+(9, '2023-07-28', '16:00:00', 12, 12, 12),
+(10, '2023-07-29', '10:00:00', 24, 24, 12),
+(11, '2023-07-29', '13:00:00', 36, 36, 24),
+(12, '2023-07-29', '16:00:00', 12, 12, 0);
 
 --
 -- Indexes for dumped tables
@@ -62,7 +72,7 @@ ALTER TABLE `tours`
 -- AUTO_INCREMENT for table `tours`
 --
 ALTER TABLE `tours`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
