@@ -6,7 +6,7 @@ require __DIR__ . '/../models/restaurant.php';
 class RestaurantRepository extends Repository {
     public function getAll() { //cannot use the same structure as other times since it gets info from many tables, including an array within a class.
         try {
-            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, s.date, s.startTime, s.duration, s.seats, s.price, s.reducedPrice 
+            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, s.date, s.startTime, s.endTime, s.seats, s.price, s.reducedPrice 
             FROM restaurants r 
             LEFT JOIN sessions s ON r.id = s.restaurantId"); //only way i could imagine of doing it tbh
             $stmt->execute();
@@ -20,11 +20,13 @@ class RestaurantRepository extends Repository {
                     $restaurant = new Restaurant();
                     $restaurant-> setId($row['id']);
                     $restaurant->setName($row['name']);
+                    $restaurant->setLocation($row['location']);
                     $restaurant->setDescription($row['description']);
                     $restaurant->setContent($row['content']);
                     $restaurant->setHalal($row['halal']);
                     $restaurant->setVegan($row['vegan']);
                     $restaurant->setStars($row['stars']);
+                    $restaurant->setDuration($row['duration']);
                     $restaurant->setImage($row['image']);
 
                     $restaurants[$restaurantId] = $restaurant;
@@ -34,7 +36,7 @@ class RestaurantRepository extends Repository {
                 $session->setId($row['sessionId']);
                 $session->setDate($row['date']);
                 $session->setStartTime($row['startTime']);
-                $session->setDuration($row['duration']);
+                $session->setEndTime($row['endTime']);
                 $session->setSeats($row['seats']);
                 $session->setPrice($row['price']);
                 $session->setReducedPrice($row['reducedPrice']);

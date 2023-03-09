@@ -4,12 +4,14 @@ require __DIR__ . '/../models/session.php';
 class Restaurant implements \JsonSerializable {
     private int $id;
     private string $name;
+    private string $location;
     private string $description;
     private string $content;
     private bool $halal;
     private bool $vegan;
     private int $stars;
     private array $sessions; //we store them in an array; its the only way i could bring the erd into php
+    private string $duration;
     private string $image;
 
     #[ReturnTypeWillChange]
@@ -32,6 +34,14 @@ class Restaurant implements \JsonSerializable {
     }
     public function setName(string $name): self {
         $this->name = $name;
+        return $this;
+    }
+
+    public function getLocation(): string {
+        return $this->location;
+    }
+    public function setLocation(string $location): self {
+        $this->location = $location;
         return $this;
     }
 
@@ -84,6 +94,14 @@ class Restaurant implements \JsonSerializable {
     }
     public function addSession(Session $session) {
         $this->sessions[] = $session;
+    }
+
+    public function getDuration():string {
+        return $this->duration;
+    }
+    public function setDuration(string $duration):self {
+        $this->duration = $duration;
+        return $this;
     }
 
     public function getImage(): string {
