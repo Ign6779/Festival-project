@@ -33,6 +33,7 @@ class FestivalController extends Controller {
 
     public function yummy(){
         $restaurantService = new RestaurantService();
+        $restaurants = $restaurantService->getAll();
         require __DIR__ . '/../views/festival/yummy.php';
     }
 }
