@@ -11,7 +11,7 @@ include __DIR__ . '/../header.php';
 
 <section class="history-timetable">
     <h2 id="opit">Timetable</h2>
-    <table>
+    <!-- <table>
         <tr class="history-timetable-header">
             <th class="history timetable">Date</th>
             <th class="history timetable">Hour</th>
@@ -25,7 +25,24 @@ include __DIR__ . '/../header.php';
 
         <tr>
         </tr>
-    </table>
+    </table> -->
+    <?php
+        echo '<table>';
+        echo '<thead><tr><th>id</th><th>Date</th><th>Time</th><th>Available seats English</th><th>Available seats Nl</th><th>Available seats Ch</th></thead>';
+        echo '<tbody>';
+        foreach ($tours as $tour) {
+            echo '<tr>';
+            echo '<td>' . $tour->getId() . '</td>';
+            echo '<td>' . $tour->getDate() . '</td>';
+            echo '<td>' . $tour->getTime() . '</td>';
+            echo '<td>' . $tour->getAvaliableSeatsEn() . '</td>';
+            echo '<td>' . $tour->getAvailableSeatsNl() . '</td>';
+            echo '<td>' . $tour->getAvailableSeatsCh() . '</td>';
+            echo '</tr>';
+        }
+        echo '</tbody>';
+        echo '</table>';
+    ?>
 </section>
 
 <section class="history-locations">

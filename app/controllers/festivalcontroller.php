@@ -21,6 +21,8 @@ class FestivalController extends Controller {
 
     public function history(){
         require_once __DIR__ . '/../services/tourservice.php';
+        $tourService = new TourService();
+        $tours = $tourService->getAll();
         require __DIR__ . '/../views/festival/history.php';
     }
 
