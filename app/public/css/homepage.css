@@ -70,7 +70,8 @@
     position: relative;
 }
 #homepage-welcome{
-    
+    position: absolute;
+    left: 50%;
     top: 20%;
     color: #fff;
 }
