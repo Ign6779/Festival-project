@@ -24,7 +24,6 @@ include __DIR__ . '/../header.php';
                         <input type="submit" value="Reset your password" class="btn btn-primary btn-lg"
                             style="padding-left: 2.5rem; padding-right: 2.5rem;">
                     </div>
-
                 </form>
             </div>
         </div>
