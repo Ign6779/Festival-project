@@ -17,11 +17,11 @@ include __DIR__ . '/../header.php';
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                         <input type="text" id="form3Example4" name="emailInput" class="form-control form-control-lg"
-                            placeholder="Enter a valid email address" />
+                            placeholder="Enter your e-mail address..." />
                     </div>
                     <!-- Button -->
                     <div class="text-center text-lg-start mt-4 pt-2">
-                        <input type="submit" value="Reset your password" class="btn btn-primary btn-lg"
+                        <input type="submit" value="Receive new password by e-mail" class="btn btn-primary btn-lg"
                             style="padding-left: 2.5rem; padding-right: 2.5rem;">
                     </div>
                 </form>

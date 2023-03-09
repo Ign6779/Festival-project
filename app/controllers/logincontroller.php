@@ -13,7 +13,7 @@ class LoginController extends Controller
 
     public function index()
     {
-        require __DIR__ . '/../views/login/login.php';
+        require_once __DIR__ . '/../views/login/login.php';
     }
 
     public function login()
@@ -28,6 +28,11 @@ class LoginController extends Controller
                         $message = "Wrong password or email address!";
                         include __DIR__ . '/../views/messages/error.php';
                         require __DIR__ . '/../views/login/login.php';
+                        break;
+                    
+                    //just for testing
+                    default:
+                        require_once __DIR__ . '/../views/home/homePage.php';
                         break;
 
                     // case $user->getType() == "admin":
@@ -50,12 +55,12 @@ class LoginController extends Controller
 
     public function register()
     {
-        require __DIR__ . '/../views/login/register.php';
+        require_once __DIR__ . '/../views/login/register.php';
     }
 
     public function forgotpassword()
     {
-        require __DIR__ . '/../views/login/forgotpassword.php';
+        require_once __DIR__ . '/../views/login/forgotpassword.php';
     }
 
     public function signUp()
@@ -75,6 +80,25 @@ class LoginController extends Controller
                 // include __DIR__ . '/../views/warning.php';
             }
         }
+    }
+
+    public function resetpassword()
+    {
+        if (isset($_POST["reset-request-submit"])) {
+
+            $selector = bin2hex(random_bytes(8));
+            $token = random_bytes(32);
+
+            $url = "the site url?selector=" . $selector . "&validator=" . bin2hex($token);
+
+            $expires = date("U") + 1800;
+
+            
+
+        } else {
+            //in case the request isn't sent
+        }
+        require_once __DIR__ . '/../views/login/resetpassword.php';
     }
 }
 ?>
