@@ -131,13 +131,14 @@
 #kids-section{
     position: relative;
     background-color: white;
+    margin-bottom: 20px;
 }
 #kids-picture-round{
     background-color: #7A86B6;
 }
 .schedule-section{
     background-color: #2E9B7B;
-    height: 800px;
+    height: 900px;
     width: 100%;
     position: relative;
 }
@@ -149,11 +150,12 @@
     justify-content: space-around;
 }
 .day-card{
-    height: 150px;
+    height: auto;
     width: 40%;
     background-color: white;
     border-radius: 10px;
     margin-top: 2%;
+    padding: 10px;
 }
 .venue-section{
     height: 850px;
@@ -172,7 +174,14 @@
 }
 .venue-section li{
     margin-top: 20px;
-    list-style-type: none
+    list-style-type: none;
+}
+.schedule-section li{
+    list-style-type: none;
+    margin-top: 10px;
+}
+.schedule-section .date{
+    font-weight: 700;
 }
 .venue-map-container{
     background-color: blue;

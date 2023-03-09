@@ -26,7 +26,7 @@ include __DIR__ . '/../header.php';
     <div class="right-round" id="history-picture-round">
         <img src="/img/overview-history.png" class="picture-right" alt="picture" id="overview-right-pic">
     </div>
-    <div class="left-text" id="history-left"><p><h1>Historical walk</h1> <br>Visit Haarlem’s most beautiful sights  and get to learn more about it’s rich and interesting history. Join an informational tour throughout the city today!</p><button class="btn-red">see event</button></div>
+    <div class="left-text" id="history-left"><p><h1>Historical walk</h1> <br>Visit Haarlem’s most beautiful sights and get to learn more about it’s rich and interesting history. Join an informational tour throughout the city today!</p><button class="btn-red">see event</button></div>
 
 </section>
 <!-- DANCE -->
@@ -58,35 +58,45 @@ include __DIR__ . '/../header.php';
             <p class="date">July 27</p>
             <h3>Thursday</h3>
             <ul class="list-of-events">
-                <li></li>
+                <li>JAZZ - 18:00-22:00 Patronaat</li>
+                <li>A STROLL THROUGH HAARLEM - Tours at 10:00, 13:00 and 16:00 Bavo Church</li>
+                <li>DANCE! - 5 Different Dance! events at different clubs around Haarlem</li>
             </ul>
         </div>
         <div class="day-card" id="friday-card">
             <p class="date">July 28</p>
             <h3>Friday</h3>
             <ul class="list-of-events">
-                <li></li>
+                <li>JAZZ - 18:00-22:00 Patronaat</li>
+                <li>A STROLL THROUGH HAARLEM - Tours at 10:00, 13:00 and 16:00 Bavo Church</li>
+                <li>DANCE! - 4 Different Dance! events at different clubs around Haarlem</li>
             </ul>
         </div>
         <div class="day-card" id="satday-card">
             <p class="date">July 29</p>
             <h3>Saturday</h3>
             <ul class="list-of-events">
-                <li></li>
+                <li>JAZZ - 18:00-22:00 Patronaat</li>
+                <li>A STROLL THROUGH HAARLEM - Tours at 10:00, 13:00 and 16:00 Bavo Church</li>
+                <li>DANCE! - 4 Different Dance! events at different clubs around Haarlem</li>
+                <li>THE SECRETS OF PROFFESOR TEYLER -  Puzzles and Science (Kids program) Patronaat</li>
             </ul>
         </div>
         <div class="day-card" id="sunday-card">
             <p class="date">July 30</p>
             <h3>Sunday</h3>
             <ul class="list-of-events">
-                <li></li>
+                <li>JAZZ - 15:00-21:00 Grote Markt (free)</li>
+                <li>A STROLL THROUGH HAARLEM - Tours at 10:00, 13:00 and 16:00 Bavo Church</li>
+                <li>DANCE! - 4 Different Dance! events at different clubs around Haarlem</li>
+                <li>THE SECRETS OF PROFFESOR TEYLER -  Puzzles and Science (Kids program) Patronaat</li>
             </ul>
         </div>
         <div class="day-card" id="monday-card">
             <p class="date">July 31</p>
             <h3>Monday</h3>
             <ul class="list-of-events">
-                <li></li>
+                <li>THE SECRETS OF PROFFESOR TEYLER -  Puzzles and Science (Kids program) Patronaat</li>
             </ul>
         </div>
 
