@@ -22,9 +22,17 @@ class UserService
         return $this->repository->getByUsername($username);
     }
 
-    public function verifyUser($email, $password)
+    public function getUserByEmail($email){
+        return $this->repository->getUserByEmail($email);
+    }
+
+    public function verifyUser($emailOrUsername, $password)
     {
-        $user = $this->repository->getUserByEmail($email);
+        if (strpos($emailOrUsername, "@")) {
+            $user = $this->getUserByEmail($emailOrUsername);
+        } else {
+            $user = $this->getByUsername($emailOrUsername);
+        }
         if ($user != null) {
             if (password_verify($password, $user->getPassword())) {
                 return $user;
