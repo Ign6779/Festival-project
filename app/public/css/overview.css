@@ -102,6 +102,7 @@
 }
 #dance-section{
     position: relative;
+    top: 0;
 }
 #dance-title{
     position: absolute;
@@ -117,7 +118,8 @@
 }
 .dance-image{
     opacity: 85%;
-    top: 0;
+    position: relative;
+    width: 100%;
 }
 #jazz-section{
     background-color: #7A86B6;
