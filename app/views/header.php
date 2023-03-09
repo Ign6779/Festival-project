@@ -23,6 +23,8 @@
     <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Baloo+Chettan' rel='stylesheet'>
     <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>   
 </head>
 
 <body>
