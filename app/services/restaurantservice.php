@@ -13,3 +13,4 @@ class RestaurantService {
         return $restaurants;
     }
 }
+?>

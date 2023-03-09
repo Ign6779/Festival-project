@@ -25,3 +25,4 @@ class TestController extends Controller {
         require __DIR__ . '/../views/festival/test.php';
     }
 }
+?>

@@ -72,7 +72,7 @@ class JazzEvent implements \JsonSerializable {
     }
 
     public function getPrice(): float {
-        return $this->$price;
+        return $this->price;
     }
     public function setPrice(float $price): self {
         $this->price = $price;
