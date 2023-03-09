@@ -16,17 +16,17 @@ include __DIR__ . '/../header.php';
 <!-- YUMMY -->
 <section class="event-section" id="yummy-section">
     <div class="left-round" id="yummy-round">
-
+        <img src="/img/overview-yummy.png" class="picture-left" alt="picture" id="overview-left-pic">
     </div>
-    <div class="right-text" id="yummy-right"><p>text</p><button class="btn-red">see event</button></div>
+    <div class="right-text" id="yummy-right"><p><h1>Yummy!</h1><br>If you want to celebrate a festival, you have to do it on a full stomach! Restaurants all over Haarlem have joined to create a special menu for the occasion. Being such an international city, you are sure to enjoy your evening, whether it be with your family or on a romantic dinner with your partner!</p><button class="btn-red">see event</button></div>
 
 </section>
 <!-- HISTORY -->
 <section class="event-section" id="history-section">
     <div class="right-round" id="history-picture-round">
-
+        <img src="/img/overview-history.png" class="picture-right" alt="picture" id="overview-right-pic">
     </div>
-    <div class="left-text" id="history-left"><p>text</p><button class="btn-red">see event</button></div>
+    <div class="left-text" id="history-left"><p><h1>Historical walk</h1> <br>Visit Haarlem’s most beautiful sights  and get to learn more about it’s rich and interesting history. Join an informational tour throughout the city today!</p><button class="btn-red">see event</button></div>
 
 </section>
 <!-- DANCE -->
@@ -38,17 +38,17 @@ include __DIR__ . '/../header.php';
 <!-- JAZZ -->
 <section class="event-section" id="jazz-section">
 <div class="left-round" id="jazz-picture-round">
-
+    <img src="..." class="picture-left" alt="picture" id="overview-left-pic">
 </div>
-<div class="right-text"><p>text</p><button class="btn-red">see event</button></div>
+<div class="right-text"><p><h1>Haarlem Jazz</h1><br>Annually, the Grote Markt in the heart of the historic capital of Haarlem hosts the concert series known as Haarlem Jazz. Both well-known and unknown Dutch musicians will perform for the audience's amazement. We're here waiting for you.</p><button class="btn-red">see event</button></div>
 
 </section>
 <!-- KIDS -->
 <section class="event-section" id="kids-section">
     <div class="right-round" id="kids-picture-round">
-
+        <img src="/img/overview-kids.png" class="picture-right" alt="picture" id="overview-right-pic">
     </div>
-    <div class="left-text"><p>text</p><button class="btn-red">see event</button></div>
+    <div class="left-text"><p><h1>Teylers Museum</h1><br> In this event, children play and learn while solving the mystery of the event. Teylers museum contains ancient and fascinating artefacts that will amaze everyone. </p><button class="btn-red">see event</button></div>
 </section>
 <!-- SCHEDULE OVERVIEW -->
 <section class="schedule-section">

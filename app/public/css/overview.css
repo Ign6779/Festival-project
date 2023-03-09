@@ -178,4 +178,12 @@
     width: 400px;
     margin-left: 10%;
 }
+#overview-right-pic{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+#overview-left-pic{
+    margin-top: 15px;
+    margin-right: 30px;
+}
     
