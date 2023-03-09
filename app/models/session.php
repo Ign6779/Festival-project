@@ -3,7 +3,7 @@ class Session implements \JsonSerializable {
     private int $id;
     private string $date;
     private string $startTime;
-    private int $duration;
+    private string $endTime;
     private int $seats;
     private float $price;
     private float $reducedPrice;
@@ -38,11 +38,11 @@ class Session implements \JsonSerializable {
         return $this;
     }
 
-    public function getDuration():int {
-        return $this->duration;
+    public function getEndTime():string {
+        return $this->endTime;
     }
-    public function setDuration(int $duration):self {
-        $this->duration = $duration;
+    public function setEndTime(string $endTime):self {
+        $this->endTime = $endTime;
         return $this;
     }
 
