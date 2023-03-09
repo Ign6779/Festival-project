@@ -2,6 +2,7 @@
 
 <!-- font families  -->
 
+<<<<<<< Updated upstream
 <!-- <head>
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Corben" />
@@ -26,16 +27,40 @@
     <img src="/img/homepage-main.png" alt="Haarlem-overview">
     <div class = "homepage-context">
         <h1>Welcome to Haarlem</h1>
+=======
+<!-- Header of the homepage -->
+<section class="homepage-header">
+    <div class="homepage-picture">
+    <img src="/img/homepage-main.png" alt="Haarlem-overview" class="img-responsive">
+    <h1 id="homepage-welcome">Welcome to Haarlem</h1>
+</div>
+    <!-- <div class="homepage-context">
+        
+>>>>>>> Stashed changes
         <h3>Welcome to the city of endless possibilities: A charming historic district, fascinating museums, unique
             shops, a wide variety of dining options, and a lovely beach,
             <br>
         </h3>
         <h2>Haarlem really has it all.</h2>
         <br><a class="btn-red" href="festival/overview">View Festival Activities</a>
+<<<<<<< Updated upstream
 </div>
+=======
+    </div> -->
+>>>>>>> Stashed changes
 
 </section>
+<section class="homepage-context">
+
+<h3>Welcome to the city of endless possibilities: A charming historic district, fascinating museums, unique
+            shops, a wide variety of dining options, and a lovely beach,
+            <br>
+        </h3>
+        <h2>Haarlem really has it all.</h2>
+        <br><a class="btn-red" href="festival/overview">View Festival Activities</a>
+    </section>
 <!-- History section -->
+<<<<<<< Updated upstream
     <div class="homepage-history">
         <div>
             <h2>Haarlem's History</h2>
@@ -63,6 +88,50 @@
         </div>
         <div>
         </div>
+=======
+<div class="homepage-history">
+    <div>
+        <h2>Haarlem's History</h2>
+        <img id = "homepage-history-1" src="/img/homepage-history-1.png"/>
+    </div>
+    <div>
+        <img id="homepage-history-2" src="/img/homepage-history-2.png"/>
+        <img id="homepage-history-3"src="/img/homepage-history-3.png"/>
+        <img id="homepage-history-4"src="/img/homepage-history-4.png"/>
+    </div>
+    <div id="homepage-history-text">
+        <h3>Haarlem has been an important Dutch city since 1245, functioning initially as a shipping sea port.
+            The majority of Haarlem's old gorgeous buildings have stayed intact and are what make the atmosphere in
+            Haarlem truly amazing. Well known for its beer making, Haarlem is home to the wonderful Jopenkerk and
+            windmill de Adriaan from 1779.</h3>
+    </div>
+
+</div>
+
+<!-- Food section -->
+<section class="homepage-food">
+    <div>
+        <h3 class="white-text">No matter when, dining in Haarlem is guaranteed to be an incredible experience.
+            Not only does Haarlem have some of the best restaurants with quality food, the atmosphere of the city is
+            what makes it all the more special. </h3>
+    </div>
+    <div id="homepage-food-mid-section">
+        <h2 id="for-foodies-text">For Foodies!</h2>
+        <img src="/img/food-icon.png" id="food-icon" alt="food and drink"/>
+    </div>
+    <div>
+        <h1>pls work</h1>
+    </div>
+</section>
+
+<!-- Music section -->
+<div class="music-grid">
+    <section class="homepage-music">
+        <h2 id="homepage-music-h2">Music</h2>
+        <img src="/img/homepage-music.png" alt="Music-Artist" width=95%>
+        <h3>The city of Haarlem comes alive with music in July. The days are longer and warmer, making it the ideal
+            time to go see both well-known and unknown Dutch musicians play for the delightz of the crowd.</h3>
+>>>>>>> Stashed changes
     </section>
 
     <!-- Music section -->
@@ -100,8 +169,9 @@
 
 <!-- Festival section -->
 <section class="homepage-festival">
-    <h2>Check out the festival here!</h2>
-    <a class="btn-purple" href="festival/overview">See festival events</a>
+    <h2 id="homepage-check-festival-text">Check out the festival here!</h2>
+    <a class="btn-purple" href="festival/overview" id="homepage-check-festival-button">See festival events</a>
+
 </section>
 
 <!-- Mobile section -->
