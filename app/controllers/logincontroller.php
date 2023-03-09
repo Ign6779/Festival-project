@@ -23,11 +23,16 @@ class LoginController extends Controller
                 $email = htmlspecialchars($_POST['emailInput']);
                 $password = htmlspecialchars($_POST['passwordInput']);
                 $user = $this->userService->verifyUser($email, $password);
+
                 switch ($user) {
                     case null:
                         $message = "Wrong password or email address!";
                         include __DIR__ . '/../views/messages/error.php';
                         require __DIR__ . '/../views/login/login.php';
+                        break;
+
+                        case !null:
+                        require __DIR__ . '/../views/home/homepage.php';
                         break;
 
                     // case $user->getType() == "admin":
