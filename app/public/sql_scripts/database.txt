@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Mar 08, 2023 at 11:56 PM
+-- Generation Time: Mar 10, 2023 at 09:03 PM
 -- Server version: 10.11.2-MariaDB-1:10.11.2+maria~ubu2204
 -- PHP Version: 8.1.16
 
@@ -37,12 +37,36 @@ CREATE TABLE `artist` (
 --
 
 INSERT INTO `artist` (`id`, `name`) VALUES
-(1, 'Gorillaz'),
-(2, 'GunsNRoses'),
-(3, 'Offspring'),
-(4, 'Django Reinhart'),
-(5, 'Some famous Jazz artist'),
-(6, 'Louis Armstrong');
+(1, 'Gumbo Kings'),
+(2, 'Evolve'),
+(3, 'Ntjam Rosie'),
+(4, 'Wicked Jazz Sounds'),
+(5, 'Tom Thomsom Assemble'),
+(6, 'Jonna Frazer'),
+(7, 'Fox & The Mayors'),
+(8, 'Uncle Sue'),
+(9, 'Chris Allen'),
+(10, 'Myles Sanko'),
+(11, 'Ruis Soundsystem'),
+(12, 'The Family XL'),
+(13, 'Gare du Nord'),
+(14, 'Rilan & The Bombadiers'),
+(15, 'Soul Six'),
+(16, 'Han Bennink'),
+(17, 'The Nordanians'),
+(18, 'Lilith Merlot'),
+(19, 'Ruis Soundsystem'),
+(20, 'Wicked Jazz Sounds'),
+(21, 'Evolve'),
+(22, 'The Nordanians'),
+(23, 'Gumbo Kings'),
+(24, 'Gare du Nord'),
+(25, 'Hardwell'),
+(26, 'Armin van Buuren'),
+(27, 'Martin Garrix'),
+(28, 'Tiesto'),
+(29, 'Nicky Romero'),
+(30, 'Afrojack');
 
 -- --------------------------------------------------------
 
@@ -66,9 +90,19 @@ CREATE TABLE `dance` (
 --
 
 INSERT INTO `dance` (`id`, `date`, `startTime`, `endTime`, `venueId`, `session`, `availableTickets`, `price`) VALUES
-(1, '2023-07-26', '18:00:00', '21:12:34', 2, 'back2back', 328, 45),
-(2, '2023-02-23', '17:00:00', '17:39:53', 2, 'back2back', 122, 44.44),
-(3, '2023-03-14', '22:00:00', '23:20:11', 3, 'single', 328, 45.2);
+(1, '2023-07-27', '20:00:00', '02:00:00', 5, 'Back2Back', 1500, 75),
+(2, '2023-02-27', '22:00:00', '23:30:00', 6, 'Club', 200, 60),
+(3, '2023-07-26', '23:00:00', '00:30:00', 7, 'Club', 300, 60),
+(4, '2023-07-27', '22:00:00', '23:00:00', 8, 'Club', 200, 60),
+(5, '2023-07-27', '22:00:00', '23:30:00', 9, 'Club', 200, 60),
+(6, '2023-07-28', '14:00:00', '23:00:00', 10, 'Back2Back', 2000, 110),
+(7, '2023-07-28', '22:00:00', '23:30:00', 7, 'Club', 300, 60),
+(8, '2023-07-28', '21:00:00', '01:00:00', 5, 'TiestoWorld', 1500, 75),
+(9, '2023-07-28', '23:00:00', '00:30:00', 6, 'Club', 200, 60),
+(10, '2023-07-29', '14:00:00', '23:00:00', 10, 'Back2Back', 2000, 110),
+(11, '2023-07-29', '19:00:00', '20:30:00', 7, 'Club', 300, 60),
+(12, '2023-07-29', '21:00:00', '22:30:00', 8, 'Club', 1500, 90),
+(13, '2023-07-29', '18:00:00', '19:30:00', 6, 'Club', 200, 60);
 
 -- --------------------------------------------------------
 
@@ -87,11 +121,25 @@ CREATE TABLE `danceArtist` (
 --
 
 INSERT INTO `danceArtist` (`id`, `danceId`, `artistId`) VALUES
-(1, 1, 2),
-(2, 1, 6),
-(3, 2, 1),
-(4, 2, 2),
-(5, 3, 1);
+(1, 1, 29),
+(2, 1, 30),
+(3, 2, 28),
+(4, 3, 25),
+(5, 4, 26),
+(6, 4, 26),
+(7, 5, 27),
+(8, 6, 25),
+(9, 6, 27),
+(10, 6, 26),
+(11, 7, 30),
+(12, 8, 28),
+(13, 9, 29),
+(14, 10, 30),
+(15, 10, 28),
+(16, 10, 29),
+(17, 11, 26),
+(18, 12, 25),
+(19, 13, 27);
 
 -- --------------------------------------------------------
 
@@ -114,10 +162,30 @@ CREATE TABLE `jazz` (
 --
 
 INSERT INTO `jazz` (`id`, `date`, `startTime`, `endTime`, `venueId`, `availableTickets`, `price`) VALUES
-(1, '2023-03-05', '00:02:17', '16:35:17', 1, 328, 45.7),
-(2, '2023-03-16', '09:35:44', '10:35:44', 2, 122, 45),
-(3, '2023-03-26', '18:36:04', '22:36:04', 1, 444, 45),
-(4, '2023-07-26', '18:00:00', '21:12:34', 4, 102, 13.2);
+(1, '2018-07-26', '18:00:00', '19:00:00', 1, 300, 15),
+(2, '2018-07-26', '19:30:00', '20:30:00', 1, 300, 15),
+(3, '2018-07-26', '21:00:00', '22:00:00', 1, 300, 15),
+(4, '2018-07-26', '18:00:00', '19:00:00', 2, 200, 10),
+(5, '2018-07-26', '19:30:00', '20:30:00', 2, 200, 10),
+(6, '2018-07-26', '21:00:00', '22:00:00', 2, 200, 10),
+(7, '2018-07-27', '18:00:00', '19:00:00', 1, 300, 15),
+(8, '2018-07-27', '19:30:00', '20:30:00', 1, 300, 15),
+(9, '2018-07-27', '21:00:00', '22:00:00', 1, 300, 15),
+(10, '2018-07-27', '18:00:00', '19:00:00', 2, 200, 10),
+(11, '2018-07-27', '19:30:00', '20:30:00', 2, 200, 10),
+(12, '2018-07-27', '21:00:00', '22:00:00', 2, 200, 10),
+(13, '2018-07-28', '18:00:00', '19:00:00', 1, 300, 15),
+(14, '2018-07-28', '19:30:00', '20:30:00', 1, 300, 15),
+(15, '2018-07-28', '21:00:00', '22:00:00', 1, 300, 15),
+(16, '2018-07-28', '18:00:00', '19:00:00', 3, 150, 10),
+(17, '2018-07-28', '19:30:00', '20:30:00', 3, 150, 10),
+(18, '2018-07-28', '21:00:00', '22:00:00', 3, 150, 10),
+(19, '2018-07-29', '15:00:00', '16:00:00', 4, 0, 0),
+(20, '2018-07-29', '16:00:00', '17:00:00', 4, 0, 0),
+(21, '2018-07-29', '17:00:00', '18:00:00', 4, 0, 0),
+(22, '2018-07-29', '18:00:00', '19:00:00', 4, 0, 0),
+(23, '2018-07-29', '19:00:00', '20:00:00', 4, 0, 0),
+(24, '2018-07-29', '20:00:00', '21:00:00', 4, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -137,12 +205,29 @@ CREATE TABLE `jazzArtist` (
 
 INSERT INTO `jazzArtist` (`id`, `jazzId`, `artistId`) VALUES
 (1, 1, 1),
-(2, 1, 4),
-(3, 1, 6),
-(4, 2, 4),
-(5, 3, 5),
-(6, 3, 2),
-(7, 4, 1);
+(2, 2, 2),
+(3, 3, 3),
+(4, 4, 4),
+(5, 5, 5),
+(6, 6, 6),
+(7, 7, 7),
+(8, 8, 8),
+(9, 9, 9),
+(10, 10, 10),
+(11, 11, 11),
+(12, 12, 12),
+(13, 13, 13),
+(14, 14, 14),
+(15, 15, 15),
+(16, 16, 16),
+(17, 17, 17),
+(18, 18, 18),
+(19, 19, 19),
+(20, 20, 20),
+(21, 21, 21),
+(22, 22, 22),
+(23, 23, 23),
+(24, 24, 24);
 
 -- --------------------------------------------------------
 
@@ -153,11 +238,13 @@ INSERT INTO `jazzArtist` (`id`, `jazzId`, `artistId`) VALUES
 CREATE TABLE `restaurants` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `content` text NOT NULL,
   `halal` tinyint(1) NOT NULL,
   `vegan` tinyint(1) NOT NULL,
   `stars` int(11) NOT NULL,
+  `duration` float NOT NULL,
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -165,9 +252,13 @@ CREATE TABLE `restaurants` (
 -- Dumping data for table `restaurants`
 --
 
-INSERT INTO `restaurants` (`id`, `name`, `description`, `content`, `halal`, `vegan`, `stars`, `image`) VALUES
-(1, 'Restaurant Mr&Ms', 'Dutch, fish and seafood, European', 'Run by the lovely couple of Mark and Corina, Mr & Ms is a restaurant that emphasizes luxurious eating with honest ingredients, sourced locally whenever possible.\r\n By combining Mark’s cooking skills and Corina’s wine expertise, all aspects of the dinner are sure to be perfect.\r\n\r\n The restaurant offers variations on typical Dutch cuisine with an European twist,  as well as excellent seafood which will satisfy even the pickiest of eaters. They also offer vegan options which follow Halal regulations: there will be something for everyone!\r\n\r\nSessions last 1.5 hours; first session begins at 18:00.', 1, 1, 4, 'restaurant-mr&ms.png'),
-(2, 'Ratatouille', 'French, fish and seafood, European', 'Chef Joshua Jaring \'s successful 4-Michelin restaurant in Haarlem is,  just like Ratatouille, a mix of French cuisine in today\'s reality with an excellent price-quality ratio in a privileged location in Haarlem.\r\n\r\nOffering one of the most diverse and exclusive wine carts in the city, Ratatouille is the perfect location to plan a date with your partner, where you will enjoy a magnificent selection of both wines and delicate plates in a truly unique dining experience.\r\n\r\nSessions last 2 hours, first session begins at 17:00', 1, 1, 4, 'restaurant-ratatouille.png');
+INSERT INTO `restaurants` (`id`, `name`, `location`, `description`, `content`, `halal`, `vegan`, `stars`, `duration`, `image`) VALUES
+(1, 'Restaurant Mr&Ms', 'Lange Veerstraat 4, 2011 DB Haarlem, Nederland', 'Dutch, fish and seafood, European', 'Run by the lovely couple of Mark and Corina, Mr & Ms is a restaurant that emphasizes luxurious eating with honest ingredients, sourced locally whenever possible.\r\n By combining Mark’s cooking skills and Corina’s wine expertise, all aspects of the dinner are sure to be perfect.\r\n\r\n The restaurant offers variations on typical Dutch cuisine with an European twist,  as well as excellent seafood which will satisfy even the pickiest of eaters. They also offer vegan options which follow Halal regulations: there will be something for everyone!\r\n\r\nSessions last 1.5 hours; first session begins at 18:00.', 1, 1, 4, 1.5, 'restaurant-mr&ms.png'),
+(2, 'Ratatouille', 'Spaarne 96, 2011 CL Haarlem, Nederland', 'French, fish and seafood, European', 'Chef Joshua Jaring \'s successful 4-Michelin restaurant in Haarlem is,  just like Ratatouille, a mix of French cuisine in today\'s reality with an excellent price-quality ratio in a privileged location in Haarlem.\r\n\r\nOffering one of the most diverse and exclusive wine carts in the city, Ratatouille is the perfect location to plan a date with your partner, where you will enjoy a magnificent selection of both wines and delicate plates in a truly unique dining experience.\r\n\r\nSessions last 2 hours, first session begins at 17:00', 1, 1, 4, 2, 'restaurant-ratatouille.png'),
+(3, 'Restaurant ML', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', 'Dutch, fish and seafood, European', 'Restaurant ML is a restaurant located in Haarlem, in the Netherlands. It is a fine dining restaurant that was awarded one Michelin star in the period 2011–present. Gault Millau awarded the restaurant 13 out of 20 points. Head chef of Restaurant ML is Mark Gratama.', 1, 1, 4, 2, 'restaurant-ml.png'),
+(4, 'Restaurant Fris', 'Twijnderslaan 7, 2012 BG Haarlem, Nederland', 'Dutch, fish and seafood, European', 'Warm is a better description for the modern and eclectic interior, but a look at the menu shows that this restaurant is rightly named Fris. Original textures and product combinations ensure tasty flavors and a pleasant mouthfeel. The wines round off the story nicely.', 0, 1, 4, 1.5, 'restaurant-fris.png'),
+(5, 'Specktakel', 'Spekstraat 4, 2011 HM Haarlem, Nederland', 'European, international, asian', 'Specktakel is a unique World Restaurant centrally located in the heart of Haarlem. With a special covered courtyard and a terrace with a view of the historic Vleeshal and the centuries-old Bavo church. In the world kitchen, true works of art are created where every sense is stimulated.\r\n\r\nSpecktakel is all about the experience, an experience that we create together, each in his or her own role. The world wines are carefully selected so that the wine is in harmony with the aromas and spices of the dish.\r\nThe colours, aromas and flavors create a wonderful interplay that can be talked about…', 1, 1, 3, 1.5, 'restaurant-specktakel.png'),
+(6, 'Grand Cafe Brinkman', 'Grote Markt 13, 2011 RC Haarlem, Nederland', 'Dutch, european, modern', 'Brinkmann is a well-known grand café that has been located on the Grote Markt in Haarlem since 1881 . In the thirties of the twentieth century, the business had grown into a large complex of entertainment venues. In the late 1970s it gave way to the Brinkmannpassage . Brinkmann has continued in a smaller form as a grand café.', 1, 1, 3, 1.5, 'restaurant-brinkmann.png');
 
 -- --------------------------------------------------------
 
@@ -180,7 +271,7 @@ CREATE TABLE `sessions` (
   `restaurantId` int(11) NOT NULL,
   `date` date NOT NULL,
   `startTime` time NOT NULL,
-  `duration` int(11) NOT NULL,
+  `endTime` time NOT NULL,
   `seats` int(11) NOT NULL,
   `price` float NOT NULL,
   `reducedPrice` float NOT NULL
@@ -190,13 +281,24 @@ CREATE TABLE `sessions` (
 -- Dumping data for table `sessions`
 --
 
-INSERT INTO `sessions` (`id`, `restaurantId`, `date`, `startTime`, `duration`, `seats`, `price`, `reducedPrice`) VALUES
-(1, 1, '2023-07-26', '18:00:00', 2, 40, 45, 22.5),
-(2, 1, '2023-07-26', '20:00:00', 2, 40, 45, 22.5),
-(3, 1, '2023-07-26', '22:00:00', 2, 40, 45, 22.5),
-(4, 2, '2023-07-26', '17:00:00', 2, 52, 45, 22.5),
-(5, 2, '2023-07-26', '19:00:00', 2, 52, 45, 22.5),
-(6, 2, '2023-07-26', '21:00:00', 2, 52, 45, 22.5);
+INSERT INTO `sessions` (`id`, `restaurantId`, `date`, `startTime`, `endTime`, `seats`, `price`, `reducedPrice`) VALUES
+(1, 1, '2023-07-26', '18:00:00', '19:30:00', 40, 45, 22.5),
+(2, 1, '2023-07-26', '19:30:00', '21:00:00', 40, 45, 22.5),
+(3, 1, '2023-07-26', '21:00:00', '22:30:00', 40, 45, 22.5),
+(4, 2, '2023-07-26', '17:00:00', '19:00:00', 52, 45, 22.5),
+(5, 2, '2023-07-26', '19:00:00', '21:00:00', 52, 45, 22.5),
+(6, 2, '2023-07-26', '21:00:00', '23:00:00', 52, 45, 22.5),
+(7, 3, '2023-07-26', '17:00:00', '19:00:00', 60, 45, 22.5),
+(8, 3, '2023-07-26', '19:00:00', '21:00:00', 60, 45, 22.5),
+(10, 4, '2023-07-26', '17:30:00', '19:00:00', 45, 45, 22.5),
+(11, 4, '2023-07-26', '19:00:00', '20:30:00', 45, 45, 22.5),
+(12, 4, '2023-07-26', '19:30:00', '21:00:00', 45, 45, 22.5),
+(13, 5, '2023-07-26', '17:00:00', '18:30:00', 36, 35, 17.5),
+(14, 5, '2023-07-26', '18:30:00', '20:00:00', 36, 35, 17.5),
+(15, 5, '2023-07-26', '20:00:00', '21:30:00', 36, 35, 17.5),
+(16, 6, '2023-07-26', '16:30:00', '18:00:00', 100, 35, 17.5),
+(17, 6, '2023-07-26', '18:00:00', '19:30:00', 100, 35, 17.5),
+(18, 6, '2023-07-26', '19:30:00', '21:00:00', 100, 35, 17.5);
 
 -- --------------------------------------------------------
 
@@ -219,7 +321,17 @@ CREATE TABLE `tours` (
 
 INSERT INTO `tours` (`id`, `date`, `time`, `availableSeatsEn`, `availableSeatsNl`, `availableSeatsCh`) VALUES
 (1, '2023-07-26', '10:00:00', 12, 12, 0),
-(2, '2023-07-26', '13:00:00', 12, 12, 0);
+(2, '2023-07-26', '13:00:00', 12, 12, 0),
+(3, '2023-07-26', '16:00:00', 12, 12, 0),
+(4, '2023-07-27', '10:00:00', 12, 12, 0),
+(5, '2023-07-27', '13:00:00', 12, 12, 12),
+(6, '2023-07-27', '16:00:00', 12, 12, 0),
+(7, '2023-07-28', '10:00:00', 24, 24, 0),
+(8, '2023-07-28', '13:00:00', 24, 24, 12),
+(9, '2023-07-28', '16:00:00', 12, 12, 12),
+(10, '2023-07-29', '10:00:00', 24, 24, 12),
+(11, '2023-07-29', '13:00:00', 36, 36, 24),
+(12, '2023-07-29', '16:00:00', 12, 12, 0);
 
 -- --------------------------------------------------------
 
@@ -262,10 +374,16 @@ CREATE TABLE `venue` (
 --
 
 INSERT INTO `venue` (`id`, `name`, `location`) VALUES
-(1, 'club1', 'madrid'),
-(2, 'club2', 'paris'),
-(3, 'club3', 'amsterdam'),
-(4, 'club4', 'berlin');
+(1, 'Main Hall', 'Patronaat'),
+(2, 'Second Hall', 'Patronaat'),
+(3, 'Third Hall', 'Patronaat'),
+(4, '', 'Grote Markt'),
+(5, 'Lichtfabriek', 'Minckelersweg 2, 2031 EM Haarlem\r\n'),
+(6, 'Club Stalker', 'Kromme Elleboogsteeg 20, 2011 TS Haarlem\r\n'),
+(7, 'Jopenkerk', 'Gedempte Voldersgracht 2, 2011 WD Haarlem\r\n'),
+(8, 'XO the Club', 'Grote Markt 8, 2011 RD Haarlem\r\n'),
+(9, 'Club Ruis', 'Smedestraat 31, 2011 RE Haarlem\r\n'),
+(10, 'Caprera Openluchttheater \r\n', 'Hoge Duin en Daalseweg 2, 2061 AG Bloemendaal\r\n');
 
 --
 -- Indexes for dumped tables
@@ -346,49 +464,49 @@ ALTER TABLE `venue`
 -- AUTO_INCREMENT for table `artist`
 --
 ALTER TABLE `artist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `dance`
 --
 ALTER TABLE `dance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `danceArtist`
 --
 ALTER TABLE `danceArtist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `jazz`
 --
 ALTER TABLE `jazz`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `jazzArtist`
 --
 ALTER TABLE `jazzArtist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tours`
 --
 ALTER TABLE `tours`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -400,7 +518,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `venue`
 --
 ALTER TABLE `venue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
