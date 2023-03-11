@@ -19,7 +19,6 @@ include __DIR__ . '/../header.php';
 
 <!-- detail pages 1 -->
 <div class="text-center container-fluid" id="detailPage">
-    <h1 class="Dance-Title"> Detail page 1 </h1>
     <div class="text-center container" id="detail-page-block">
         <h1 class="artist-name">Hardwell</h1>
         <p class="artist-description">“Throughout his expansive career as a successful DJ, producer, remixer, label boss, filmmaker, and philanthropist, former 2 x World No.1 DJ, Hardwell has carved out a long-lasting legacy within the electronic music world.”<small><br>https://www.djhardwell.com/biography</small></p>
@@ -36,38 +35,20 @@ include __DIR__ . '/../header.php';
         <!-- </div> -->
 
         <div class="artist-songs" id="top3songs">
-            <img src="/img/hardwell-song-1.png" alt="song1">
-            <img src="/img/hardwell-song-2.png" alt="song2">
-            <img src="/img/hardwell-song-3.png" alt="song3">
+            <div><img src="/img/hardwell-song-1.png" alt="song1"><p>Power</p><small>104,227,216 streams on spotify</small></div>
+            <div><img src="/img/hardwell-song-2.png" alt="song2"><p>Don't let me down</p><small>60,046,188 streams on spotify</small></div>
+            <div><img src="/img/hardwell-song-3.png" alt="song3"><p>Bella Ciao</p><small>87,397,129 streams on spotify</small></div>
         </div>
         <!-- MEDIA PLAYER -->
-        <script src="https://kit.fontawesome.com/7c33dff1d8.js" crossorigin="anonymous"></script>
-        <div id="overlay"></div>
-        <div class="song-container">
-            <div class="player" id="player">
-                <div id="music-info">
-                    <div class="title"></div>
-                    <div class="author"></div>
-                    <div class="album"></div>
-                    <div class="bg"></div>
-                </div>
-                <div class="timestamp">
-                    <div id="bar"></div>
-                    <div id="current-time"></div>
-                </div>
-                <div class="buttons">
-                    <div class="button button-medium"><i class="fas fa-step-backward"></i></div>
-                    <div class="button button-large" id="play"><i class="fas fa-play"></i></div>
-                    <div class="button button-medium"><i class="fas fa-step-forward"></i></div>
-                    <div class="button button-small" id="mute"><i class="fas fa-volume-up"></i></div>
-                </div>
-            </div>
+        
+        <div class="audio-player">
+          <p>Power - Hardwell</p>
+          <iframe width="auto" height="100px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/343304675&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/freedownloadsmusic" title="Hardwell" target="_blank" style="color: #cccccc; text-decoration: none;">Hardwell</a> · <a href="https://soundcloud.com/freedownloadsmusic/power-original-mix" title="Hardwell &amp; KSHMR - Power" target="_blank" style="color: #cccccc; text-decoration: none;">Hardwell &amp; KSHMR - Power (Original Mix)[FREE DOWNLOAD]</a></div>
         </div>
     </div>
 </div>
 <!-- detail pages 2 -->
 <div class="text-center container-fluid" id="detailPage">
-    <h1 class="Dance-Title"> Detail page 2 </h1>
     <div class="text-center container" id="detail-page-block">
         <h1 class="artist-name">Martin Garrix</h1>
         <p class="artist-description">“Martijn Gerard Garritsen, known professionally as Martin Garrix, is a Dutch DJ and record producer. Active since 2012, Garrix has had a number of hits. He was also ranked number one on DJ Mag’s Top 100 DJ list in 2016, 2017, and 2018. Garrix has performed at diverse festivals like Coachella, Electric Daisy Carnival, Ultra Music Festival, and Tomorrowland.”<small><br>https://nexus.radio/news/martin-garrix</small></p>
@@ -85,31 +66,13 @@ include __DIR__ . '/../header.php';
 
         <div class="artist-songs" id="top3songs">
           <div><img src="/img/MG-song-1.png" alt="song1"><p>In the name of love</p><small>1,192,854,477 streams on spotify</small></div>
-          <!-- <div><img src="/img/MG-song-2.png" alt="song2"><p>Scared to be lonely</p><small>1,080,844,389 streams on spotify</small></div> -->
-          <!-- <div><img src="/img/MG-song-3.png" alt="song3"><p>Summer days</p><small>560,694,909  streams on spotify</small></div> -->
+          <div><img src="/img/MG-song-2.png" alt="song2"><p>Scared to be lonely</p><small>1,080,844,389 streams on spotify</small></div>
+          <div><img src="/img/MG-song-3.png" alt="song3"><p>Summer days</p><small>560,694,909  streams on spotify</small></div>
         </div>
         <!-- MEDIA PLAYER -->
-        <script src="https://kit.fontawesome.com/7c33dff1d8.js" crossorigin="anonymous"></script>
-        <div id="overlay"></div>
-        <div class="song-container">
-            <div class="player" id="player">
-                <div id="music-info">
-                    <div class="title"></div>
-                    <div class="author"></div>
-                    <div class="album"></div>
-                    <div class="bg"></div>
-                </div>
-                <div class="timestamp">
-                    <div id="bar"></div>
-                    <div id="current-time"></div>
-                </div>
-                <div class="buttons">
-                    <div class="button button-medium"><i class="fas fa-step-backward"></i></div>
-                    <div class="button button-large" id="play"><i class="fas fa-play"></i></div>
-                    <div class="button button-medium"><i class="fas fa-step-forward"></i></div>
-                    <div class="button button-small" id="mute"><i class="fas fa-volume-up"></i></div>
-                </div>
-            </div>
+        <div class="audio-player">
+          <p>In the name of love - Martin Garrix</p>
+          <iframe width="auto" height="100px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/276648788&color=%2355b9de&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/martingarrixmusic" title="Martin Garrix" target="_blank" style="color: #cccccc; text-decoration: none;">Martin Garrix</a> · <a href="https://soundcloud.com/martingarrixmusic/in-the-name-of-love" title="In the Name of Love" target="_blank" style="color: #cccccc; text-decoration: none;">In the Name of Love</a></div>
         </div>
     </div>
 </div>
@@ -365,134 +328,3 @@ swipe.on("swipeleft", (ev) => {
 swipe.on("swiperight", (ev) => {
   prev();
 });
-
-// FUNCTIONALITY OF MEDIA PLAYER
-let audioList = [
-  {
-    title:"Evolution",
-    album:"Bensound",
-    author:"Benjamin Tissot",
-    source:"https://www.bensound.com/bensound-music/bensound-evolution.mp3",
-    type:"audio/mpeg"
-  },
-  {
-    title:"Epic",
-    album:"Bensound",
-    author:"Benjamin Tissot",
-    source:"https://www.bensound.com/bensound-music/bensound-epic.mp3",
-    type:"audio/mpeg"
-  }
-];
-let bar = document.getElementById("bar");
-let currentTime = document.getElementById("current-time");
-let currentAudio;
-let player = document.getElementById("player");
-let play = document.getElementById("play");
-let barPosition = player.offsetLeft;
-let overlay = document.getElementById("overlay");
-let mute = document.getElementById("mute");
-let playing;
-let musicInfo = document.getElementById("music-info");
-let musicInfoChilds = [...musicInfo.children];
-
-function loadAudio(audio){
-  audio = audio || 0;
-  if(currentAudio){
-    currentAudio.pause();
-    currentAudio.currentTime = 0;
-  }
-  musicInfoChilds[0].innerHTML = audioList[audio].title;
-  musicInfoChilds[1].innerHTML = "Author: " + audioList[audio].author;
-  musicInfoChilds[2].innerHTML = "Album: " + audioList[audio].album;
-  currentAudio = new Audio(audioList[audio].source);
-}
-
-function pixelPerSecond(){
-  return Number(window.getComputedStyle(bar).getPropertyValue("width").replace("px", "")) / currentAudio.duration;
-}
-
-function currentTimeUpdate(){
-  if(!window.grabbing){
-    currentTime.style.width = (currentAudio.currentTime * pixelPerSecond()) + "px";
-  }
-}
-
-function currentGrabTimeUpdate(event){
-  let eventPageX = event.pageX || event.touches[0].pageX;
-  
-  if((eventPageX - barPosition) > Number(window.getComputedStyle(bar).getPropertyValue("width").replace("px",""))){
-    currentTime.style.width = window.getComputedStyle(bar).getPropertyValue("width");
-  }else if((eventPageX - barPosition) < 0){
-    currentTime.style.width = 0;
-  }else{
-    currentTime.style.width = (eventPageX - barPosition) + "px";
-  }
-}
-
-function barStart(event){
-  if(event.target == bar){
-    let eventPageX = event.pageX || event.touches[0].pageX;
-    window.grabbing = true;
-    
-    currentTime.style.width = (eventPageX - barPosition) + "px";
-    overlay.style.display = "block";
-    
-    if(event.type == 'touchstart'){
-      window.addEventListener("touchmove", currentGrabTimeUpdate);
-    }else{
-      window.addEventListener("mousemove", currentGrabTimeUpdate);
-    }
-    currentAudio.muted = true;
-  }
-}
-
-function barEnd(event){
-  if(window.grabbing === true){
-    window.grabbing = false;
-    currentAudio.muted = false;
-    currentAudio.currentTime = Number(currentTime.style.width.replace("px","")) / pixelPerSecond();
-    overlay.style.display = "none";
-    
-    if(event.type == 'touchstart'){
-      window.removeEventListener("touchmove", currentGrabTimeUpdate);
-    }else{
-      window.removeEventListener("mousemove", currentGrabTimeUpdate);
-    }
-  }
-}
-
-play.addEventListener("click", function(){
-  if(currentAudio.paused){
-    play.innerHTML = '<i class="fas fa-pause"></i>';
-    currentAudio.play();
-  }else{
-    play.innerHTML = '<i class="fas fa-play"></i>';
-    currentAudio.pause();
-  }
-});
-
-mute.addEventListener("click", function(){
-  if(!currentAudio.muted){
-    this.innerHTML = '<i class="fas fa-volume-mute"></i>';
-    currentAudio.muted = true;
-  }else{
-    this.innerHTML = '<i class="fas fa-volume-up"></i>';
-    currentAudio.muted = false;
-  }
-})
-
-window.addEventListener("mousedown", barStart);
-window.addEventListener("mouseup", barEnd);
-
-window.addEventListener("touchstart", barStart);
-window.addEventListener("touchend", barEnd);
-
-(function load(){
-  playing = setInterval(currentTimeUpdate, 1);
-  loadAudio()
-})();
-
-currentAudio.addEventListener("ended", function(){
-  play.innerHTML = '<i class="fas fa-play"></i>';
-});
-</script>
