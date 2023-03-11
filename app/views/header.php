@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/css/jazz.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/history.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/dance.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="/css/audio-player.css?v=<?php echo time(); ?>">
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
