@@ -50,4 +50,21 @@ class RestaurantRepository extends Repository {
             echo $e;
         }
     }
+
+    public function getBasicInfo() {
+        try {
+            $stmt = $this->connection->prepare("SELECT * 
+            FROM restaurants");
+            $stmt->execute();
+
+            $restaurants = [];
+
+            while ($row = $stmt->fetch()) {
+                $restaurantId = $row['id'];
+
+                if ()
+            }
+        }
+    }
 }
+?>
