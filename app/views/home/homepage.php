@@ -3,24 +3,33 @@
 
 <!-- Header of the homepage -->
 <section class="homepage-header">
+    <div class="homepage-picture">
     <img src="/img/homepage-main.png" alt="Haarlem-overview" class="img-responsive">
-    <div class="homepage-context">
-        <h1>Welcome to Haarlem</h1>
-        <h3>Welcome to the city of endless possibilities: A charming historic district, fascinating museums, unique
+    <h1 id="homepage-welcome">Welcome to Haarlem</h1>
+</div>
+</section>
+<section class="homepage-context">
+
+<h3>Welcome to the city of endless possibilities: A charming historic district, fascinating museums, unique
             shops, a wide variety of dining options, and a lovely beach,
             <br>
         </h3>
         <h2>Haarlem really has it all.</h2>
         <br><a class="btn-red" href="festival/overview">View Festival Activities</a>
-    </div>
+    </section>
 
-</section>
 <!-- History section -->
 <div class="homepage-history">
     <div>
         <h2>Haarlem's History</h2>
+        <img id = "homepage-history-1" src="/img/homepage-history-1.png"/>
     </div>
     <div>
+        <img id="homepage-history-2" src="/img/homepage-history-2.png"/>
+        <img id="homepage-history-3"src="/img/homepage-history-3.png"/>
+        <img id="homepage-history-4"src="/img/homepage-history-4.png"/>
+    </div>
+    <div id="homepage-history-text">
         <h3>Haarlem has been an important Dutch city since 1245, functioning initially as a shipping sea port.
             The majority of Haarlem's old gorgeous buildings have stayed intact and are what make the atmosphere in
             Haarlem truly amazing. Well known for its beer making, Haarlem is home to the wonderful Jopenkerk and
@@ -32,14 +41,16 @@
 <!-- Food section -->
 <section class="homepage-food">
     <div>
-        <h3>No matter when, dining in Haarlem is guaranteed to be an incredible experience.
+        <h3 class="white-text">No matter when, dining in Haarlem is guaranteed to be an incredible experience.
             Not only does Haarlem have some of the best restaurants with quality food, the atmosphere of the city is
             what makes it all the more special. </h3>
     </div>
-    <div>
-        <h2>For Foodies!</h2>
+    <div id="homepage-food-mid-section">
+        <h2 id="for-foodies-text">For Foodies!</h2>
+        <img src="/img/food-icon.png" id="food-icon" alt="food and drink"/>
     </div>
     <div>
+        <h1>pls work</h1>
     </div>
 </section>
 
@@ -77,9 +88,10 @@
 
 
 <!-- Festival section -->
+<!-- Festival section -->
 <section class="homepage-festival">
-    <h2>Check out the festival here!</h2>
-    <a class="btn-purple" href="festival/overview">See festival events</a>
+    <h2 id="homepage-check-festival-text">Check out the festival here!</h2>
+    <a class="btn-purple" href="festival/overview" id="homepage-check-festival-button">See festival events</a>
 </section>
 
 <!-- Mobile section -->

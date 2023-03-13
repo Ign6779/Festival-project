@@ -20,3 +20,23 @@
     background: #FFFFFF;
     color: #92140C;
 }
+
+
+body {
+    width: 100%;
+    font-family: "Source Sans Pro";
+    background-color: #FFF8F0;
+    margin: 0px;
+}
+
+h1 {
+    font-family: "Corben";
+}
+
+h2 {
+    font-family: "Mandali";
+}
+
+h3 {
+    font-family: 'Source Sans Pro';
+}
