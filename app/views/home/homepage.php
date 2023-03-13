@@ -10,7 +10,7 @@
 </section>
 <section class="homepage-context">
 
-<h3>Welcome to the city of endless possibilities: A charming historic district, fascinating museums, unique
+<h3>Welcome to the city of endless possibilities: A charming historic district, fascinating museums, unique <br>
             shops, a wide variety of dining options, and a lovely beach,
             <br>
         </h3>
