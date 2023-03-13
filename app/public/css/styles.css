@@ -174,21 +174,6 @@
     display: block;
 }
 
-/* add changing color on hover */
-.btn-purple:hover {
-    background-color: #ffffff;
-    border-radius: 25px;
-    border: none;
-    color: #7A86B6;
-    padding: 15px 35px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    box-shadow: 5px 10px #888888;
-    font-weight: bold;
-}
-
 /* FOR THE INSTAGRAM FEED */
 .homepage-instagram{
     height: 100px;
