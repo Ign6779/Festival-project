@@ -328,5 +328,23 @@
     background: #5453af;
     color: #fff;
   }
-  
+  .slider-btn {
+    border: 1px solid transparent;
+    padding: 100px 20px;
+    font-size: 50px;
+    font-weight: 300;
+    background-color: transparent;
+    color: #000;
+}
+
+.slider-btn i {
+    font-weight: 900;
+}
+
+.slider-btn:focus {
+    border-color: seagreen;
+    box-shadow: -2px -2px 2px rgb(230, 227, 227),
+        2px 2px 2px white;
+    margin: 2px;
+}
 

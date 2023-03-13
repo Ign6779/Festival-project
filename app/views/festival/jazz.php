@@ -50,25 +50,19 @@ include __DIR__ . '/../header.php';
         </div>
 
         <!-- Jazz Cards -->
+
         <div class="cards">
             <div class="row">
-                <button class="col-sm-3">next</button>
-                <div class="col-sm-2">
-                    <?php
-                    include __DIR__ . '/../components/card.php';
-                    ?>
-                </div>
-                <div class="col-sm-2">
-                    <?php
-                    include __DIR__ . '/../components/card.php';
-                    ?>
-                </div>
-                <div class="col-sm-2">
-                    <?php
-                    include __DIR__ . '/../components/card.php';
-                    ?>
-                </div>
-                <button class="col-sm-3">next</button>
+                <div class="col-sm-1"></div>
+                <button class="col-sm-2 slider-btn" id="slide-btn-left"><i class="fa-solid fa-chevron-left"></i></button>
+                
+                <?php 
+                    for ($x = 0; $x < 3; $x++) {
+                        include __DIR__ . '/../components/card.php';
+                      }
+                ?>
+
+                <button class="col-sm-2 slider-btn" id="slide-btn-right"><i class="fa-solid fa-chevron-right"></i></i></button>
             </div>
         </div>
     </section>
