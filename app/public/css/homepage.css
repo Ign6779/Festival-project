@@ -1,0 +1,145 @@
+
+.homepage-history {
+    background-color: #92140C;
+    width: 100%;
+    color: #FFFEFE;
+    font-family: "Source Sans Pro";
+    padding-bottom: 15em;
+    padding-top: 15px;
+    position: relative;
+}
+
+.homepage-food {
+    font-family: "Source Sans Pro";
+    background: #FFF8F0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-image: url("/img/homepage-food-outline.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 600px;
+}
+
+.homepage-music {
+    background-color: #9EADEA;
+    padding-left: 10px;
+}
+
+.homepage-theatre {
+    background-color: #111D4A;
+    color: #FFFEFE;
+    padding: 10px;
+}
+
+.homepage-museums {
+    background-color: #9EADEA;
+    padding: 10px;
+}
+
+.homepage-welcome {
+    position: relative;
+    text-align: center;
+    padding-bottom: 5em;
+}
+
+.homepage-festival {
+    text-align: center;
+    background-image: url("/img/homepage-festival.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 600px;
+}
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.homepage-context {
+    text-align: center;
+    height: 300px;
+}
+
+.homepage-music-h2 {
+    padding: 10px;
+    margin: 10px;
+    margin-bottom: 300px;
+    text-align: center;
+}
+.img-responsive{
+    position: relative;
+}
+#homepage-welcome{
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    color: #fff;
+}
+.homepage-festival{
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+#homepage-check-festival-button{
+    position: absolute;
+    top: 50%;
+    left: 45%;
+}
+#homepage-check-festival-text{
+    position: absolute;
+    color: #fff;
+    font-size: 64px;
+    top: 20%;
+    left: 25%;
+    -webkit-text-fill-color: #FFFFFF;
+    -webkit-text-stroke: 2px black;
+}
+.homepage-festival-img{
+    width: 100%;
+}
+#food-outline{
+    width: 100%;
+    position: relative;
+}
+#food-icon{
+    
+    width: 200px;
+    height: 200px;
+}
+#homepage-food-mid-section{
+    padding-top: 100px;
+    padding-left: 10em;
+}
+#for-foodies-text{
+    font-size: 54px;
+}
+.white-text{
+    color: white;
+}
+#homepage-history-2{
+    width: 20em;
+    position: absolute;
+    left: 20em;
+    top: 30px;
+}
+#homepage-history-3{
+    width: 20em;
+    position: absolute;
+    left: 20em;
+    top: 250px;
+}
+#homepage-history-4{
+    width: 20em;
+    position: absolute;
+    left: 41em;
+    top: 30px;
+}
+#homepage-history-1{
+    width: 15em;
+}
+#homepage-history-text{
+    width:30em;
+    position: absolute;
+    right: 1%;
+    top:30px;
+}
