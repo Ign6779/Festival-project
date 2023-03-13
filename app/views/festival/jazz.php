@@ -50,56 +50,144 @@ include __DIR__ . '/../header.php';
         </div>
 
         <!-- Jazz Cards -->
-        <div class="cards">
-            <div class="row">
-                <button class="col-sm-3">next</button>
-                <div class="col-sm-2">
-                    <?php
-                    include __DIR__ . '/../components/card.php';
-                    ?>
-                </div>
-                <div class="col-sm-2">
-                    <?php
-                    include __DIR__ . '/../components/card.php';
-                    ?>
-                </div>
-                <div class="col-sm-2">
-                    <?php
-                    include __DIR__ . '/../components/card.php';
-                    ?>
-                </div>
-                <button class="col-sm-3">next</button>
-            </div>
-        </div>
-    </section>
+        <section class="cards">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                </ol>
 
-    <!-- Jazz Detailed Pages -->
-    <section class="">
-        <div class="detail-pages">
-            <?php
-            include __DIR__ . '/../components/page.php';
-            ?>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="cards-wrapper">
+                            <div class="card">
+                                <img class="card-img-top" src="/img/jazz-9-gumbo-kings.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk
+                                        of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img-top" src="/img/jazz-10-evolve.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk
+                                        of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img-top" src="/img/jazz-11-ntjam-rosie.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk
+                                        of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <?php
-            include __DIR__ . '/../components/page.php';
-            ?>
-        </div>
-    </section>
+                    <div class="item">
+                        <div class="cards-wrapper">
+                            <div class="card">
+                                <img class="card-img-top" src="/img/jazz-12-jonna-fraser.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk
+                                        of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img-top" src="/img/jazz-13-thomson-assemble.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk
+                                        of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img-top" src="/img/jazz-14-wicked-jazz-sounds.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk
+                                        of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Jazz Map -->
-    <section class="venues">
-        <div class="venues-container">
-            <div id="map">
+                <!-- Left and right controls -->
+                <div class="row">
+                    <div class="col-sm-11 btn-carousel">
+                        <a class="carousel-control" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </div>
+
+                    <div class="col-sm-1 btn-carousel"><a class="carousel-control" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="venues-details">
-                more details about the locations
-            </div>
+        </section>
+
+</div class="containe-pages">
+<!-- Jazz Detailed Pages -->
+<section class="pages">
+    <div class="detail-pages">
+        <?php
+        include __DIR__ . '/../components/page.php';
+        ?>
+
+        <?php
+        include __DIR__ . '/../components/page.php';
+        ?>
+    </div>
+</section>
+
+<!-- Jazz Map -->
+<section class="venues">
+    <div class="venues-container">
+        <div id="map">
         </div>
-    </section>
+        <div class="venues-details">
+            more details about the locations
+        </div>
+    </div>
+</section>
+
+<section class="footer">
+    <?php
+    include __DIR__ . '/../footer.php';
+    ?>
+</section>
 </div>
-<?php
-include __DIR__ . '/../footer.php';
-?>
+</div>
 
 <script>
     function initMap() {
