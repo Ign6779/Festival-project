@@ -55,39 +55,37 @@
 </section>
 
 <!-- Music section -->
-<div class="grid">
+<div class="music-grid">
     <section class="homepage-music">
         <h2 id="homepage-music-h2">Music</h2>
         <img src="/img/homepage-music.png" alt="Music-Artist" width=95%>
         <h3>The city of Haarlem comes alive with music in July. The days are longer and warmer, making it the ideal
-            time to go see both well-known and unknown Dutch musicians play for the delight of the crowd.</h3>
+            time to go see both well-known and unknown Dutch musicians play for the delightz of the crowd.</h3>
     </section>
 
-    <!-- Theatre section -->
-    <section class="homepage-theatre">
-        <h2>Theatre</h2>
-        <img src="/img/homepage-theatre.png" alt="Theatre" width=95%>
-        <h3>When it comes to entertainment, Haarlem is perfect. Theatres such as :Het Kennenmer Theatre, and
-            Philharmonie will guarantee you won't leave Haarlem disappointed.
-            Don't miss out on the beautiful dramas and the high quality productions!</h3>
-    </section>
+        <!-- Theatre section -->
+        <section class="homepage-theatre">
+            <h2>Theatre</h2>
+            <img src="/img/homepage-theatre.png" alt="Theatre" width=95%>
+            <h3>When it comes to entertainment, Haarlem is perfect. Theatres such as: Het Kennenmer Theatre, and
+                Philharmonie will guarantee you won't leave Haarlem disappointed.
+                Don't miss out on the beautiful dramas and the high quality productions!</h3>
+        </section>
 
-    <!-- Museums section -->
-    <section class="homepage-museums">
-        <h2>Museums</h2>
-        <img src="/img/homepage-museums.png" alt="Museums" width=95%>
-        <h3>If you want to see some amazing historical artefacts and you want to learn their history, then come to
-            Haarlem's museums!<br>Some great choices include:
-            <br>&#x2022;The corrie ten boom house
-            <br>&#x2022;Teylers Museum
-            <br>&#x2022;Frans hals museum
-            <br>&#x2022;Museum van de geest
-        </h3>
-    </section>
-</div>
+        <!-- Museums section -->
+        <section class="homepage-museums">
+            <h2>Museums</h2>
+            <img src="/img/homepage-museums.png" alt="Museums" width=95%>
+            <h3>If you want to see some amazing historical artefacts and you want to learn their history, then come to
+                Haarlem's museums!<br>Some great choices include:
+                <br>&#x2022;The corrie ten boom house
+                <br>&#x2022;Teylers Museum
+                <br>&#x2022;Frans hals museum
+                <br>&#x2022;Museum van de geest
+            </h3>
+        </section>
+    </div>
 
-
-<!-- Festival section -->
 <!-- Festival section -->
 <section class="homepage-festival">
     <h2 id="homepage-check-festival-text">Check out the festival here!</h2>
