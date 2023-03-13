@@ -61,10 +61,24 @@ class RestaurantRepository extends Repository {
 
             while ($row = $stmt->fetch()) {
                 $restaurantId = $row['id'];
-
-                if ()
+                $restaurant = new Restaurant();
+                $restaurant->setId($row['id']);
+                $restaurant->setName($row['name']);
+                $restaurant->setDescription($row['description']);
+                $restaurant ->setDuration($row['duration']);
+                $restaurant->setHalal($row['halal']);
+                $restaurant->setVegan($row['vegan']);
+                $restaurant->setStars($row['stars']);
+                $restaurant->setImage($row['image']);
+                
+                $restaurants[$restaurantId] = $restaurant;
             }
         }
+        catch (PDOException $e) {
+            echo $e;
+        }
+
+        return $restaurants;
     }
 }
 ?>

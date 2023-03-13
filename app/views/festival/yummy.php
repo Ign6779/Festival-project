@@ -21,28 +21,22 @@ include __DIR__ . '/../header.php';
 
       <?php
         foreach ($restaurants as $restaurant) {
-          echo "<h1>{$restaurant->getName()}</h1>";
-          echo "<p>Location: {$restaurant->getLocation()}</p>";
-          echo "<p>Description: {$restaurant->getDescription()}</p>";
-          echo "<p>Content: {$restaurant->getContent()}</p>";
-          echo "<p>Halal: {$restaurant->getHalal()}</p>";
-          echo "<p>Vegan: {$restaurant->getVegan()}</p>";
-          echo "<p>Duration: {$restaurant->getDuration()}</p>";
-          echo "<p>Stars: {$restaurant->getStars()}</p>";
-    
-          echo "<h2>Sessions</h2>";
-          echo "<ul>";
-    
-          foreach ($restaurant->getSessions() as $session) {
-            echo "<li>Session ID: {$session->getId()}</li>";
-            echo "<li>Start Time: {$session->getStartTime()}</li>";
-            echo "<li>End Time: {$session->getEndTime()}</li>";
-            echo "<li>Seats: {$session->getSeats()}</li>";
-            echo "<li>Price: {$session->getPrice()}</li>";
-            echo "<li>Reduced Price: {$session->getReducedPrice()}</li>";
-          }
-    
-          echo "</ul>";
+          ?>
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="/../img/<?= $restaurant->getImage() ?>" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title"><?= $restaurant->getName() ?></h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php
         }
       ?>
     </div>

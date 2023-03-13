@@ -12,5 +12,10 @@ class RestaurantService {
         $restaurants = $this->repository->getAll();
         return $restaurants;
     }
+
+    public function getBasicInfo() {
+        $restaurants = $this->repository->getBasicInfo();
+        return $restaurants;
+    }
 }
 ?>
