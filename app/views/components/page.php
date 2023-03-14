@@ -22,27 +22,8 @@
             <img src="" alt="song3">
         </div>
         <!-- MEDIA PLAYER -->
-        <script src="https://kit.fontawesome.com/7c33dff1d8.js" crossorigin="anonymous"></script>
-        <div id="overlay"></div>
-        <div class="song-container">
-            <div class="player" id="player">
-                <div id="music-info">
-                    <div class="title"></div>
-                    <div class="author"></div>
-                    <div class="album"></div>
-                    <div class="bg"></div>
-                </div>
-                <div class="timestamp">
-                    <div id="bar"></div>
-                    <div id="current-time"></div>
-                </div>
-                <div class="buttons">
-                    <div class="button button-medium"><i class="fas fa-step-backward"></i></div>
-                    <div class="button button-large" id="play"><i class="fas fa-play"></i></div>
-                    <div class="button button-medium"><i class="fas fa-step-forward"></i></div>
-                    <div class="button button-small" id="mute"><i class="fas fa-volume-up"></i></div>
-                </div>
-            </div>
+        <div class="audio-player">
+        <iframe width="auto" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/532815123&color=%23404048&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/user-673380444" title="Sidney" target="_blank" style="color: #cccccc; text-decoration: none;">Sidney</a> · <a href="https://soundcloud.com/user-673380444/ntjam-rosie-thinkin-about-you" title="Ntjam Rosie Thinkin&#x27; About You" target="_blank" style="color: #cccccc; text-decoration: none;">Ntjam Rosie Thinkin&#x27; About You</a></div>
         </div>
     </div>
 </div>

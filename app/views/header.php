@@ -4,7 +4,7 @@ function returnStyle($id)
     $style = "";
     $uri = $_SERVER['REQUEST_URI'];
     $splitUri = explode('/', $uri);
-    if ($uri == $id || ($splitUri[1] == "festival" && $id == "festival")) {
+    if ($uri == $id || (($splitUri[1] == "festival" || $splitUri[1] == "kids") && $id == "festival")) {
         $style = "bg-white txt-color-bleu";
     } else {
         $style = "bg-bleu txt-color-white";
@@ -42,11 +42,16 @@ function returnSelected($id)
     <link rel="stylesheet" href="/css/overview.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/header.css?v=<?php echo time(); ?>">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- font families  -->
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Corben" />
@@ -73,14 +78,14 @@ function returnSelected($id)
                 <select name="Events" id="Events" onchange="redirct(this.value)"
                     class="menu-list-option <? echo returnStyle("festival"); ?>">
                     <option <? echo returnSelected("/"); ?> disabled>Events</option>
-                    <option <? echo returnSelected("/festival/overview"); ?> value="/festival/overview">Festival
+                    <option <? echo returnSelected("/festival"); ?> value="/festival">Festival
                     </option>
-                    <option <? echo returnSelected("/festival/yummy"); ?> value="/festival/yummy">Dining</option>
-                    <option <? echo returnSelected("/festival/history"); ?> value="/festival/history">History
+                    <option <? echo returnSelected("/yummy"); ?> value="/yummy">Dining</option>
+                    <option <? echo returnSelected("/history"); ?> value="/history">History
                     </option>
-                    <option <? echo returnSelected("/festival/dance"); ?> value="/festival/dance">Dance</option>
-                    <option <? echo returnSelected("/festival/jazz"); ?>value="/festival/jazz">Jazz</option>
-                    <option <? echo returnSelected("/festival/kids"); ?> value="/festival/kids">Kids</option>
+                    <option <? echo returnSelected("/dance"); ?> value="/dance">Dance</option>
+                    <option <? echo returnSelected("/jazz"); ?> value="/jazz">Jazz</option>
+                    <option <? echo returnSelected("/kids"); ?> value="/kids">Kids</option>
                 </select>
 
                 <a href="/tickets" class="remove-style menu-list-option <? echo returnStyle("tickets"); ?>">Tickets</a>
