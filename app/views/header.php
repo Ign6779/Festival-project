@@ -4,7 +4,7 @@ function returnStyle($id)
     $style = "";
     $uri = $_SERVER['REQUEST_URI'];
     $splitUri = explode('/', $uri);
-    if ($uri == $id || (($splitUri[1] == "festival" || $splitUri[1] == "kids") && $id == "festival")) {
+    if ($uri == $id || (($splitUri[1] == "festival" || $splitUri[1] == "kids" || $splitUri[1] == "jazz" || $splitUri[1] == "dance" || $splitUri[1] == "yummy" || $splitUri[1] == "history") && $id == "festival")) {
         $style = "bg-white txt-color-bleu";
     } else {
         $style = "bg-bleu txt-color-white";
