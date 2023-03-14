@@ -20,7 +20,7 @@ include __DIR__ . '/../header.php';
       <?php
         foreach ($restaurants as $restaurant) {
           ?>
-          <div class="restaurant-card">
+          <div class="restaurant-card" data-id=<?= $restaurant->getId() ?>>
             <div class="card-image">
               <img src="/../img/<?= $restaurant->getImage() ?>" alt="<?php $restaurant->getName() ?>">
             </div>
@@ -59,9 +59,6 @@ include __DIR__ . '/../header.php';
     </aside>
   </section>
   
-  <script>
-    const restaurantAsideDiv = document.getElementById("map")
-  </script>
 <?php
 include __DIR__ . '/../footer.php';
 ?>

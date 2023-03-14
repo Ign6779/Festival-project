@@ -81,13 +81,13 @@ class RestaurantRepository extends Repository {
         return $restaurants;
     }
 
-    public function getByName(string $name) {
+    public function getById(int $id) {
         try {
             $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, s.date, s.startTime, s.endTime, s.seats, s.price, s.reducedPrice 
             FROM restaurants r 
             LEFT JOIN sessions s ON r.id = s.restaurantId
-            WHERE r.name = ?");
-            $stmt->execute([$name]);
+            WHERE r.id = ?");
+            $stmt->execute([$id]);
 
             $restaurant = null;
 

@@ -18,8 +18,8 @@ class RestaurantService {
         return $restaurants;
     }
 
-    public function getByName(string $name) {
-        $restaurant = $this->repository->getByName($name);
+    public function getById(int $id) {
+        $restaurant = $this->repository->getByName($id);
         return $restaurant;
     }
 }
