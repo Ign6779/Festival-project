@@ -24,7 +24,7 @@
     <link href='https://fonts.googleapis.com/css?family=Baloo+Chettan' rel='stylesheet'>
     <script src="https://hammerjs.github.io/dist/hammer.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
 <body>
@@ -33,7 +33,16 @@
 
         <div class="nav-section1">
             <div class="language-options">
-                <a href="/login" class="btn btn-primary">Log in</a>
+                <? if (isset($_SESSION["user"])) {
+                    ?>
+                    <a href="/login/logout" class="btn btn-danger">Logout</a>
+                <?
+                } else {
+                    ?>
+                    <a href="/login" class="btn btn-primary">Login</a>
+                <?
+                }
+                ?>
                 <img src="/img/english-option.png" alt="english-option">
                 <img src="/img/dutch-option.png" alt="dutch-option">
             </div>

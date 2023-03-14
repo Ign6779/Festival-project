@@ -31,13 +31,15 @@ class LoginController extends Controller
                         require __DIR__ . '/../views/login/login.php';
                         break;
 
-                    //just for testing
-                    default:
-                        require_once __DIR__ . '/../views/home/homePage.php';
-                        break;
+                    // case !null:
+                    //     require __DIR__ . '/../views/home/homepage.php';
+                    //     $_SESSION["user"] = $user;
+                    //     break;
 
-                    case !null:
-                        require __DIR__ . '/../views/home/homepage.php';
+                    // //just for testing
+                    default:
+                        $_SESSION["user"] = $user;
+                        require_once __DIR__ . '/../views/home/homePage.php';
                         break;
 
                     // case $user->getType() == "admin":
@@ -50,11 +52,7 @@ class LoginController extends Controller
                     //     header('location:/');
                     //     break;
                 }
-            } else {
-                $message = "Please fill in the required information!";
-                include __DIR__ . '/../views/messages/warning.php';
-                require_once __DIR__ . '/../views/login/login.php';
-            }
+            } 
         }
     }
 
@@ -115,6 +113,12 @@ class LoginController extends Controller
             //in case the request isn't sent
         }
         require_once __DIR__ . '/../views/login/resetpassword.php';
+    }
+
+    public function logout()
+    {
+        $_SESSION["user"] = null;
+        require_once __DIR__ . '/../views/home/homePage.php';
     }
 }
 ?>

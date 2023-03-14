@@ -25,21 +25,21 @@ include __DIR__ . '/../header.php';
           <!-- Userame input -->
           <div class="form-outline mb-4">
             <input type="text" id="form3Example3" name="usernameInput" class="form-control form-control-lg"
-              placeholder="Enter your username" />
+              placeholder="Enter your username" required/>
             <label class="form-label" for="form3Example3">Username</label>
           </div>
 
           <!-- Email input -->
           <div class="form-outline mb-4">
             <input type="email" id="form3Example3" name="emailInput" class="form-control form-control-lg"
-              placeholder="Enter a valid email address" />
+              placeholder="Enter a valid email address" required/>
             <label class="form-label" for="form3Example3">Email address</label>
           </div>
 
           <!-- Password input -->
           <div class="form-outline mb-3">
             <input type="password" id="form3Example4" name="passInput" class="form-control form-control-lg"
-              placeholder="Password" />
+              placeholder="Password" required/>
             <label class="form-label" for="form3Example4">Password</label>
           </div>
 
