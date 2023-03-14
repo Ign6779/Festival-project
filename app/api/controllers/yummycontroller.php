@@ -8,11 +8,7 @@ class YummyController {
         $this->restaurantService = new RestaurantService();
     }
 
-    public function index() {
-        if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            $restaurant = $this->restaurantService
-        }
-    }
+    
 }
 
 ?>
