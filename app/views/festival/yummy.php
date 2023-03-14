@@ -17,23 +17,36 @@ include __DIR__ . '/../header.php';
 
   <section id="restaurant-info">
     <div id="restaurant-cards">
-      these are the cards
-
       <?php
         foreach ($restaurants as $restaurant) {
           ?>
-          <div class="card mb-3">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="/../img/<?= $restaurant->getImage() ?>" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title"><?= $restaurant->getName() ?></h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <div class="restaurant-card">
+            <div class="card-image">
+              <img src="/../img/<?= $restaurant->getImage() ?>" alt="<?php $restaurant->getName() ?>">
+            </div>
+
+            <div class="card-content">
+              <div class="card-title-row">
+                <h2 class="card-title"><?= $restaurant->getName() ?></h2>
+                <div class="star-rating">
+                  <?php 
+                    for ($i = 0; $i < $restaurant->getStars(); $i++) {
+                      ?>
+                        S
+                      <?php
+                    }
+                  ?>
                 </div>
               </div>
+
+              <p class="card-description"><?= $restaurant->getDescription() ?></p>
+
+              <div class="card-info-row">
+                <div class="card-info-item">Duration: <?= $restaurant->getDuration() ?></div>
+                <div class="card-info-item">Halal: <?= $restaurant->getHalal() ?></div>
+                <div class="card-info-item">Vegan: <?= $restaurant->getVegan() ?></div>
+              </div>
+
             </div>
           </div>
           <?php
