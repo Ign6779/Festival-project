@@ -58,6 +58,8 @@ function returnSelected($id)
     <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Baloo+Chettan' rel='stylesheet'>
     <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
 <body>
@@ -65,6 +67,16 @@ function returnSelected($id)
     <nav>
         <div class="nav-section1">
             <div class="language-options">
+                <? if (isset($_SESSION["user"])) {
+                    ?>
+                    <a href="/login/logout" class="btn btn-danger">Logout</a>
+                <?
+                } else {
+                    ?>
+                    <a href="/login" class="btn btn-primary">Login</a>
+                <?
+                }
+                ?>
                 <img src="/img/english-option.png" alt="english-option">
                 <img src="/img/dutch-option.png" alt="dutch-option">
             </div>
@@ -115,9 +127,6 @@ function returnSelected($id)
                     My cart
                 </div>
             </div>
-
-
-
         </div>
     </nav>
 

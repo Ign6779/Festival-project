@@ -23,3 +23,13 @@ height: 100%;
     position: relative;
     right: 10%;
 }
+
+.text-reset-password {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.reset-header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
