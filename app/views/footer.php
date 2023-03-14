@@ -1,4 +1,3 @@
-</body>
 <script src="https://kit.fontawesome.com/d491cc2b52.js" crossorigin="anonymous"></script>
 <script src="././scripts/main.js"></script>
 <footer class="text-center text-white" style="background-color: #111D4A;">

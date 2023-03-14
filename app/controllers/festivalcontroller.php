@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 require __DIR__ . '/controller.php';
 //require __DIR__ . '/../services/userservice.php';
 //require __DIR__ . '/../services/restaurantservice.php';
@@ -11,7 +11,7 @@ class FestivalController extends Controller {
         //$this->userService = new UserService();
     }
 
-    public function overview(){
+    public function index(){
         require __DIR__ . '/../views/festival/overview.php';
     }
 
@@ -26,10 +26,6 @@ class FestivalController extends Controller {
         require __DIR__ . '/../views/festival/history.php';
     }
 
-    public function jazz(){
-        require __DIR__ . '/../views/festival/jazz.php';
-    }
-
     public function kids(){
         require __DIR__ . '/../views/festival/kids.php';
     }
@@ -41,4 +37,4 @@ class FestivalController extends Controller {
         require __DIR__ . '/../views/festival/yummy.php';
     }
 }
-?>
+?> -->

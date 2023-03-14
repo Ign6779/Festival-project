@@ -24,7 +24,7 @@ include __DIR__ . '/../header.php';
 <!-- Jazz Schedule -->
 <div>
     <section class="jazz-schedule">
-        <div class="title">
+        <div class="jazz-title">
             <h1>Haarlem Jazz</h1>
             <p>26 July 2023 - 29 July 2023</p>
         </div>
@@ -35,16 +35,28 @@ include __DIR__ . '/../header.php';
             </div>
             <div class="row">
                 <div class="col-sm-3">
-                    <button class="button-container">Date</button>
+                    <button class="button-container">
+                        <h1>Thu</h1>
+                        <h4>26th</h4>
+                    </button>
                 </div>
                 <div class="col-sm-3">
-                    <button class="button-container">Date</button>
+                    <button class="button-container">
+                        <h1>Fri</h1>
+                        <h4>27th</h4>
+                    </button>
                 </div>
                 <div class="col-sm-3">
-                    <button class="button-container">Date</button>
+                    <button class="button-container">
+                        <h1>Sat</h1>
+                        <h4>28th</h4>
+                    </button>
                 </div>
                 <div class="col-sm-3">
-                    <button class="button-container">Date</button>
+                    <button class="button-container">
+                        <h1>Sun</h1>
+                        <h4>29th</h4>
+                    </button>
                 </div>
             </div>
         </div>
@@ -70,7 +82,7 @@ include __DIR__ . '/../header.php';
                                         the
                                         bulk
                                         of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <a href="#" class="btn btn-primary">Buy ticket</a>
                                 </div>
                             </div>
                             <div class="card">
@@ -81,7 +93,7 @@ include __DIR__ . '/../header.php';
                                         the
                                         bulk
                                         of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <a href="#" class="btn btn-primary">Buy ticket</a>
                                 </div>
                             </div>
                             <div class="card">
@@ -92,7 +104,7 @@ include __DIR__ . '/../header.php';
                                         the
                                         bulk
                                         of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <a href="#" class="btn btn-primary">Buy ticket</a>
                                 </div>
                             </div>
                         </div>
@@ -108,7 +120,7 @@ include __DIR__ . '/../header.php';
                                         the
                                         bulk
                                         of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <a href="#" class="btn btn-primary">Buy ticket</a>
                                 </div>
                             </div>
                             <div class="card">
@@ -119,7 +131,7 @@ include __DIR__ . '/../header.php';
                                         the
                                         bulk
                                         of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <a href="#" class="btn btn-primary">Buy ticket</a>
                                 </div>
                             </div>
                             <div class="card">
@@ -131,7 +143,7 @@ include __DIR__ . '/../header.php';
                                         the
                                         bulk
                                         of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <a href="#" class="btn btn-primary">Buy ticket</a>
                                 </div>
                             </div>
                         </div>
@@ -155,6 +167,7 @@ include __DIR__ . '/../header.php';
                 </div>
             </div>
         </section>
+    </section>
 
 </div class="containe-pages">
 <!-- Jazz Detailed Pages -->
@@ -188,6 +201,7 @@ include __DIR__ . '/../header.php';
 </section>
 </div>
 </div>
+</body>
 
 <script>
     function initMap() {
