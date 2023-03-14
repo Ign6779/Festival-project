@@ -54,11 +54,14 @@ include __DIR__ . '/../header.php';
       ?>
     </div>
 
-    <aside id="map-aside">
+    <aside id="restaurant-aside">
       this will be the map
     </aside>
   </section>
   
+  <script>
+    const restaurantAsideDiv = document.getElementById("map")
+  </script>
 <?php
 include __DIR__ . '/../footer.php';
 ?>
