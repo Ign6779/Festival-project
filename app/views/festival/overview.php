@@ -38,7 +38,7 @@ include __DIR__ . '/../header.php';
 <!-- JAZZ -->
 <section class="event-section" id="jazz-section">
 <div class="left-round" id="jazz-picture-round">
-    <img src="..." class="picture-left" alt="picture" id="overview-left-pic">
+    <img src="/img/overview-jazz.png" class="picture-left" alt="picture" id="overview-left-pic">
 </div>
 <div class="right-text"><p><h1>Haarlem Jazz</h1><br>Annually, the Grote Markt in the heart of the historic capital of Haarlem hosts the concert series known as Haarlem Jazz. Both well-known and unknown Dutch musicians will perform for the audience's amazement. We're here waiting for you.</p><button class="btn-red">see event</button></div>
 
