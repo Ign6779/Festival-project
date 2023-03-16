@@ -1,6 +1,12 @@
 <? include __DIR__ . '/../header.php' ?>
 
 
+
+<!-- pointer to the top of the page -->
+<div class="pointer-to-top">
+<a href="#top">&#8593</a>
+</div>
+
 <!-- Header of the homepage -->
 <section class="homepage-header">
     <div class="homepage-picture">
