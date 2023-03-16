@@ -17,37 +17,44 @@ include __DIR__ . '/../header.php';
 
   <section id="restaurant-info">
     <div id="restaurant-cards">
-      these are the cards
-
       <?php
         foreach ($restaurants as $restaurant) {
-          echo "<h1>{$restaurant->getName()}</h1>";
-          echo "<p>Location: {$restaurant->getLocation()}</p>";
-          echo "<p>Description: {$restaurant->getDescription()}</p>";
-          echo "<p>Content: {$restaurant->getContent()}</p>";
-          echo "<p>Halal: {$restaurant->getHalal()}</p>";
-          echo "<p>Vegan: {$restaurant->getVegan()}</p>";
-          echo "<p>Duration: {$restaurant->getDuration()}</p>";
-          echo "<p>Stars: {$restaurant->getStars()}</p>";
-    
-          echo "<h2>Sessions</h2>";
-          echo "<ul>";
-    
-          foreach ($restaurant->getSessions() as $session) {
-            echo "<li>Session ID: {$session->getId()}</li>";
-            echo "<li>Start Time: {$session->getStartTime()}</li>";
-            echo "<li>End Time: {$session->getEndTime()}</li>";
-            echo "<li>Seats: {$session->getSeats()}</li>";
-            echo "<li>Price: {$session->getPrice()}</li>";
-            echo "<li>Reduced Price: {$session->getReducedPrice()}</li>";
-          }
-    
-          echo "</ul>";
+          ?>
+          <div class="restaurant-card" data-id=<?= $restaurant->getId() ?>>
+            <div class="card-image">
+              <img src="/../img/<?= $restaurant->getImage() ?>" alt="<?php $restaurant->getName() ?>">
+            </div>
+
+            <div class="card-content">
+              <div class="card-title-row">
+                <h2 class="card-title"><?= $restaurant->getName() ?></h2>
+                <div class="star-rating">
+                  <?php 
+                    for ($i = 0; $i < $restaurant->getStars(); $i++) {
+                      ?>
+                        S
+                      <?php
+                    }
+                  ?>
+                </div>
+              </div>
+
+              <p class="card-description"><?= $restaurant->getDescription() ?></p>
+
+              <div class="card-info-row">
+                <div class="card-info-item">Duration: <?= $restaurant->getDuration() ?></div>
+                <div class="card-info-item">Halal: <?= $restaurant->getHalal() ?></div>
+                <div class="card-info-item">Vegan: <?= $restaurant->getVegan() ?></div>
+              </div>
+
+            </div>
+          </div>
+          <?php
         }
       ?>
     </div>
 
-    <aside id="map-aside">
+    <aside id="restaurant-aside">
       this will be the map
     </aside>
   </section>

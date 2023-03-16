@@ -50,4 +50,79 @@ class RestaurantRepository extends Repository {
             echo $e;
         }
     }
+
+    public function getBasicInfo() {
+        try {
+            $stmt = $this->connection->prepare("SELECT * 
+            FROM restaurants");
+            $stmt->execute();
+
+            $restaurants = [];
+
+            while ($row = $stmt->fetch()) {
+                $restaurantId = $row['id'];
+                $restaurant = new Restaurant();
+                $restaurant->setId($row['id']);
+                $restaurant->setName($row['name']);
+                $restaurant->setDescription($row['description']);
+                $restaurant ->setDuration($row['duration']);
+                $restaurant->setHalal($row['halal']);
+                $restaurant->setVegan($row['vegan']);
+                $restaurant->setStars($row['stars']);
+                $restaurant->setImage($row['image']);
+                
+                $restaurants[$restaurantId] = $restaurant;
+            }
+        }
+        catch (PDOException $e) {
+            echo $e;
+        }
+
+        return $restaurants;
+    }
+
+    public function getById(int $id) {
+        try {
+            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, s.date, s.startTime, s.endTime, s.seats, s.price, s.reducedPrice 
+            FROM restaurants r 
+            LEFT JOIN sessions s ON r.id = s.restaurantId
+            WHERE r.id = ?");
+            $stmt->execute([$id]);
+
+            $restaurant = null;
+
+            while ($row = $stmt->fetch()) {
+                if (!$restaurant) { //no longer in an array, decided to check for the object itself
+                    $restaurant = new Restaurant();
+                    $restaurant->setId($row['id']);
+                    $restaurant->setName($row['name']);
+                    $restaurant->setLocation($row['location']);
+                    $restaurant->setDescription($row['description']);
+                    $restaurant->setContent($row['content']);
+                    $restaurant->setHalal($row['halal']);
+                    $restaurant->setVegan($row['vegan']);
+                    $restaurant->setStars($row['stars']);
+                    $restaurant->setDuration($row['duration']);
+                    $restaurant->setImage($row['image']);
+                }
+
+                $session = new Session();
+                $session->setId($row['sessionId']);
+                $session->setDate($row['date']);
+                $session->setStartTime($row['startTime']);
+                $session->setEndTime($row['endTime']);
+                $session->setSeats($row['seats']);
+                $session->setPrice($row['price']);
+                $session->setReducedPrice($row['reducedPrice']);
+
+                $restaurant->addSession($session);
+            }
+
+            return $restaurant;
+        }
+        catch (PDOException $e) {
+            echo $e;
+        }
+    }
 }
+?>
