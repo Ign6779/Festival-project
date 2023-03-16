@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . '/../header.php';
 ?>
+
 <!-- top section with title and picture carasol -->
 <div class="text-center container-fluid" id="top-section">
     <h1 class="Dance-Title"> Dance! </h1>
