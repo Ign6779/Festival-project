@@ -56,7 +56,7 @@
         <img src="/img/food-icon.png" id="food-icon" alt="food and drink"/>
     </div>
     <div>
-        <h1>pls work</h1>
+        
     </div>
 </section>
 

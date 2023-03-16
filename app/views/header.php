@@ -33,7 +33,6 @@ function returnSelected($id)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haarlem festival</title>
-    <link rel="stylesheet" href="/css/styles.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/kids.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/jazz.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/history.css?v=<?php echo time(); ?>">
@@ -102,7 +101,7 @@ function returnSelected($id)
                     <option <? echo returnSelected("/kids"); ?> value="/kids">Kids</option>
                 </select>
 
-                <a href="/tickets" class="remove-style menu-list-option <? echo returnStyle("tickets"); ?>">Tickets</a>
+                <a href="/ticket" class="remove-style menu-list-option <? echo returnStyle("ticket"); ?>">Tickets</a>
             </div>
 
 
