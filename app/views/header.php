@@ -41,6 +41,8 @@ function returnSelected($id)
     <link rel="stylesheet" href="/css/dance.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/overview.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/header.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="/css/homepage.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="/css/components.css?v=<?php echo time(); ?>">
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
