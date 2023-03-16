@@ -4,8 +4,8 @@ include __DIR__ . '/../header.php';
 <!-- Header of the jazz page -->
 <div>
     <section class="jazz-header">
-        <img class="img-responsive" src="/img/jazz-1.png" alt="Jazz">
-        <img class="jazz-logo" src="/img/jazz-logo.png" alt="jazz">
+        <img class="img-responsive" src="/img/jazz-1-background.png" alt="Jazz">
+        <img class="jazz-logo" src="/img/jazz-8-logo.png" alt="jazz">
         <button class="btn-jazz">Buy ticket!</button>
 
         <div>
@@ -14,7 +14,12 @@ include __DIR__ . '/../header.php';
             </div>
             <div class="section-2"></div>
             <div class="section-3">
-                <p></p>
+                <p>The City of Haarlem values Haarlem Jazz as a significant musical
+                    occasion. We want to replicate a portion of this festival during
+                    the Haarlem festival, therefore we've invited some of the bands
+                    who have previously played there to play at the Patronaat. Some
+                    of the bands will perform on Sunday to the large stage of the
+                    Grote Markt to give a free performance for all guests!</p>
             </div>
         </div>
     </section>
@@ -35,27 +40,27 @@ include __DIR__ . '/../header.php';
             </div>
             <div class="row">
                 <div class="col-sm-3">
-                    <button class="button-container">
-                        <h1>Thu</h1>
-                        <h4>26th</h4>
+                    <button id="jazz-button-0" class="button-container" onclick="changeButtonStyle(0)">
+                        <h3>Thu</h3>
+                        <h5>26th</h5>
                     </button>
                 </div>
                 <div class="col-sm-3">
-                    <button class="button-container">
-                        <h1>Fri</h1>
-                        <h4>27th</h4>
+                    <button id="jazz-button-1" class="button-container" onclick="changeButtonStyle(1)">
+                        <h3>Fri</h3>
+                        <h5>27th</h5>
                     </button>
                 </div>
                 <div class="col-sm-3">
-                    <button class="button-container">
-                        <h1>Sat</h1>
-                        <h4>28th</h4>
+                    <button id="jazz-button-2" class="button-container" onclick="changeButtonStyle(2)">
+                        <h3>Sat</h3>
+                        <h5>28th</h5>
                     </button>
                 </div>
                 <div class="col-sm-3">
-                    <button class="button-container">
-                        <h1>Sun</h1>
-                        <h4>29th</h4>
+                    <button id="jazz-button-3" class="button-container" onclick="changeButtonStyle(3)">
+                        <h3>Sun</h3>
+                        <h5>29th</h5>
                     </button>
                 </div>
             </div>
@@ -75,7 +80,7 @@ include __DIR__ . '/../header.php';
                     <div class="item active">
                         <div class="cards-wrapper">
                             <div class="card">
-                                <img class="card-img-top" src="/img/jazz-9-gumbo-kings.png" alt="Card image cap">
+                                <img id="card-0" class="card-img-top" src="/img/jazz-9-gumbo-kings.png" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up
@@ -227,3 +232,44 @@ include __DIR__ . '/../header.php';
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC87xRP5re_yw-jqZE9wjTViX80gXYntHw&callback=initMap">
     </script>
+
+<script>
+    // Functions
+
+    function changeButtonStyle(number) {
+
+        const string = "jazz-button-";
+
+        for (let i = 0; i < 4; i++) {
+            let nameOfTheButton = string.concat(i.toString());
+            if (i == number)
+                addCssStyle(nameOfTheButton);
+            else
+                resetCssStyle(nameOfTheButton);
+        }
+    }
+
+    function addCssStyle(nameOfTheButton) {
+        document.getElementById(nameOfTheButton).style.borderColor = "white";
+        document.getElementById(nameOfTheButton).style.background = "#2E9B7B";
+        document.getElementById(nameOfTheButton).style.color = "white";
+    }
+
+    function resetCssStyle(nameOfTheButton) {
+        document.getElementById(nameOfTheButton).style.borderColor = "#111D4A";
+        document.getElementById(nameOfTheButton).style.background = "white";
+        // document.getElementById(nameOfTheButton).onmouseout = function() { mouseOut(nameOfTheButton, '#2E9B7B')};
+        // document.getElementById(nameOfTheButton).onmouseover = function() { mouseOver(nameOfTheButton)};
+        document.getElementById(nameOfTheButton).style.color = "#111D4A";
+    }
+
+    // function mouseOver(nameOfTheButton) {
+    //     document.getElementById(nameOfTheButton).style.background = "#CB8803";
+    // }
+
+    // function mouseOut(nameOfTheButton, color) {
+    //     document.getElementById(nameOfTheButton).style.background = color;
+    // }
+
+</script>
+

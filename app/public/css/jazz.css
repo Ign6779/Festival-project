@@ -49,6 +49,7 @@
   height: 100px;
   font-family: Source Sans Pro;
   top: -100px;
+  font-size: 12px;
 }
 
 
@@ -78,24 +79,24 @@
 
 .button-container {
   background-color: white;
-  border-radius: 40px;
+  border-radius: 30px;
   border: solid;
   border-color: #111D4A;
   color: #111D4A;
-  padding: 15px 35px;
+  padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   font-weight: bold;
   transition-duration: 0.4s;
-  width: 240px;
-  height: 150px;
+  width: 160px;
+  height: 100px;
 }
 
 .button-container:hover {
-  background-color: #CB8803;
   border: none;
+  background-color: #CB8803;
 }
 
 
