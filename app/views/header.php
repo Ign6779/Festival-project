@@ -41,7 +41,7 @@ function returnSelected($id)
     <link rel="stylesheet" href="/css/dance.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/overview.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/header.css?v=<?php echo time(); ?>">
-
+    <link rel="stylesheet" href="/css/ticket.css?v=<?php echo time(); ?>">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -100,7 +100,7 @@ function returnSelected($id)
                     <option <? echo returnSelected("/kids"); ?> value="/kids">Kids</option>
                 </select>
 
-                <a href="/tickets" class="remove-style menu-list-option <? echo returnStyle("tickets"); ?>">Tickets</a>
+                <a href="/ticket" class="remove-style menu-list-option <? echo returnStyle("/ticket"); ?>">Tickets</a>
             </div>
 
 
