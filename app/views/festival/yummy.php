@@ -20,7 +20,7 @@ include __DIR__ . '/../header.php';
       <?php
         foreach ($restaurants as $restaurant) {
           ?>
-          <div class="restaurant-card" data-id=<?= $restaurant->getId() ?>>
+          <div class="restaurant-card"  data-id=<?= $restaurant->getId() ?>>
             <div class="card-image">
               <img src="/../img/<?= $restaurant->getImage() ?>" alt="<?php $restaurant->getName() ?>">
             </div>
@@ -58,7 +58,36 @@ include __DIR__ . '/../header.php';
       this will be the map
     </aside>
   </section>
-  
+
+  <script>
+    function getRestaurantInfo(id) { //api!
+    fetch ('http://localhost/api/yummy/getOne?id=' + id, {
+      method: 'GET'
+      })
+      .then(result => {
+          return result.json();
+      })
+      .then(restaurant => {
+          console.log(restaurant); //just double checking
+          const restaurantInfoDiv = document.getElementById('restaurant-aside');
+          restaurantInfoDiv.innerHTML = `
+          <h2>${restaurant.name}</h2>
+              <img src="/../img/${restaurant.image}">
+              <p>${restaurant.content}</p>
+          `;
+
+          // display the restaurant info div
+          restaurantInfoDiv.style.display = 'block';
+      })
+      .catch(error => console.log(error));
+    }
+
+    const cards = document.getElementsByClassName("restaurant-card");
+    Array.from(cards).forEach(card => {
+      const restaurantId = card.dataset.id;
+      card.addEventListener('click', () => {getRestaurantInfo(restaurantId)});
+    });
+  </script>
 <?php
 include __DIR__ . '/../footer.php';
 ?>
