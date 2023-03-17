@@ -39,30 +39,19 @@ include __DIR__ . '/../header.php';
                 <p>select date</p>
             </div>
             <div class="row">
-                <div class="col-sm-3">
-                    <button id="jazz-button-0" class="button-container" onclick="changeButtonStyle(0)">
-                        <h3>Thu</h3>
-                        <h5>26th</h5>
-                    </button>
-                </div>
-                <div class="col-sm-3">
-                    <button id="jazz-button-1" class="button-container" onclick="changeButtonStyle(1)">
-                        <h3>Fri</h3>
-                        <h5>27th</h5>
-                    </button>
-                </div>
-                <div class="col-sm-3">
-                    <button id="jazz-button-2" class="button-container" onclick="changeButtonStyle(2)">
-                        <h3>Sat</h3>
-                        <h5>28th</h5>
-                    </button>
-                </div>
-                <div class="col-sm-3">
-                    <button id="jazz-button-3" class="button-container" onclick="changeButtonStyle(3)">
-                        <h3>Sun</h3>
-                        <h5>29th</h5>
-                    </button>
-                </div>
+                <?php foreach ($dates as $date) { 
+                    $jazzButtonName = "jazz-button-" . array_search($date, $dates);
+                    ?>
+                    <div class="col-sm-3">
+                        <button id=<?= $jazzButtonName ?>  class="button-container"
+                            onclick="changeButtonStyle(<?= array_search($date, $dates); ?>)">
+                            <h3>Thu</h3>
+                            <h5>26th</h5>
+                        </button>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
 
@@ -80,7 +69,8 @@ include __DIR__ . '/../header.php';
                     <div class="item active">
                         <div class="cards-wrapper">
                             <div class="card">
-                                <img id="card-0" class="card-img-top" src="/img/jazz-9-gumbo-kings.png" alt="Card image cap">
+                                <img id="card-0" class="card-img-top" src="/img/jazz-9-gumbo-kings.png"
+                                    alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up
@@ -272,4 +262,3 @@ include __DIR__ . '/../header.php';
     // }
 
 </script>
-

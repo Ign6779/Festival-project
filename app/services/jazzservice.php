@@ -12,4 +12,9 @@ class JazzService {
         $jazzEvents = $this->repository->getAll();
         return $jazzEvents;
     }
+
+    public function getDatesOfEvents() {
+        $dates = $this->repository->getDatesOfEvents();
+        return $dates;
+    }
 }
