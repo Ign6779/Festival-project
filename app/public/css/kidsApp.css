@@ -1,20 +1,16 @@
 body {
     margin: 0px;
     padding: 0px;
-    height: 100%;
 }
 
 .intro-container {
-    /* position: absolute; */
     background-image: url(/img/tropical-rain1.png);
     background-repeat: no-repeat;
     background-size: 150% 125%;
-    width: 100%;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
 }
 
 .h1-kids-app {
@@ -196,7 +192,7 @@ body {
     gap: 3%;
 }
 
-.btn-scan {
+.btn-scan-check {
     width: 99.69px;
     height: 40px;
     background: #84FF9F;
@@ -209,4 +205,39 @@ body {
     background: #FFD700;
     box-shadow: 0px 4px 4px #000000;
     border-radius: 10px;
+}
+
+.fact-hint {
+    height: 60px;
+    width: 279px;
+    background: #EFE4B0;
+    border-radius: 10px;
+}
+
+.number-box-correct {
+    width: 47px;
+    height: 39px;
+    background: #27DD4F;
+    box-shadow: 0px 4px 4px #000000;
+    border-radius: 10px;
+}
+
+.number-box-wrong {
+    width: 47px;
+    height: 39px;
+    background: #EE0256;
+    box-shadow: 0px 4px 4px #000000;
+    border-radius: 10px;
+}
+
+.congratulations-msg {
+    position: absolute;
+    top: 381px;
+    background: #EFE4B0;
+    border-radius: 10px;
+}
+
+.btn-close-conmsg {
+    background: #84FF9F;
+    border-radius: 20px;
 }
