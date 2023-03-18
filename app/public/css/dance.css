@@ -96,10 +96,10 @@
 }
 .table{
     margin: 20px;
-    background-color: rgba(46, 155, 123, 0.4);
+    background-color: rgba(255, 255, 255, 0.4);
 }
 #table2{
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(46, 155, 123, 0.4);
 }
 #venue-section {
     background: linear-gradient(180deg, #2E9B7B 0%, #7A86B6 100%);
