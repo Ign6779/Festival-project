@@ -27,26 +27,59 @@ include __DIR__ . '/../header.php';
         </tr>
     </table> -->
     <?php
-        echo '<table>';
-        echo '<thead><tr><th>id</th><th>Date</th><th>Time</th><th>Available seats English</th><th>Available seats Nl</th><th>Available seats Ch</th></thead>';
-        echo '<tbody>';
-        foreach ($tours as $tour) {
-            echo '<tr>';
-            echo '<td>' . $tour->getId() . '</td>';
-            echo '<td>' . $tour->getDate() . '</td>';
-            echo '<td>' . $tour->getTime() . '</td>';
-            echo '<td>' . $tour->getAvaliableSeatsEn() . '</td>';
-            echo '<td>' . $tour->getAvailableSeatsNl() . '</td>';
-            echo '<td>' . $tour->getAvailableSeatsCh() . '</td>';
-            echo '</tr>';
-        }
-        echo '</tbody>';
-        echo '</table>';
+    echo '<table>';
+    echo '<thead><tr><th>id</th><th>Date</th><th>Time</th><th>Available seats English</th><th>Available seats Nl</th><th>Available seats Ch</th></thead>';
+    echo '<tbody>';
+    foreach ($tours as $tour) {
+        echo '<tr>';
+        echo '<td>' . $tour->getId() . '</td>';
+        echo '<td>' . $tour->getDate() . '</td>';
+        echo '<td>' . $tour->getTime() . '</td>';
+        echo '<td>' . $tour->getAvaliableSeatsEn() . '</td>';
+        echo '<td>' . $tour->getAvailableSeatsNl() . '</td>';
+        echo '<td>' . $tour->getAvailableSeatsCh() . '</td>';
+        echo '</tr>';
+    }
+    echo '</tbody>';
+    echo '</table>';
     ?>
 </section>
 
 <section class="history-locations">
     <h2>Tour Stops</h2>
+
+    <div id="carouselExampleControls" class="carousel slide container" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <? $count = 1;
+            foreach ($locations as $location) {
+                ?>
+                <div id="<? echo $location->getId(); ?>" class="carousel-item <? ?>active">
+                    <div class="d-flex justify-content-center w-100 h-100">
+                        <img src="/img/<? echo $location->getImage(); ?>" class="align-middle w-50 "
+                            alt="<? echo $location->getImage(); ?>">
+                    </div>
+                </div>
+            <?
+            } ?>
+        </div>
+
+        <button class="carousel-control-prev " type="button" onclick="setLocationInfo()"
+            data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon btn btn-primary" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next " type="button" onclick="setLocationInfo()"
+            data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon btn btn-primary" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+    <div id="location-information">
+
+    </div>
+
 </section>
 
 <section class="tour-map">
@@ -94,6 +127,49 @@ include __DIR__ . '/../header.php';
         </ul>
     </div>
 </section>
+
+<script>
+
+    // $(document).ready(function () {
+
+    //     $('#carouselExampleControls').on('slid.bs.carousel', function () {
+    //         var src = $('.active').find('img').attr('src');
+    //         alert(src);
+    //     });
+    // });
+
+    function setLocationInfo() {
+        document.getElementById("location-information").innerHTML = "";
+        fetch('http://localhost/api/history/getOneLocaion?id=' + activeImage(), {
+            method: 'GET'
+        })
+            .then(result => result.json())
+            .then((data) => {
+                console.log(data);
+                data.forEach(getLocation);
+            })
+            .catch(error => console.log(error));
+
+    }
+
+    function getLocation(locationInput) {
+        var location = document.getElementById("location-information");
+        header = document.createElement("h2");
+        header.innerHTML = locationInput.location;
+        pargraph = document.createElement("p");
+        pargraph.innerHTML = locationInput.description;
+        img = document.createElement("img");
+        img.src = "/img/" + locationInput.img;
+        location.appendChild(header);
+        location.appendChild(pargraph);
+        location.appendChild(img);
+    }
+
+    function activeImage() {
+        return document.getElementsByClassName("carousel-item active")[0].id;
+    }
+
+</script>
 
 <?php
 include __DIR__ . '/../footer.php';
