@@ -54,7 +54,7 @@ font-size: 18px;
         Help Professor Tyler to solve the egg problem. Try to differentiatie between fresh and spoiled eggs.
     </div>
 
-    <div class="flex flex-col hints">
+    <div id="hints" class="flex flex-col hints">
         <div class="flex flex-row row-hints">
             <div id="hint1" class="hint">
 
@@ -93,7 +93,7 @@ font-size: 18px;
         </div>
     </div>
 
-    <button class="btn-scan" onclick="giveHint()">
+    <button id="scan" class="btn-scan-check" onclick="giveHint()">
         Scan
     </button>
 </div>
@@ -103,8 +103,13 @@ font-size: 18px;
 <script>
     var count = 0;
     function giveHint() {
-        if (count==8) {
-            window.location = "/mobile/challenge3";
+        if (count == 8) {
+            giveFact();
+            var scan = document.getElementById('scan');
+            scan.removeAttribute("onclick");
+            scan.onclick = function () {
+                window.location = "/mobile/challenge3";
+            };
         }
         else {
             const hints = ["put", "egg", "in", "water", "the one", "floats", "is", "good"];
@@ -112,6 +117,26 @@ font-size: 18px;
             count++;
             document.getElementById("hint" + count).innerText = hint;
         }
-
     }
+
+    function giveFact() {
+        var hints = document.getElementById("hints");
+        hints.innerHTML = "";
+
+        fact = document.createElement("div");
+        fact.innerHTML = "Fun Fact: <br/>Eggs have 12% protein.";
+
+        hint = document.createElement("div");
+        hint.innerHTML = "Hint: <br/>Go to oval room “6”.";
+
+        fact.classList.add('fact-hint');
+        hint.classList.add('fact-hint');
+
+        fact.classList.add('mb-2');
+        hint.classList.add('mt-2');
+
+        hints.appendChild(fact);
+        hints.appendChild(hint);
+    }
+
 </script>
