@@ -205,6 +205,7 @@ body {
     background: #FFD700;
     box-shadow: 0px 4px 4px #000000;
     border-radius: 10px;
+    text-align: center;
 }
 
 .fact-hint {
@@ -220,6 +221,7 @@ body {
     background: #27DD4F;
     box-shadow: 0px 4px 4px #000000;
     border-radius: 10px;
+    text-align: center;
 }
 
 .number-box-wrong {
@@ -228,11 +230,12 @@ body {
     background: #EE0256;
     box-shadow: 0px 4px 4px #000000;
     border-radius: 10px;
+    text-align: center;
 }
 
 .congratulations-msg {
     position: absolute;
-    top: 381px;
+    top: 30%;
     background: #EFE4B0;
     border-radius: 10px;
 }

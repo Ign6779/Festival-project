@@ -77,7 +77,7 @@ font-size: 18px;
 
     <div id="congratulations-msg" class="container w-80 congratulations-msg d-none">
         <div class="row justify-content-end ">
-            <button class="col-2 btn-close-conmsg" onclick="close()">
+            <button class="col-2 btn-close-conmsg" onclick="closeCongratulationsMsg()">
                 X
             </button>
         </div>
@@ -111,6 +111,8 @@ font-size: 18px;
             input.className = "";
             if (numbers.includes(input.value)) {
                 input.classList.add("number-box-correct");
+                const index = numbers.indexOf(input.value);
+                numbers.splice(index, 1);
                 if (input.id == "final-number") {
                     document.getElementById("congratulations-msg").classList.remove("d-none");
                     document.getElementById("congratulations-msg").classList.add("d-block");
@@ -125,7 +127,7 @@ font-size: 18px;
         })
     });
 
-    function close() {
+    function closeCongratulationsMsg() {
         document.getElementById("congratulations-msg").classList.remove("d-block");
         document.getElementById("congratulations-msg").classList.add("d-none");
         document.getElementById("btn-check").style.display = "block";
