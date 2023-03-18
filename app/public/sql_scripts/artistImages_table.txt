@@ -1,0 +1,83 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: mysql
+-- Generation Time: Mar 18, 2023 at 04:22 PM
+-- Server version: 10.9.4-MariaDB-1:10.9.4+maria~ubu2204
+-- PHP Version: 8.0.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `festival`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `artistImages`
+--
+
+CREATE TABLE `artistImages` (
+  `id` int(11) NOT NULL,
+  `artist_id` int(20) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `artistImages`
+--
+
+INSERT INTO `artistImages` (`id`, `artist_id`, `image`) VALUES
+(1, 25, 'hardwell-pic-1.png'),
+(2, 25, 'hardwell-pic-2.png'),
+(3, 25, 'hardwell-pic-3.png'),
+(4, 30, 'afrojack-1.jpg'),
+(5, 30, 'afrojack-2.png'),
+(6, 30, 'afrojack-3.webp'),
+(7, 26, 'AvB-1.jpg'),
+(8, 26, 'AvB-2.jpg'),
+(9, 26, 'AvB-3.jpg'),
+(10, 27, 'MG-pic-1.png'),
+(11, 27, 'MG-pic-2.png'),
+(12, 27, 'MG-pic-3.png'),
+(13, 28, 'Tiesto-1.jpeg'),
+(14, 28, 'Tiesto-2.webp'),
+(15, 28, 'Tiesto-3.jpg'),
+(16, 29, 'NR-1.jpg'),
+(17, 29, 'NR-2.jpeg'),
+(18, 29, 'NR-3.jpg');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `artistImages`
+--
+ALTER TABLE `artistImages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `artistImages`
+--
+ALTER TABLE `artistImages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
