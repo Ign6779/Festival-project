@@ -63,13 +63,13 @@ include __DIR__ . '/../header.php';
             } ?>
         </div>
 
-        <button class="carousel-control-prev " type="button" onclick="setLocationInfo()"
-            data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon btn btn-primary" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next " type="button" onclick="setLocationInfo()"
-            data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon btn btn-primary" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -130,27 +130,23 @@ include __DIR__ . '/../header.php';
 
 <script>
 
-    // $(document).ready(function () {
+    $(document).ready(function () {
 
-    //     $('#carouselExampleControls').on('slid.bs.carousel', function () {
-    //         var src = $('.active').find('img').attr('src');
-    //         alert(src);
-    //     });
-    // });
+        $('#carouselExampleControls').on('slid.bs.carousel', function () {
+            document.getElementById("location-information").innerHTML = "";
+            var active = document.getElementsByClassName("carousel-item active")[0].id;
 
-    function setLocationInfo() {
-        document.getElementById("location-information").innerHTML = "";
-        fetch('http://localhost/api/history/getOneLocaion?id=' + activeImage(), {
-            method: 'GET'
-        })
-            .then(result => result.json())
-            .then((data) => {
-                console.log(data);
-                data.forEach(getLocation);
+            fetch('http://localhost/api/history/getOneLocaion?id=' + active, {
+                method: 'GET'
             })
-            .catch(error => console.log(error));
-
-    }
+                .then(result => result.json())
+                .then((data) => {
+                    console.log(data);
+                    data.forEach(getLocation);
+                })
+                .catch(error => console.log(error));
+        });
+    });
 
     function getLocation(locationInput) {
         var location = document.getElementById("location-information");
@@ -163,10 +159,6 @@ include __DIR__ . '/../header.php';
         location.appendChild(header);
         location.appendChild(pargraph);
         location.appendChild(img);
-    }
-
-    function activeImage() {
-        return document.getElementsByClassName("carousel-item active")[0].id;
     }
 
 </script>
