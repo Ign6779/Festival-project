@@ -81,15 +81,61 @@ include __DIR__ . '/../header.php';
 <div class="text-center container-fluid" id="schedule">
     <h1 class="Dance-Title"> schedule overview </h1>
     <div class="text-center container" id="transparent-block">
-        <div class="text-center container" id="artist-list-left">friday artists & daypass price</div>
-        <div class="text-center container"id="artist-list-mid">saturday artists & daypass price</div>
-        <div class="text-center container" id="artist-list-right">sunday artists & daypass price</div>
+        <div class="text-center container" id="artist-list-left">FRIDAY ARTISTS
+        <?php
+            foreach ($danceEvents as $dance) {
+                if (date('Y-m-d', strtotime($dance->getDate())) === '2023-07-27') {
+                    $artists = $dance->getArtists();
+                    $artistNames = array_map(function($artist) {
+                        return $artist->getName();
+                    }, $artists);
+
+                    $artistNamesString = implode(', ', $artistNames);
+                    echo "<br>". $artistNamesString;
+                }
+            }
+        ?>
+        <br>DAYPASS PRICE HERE
+        </div>
+        <div class="text-center container"id="artist-list-mid">SATURDAY ARTISTS
+        <?php
+            foreach ($danceEvents as $dance) {
+                if (date('Y-m-d', strtotime($dance->getDate())) === '2023-07-28') {
+                    $artists = $dance->getArtists();
+                    $artistNames = array_map(function($artist) {
+                        return $artist->getName();
+                    }, $artists);
+
+                    $artistNamesString = implode(', ', $artistNames);
+                    echo "<br>". $artistNamesString;
+                }
+            }
+        ?>
+        <br>DAYPASS PRICE HERE
+        </div>
+        <div class="text-center container" id="artist-list-right">SUNDAY ARTIST
+        <?php
+            foreach ($danceEvents as $dance) {
+                if (date('Y-m-d', strtotime($dance->getDate())) === '2023-07-27') {
+                    $artists = $dance->getArtists();
+                    $artistNames = array_map(function($artist) {
+                        return $artist->getName();
+                    }, $artists);
+
+                    $artistNamesString = implode(', ', $artistNames);
+                    echo "<br>". $artistNamesString;
+                }
+            }
+        ?>
+        <br>DAYPASS PRICE HERE
+        </div>
     </div>
     <div class="text-center container justify-content-center" id="transparent-block">
         <button class="btn-purple">1 Day Pass</button>
     </div>
     <div class="text-center container" id="transparent-block">
-        <div class="text-center container" id="artist-list-right">Three day pass price</div>
+        <div class="text-center container" id="artist-list-right"><h3>Three day pass price</h3> <br> Get the ultimate 3-day ticket and get access to all the events listed below!
+All access: €250,00</div>
     </div>
     <div class="text-center container justify-content-center" id="transparent-block">
         <button class="btn-purple" id="three-day-btn">3 Day Pass</button>
@@ -101,31 +147,29 @@ include __DIR__ . '/../header.php';
     <div class="text-right container" id="schedule-side">
         <h1 class="Dance-Title"> friday tickets </h1>
         <!-- TABLE WITH SCHEDULE -->
-        <table class="table table-striped" >
-            <thead>
-                <tr>
-                <th scope="col">Time</th>
-                <th scope="col">Artist</th>
-                <th scope="col">Venue</th>
-                <th scope="col">Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td>bing</td>
-                <td>bong</td>
-                <td>bing</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                <th scope="row">2</th>
-                <td>bing</td>
-                <td>bong</td>
-                <td>bing</td>
-                </tr>
-            </tbody>
+        <table class="table table-striped" id="table2" >
+        <?php
+            //HTML table
+            echo "<tr><th>Start Time</th><th>Artist</th><th>Venue</th><th>Price</th></tr>";
+            foreach ($danceEvents as $dance) {
+                if (date('Y-m-d', strtotime($dance->getDate())) === '2023-07-27') {
+                    // to display artist objects name as string
+                    $artists = $dance->getArtists();
+                    $artistNames = array_map(function($artist) {
+                        return $artist->getName();
+                    }, $artists);
+
+                    $artistNamesString = implode(', ', $artistNames);
+                    // display dance events
+                    echo "<tr>";
+                    echo "<td>" . $dance->getStartTime() . "</td>";
+                    echo "<td>" . $artistNamesString . "</td>";
+                    echo "<td>" . $dance->getVenue()->getName() . "</td>";
+                    echo "<td> € ".number_format($dance->getPrice(), 2) . "</td>";
+                    echo "</tr>";
+                }
+                }
+        ?>
         </table>
         <div class="text-center container justify-content-center">
             <button class="btn-purple">Get a Ticket</button>
@@ -144,31 +188,28 @@ include __DIR__ . '/../header.php';
     <div class="text-left container" id="schedule-side">
             <h1 class="Dance-Title"> saturday tickets </h1>
             <!-- TABLE WITH SCHEDULE -->
-            <table class="table table-striped" id="table2">
-                <thead>
-                    <tr>
-                    <th scope="col">Time</th>
-                    <th scope="col">Artist</th>
-                    <th scope="col">Venue</th>
-                    <th scope="col">Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>bing</td>
-                    <td>bong</td>
-                    <td>bing</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>bing</td>
-                    <td>bong</td>
-                    <td>bing</td>
-                    </tr>
-                </tbody>
+            <table class="table table-striped" >
+        <?php
+            //HTML table
+            echo "<tr><th>Start Time</th><th>Artist</th><th>Venue</th><th>Price</th></tr>";
+            foreach ($danceEvents as $dance) {
+                if (date('Y-m-d', strtotime($dance->getDate())) === '2023-07-28') {
+                    $artists = $dance->getArtists(); // assuming this method returns an array of Artist objects
+                    $artistNames = array_map(function($artist) {
+                        return $artist->getName();
+                    }, $artists);
+
+                    $artistNamesString = implode(', ', $artistNames);
+                    // Loop through each row in the result set and display the data in the table
+                    echo "<tr>";
+                    echo "<td>" . $dance->getStartTime() . "</td>";
+                    echo "<td>" . $artistNamesString . "</td>";
+                    echo "<td>" . $dance->getVenue()->getName() . "</td>";
+                    echo "<td> € ".number_format($dance->getPrice(), 2) . "</td>";
+                    echo "</tr>";
+                }
+                }
+        ?>
             </table>
             <div class="text-center container justify-content-center">
                 <button class="btn-purple">Get a Ticket</button>
@@ -182,31 +223,28 @@ include __DIR__ . '/../header.php';
     <div class="text-right container" id="schedule-side">
         <h1 class="Dance-Title"> Sunday tickets </h1>
         <!-- TABLE WITH SCHEDULE -->
-        <table class="table table-striped" id="table2">
-            <thead>
-                <tr>
-                <th scope="col">Time</th>
-                <th scope="col">Artist</th>
-                <th scope="col">Venue</th>
-                <th scope="col">Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td>bing</td>
-                <td>bong</td>
-                <td>bing</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                <th scope="row">2</th>
-                <td>bing</td>
-                <td>bong</td>
-                <td>bing</td>
-                </tr>
-            </tbody>
+        <table class="table table-striped" >
+        <?php
+            //HTML table
+            echo "<tr><th>Start Time</th><th>Artist</th><th>Venue</th><th>Price</th></tr>";
+            foreach ($danceEvents as $dance) {
+                if (date('Y-m-d', strtotime($dance->getDate())) === '2023-07-29') {
+                    $artists = $dance->getArtists(); // assuming this method returns an array of Artist objects
+                    $artistNames = array_map(function($artist) {
+                        return $artist->getName();
+                    }, $artists);
+
+                    $artistNamesString = implode(', ', $artistNames);
+                    // Loop through each row in the result set and display the data in the table
+                    echo "<tr>";
+                    echo "<td>" . $dance->getStartTime() . "</td>";
+                    echo "<td>" . $artistNamesString . "</td>";
+                    echo "<td>" . $dance->getVenue()->getName() . "</td>";
+                    echo "<td> € ".number_format($dance->getPrice(), 2) . "</td>";
+                    echo "</tr>";
+                }
+                }
+        ?>
         </table>
         <div class="text-center container justify-content-center">
             <button class="btn-purple">Get a Ticket</button>

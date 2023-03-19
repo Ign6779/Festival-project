@@ -1,0 +1,97 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: mysql
+-- Generation Time: Mar 18, 2023 at 04:54 PM
+-- Server version: 10.9.4-MariaDB-1:10.9.4+maria~ubu2204
+-- PHP Version: 8.0.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `festival`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `artist`
+--
+
+CREATE TABLE `artist` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(1000) DEFAULT NULL,
+  `song` varchar(400) DEFAULT NULL,
+  `top_song` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `artist`
+--
+
+INSERT INTO `artist` (`id`, `name`, `description`, `song`, `top_song`) VALUES
+(1, 'Gumbo Kings', NULL, NULL, NULL),
+(2, 'Evolve', NULL, NULL, NULL),
+(3, 'Ntjam Rosie', NULL, NULL, NULL),
+(4, 'Wicked Jazz Sounds', NULL, NULL, NULL),
+(5, 'Tom Thomsom Assemble', NULL, NULL, NULL),
+(6, 'Jonna Frazer', NULL, NULL, NULL),
+(7, 'Fox & The Mayors', NULL, NULL, NULL),
+(8, 'Uncle Sue', NULL, NULL, NULL),
+(9, 'Chris Allen', NULL, NULL, NULL),
+(10, 'Myles Sanko', NULL, NULL, NULL),
+(11, 'Ruis Soundsystem', NULL, NULL, NULL),
+(12, 'The Family XL', NULL, NULL, NULL),
+(13, 'Gare du Nord', NULL, NULL, NULL),
+(14, 'Rilan & The Bombadiers', NULL, NULL, NULL),
+(15, 'Soul Six', NULL, NULL, NULL),
+(16, 'Han Bennink', NULL, NULL, NULL),
+(17, 'The Nordanians', NULL, NULL, NULL),
+(18, 'Lilith Merlot', NULL, NULL, NULL),
+(19, 'Ruis Soundsystem', NULL, NULL, NULL),
+(20, 'Wicked Jazz Sounds', NULL, NULL, NULL),
+(21, 'Evolve', NULL, NULL, NULL),
+(22, 'The Nordanians', NULL, NULL, NULL),
+(23, 'Gumbo Kings', NULL, NULL, NULL),
+(24, 'Gare du Nord', NULL, NULL, NULL),
+(25, 'Hardwell', 'DJ Hardwell, also known as Robbert van de Corput, is a Dutch DJ, record producer, and remixer. He gained global recognition with his hit tracks such as \"Spaceman,\" \"Apollo,\" and \"Dare You,\" and has been ranked as one of the world\'s top DJs multiple times by DJ Magazine\'s Top 100 DJs poll. Hardwell has performed at major music festivals and events worldwide, including Tomorrowland, Ultra Music Festival, and Electric Daisy Carnival, and has his own record label, Revealed Recordings, which showcases up-and-coming talent in the electronic dance music scene.\r\n', 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/343304675&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', 'Power by Hardwell & KSHMR'),
+(26, 'Armin van Buuren', 'Armin van Buuren is a Dutch DJ, record producer, and remixer who is widely regarded as one of the most influential figures in the trance music genre. He has been named the world\'s number one DJ five times by DJ Magazine\'s Top 100 DJs poll and has won numerous other awards for his music and performances. Van Buuren is known for his uplifting and emotional tracks, including \"Communication,\" \"In and Out of Love,\" and \"This Is What It Feels Like.\"', 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/444317886&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', 'Blah Blah Blah by Armin van Buuren'),
+(27, 'Martin Garrix', 'Martin Garrix, born Martijn Gerard Garritsen, is a Dutch DJ, record producer, and musician. He is best known for his hit single \"Animals,\" which reached the top of the charts in several countries in 2013. Since then, Garrix has released numerous successful tracks, including \"Scared to be Lonely,\" \"There for You,\" and \"Ocean.\" He has been named the world\'s number one DJ by DJ Magazine\'s Top 100 DJs poll in 2016, and continues to be a prominent figure in the electronic dance music scene. Garrix has performed at major music festivals and events around the world, and also runs his own record label, STMPD RCRDS, which supports and showcases emerging artists.', 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/276648788&color=%2355b9de&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', 'In the Name of Love by Martin Garrix'),
+(28, 'Tiesto', 'Tiesto, born Tijs Michiel Verwest, is a Dutch DJ, record producer, and remixer who is widely regarded as one of the pioneers of the electronic dance music scene. He has won numerous awards for his music and performances, including a Grammy Award for Best Remixed Recording, and has been named the world\'s number one DJ by DJ Magazine\'s Top 100 DJs poll three times. Tiesto is known for his blend of trance, house, and techno music, and has produced numerous hit tracks, including \"Adagio for Strings,\" \"Traffic,\" and \"Red Lights.\"\r\n', 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/128680427&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', 'In My Mind (Axwell Mix) by Tiësto'),
+(29, 'Nicky Romero', 'Nicky Romero is a Dutch DJ, record producer, and remixer who has become known for his blend of progressive house and electro house music. He gained recognition with his hit tracks \"Toulouse\" and \"I Could Be the One\" (with Avicii), and has since released numerous successful tracks, such as \"Symphonica,\" \"Legacy,\" and \"Like Home.\" Romero has performed at major music festivals and events worldwide, including Tomorrowland, Ultra Music Festival, and Electric Daisy Carnival, and has been named one of the world\'s top DJs by DJ Magazine\'s Top 100 DJs poll.\r\n', 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1430787265&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', 'Turn Off The Lights by Nicky Romero\r\n'),
+(30, 'Afrojack', 'Afrojack, born Nick Leonardus van de Wall, is a Dutch DJ, record producer, and remixer who has become a prominent figure in the electronic dance music scene. He is known for his energetic and upbeat tracks, including \"Take Over Control,\" \"The Spark,\" and \"Ten Feet Tall,\" and has collaborated with numerous artists such as David Guetta, Pitbull, and Steve Aoki. Afrojack has performed at major music festivals and events worldwide, including Tomorrowland, Ultra Music Festival, and Electric Daisy Carnival, and has won several awards for his music and performances.\r\n', 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1301636533&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', 'Worlds On Fire by Afrojack and R3HAB\r\n');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `artist`
+--
+ALTER TABLE `artist`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `artist`
+--
+ALTER TABLE `artist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

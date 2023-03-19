@@ -71,13 +71,66 @@ font-size: 18px;
         </div>
 
         <div>
-            <input class="number-box" type="text">
+            <input id="final-number" class="number-box" type="text">
         </div>
     </div>
 
-    <button class="btn-scan" onclick="giveHint()">
-        check
-    </button>
-</div>
+    <div id="congratulations-msg" class="container w-80 congratulations-msg d-none">
+        <div class="row justify-content-end ">
+            <button class="col-2 btn-close-conmsg" onclick="closeCongratulationsMsg()">
+                X
+            </button>
+        </div>
 
+        <div class="row justify-content-center">
+            <img class="col-3 " src="/img/correct-icon.png" alt="correct-icon.png">
+        </div>
+
+        <div class="row justify-content-center">
+            <p class="col">Congratulations you got the math problem correct. It was right because
+                you
+                added and subtracted
+                correctly.
+            </p>
+        </div>
+
+        <div class="row justify-content-center">
+            <p class="col text-center">Click on the lamp to get some awesome mathematical facts. </p>
+        </div>
+    </div>
+    <button id="btn-check" class="btn-scan-check" style="display: none;">
+        Next
+    </button>
+
+</div>
+<script>
+
+    const numbers = ["5", "7", "18", "92", "32", "54"];
+    var inputs = document.querySelectorAll("input").forEach(input => {
+        input.addEventListener("input", event => {
+            input.className = "";
+            if (numbers.includes(input.value)) {
+                input.classList.add("number-box-correct");
+                const index = numbers.indexOf(input.value);
+                numbers.splice(index, 1);
+                if (input.id == "final-number") {
+                    document.getElementById("congratulations-msg").classList.remove("d-none");
+                    document.getElementById("congratulations-msg").classList.add("d-block");
+                }
+            }
+            else if (input.value == "") {
+                input.classList.add("number-box");
+            }
+            else {
+                input.classList.add("number-box-wrong");
+            }
+        })
+    });
+
+    function closeCongratulationsMsg() {
+        document.getElementById("congratulations-msg").classList.remove("d-block");
+        document.getElementById("congratulations-msg").classList.add("d-none");
+        document.getElementById("btn-check").style.display = "block";
+    }
+</script>
 </body>

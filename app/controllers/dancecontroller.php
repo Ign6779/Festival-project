@@ -1,16 +1,18 @@
 <?php
 require __DIR__ . '/controller.php';
+require __DIR__ . '/../services/danceservice.php';
 
 class DanceController extends Controller {
 
-    //private $userService;
+    private $danceService;
 
     public function __construct(){
-        //$this->userService = new UserService();
+        $this->danceService = new DanceService();
     }
 
 
     public function index(){
+        $danceEvents = $this->danceService->getAll();
         require __DIR__ . '/../views/festival/dance.php';
     }
 }
