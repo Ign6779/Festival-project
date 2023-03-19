@@ -71,9 +71,9 @@ include __DIR__ . '/../header.php';
           console.log(restaurant); //just double checking
           const restaurantInfoDiv = document.getElementById('restaurant-aside');
           restaurantInfoDiv.innerHTML = `
-          <h2>${restaurant.name}</h2>
-              <img src="/../img/${restaurant.image}">
-              <p>${restaurant.content}</p>
+            <h2>${restaurant.name}</h2>
+            <img src="/../img/${restaurant.image}">
+            <p>${restaurant.content}</p>
           `;
 
           // display the restaurant info div
