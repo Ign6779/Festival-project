@@ -17,4 +17,8 @@ class JazzService {
         $dates = $this->repository->getDatesOfEvents();
         return $dates;
     }
+
+    public function getByDate($date) {
+        return $this->repository->getByDate($date);
+    }
 }

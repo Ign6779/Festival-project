@@ -47,7 +47,7 @@ include __DIR__ . '/../header.php';
                     ?>
                     <div class="col-sm-3">
                         <button id=<?= $jazzButtonName ?> class="button-container"
-                            onclick="changeButtonStyle(<?= array_search($date, $dates); ?>)">
+                            onclick="filterByDate('<? echo $date ?>')">
                             <h3>
                                 <? echo $dayNumber; ?>
                             </h3>
@@ -73,65 +73,29 @@ include __DIR__ . '/../header.php';
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                    <div class="item active">
-                        <div class="cards-wrapper">
-                            <?php
-                            for ($i = 0; $i < 3; $i++) {
-                                ?>
-                                <div class="card">
-                                    <img class="card-img-top" src="/img/jazz-11-ntjam-rosie.png" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                            the
-                                            bulk
-                                            of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Buy ticket</a>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="cards-wrapper">
-                            <?php
-                            for ($i = 0; $i < 3; $i++) {
-                                ?>
-                                <div class="card">
-                                    <img class="card-img-top" src="/img/jazz-16-rilan-and-the-bombadiers.png" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                            the
-                                            bulk
-                                            of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Buy ticket</a>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Left and right controls -->
-                <div class="row">
-                    <div class="col-sm-11 btn-carousel">
-                        <a class="carousel-control" href="#myCarousel" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-1 btn-carousel"><a class="carousel-control" href="#myCarousel" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
+                    <div id="carousel-item-0" class="carousel-item active"></div>
+                    <div id="carousel-item-1" class="carousel-item"></div>
                 </div>
             </div>
-        </section>
-    </section>
+
+            <!-- Left and right controls -->
+            <div class="row">
+                <div class="col-sm-11 btn-carousel">
+                    <a class="carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" onclick="chgSlide()"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </div>
+
+                <div class="col-sm-1 btn-carousel"><a class="carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" onclick="chgSlide()"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+</div>
+</section>
+</section>
 
 </div class="containe-pages">
 <!-- Jazz Detailed Pages -->
@@ -205,7 +169,7 @@ include __DIR__ . '/../header.php';
     </script>
 
 <script>
-    // Functions
+    filterByDate('2023-07-26');
 
     function changeButtonStyle(number) {
 
@@ -230,6 +194,107 @@ include __DIR__ . '/../header.php';
         document.getElementById(nameOfTheButton).style.borderColor = "#111D4A";
         document.getElementById(nameOfTheButton).style.background = "white";
         document.getElementById(nameOfTheButton).style.color = "#111D4A";
+    }
+
+    function filterByDate(date) {
+        var index = <?php echo json_encode($dates); ?>.indexOf(date);
+        changeButtonStyle(index);
+
+        fetch('http://localhost/api/jazz/getByDate?date=' + date, {
+            method: 'GET'
+        })
+            .then(result => result.json())
+            .then((data) => {
+                middleIndex = Math.floor(data.length / 2);
+
+                firstHalf = data.slice(0, middleIndex);
+                secondHalf = data.slice(middleIndex);
+
+                console.log(data);
+
+                var carouselActive = document.getElementsByClassName("carousel-item")[0];
+                var carouselInactive = document.getElementsByClassName("carousel-item")[1];
+
+                carouselActive.innerHTML = "";
+                carouselInactive.innerHTML = "";
+
+                var divCardW1 = document.createElement("div");
+                var divCardW2 = document.createElement("div");
+                divCardW1.className = "cards-wrapper";
+                divCardW2.className = "cards-wrapper";
+
+                carouselActive.appendChild(divCardW1);
+
+                firstHalf.forEach(loadFirstHalf);
+
+                carouselInactive.appendChild(divCardW2);
+
+                secondHalf.forEach(loadSecondHalf);
+            })
+            .catch(err => console.error(err));
+    }
+
+
+    function loadFirstHalf(card) {
+        var carousel = document.getElementsByClassName("cards-wrapper")[0];
+
+        divCard = document.createElement("div");
+        divCardBody = document.createElement("div");
+        header = document.createElement("h5");
+        par = document.createElement("p");
+        img = document.createElement("img");
+
+        divCard.className = "card";
+        divCardBody.className = "card-body";
+        img.className = "card-img-top";
+        header.className = "card-title";
+        par.className = "card-text";
+
+        header.innerHTML = card.date;
+
+        divCardBody.appendChild(header);
+        divCardBody.appendChild(par);
+
+        divCard.appendChild(img);
+        divCard.appendChild(divCardBody);
+
+        carousel.appendChild(divCard);
+    }
+
+    function loadSecondHalf(card) {
+        var carousel = document.getElementsByClassName("cards-wrapper")[1];
+
+        divCard = document.createElement("div");
+        divCardBody = document.createElement("div");
+        header = document.createElement("h5");
+        par = document.createElement("p");
+        img = document.createElement("img");
+
+        divCard.className = "card";
+        divCardBody.className = "card-body";
+        img.className = "card-img-top";
+        header.className = "card-title";
+        par.className = "card-text";
+
+        header.innerHTML = card.startTime;
+
+        divCardBody.appendChild(header);
+        divCardBody.appendChild(par);
+
+        divCard.appendChild(img);
+        divCard.appendChild(divCardBody);
+
+        carousel.appendChild(divCard);
+    }
+
+    function chgSlide() {
+        element1 = document.getElementById("carousel-item-0");
+        element2 = document.getElementById("carousel-item-1");
+
+        tempClassName = element1.className;
+
+        element1.className = element2.className;
+        element2.className = tempClassName;
     }
 
 </script>
