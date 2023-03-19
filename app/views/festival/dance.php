@@ -48,23 +48,27 @@ include __DIR__ . '/../header.php';
     </div>
 </div>
 <!-- detail pages 2 -->
-        <?php
-            foreach ($artists as $artist) {
-                if ($artist->getName() == "Martin Garrix") {
-                    $name = $artist->getName();
-                    $description = $artist.getDescription();
-                    $images = $artist.getImages();
-                    $song = $artist.getSong();
-                    $topSong = $artist.getTopSong();
-                }
-            }
-        ?>
+<?php
+    foreach ($artists as $artist) {
+        $name;
+        $description;
+        $images;
+        $song;
+        $topSong;
+        if ($artist->getId() == 27) {
+            $name = $artist->getName();
+            $description = $artist.getDescription();
+            $images = $artist.getImages();
+            $song = $artist.getSong();
+            $topSong = $artist.getTopSong();
+        }
+    }
+?>
 <div class="text-center container-fluid" id="detailPage">
     <div class="text-center container" id="detail-page-block">
-        <h1 class="artist-name"><?php 
-        echo $name?></h1>
-        <p class="artist-description">“Martijn Gerard Garritsen, known professionally as Martin Garrix, is a Dutch DJ and record producer. Active since 2012, Garrix has had a number of hits. He was also ranked number one on DJ Mag’s Top 100 DJ list in 2016, 2017, and 2018. Garrix has performed at diverse festivals like Coachella, Electric Daisy Carnival, Ultra Music Festival, and Tomorrowland.”<small><br>https://nexus.radio/news/martin-garrix</small></p>
-        <!-- <div class="artist-polaroids"> -->
+        <h1 class="artist-name"><?php echo $name ?></h1>
+        <p class="artist-description"><?php echo $description ?></p>
+        <!-- make into a foreach image in artist loop -->
           <div id="polaroid1"><img class="polaroid-pic" src="/img/MG-pic-1.png" alt="pic1">
               <div class="caption"></div>
           </div>
@@ -74,12 +78,9 @@ include __DIR__ . '/../header.php';
           <div id="polaroid3"><img class="polaroid-pic" src="/img/MG-pic-3.png" alt="pic3">
               <div class="caption"></div>
           </div>
-        <!-- </div> -->
 
         <div class="artist-songs" id="top3songs">
-          <div><img src="/img/MG-song-1.png" alt="song1"><p>In the name of love</p><small>1,192,854,477 streams on spotify</small></div>
-          <div><img src="/img/MG-song-2.png" alt="song2"><p>Scared to be lonely</p><small>1,080,844,389 streams on spotify</small></div>
-          <div><img src="/img/MG-song-3.png" alt="song3"><p>Summer days</p><small>560,694,909  streams on spotify</small></div>
+          <div><p>Top Song: <?php echo $topSong ?></p>
         </div>
         <!-- MEDIA PLAYER -->
         <div class="audio-player">

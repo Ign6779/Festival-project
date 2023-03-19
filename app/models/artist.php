@@ -66,7 +66,7 @@ class Artist implements \JsonSerializable {
         return $this;
     }
     public function addImage(Image $Image) {
-        $this->images[] = $image;
+        $this->images[] = $Image;
     }
 }
 ?>

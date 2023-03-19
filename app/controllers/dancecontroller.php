@@ -13,6 +13,7 @@ class DanceController extends Controller {
 
     public function index(){
         $danceEvents = $this->danceService->getAll();
+        $artists = $this->danceService->getArtists();
         require __DIR__ . '/../views/festival/dance.php';
     }
 }
