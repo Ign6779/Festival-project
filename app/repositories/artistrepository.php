@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/repository.php';
-require __DIR__ . '/../models/dance.php';
+require __DIR__ . '/../models/artist.php';
+
 
 class ArtistRepository extends Repository {
     public function getAll() {
@@ -10,18 +11,29 @@ class ArtistRepository extends Repository {
             JOIN artistImages ON artist.id = artistImages.artist_id;");
             $stmt->execute();
 
-            $artistImages = [];
+            $artists = [];
 
             while ($row = $stmt->fetch()) {
-                $imageId = $row['id'];
+                $artistId = $row['id'];
+                if (!isset($artists[$artistId])) { 
+                    $artist = new Artist();
+                    $artist->setId($row['id']);
+                    $artist->setName($row['name']);
+                    $artist->setSong($row['song']);
+                    $artist->setTopSong($row['top_song']);
+                    $artist->setDescription($row['description'])
+
+                    $artists[$artistId] = $artist;
+                }
                 $image = new Image();
                 $image->setId($row['id']);
                 $image->setName($row['image']);
                 $image->setArtistId($row['artist_id']);
-                $artistImages[$imageId]->addImage($image);
+
+                $artists[$artistId]->addImage($image);
             }
 
-            return array_values($danceEvents);
+            return array_values($artists);
         }
         catch (PDOException $e) {
             echo $e;

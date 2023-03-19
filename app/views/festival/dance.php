@@ -48,9 +48,21 @@ include __DIR__ . '/../header.php';
     </div>
 </div>
 <!-- detail pages 2 -->
+        <?php
+            foreach ($artists as $artist) {
+                if ($artist->getName() == "Martin Garrix") {
+                    $name = $artist->getName();
+                    $description = $artist.getDescription();
+                    $images = $artist.getImages();
+                    $song = $artist.getSong();
+                    $topSong = $artist.getTopSong();
+                }
+            }
+        ?>
 <div class="text-center container-fluid" id="detailPage">
     <div class="text-center container" id="detail-page-block">
-        <h1 class="artist-name">Martin Garrix</h1>
+        <h1 class="artist-name"><?php 
+        echo $name?></h1>
         <p class="artist-description">“Martijn Gerard Garritsen, known professionally as Martin Garrix, is a Dutch DJ and record producer. Active since 2012, Garrix has had a number of hits. He was also ranked number one on DJ Mag’s Top 100 DJ list in 2016, 2017, and 2018. Garrix has performed at diverse festivals like Coachella, Electric Daisy Carnival, Ultra Music Festival, and Tomorrowland.”<small><br>https://nexus.radio/news/martin-garrix</small></p>
         <!-- <div class="artist-polaroids"> -->
           <div id="polaroid1"><img class="polaroid-pic" src="/img/MG-pic-1.png" alt="pic1">

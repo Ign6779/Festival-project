@@ -1,4 +1,6 @@
 <?php
+require __DIR__ . '/image.php';
+
 class Artist implements \JsonSerializable {
     private int $id;
     private string $name;
