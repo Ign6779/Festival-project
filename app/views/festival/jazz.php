@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . '/../header.php';
-include '/app/models/jazz.php';
+// include '/app/models/jazz.php';
 ?>
 <!-- Header of the jazz page -->
 <div>
@@ -48,8 +48,12 @@ include '/app/models/jazz.php';
                     <div class="col-sm-3">
                         <button id=<?= $jazzButtonName ?> class="button-container"
                             onclick="changeButtonStyle(<?= array_search($date, $dates); ?>)">
-                            <h3><?echo $dayNumber;?></h3>
-                            <h5><?echo $dayName;?></h5>
+                            <h3>
+                                <? echo $dayNumber; ?>
+                            </h3>
+                            <h5>
+                                <? echo $dayName; ?>
+                            </h5>
                         </button>
                     </div>
                     <?php
@@ -70,62 +74,42 @@ include '/app/models/jazz.php';
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <?php
-                        foreach ($sortedEvents as $event){
-
-                        ?>
                         <div class="cards-wrapper">
-                            <div class="card">
-                                <img class="card-img-top" src="/img/jazz-11-ntjam-rosie.png" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the
-                                        bulk
-                                        of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Buy ticket</a>
+                            <?php
+                            for ($i = 0; $i < 3; $i++) {
+                                ?>
+                                <div class="card">
+                                    <img class="card-img-top" src="/img/jazz-11-ntjam-rosie.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up
+                                            the
+                                            bulk
+                                            of the card's content.</p>
+                                        <a href="#" class="btn btn-primary">Buy ticket</a>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php } ?>
                         </div>
-                        <?php } ?>
                     </div>
 
                     <div class="item">
                         <div class="cards-wrapper">
-                            <div class="card">
-                                <img class="card-img-top" src="/img/jazz-12-jonna-fraser.png" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the
-                                        bulk
-                                        of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Buy ticket</a>
+                            <?php
+                            for ($i = 0; $i < 3; $i++) {
+                                ?>
+                                <div class="card">
+                                    <img class="card-img-top" src="/img/jazz-16-rilan-and-the-bombadiers.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up
+                                            the
+                                            bulk
+                                            of the card's content.</p>
+                                        <a href="#" class="btn btn-primary">Buy ticket</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card">
-                                <img class="card-img-top" src="/img/jazz-13-thomson-assemble.png" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the
-                                        bulk
-                                        of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Buy ticket</a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <img class="card-img-top" src="/img/jazz-14-wicked-jazz-sounds.png"
-                                    alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the
-                                        bulk
-                                        of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Buy ticket</a>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
