@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . '/../header.php';
+include '/app/models/jazz.php';
 ?>
 <!-- Header of the jazz page -->
 <div>
@@ -39,14 +40,16 @@ include __DIR__ . '/../header.php';
                 <p>select date</p>
             </div>
             <div class="row">
-                <?php foreach ($dates as $date) { 
+                <?php foreach ($dates as $date) {
                     $jazzButtonName = "jazz-button-" . array_search($date, $dates);
+                    $dayNumber = date('d', strtotime($date));
+                    $dayName = date('D', strtotime($date));
                     ?>
                     <div class="col-sm-3">
-                        <button id=<?= $jazzButtonName ?>  class="button-container"
+                        <button id=<?= $jazzButtonName ?> class="button-container"
                             onclick="changeButtonStyle(<?= array_search($date, $dates); ?>)">
-                            <h3>Thu</h3>
-                            <h5>26th</h5>
+                            <h3><?echo $dayNumber;?></h3>
+                            <h5><?echo $dayName;?></h5>
                         </button>
                     </div>
                     <?php
@@ -67,30 +70,11 @@ include __DIR__ . '/../header.php';
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
+                        <?php
+                        foreach ($sortedEvents as $event){
+
+                        ?>
                         <div class="cards-wrapper">
-                            <div class="card">
-                                <img id="card-0" class="card-img-top" src="/img/jazz-9-gumbo-kings.png"
-                                    alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the
-                                        bulk
-                                        of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Buy ticket</a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <img class="card-img-top" src="/img/jazz-10-evolve.png" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the
-                                        bulk
-                                        of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Buy ticket</a>
-                                </div>
-                            </div>
                             <div class="card">
                                 <img class="card-img-top" src="/img/jazz-11-ntjam-rosie.png" alt="Card image cap">
                                 <div class="card-body">
@@ -103,6 +87,7 @@ include __DIR__ . '/../header.php';
                                 </div>
                             </div>
                         </div>
+                        <?php } ?>
                     </div>
 
                     <div class="item">
@@ -184,7 +169,19 @@ include __DIR__ . '/../header.php';
         <div id="map">
         </div>
         <div class="venues-details">
-            more details about the locations
+            <h1 class="map-title">Haarlem map</h1>
+            <div class="locations">
+                <p class="map-text">Haarlem, Station Ingang, Haarlem</p>
+                <p class="map-text">Grote Markt, Haarlem</p>
+                <p class="map-text">Patronaat Zijlsingel 2 2013 DN Haarlem</p>
+            </div>
+            <div class="information">
+                <p>e-mail: info@patronaat.nl </p>
+                <p>phone: 023 - 517 58 50 (office) - during</p>
+                <p>office hours 10.00 u - 17.00 u</p>
+                <p>023 - 517 58 58 cash desk </p>
+                <p>information number</p>
+            </div>
         </div>
     </div>
 </section>
@@ -248,17 +245,7 @@ include __DIR__ . '/../header.php';
     function resetCssStyle(nameOfTheButton) {
         document.getElementById(nameOfTheButton).style.borderColor = "#111D4A";
         document.getElementById(nameOfTheButton).style.background = "white";
-        // document.getElementById(nameOfTheButton).onmouseout = function() { mouseOut(nameOfTheButton, '#2E9B7B')};
-        // document.getElementById(nameOfTheButton).onmouseover = function() { mouseOver(nameOfTheButton)};
         document.getElementById(nameOfTheButton).style.color = "#111D4A";
     }
-
-    // function mouseOver(nameOfTheButton) {
-    //     document.getElementById(nameOfTheButton).style.background = "#CB8803";
-    // }
-
-    // function mouseOut(nameOfTheButton, color) {
-    //     document.getElementById(nameOfTheButton).style.background = color;
-    // }
 
 </script>
