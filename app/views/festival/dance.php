@@ -49,13 +49,13 @@ include __DIR__ . '/../header.php';
 </div>
 <!-- detail pages 2 -->
 <?php
-    foreach ($artists as $artist) {
         $name;
-        $description;
-        $images;
-        $song;
-        $topSong;
-        if ($artist->getId() == 27) {
+        $description = "";
+        $images = [];
+        $song = "";
+        $topSong = "";
+    foreach ($artists as $artist) {
+        if ($artist->getId() == 27) { //this is for testing and will be changed
             $name = $artist->getName();
             $description = $artist.getDescription();
             $images = $artist.getImages();
@@ -68,23 +68,21 @@ include __DIR__ . '/../header.php';
     <div class="text-center container" id="detail-page-block">
         <h1 class="artist-name"><?php echo $name ?></h1>
         <p class="artist-description"><?php echo $description ?></p>
-        <!-- make into a foreach image in artist loop -->
-          <div id="polaroid1"><img class="polaroid-pic" src="/img/MG-pic-1.png" alt="pic1">
-              <div class="caption"></div>
-          </div>
-          <div id="polaroid2"><img class="polaroid-pic" src="/img/MG-pic-2.png" alt="pic2">
-              <div class="caption"></div>
-          </div>
-          <div id="polaroid3"><img class="polaroid-pic" src="/img/MG-pic-3.png" alt="pic3">
-              <div class="caption"></div>
-          </div>
+          <?php
+          foreach ($images as $image) {
+            $id = "polaroid" . ($index + 1);
+            echo '<div id="' . $id . '"><img class="polaroid-pic" src="/img/' . $image . '" alt="pic' . ($index + 1) . '">';
+            echo '<div class="caption"></div>';
+            echo '</div>';
+                }
+            ?>
 
         <div class="artist-songs" id="top3songs">
           <div><p>Top Song: <?php echo $topSong ?></p>
         </div>
         <!-- MEDIA PLAYER -->
         <div class="audio-player">
-          <p>In the name of love - Martin Garrix</p>
+          <p><?php echo $topSong ?></p>
           <iframe width="auto" height="100px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/276648788&color=%2355b9de&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/martingarrixmusic" title="Martin Garrix" target="_blank" style="color: #cccccc; text-decoration: none;">Martin Garrix</a> · <a href="https://soundcloud.com/martingarrixmusic/in-the-name-of-love" title="In the Name of Love" target="_blank" style="color: #cccccc; text-decoration: none;">In the Name of Love</a></div>
         </div>
     </div>
