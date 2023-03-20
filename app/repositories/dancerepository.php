@@ -53,7 +53,7 @@ class DanceRepository extends Repository {
 
     public function getArtists(){
         try{
-            $stmt = $this->connection->prepare("SELECT artist.*, artistImages.image AS artistImage, artistImages.id AS imageId FROM artist INNER JOIN artistImages ON artist.id = artistImages.artist_id;");
+            $stmt = $this->connection->prepare("SELECT artist.id, artist.name AS name, artist.description AS description, artist.song AS song, artist.top_song AS top_song, artistImages.image AS artistImage, artistImages.id AS imageId FROM artist INNER JOIN artistImages ON artist.id = artistImages.artist_id;");
             $stmt->execute();
             $artists = [];
             while ($row = $stmt->fetch()) {
@@ -71,10 +71,11 @@ class DanceRepository extends Repository {
                 $image->setId($row['imageId']);
                 $image->setName($row['artistImage']);
                 $image->setArtistId($row['id']);
-                $artist->addImage($image);
+                
+                $artists[$artistId]->addImage($image);
 
-                return array_values($artists);
             }
+            return array_values($artists);
         }
         catch (PDOException $e) {
             echo $e;

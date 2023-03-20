@@ -18,74 +18,22 @@ include __DIR__ . '/../header.php';
 </div>
 
 <!-- detail pages 1 -->
-<div class="text-center container-fluid" id="detailPage">
-    <div class="text-center container" id="detail-page-block">
-        <h1 class="artist-name">Hardwell</h1>
-        <p class="artist-description">“Throughout his expansive career as a successful DJ, producer, remixer, label boss, filmmaker, and philanthropist, former 2 x World No.1 DJ, Hardwell has carved out a long-lasting legacy within the electronic music world.”<small><br>https://www.djhardwell.com/biography</small></p>
-        <!-- <div class="artist-polaroids"> -->
-          <div id="polaroid1" ><img class="polaroid-pic" src="/img/hardwell-pic-1.png" alt="pic1">
-              <div class="caption"></div>
-          </div>
-          <div id="polaroid2"><img class="polaroid-pic" src="/img/hardwell-pic-2.png" alt="pic2">
-              <div class="caption"></div>
-          </div>
-          <div id="polaroid3"><img class="polaroid-pic" src="/img/hardwell-pic-3.png" alt="pic3">
-              <div class="caption"></div>
-          </div>
-        <!-- </div> -->
-
-        <div class="artist-songs" id="top3songs">
-            <div><img src="/img/hardwell-song-1.png" alt="song1"><p>Power</p><small>104,227,216 streams on spotify</small></div>
-            <div><img src="/img/hardwell-song-2.png" alt="song2"><p>Don't let me down</p><small>60,046,188 streams on spotify</small></div>
-            <div><img src="/img/hardwell-song-3.png" alt="song3"><p>Bella Ciao</p><small>87,397,129 streams on spotify</small></div>
-        </div>
-        <!-- MEDIA PLAYER -->
-        
-        <div class="audio-player">
-          <p>Power - Hardwell</p>
-          <iframe width="auto" height="100px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/343304675&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/freedownloadsmusic" title="Hardwell" target="_blank" style="color: #cccccc; text-decoration: none;">Hardwell</a> · <a href="https://soundcloud.com/freedownloadsmusic/power-original-mix" title="Hardwell &amp; KSHMR - Power" target="_blank" style="color: #cccccc; text-decoration: none;">Hardwell &amp; KSHMR - Power (Original Mix)[FREE DOWNLOAD]</a></div>
-        </div>
-    </div>
+<?php
+$idForDetailPage = 25;
+?>
+<div class="detail-pages">
+        <?php
+        include __DIR__ . '/../components/page.php';
+        ?>
 </div>
 <!-- detail pages 2 -->
 <?php
-        $name;
-        $description = "";
-        $images = [];
-        $song = "";
-        $topSong = "";
-    foreach ($artists as $artist) {
-        if ($artist->getId() == 27) { //this is for testing and will be changed
-            $name = $artist->getName();
-            $description = $artist.getDescription();
-            $images = $artist.getImages();
-            $song = $artist.getSong();
-            $topSong = $artist.getTopSong();
-        }
-    }
+$idForDetailPage = 27;
 ?>
-<div class="text-center container-fluid" id="detailPage">
-    <div class="text-center container" id="detail-page-block">
-        <h1 class="artist-name"><?php echo $name ?></h1>
-        <p class="artist-description"><?php echo $description ?></p>
-          <?php
-          foreach ($images as $image) {
-            $id = "polaroid" . ($index + 1);
-            echo '<div id="' . $id . '"><img class="polaroid-pic" src="/img/' . $image . '" alt="pic' . ($index + 1) . '">';
-            echo '<div class="caption"></div>';
-            echo '</div>';
-                }
-            ?>
-
-        <div class="artist-songs" id="top3songs">
-          <div><p>Top Song: <?php echo $topSong ?></p>
-        </div>
-        <!-- MEDIA PLAYER -->
-        <div class="audio-player">
-          <p><?php echo $topSong ?></p>
-          <iframe width="auto" height="100px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/276648788&color=%2355b9de&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/martingarrixmusic" title="Martin Garrix" target="_blank" style="color: #cccccc; text-decoration: none;">Martin Garrix</a> · <a href="https://soundcloud.com/martingarrixmusic/in-the-name-of-love" title="In the Name of Love" target="_blank" style="color: #cccccc; text-decoration: none;">In the Name of Love</a></div>
-        </div>
-    </div>
+<div class="detail-pages">
+        <?php
+        include __DIR__ . '/../components/page.php';
+        ?>
 </div>
 
 <!-- schedule overview -->

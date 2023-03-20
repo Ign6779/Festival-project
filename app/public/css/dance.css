@@ -271,7 +271,7 @@
 }
 .artist-songs{
   grid-column: 6;
-  grid-row: 4;
+  grid-row: 5;
 }
 .artist-songs img{
   height: 100px;
@@ -283,5 +283,5 @@
 /* MUSIC PLAYER POSITION */
 .audio-player{
   grid-column: 6;
-  grid-row: 5;
+  grid-row: 6;
 }
