@@ -1,5 +1,14 @@
 <?php
 include __DIR__ . '/../header.php';
+
+function returnActive($count)
+{
+    $active = "";
+    if ($count == 1) {
+        $active = "active";
+    }
+    return $active;
+}
 ?>
 
 <div class="history-header">
@@ -53,7 +62,8 @@ include __DIR__ . '/../header.php';
             <? $count = 1;
             foreach ($locations as $location) {
                 ?>
-                <div id="<? echo $location->getId(); ?>" class="carousel-item <? ?>active">
+                <div id="<? echo $location->getId(); ?>" class="carousel-item <? echo returnActive($count);
+                   $count++; ?>">
                     <div class="d-flex justify-content-center w-100 h-100">
                         <img src="/img/<? echo $location->getImage(); ?>" class="align-middle w-50 "
                             alt="<? echo $location->getImage(); ?>">
@@ -151,7 +161,7 @@ include __DIR__ . '/../header.php';
     function getLocation(locationInput) {
         var location = document.getElementById("location-information");
         header = document.createElement("h2");
-        header.innerHTML = locationInput.location;
+        header.innerHTML = locationInput.name;
         pargraph = document.createElement("p");
         pargraph.innerHTML = locationInput.description;
         img = document.createElement("img");

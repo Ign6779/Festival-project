@@ -7,7 +7,7 @@ class LocationRepository extends Repository
     function getAll()
     {
         try {
-            $stmt = $this->connection->prepare("SELECT * FROM `locations-stops`");
+            $stmt = $this->connection->prepare("SELECT * FROM tourLocations");
             $stmt->execute();
 
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Location');
@@ -22,7 +22,7 @@ class LocationRepository extends Repository
     function getOne($id)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT * FROM `locations-stops` WHERE id = :id");
+            $stmt = $this->connection->prepare("SELECT * FROM tourLocations WHERE id = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
 
