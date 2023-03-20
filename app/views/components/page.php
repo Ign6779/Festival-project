@@ -22,11 +22,10 @@
         <p class="artist-description"><?php echo $description ?></p>
           <?php
         //   $index = 1;
+        //   $imgsrc = "";
         //   foreach ($images as $image) {
         //     $imgsrc = $image->getName();
         //     echo '<div id="polaroid"' . ($index) . '"><img class="polaroid-pic" src="/img/' . $image1->getName() . '" alt="pic' . $index . '">';
-        //     echo '<div class="caption"></div>';
-        //     echo '</div>';
         //         }
             ?>
 

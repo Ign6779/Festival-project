@@ -271,17 +271,10 @@
 }
 .artist-songs{
   grid-column: 6;
-  grid-row: 5;
-}
-.artist-songs img{
-  height: 100px;
-  width: 100px;
-  background-color: grey;
-  border-radius: 20px;
-  margin: 10px;
+  grid-row: 4;
 }
 /* MUSIC PLAYER POSITION */
 .audio-player{
   grid-column: 6;
-  grid-row: 6;
+  grid-row: 7;
 }
