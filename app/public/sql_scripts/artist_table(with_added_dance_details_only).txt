@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Mar 18, 2023 at 04:54 PM
--- Server version: 10.9.4-MariaDB-1:10.9.4+maria~ubu2204
--- PHP Version: 8.0.25
+-- Generation Time: Mar 20, 2023 at 03:38 PM
+-- Server version: 10.11.2-MariaDB-1:10.11.2+maria~ubu2204
+-- PHP Version: 8.1.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,30 +40,25 @@ CREATE TABLE `artist` (
 --
 
 INSERT INTO `artist` (`id`, `name`, `description`, `song`, `top_song`) VALUES
-(1, 'Gumbo Kings', NULL, NULL, NULL),
-(2, 'Evolve', NULL, NULL, NULL),
-(3, 'Ntjam Rosie', NULL, NULL, NULL),
-(4, 'Wicked Jazz Sounds', NULL, NULL, NULL),
-(5, 'Tom Thomsom Assemble', NULL, NULL, NULL),
-(6, 'Jonna Frazer', NULL, NULL, NULL),
-(7, 'Fox & The Mayors', NULL, NULL, NULL),
-(8, 'Uncle Sue', NULL, NULL, NULL),
-(9, 'Chris Allen', NULL, NULL, NULL),
-(10, 'Myles Sanko', NULL, NULL, NULL),
-(11, 'Ruis Soundsystem', NULL, NULL, NULL),
-(12, 'The Family XL', NULL, NULL, NULL),
-(13, 'Gare du Nord', NULL, NULL, NULL),
-(14, 'Rilan & The Bombadiers', NULL, NULL, NULL),
-(15, 'Soul Six', NULL, NULL, NULL),
-(16, 'Han Bennink', NULL, NULL, NULL),
-(17, 'The Nordanians', NULL, NULL, NULL),
-(18, 'Lilith Merlot', NULL, NULL, NULL),
-(19, 'Ruis Soundsystem', NULL, NULL, NULL),
-(20, 'Wicked Jazz Sounds', NULL, NULL, NULL),
-(21, 'Evolve', NULL, NULL, NULL),
-(22, 'The Nordanians', NULL, NULL, NULL),
-(23, 'Gumbo Kings', NULL, NULL, NULL),
-(24, 'Gare du Nord', NULL, NULL, NULL),
+(1, 'Gumbo Kings', 'These youthful artists\' interpretation of their favorite Soul & Rhythm \'n Blues is contemporary and distinctive. The Gumbo Kings live show takes place in a posh nightclub where the fun is gradually heated up to a fever pitch. They are pure romantics, these guys. Just beware of the sharp teeth.', NULL, NULL),
+(2, 'Evolve', 'The band pays tribute to a group of legendary performers who defined an era of timeless music that serves as the perfect backdrop to any special occasion. They may provide a great retro ambiance to any special gathering. They could be seen at the Haarlem Festival. What are you waiting buy a ticket...', NULL, NULL),
+(3, 'Ntjam Rosie', 'Rosie Boei, also known as Ntjam Rosie, is a Dutch-Cameroonian singer and songwriter from Rotterdam, The Netherlands. She was born on March 18, 1983, in Sonkoe, Cameroon. Her music is a fusion of pop, jazz, and soul. At the age of nine, she went to the Netherlands, where she grew up in Maastricht.', NULL, NULL),
+(4, 'Wicked Jazz Sounds', 'Since then, the name Wicked Jazz Sounds has become well-known in the Amsterdam music community. The goal of Wicked Jazz Sounds is to jam to a variety of musical styles, including jazz, hip hop, soul, funk, broken beat, house, drum & bass, and more.', NULL, NULL),
+(5, 'Tom Thomsom Assemble', 'These youthful artists\' interpretation of their favorite Soul & Rhythm \'n Blues is contemporary and distinctive. The Gumbo Kings live show takes place in a posh nightclub where the fun is gradually heated up to a fever pitch. They are pure romantics, these guys. Just beware of the sharp teeth.', NULL, NULL),
+(6, 'Jonna Frazer', 'Jonathan Jeffrey Grando is a Dutch rapper and musician of Surinamese ancestry, goes by the stage name Jonna Fraser. Since he began making hip-hop music when he was 12 years old, it has served as his outlet. Jonna always has a positive attitude and uses his lyrics to create a happy mood.', NULL, NULL),
+(7, 'Fox & The Mayors', 'Mayor Fox is the mayor of Busytown and a fox. He also wears a monacle, a top hat, and an office ribbon. Richard Scarry\'s What Do People Do All Day, The Busy World of Richard Scarry, and Richard Scarry\'s Busytown all feature him. Len Carlson provides his voice.', NULL, NULL),
+(8, 'Uncle Sue', 'Uncle Sue is a Haarlem-based seven-piece Funk and Soul Band with its own story, soul diva, and swinging wind section.\nStubborn repertoire from our own studio, as well as some lesser-known gems from our musical heroes. A vintage sound from the 1960s and 1970s.', NULL, NULL),
+(9, 'Chris Allen', 'Chris Allen was born Kristopher Neil Allen on June 21, 1985 in Jacksonville, Arkansas, USA. He is best known as the eighth season winner of American Idol. He released the album Brand New Shoes in 2007. Since September 26, 2008, he has been married to Katy Allen.', NULL, NULL),
+(10, 'Myles Sanko', 'Myles Sanko, dubbed \"the lovechild of soul music,\" began his musical career in nightclubs, singing and rapping alongside disc jockeys. He has fronted popular bands such as Bijoumiyo, as well as working with funk kings Speedometer, who were touring with James Brown\'s soul sister Ms Martha High, who is 35 years his senior.', NULL, NULL),
+(11, 'Ruis Soundsystem', 'Ruis Soundsystem was at Haarlem Jazz & More 2018. Mai multe 46 the nume, artists, DJs, acts and bands that were at Haarlem Jazz & More 2018.', NULL, NULL),
+(12, 'The Family XL', 'The Family XL plays an eclectic mix of Contemporary Jazz, R&B and Funk music, including covers and originals.', NULL, NULL),
+(13, 'Gare du Nord', 'The Gare du Nord is a jazz band from the Netherlands that specializes in blending various genres of music, such as jazz, funk, and soul. They are known for their unique sound and high-energy live performances. The band was formed in 1999 and has since released multiple albums, including their debut album \"Dutch Rhythm Combo\" in 2001, and \"Sexy Laundry\" in 2004.', NULL, NULL),
+(14, 'Rilan & The Bombadiers', 'Rilan Ramhane is a Haarlemmer who is marked by his huge afro haircut. Together with The Bombardiers he plays “rock \'n soul”. Their first single is \'Happy Jack\' and will be released in 2012. The debut EP Walking On Fire will follow in the summer of 2015.', NULL, NULL),
+(15, 'Soul Six', 'The Soul Brothers Six were an American rhythm and blues band formed in Rochester, New York, during the mid-1960s. They are best remembered for their songs \"Some Kind of Wonderful\", which was later a hit for Grand Funk Railroad and \"I\'ll Be Loving You\" which was a hit record on the 1970s Northern soul scene in the UK.', NULL, NULL),
+(16, 'Han Bennink', 'Drummer and multi-instrumentalist Han Bennink was born in Zaandam near Amsterdam in 1942. His first percussion instrument was a kitchen chair. Later his father, an orchestra percussionist, supplied him with a more conventional outfit, but Han never lost his taste for coaxing sounds from unlikely objects he finds backstage at concerts. He is still very fond of playing chairs.', NULL, NULL),
+(17, 'The Nordanians', 'These youthful artists\' interpretation of their favorite Soul & Rhythm \'n Blues is contemporary and distinctive. The Gumbo Kings live show takes place in a posh nightclub where the fun is gradually heated up to a fever pitch. They are pure romantics, these guys. Just beware of the sharp teeth.', NULL, NULL),
+(18, 'Lilith Merlot', 'Dutch singer and songwriter Lilith Merlot is known for her warm and deep voice with a timeless feel. Growing up in a family of classically trained professional musicians, Lilith was enchanted by the beauty of harmony and melody from a very young age.', NULL, NULL),
+(19, 'Ruis Soundsystem', 'Pierre Schaeffer coined the term musique concrète in 1949. He was referring to noise and tone structures that are processed electronically and reproduced through loudspeakers. In contrast to electronic music, the materials used are\'realistic\' sounds from the technical and natural environment, such as musical instruments or natural sounds.', NULL, NULL),
 (25, 'Hardwell', 'DJ Hardwell, also known as Robbert van de Corput, is a Dutch DJ, record producer, and remixer. He gained global recognition with his hit tracks such as \"Spaceman,\" \"Apollo,\" and \"Dare You,\" and has been ranked as one of the world\'s top DJs multiple times by DJ Magazine\'s Top 100 DJs poll. Hardwell has performed at major music festivals and events worldwide, including Tomorrowland, Ultra Music Festival, and Electric Daisy Carnival, and has his own record label, Revealed Recordings, which showcases up-and-coming talent in the electronic dance music scene.\r\n', 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/343304675&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', 'Power by Hardwell & KSHMR'),
 (26, 'Armin van Buuren', 'Armin van Buuren is a Dutch DJ, record producer, and remixer who is widely regarded as one of the most influential figures in the trance music genre. He has been named the world\'s number one DJ five times by DJ Magazine\'s Top 100 DJs poll and has won numerous other awards for his music and performances. Van Buuren is known for his uplifting and emotional tracks, including \"Communication,\" \"In and Out of Love,\" and \"This Is What It Feels Like.\"', 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/444317886&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', 'Blah Blah Blah by Armin van Buuren'),
 (27, 'Martin Garrix', 'Martin Garrix, born Martijn Gerard Garritsen, is a Dutch DJ, record producer, and musician. He is best known for his hit single \"Animals,\" which reached the top of the charts in several countries in 2013. Since then, Garrix has released numerous successful tracks, including \"Scared to be Lonely,\" \"There for You,\" and \"Ocean.\" He has been named the world\'s number one DJ by DJ Magazine\'s Top 100 DJs poll in 2016, and continues to be a prominent figure in the electronic dance music scene. Garrix has performed at major music festivals and events around the world, and also runs his own record label, STMPD RCRDS, which supports and showcases emerging artists.', 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/276648788&color=%2355b9de&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', 'In the Name of Love by Martin Garrix'),

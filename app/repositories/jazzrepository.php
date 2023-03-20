@@ -7,12 +7,11 @@ class JazzRepository extends Repository
     public function getAll()
     {
         try {
-            $stmt = $this->connection->prepare("SELECT j.*, v.name AS venueName, v.location,a.id as artistId, a.name AS artistName, i.source AS source
+            $stmt = $this->connection->prepare("SELECT j.*, v.name AS venueName, v.location,a.id as artistId, a.name AS artistName
             FROM jazz j 
             LEFT JOIN venue v ON j.venueId = v.id 
             LEFT JOIN jazzArtist ja ON j.id = ja.jazzId 
-            LEFT JOIN artist a ON ja.artistId = a.id
-            LEFT JOIN `image` i ON ja.artistId = i.artistId;");
+            LEFT JOIN artist a ON ja.artistId = a.id;");
             $stmt->execute();
 
             $jazzEvents = [];
@@ -28,7 +27,6 @@ class JazzRepository extends Repository
                     $jazzEvent->setEndTime($row['endTime']);
                     $jazzEvent->setAvailableTickets($row['availableTickets']);
                     $jazzEvent->setPrice($row['price']);
-                    $jazzEvent->setImgSource($row['source']);
 
                     $venue = new Venue();
                     $venue->setId($row['venueId']);
@@ -43,14 +41,6 @@ class JazzRepository extends Repository
                 $artist = new Artist();
                 $artist->setId($row['artistId']);
                 $artist->setName($row['artistName']);
-
-
-                // if ($row['source'] != null) {
-                //     $jazzEvent->setImgSource($row['source']);
-                // } else {
-                //     $jazzEvent->setImgSource("jazz-9-gumbo-kings.png");
-                // }
-
                 $jazzEvents[$jazzEventId]->addArtist($artist);
             }
 
@@ -84,12 +74,12 @@ class JazzRepository extends Repository
     public function getByDate($date)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT j.*, v.name AS venueName, v.location,a.id as artistId, a.name AS artistName, a.des AS artistDes, i.source AS source 
+            $stmt = $this->connection->prepare("SELECT j.*, v.name AS venueName, v.location,a.id as artistId, a.name AS artistName, a.description AS artistDes, i.image AS source 
             FROM jazz j
             LEFT JOIN venue v ON j.venueId = v.id 
             LEFT JOIN jazzArtist ja ON j.id = ja.jazzId 
             LEFT JOIN artist a ON ja.artistId = a.id
-            LEFT JOIN `image` i ON ja.artistId = i.artistId
+            LEFT JOIN `artistImages` i ON ja.artistId = i.artist_id
             WHERE j.date = :i;");
             $stmt->bindParam(':i', $date);
             $stmt->execute();

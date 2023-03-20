@@ -55,7 +55,26 @@ INSERT INTO `artistImages` (`id`, `artist_id`, `image`) VALUES
 (15, 28, 'Tiesto-3.jpg'),
 (16, 29, 'NR-1.jpg'),
 (17, 29, 'NR-2.jpeg'),
-(18, 29, 'NR-3.jpg');
+(18, 29, 'NR-3.jpg'),
+(19, 1, '/img/jazz-9-gumbo-kings.png'),
+(20, 2, '/img/jazz-10-evolve.png'),
+(21, 3, '/img/jazz-21-ntjam-rosie.png'),
+(22, 4, '/img/jazz-14-wicked-jazz-sounds.png'),
+(23, 5, '/img/jazz-13-thomson-assemble.png'),
+(24, 6, '/img/jazz-12-jonna-fraser.png'),
+(25, 7, '/img/jazz-23-fox-the-mayors.png'),
+(26, 8, '/img/jazz-24-uncle-sue.png'),
+(27, 9, '/img/jazz-25-chris-allen.png'),
+(28, 10, '/img/jazz-26-myles-sanko.png'),
+(29, 11, '/img/jazz-27-ruis-soundsystem.png'),
+(30, 12, '/img/jazz-28-the-family-XL.png'),
+(31, 13, '/img/jazz-15-gare-du-nord.png'),
+(32, 14, '/img/jazz-16-rilan-and-the-bombadiers.png'),
+(33, 15, '/img/jazz-17-soul-six.png'),
+(34, 16, '/img/jazz-20-han-bennink.png'),
+(35, 17, '/img/jazz-19-the-nordians.png'),
+(36, 18, '/img/jazz-18-lilith-merlot.png'),
+(37, 19, '/img/jazz-22-ruis-soundsystem.jpg');
 
 --
 -- Indexes for dumped tables
