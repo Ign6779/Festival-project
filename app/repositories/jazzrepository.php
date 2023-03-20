@@ -2,8 +2,10 @@
 require __DIR__ . '/repository.php';
 require __DIR__ . '/../models/jazz.php';
 
-class JazzRepository extends Repository {
-    public function getAll() {
+class JazzRepository extends Repository
+{
+    public function getAll()
+    {
         try {
             $stmt = $this->connection->prepare("SELECT j.*, v.name AS venueName, v.location,a.id as artistId, a.name AS artistName 
             FROM jazz j 
@@ -17,7 +19,7 @@ class JazzRepository extends Repository {
             while ($row = $stmt->fetch()) {
                 $jazzEventId = $row['id'];
 
-                if (!isset($jazzEvents[$jazzEventId])) { 
+                if (!isset($jazzEvents[$jazzEventId])) {
                     $jazzEvent = new JazzEvent();
                     $jazzEvent->setId($row['id']);
                     $jazzEvent->setDate($row['date']);
@@ -44,10 +46,31 @@ class JazzRepository extends Repository {
             }
 
             return array_values($jazzEvents);
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function getDatesOfEvents()
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT date 
+            FROM jazz GROUP BY date");
+            $stmt->execute();
+
+            $dates = [];
+            $count = 0;
+
+            while ($row = $stmt->fetch()) {
+                $dates[$count] = $row['date'];
+                $count++;
+            }
         }
         catch (PDOException $e) {
             echo $e;
         }
+
+        return $dates;
     }
 }
 ?>

@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . '/../header.php';
+// include '/app/models/jazz.php';
 ?>
 <!-- Header of the jazz page -->
 <div>
@@ -39,30 +40,25 @@ include __DIR__ . '/../header.php';
                 <p>select date</p>
             </div>
             <div class="row">
-                <div class="col-sm-3">
-                    <button id="jazz-button-0" class="button-container" onclick="changeButtonStyle(0)">
-                        <h3>Thu</h3>
-                        <h5>26th</h5>
-                    </button>
-                </div>
-                <div class="col-sm-3">
-                    <button id="jazz-button-1" class="button-container" onclick="changeButtonStyle(1)">
-                        <h3>Fri</h3>
-                        <h5>27th</h5>
-                    </button>
-                </div>
-                <div class="col-sm-3">
-                    <button id="jazz-button-2" class="button-container" onclick="changeButtonStyle(2)">
-                        <h3>Sat</h3>
-                        <h5>28th</h5>
-                    </button>
-                </div>
-                <div class="col-sm-3">
-                    <button id="jazz-button-3" class="button-container" onclick="changeButtonStyle(3)">
-                        <h3>Sun</h3>
-                        <h5>29th</h5>
-                    </button>
-                </div>
+                <?php foreach ($dates as $date) {
+                    $jazzButtonName = "jazz-button-" . array_search($date, $dates);
+                    $dayNumber = date('d', strtotime($date));
+                    $dayName = date('D', strtotime($date));
+                    ?>
+                    <div class="col-sm-3">
+                        <button id=<?= $jazzButtonName ?> class="button-container"
+                            onclick="changeButtonStyle(<?= array_search($date, $dates); ?>)">
+                            <h3>
+                                <? echo $dayNumber; ?>
+                            </h3>
+                            <h5>
+                                <? echo $dayName; ?>
+                            </h5>
+                        </button>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
 
@@ -79,78 +75,41 @@ include __DIR__ . '/../header.php';
                 <div class="carousel-inner">
                     <div class="item active">
                         <div class="cards-wrapper">
-                            <div class="card">
-                                <img id="card-0" class="card-img-top" src="/img/jazz-9-gumbo-kings.png" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the
-                                        bulk
-                                        of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Buy ticket</a>
+                            <?php
+                            for ($i = 0; $i < 3; $i++) {
+                                ?>
+                                <div class="card">
+                                    <img class="card-img-top" src="/img/jazz-11-ntjam-rosie.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up
+                                            the
+                                            bulk
+                                            of the card's content.</p>
+                                        <a href="#" class="btn btn-primary">Buy ticket</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card">
-                                <img class="card-img-top" src="/img/jazz-10-evolve.png" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the
-                                        bulk
-                                        of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Buy ticket</a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <img class="card-img-top" src="/img/jazz-11-ntjam-rosie.png" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the
-                                        bulk
-                                        of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Buy ticket</a>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
 
                     <div class="item">
                         <div class="cards-wrapper">
-                            <div class="card">
-                                <img class="card-img-top" src="/img/jazz-12-jonna-fraser.png" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the
-                                        bulk
-                                        of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Buy ticket</a>
+                            <?php
+                            for ($i = 0; $i < 3; $i++) {
+                                ?>
+                                <div class="card">
+                                    <img class="card-img-top" src="/img/jazz-16-rilan-and-the-bombadiers.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up
+                                            the
+                                            bulk
+                                            of the card's content.</p>
+                                        <a href="#" class="btn btn-primary">Buy ticket</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card">
-                                <img class="card-img-top" src="/img/jazz-13-thomson-assemble.png" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the
-                                        bulk
-                                        of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Buy ticket</a>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <img class="card-img-top" src="/img/jazz-14-wicked-jazz-sounds.png"
-                                    alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the
-                                        bulk
-                                        of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Buy ticket</a>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -194,7 +153,19 @@ include __DIR__ . '/../header.php';
         <div id="map">
         </div>
         <div class="venues-details">
-            more details about the locations
+            <h1 class="map-title">Haarlem map</h1>
+            <div class="locations">
+                <p class="map-text">Haarlem, Station Ingang, Haarlem</p>
+                <p class="map-text">Grote Markt, Haarlem</p>
+                <p class="map-text">Patronaat Zijlsingel 2 2013 DN Haarlem</p>
+            </div>
+            <div class="information">
+                <p>e-mail: info@patronaat.nl </p>
+                <p>phone: 023 - 517 58 50 (office) - during</p>
+                <p>office hours 10.00 u - 17.00 u</p>
+                <p>023 - 517 58 58 cash desk </p>
+                <p>information number</p>
+            </div>
         </div>
     </div>
 </section>
@@ -258,18 +229,7 @@ include __DIR__ . '/../header.php';
     function resetCssStyle(nameOfTheButton) {
         document.getElementById(nameOfTheButton).style.borderColor = "#111D4A";
         document.getElementById(nameOfTheButton).style.background = "white";
-        // document.getElementById(nameOfTheButton).onmouseout = function() { mouseOut(nameOfTheButton, '#2E9B7B')};
-        // document.getElementById(nameOfTheButton).onmouseover = function() { mouseOver(nameOfTheButton)};
         document.getElementById(nameOfTheButton).style.color = "#111D4A";
     }
 
-    // function mouseOver(nameOfTheButton) {
-    //     document.getElementById(nameOfTheButton).style.background = "#CB8803";
-    // }
-
-    // function mouseOut(nameOfTheButton, color) {
-    //     document.getElementById(nameOfTheButton).style.background = color;
-    // }
-
 </script>
-
