@@ -3,6 +3,8 @@ class Artist implements \JsonSerializable {
     private int $id;
     private string $name;
 
+    private string $description;
+
     #[ReturnTypeWillChange]
     public function jsonSerialize() {
         $vars = get_object_vars($this);
@@ -22,6 +24,14 @@ class Artist implements \JsonSerializable {
     }
     public function setName(string $name): self {
         $this->name = $name;
+        return $this;
+    }
+
+    public function getDescripition(): string {
+        return $this->description;
+    }
+    public function setDescription(string $description): self {
+        $this->description = $description;
         return $this;
     }
 }

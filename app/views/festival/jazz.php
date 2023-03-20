@@ -220,66 +220,48 @@ include __DIR__ . '/../header.php';
 
                 var divCardW1 = document.createElement("div");
                 var divCardW2 = document.createElement("div");
+
                 divCardW1.className = "cards-wrapper";
                 divCardW2.className = "cards-wrapper";
 
                 carouselActive.appendChild(divCardW1);
-
-                firstHalf.forEach(loadFirstHalf);
+                firstHalf.forEach((card, i) => load(card, 0));
 
                 carouselInactive.appendChild(divCardW2);
-
-                secondHalf.forEach(loadSecondHalf);
+                secondHalf.forEach((card, i) => load(card, 1));
             })
             .catch(err => console.error(err));
     }
 
 
-    function loadFirstHalf(card) {
-        var carousel = document.getElementsByClassName("cards-wrapper")[0];
+    function load(card, i) {
+        var carousel = document.getElementsByClassName("cards-wrapper")[i];
 
         divCard = document.createElement("div");
         divCardBody = document.createElement("div");
         header = document.createElement("h5");
+        par1 = document.createElement("p");
         par = document.createElement("p");
         img = document.createElement("img");
+        button = document.createElement("a");
 
         divCard.className = "card";
+        divCardBody.style.height = "320px";
         divCardBody.className = "card-body";
         img.className = "card-img-top";
         header.className = "card-title";
-        par.className = "card-text";
+        par1.className = "card-text";
+        button.className = "btn btn-primary";
 
-        header.innerHTML = card.date;
-
-        divCardBody.appendChild(header);
-        divCardBody.appendChild(par);
-
-        divCard.appendChild(img);
-        divCard.appendChild(divCardBody);
-
-        carousel.appendChild(divCard);
-    }
-
-    function loadSecondHalf(card) {
-        var carousel = document.getElementsByClassName("cards-wrapper")[1];
-
-        divCard = document.createElement("div");
-        divCardBody = document.createElement("div");
-        header = document.createElement("h5");
-        par = document.createElement("p");
-        img = document.createElement("img");
-
-        divCard.className = "card";
-        divCardBody.className = "card-body";
-        img.className = "card-img-top";
-        header.className = "card-title";
-        par.className = "card-text";
-
-        header.innerHTML = card.startTime;
+        img.setAttribute("src", card.imgSource);
+        header.innerHTML = "<b>" + card.artists[0].name + "</b>";
+        par1.innerHTML = card.artists[0].description;
+        par1.innerHTML += "<br> time: " + card.startTime + " - " + card.endTime;
+        button.innerHTML = "But ticket";
 
         divCardBody.appendChild(header);
-        divCardBody.appendChild(par);
+        divCardBody.appendChild(par1);
+        divCardBody.appendChild(button);
 
         divCard.appendChild(img);
         divCard.appendChild(divCardBody);
