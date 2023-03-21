@@ -97,19 +97,80 @@ include __DIR__ . '/../header.php';
 </section>
 </section>
 
-</div class="containe-pages">
+<!-- </div class="containe-pages"> -->
 <!-- Jazz Detailed Pages -->
-<section class="pages">
+<!-- <section class="pages">
     <div class="detail-pages">
         <?php
-        include __DIR__ . '/../components/page.php';
+        //include __DIR__ . '/../components/page.php';
         ?>
 
         <?php
-        include __DIR__ . '/../components/page.php';
+        //include __DIR__ . '/../components/page.php';
         ?>
     </div>
-</section>
+</section> -->
+
+<!-- detail pages 1 -->
+<div class="text-center container-fluid" id="detailPage">
+    <div class="text-center container" id="detail-page-block">
+        <h1 class="artist-name">Hardwell</h1>
+        <p class="artist-description">“Throughout his expansive career as a successful DJ, producer, remixer, label boss, filmmaker, and philanthropist, former 2 x World No.1 DJ, Hardwell has carved out a long-lasting legacy within the electronic music world.”<small><br>https://www.djhardwell.com/biography</small></p>
+        <!-- <div class="artist-polaroids"> -->
+          <div id="polaroid1" ><img class="polaroid-pic" src="/img/hardwell-pic-1.png" alt="pic1">
+              <div class="caption"></div>
+          </div>
+          <div id="polaroid2"><img class="polaroid-pic" src="/img/hardwell-pic-2.png" alt="pic2">
+              <div class="caption"></div>
+          </div>
+          <div id="polaroid3"><img class="polaroid-pic" src="/img/hardwell-pic-3.png" alt="pic3">
+              <div class="caption"></div>
+          </div>
+        <!-- </div> -->
+
+        <div class="artist-songs" id="top3songs">
+            <div><img src="/img/hardwell-song-1.png" alt="song1"><p>Power</p><small>104,227,216 streams on spotify</small></div>
+            <div><img src="/img/hardwell-song-2.png" alt="song2"><p>Don't let me down</p><small>60,046,188 streams on spotify</small></div>
+            <div><img src="/img/hardwell-song-3.png" alt="song3"><p>Bella Ciao</p><small>87,397,129 streams on spotify</small></div>
+        </div>
+        <!-- MEDIA PLAYER -->
+        
+        <div class="audio-player">
+          <p>Power - Hardwell</p>
+          <iframe width="auto" height="100px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/343304675&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/freedownloadsmusic" title="Hardwell" target="_blank" style="color: #cccccc; text-decoration: none;">Hardwell</a> · <a href="https://soundcloud.com/freedownloadsmusic/power-original-mix" title="Hardwell &amp; KSHMR - Power" target="_blank" style="color: #cccccc; text-decoration: none;">Hardwell &amp; KSHMR - Power (Original Mix)[FREE DOWNLOAD]</a></div>
+        </div>
+    </div>
+</div>
+<!-- detail pages 2 -->
+<div class="text-center container-fluid" id="detailPage">
+    <div class="text-center container" id="detail-page-block">
+        <h1 class="artist-name">Martin Garrix</h1>
+        <p class="artist-description">“Martijn Gerard Garritsen, known professionally as Martin Garrix, is a Dutch DJ and record producer. Active since 2012, Garrix has had a number of hits. He was also ranked number one on DJ Mag’s Top 100 DJ list in 2016, 2017, and 2018. Garrix has performed at diverse festivals like Coachella, Electric Daisy Carnival, Ultra Music Festival, and Tomorrowland.”<small><br>https://nexus.radio/news/martin-garrix</small></p>
+        <!-- <div class="artist-polaroids"> -->
+          <div id="polaroid1"><img class="polaroid-pic" src="/img/MG-pic-1.png" alt="pic1">
+              <div class="caption"></div>
+          </div>
+          <div id="polaroid2"><img class="polaroid-pic" src="/img/MG-pic-2.png" alt="pic2">
+              <div class="caption"></div>
+          </div>
+          <div id="polaroid3"><img class="polaroid-pic" src="/img/MG-pic-3.png" alt="pic3">
+              <div class="caption"></div>
+          </div>
+        <!-- </div> -->
+
+        <div class="artist-songs" id="top3songs">
+          <div><img src="/img/MG-song-1.png" alt="song1"><p>In the name of love</p><small>1,192,854,477 streams on spotify</small></div>
+          <div><img src="/img/MG-song-2.png" alt="song2"><p>Scared to be lonely</p><small>1,080,844,389 streams on spotify</small></div>
+          <div><img src="/img/MG-song-3.png" alt="song3"><p>Summer days</p><small>560,694,909  streams on spotify</small></div>
+        </div>
+        <!-- MEDIA PLAYER -->
+        <div class="audio-player">
+          <p>In the name of love - Martin Garrix</p>
+          <iframe width="auto" height="100px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/276648788&color=%2355b9de&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/martingarrixmusic" title="Martin Garrix" target="_blank" style="color: #cccccc; text-decoration: none;">Martin Garrix</a> · <a href="https://soundcloud.com/martingarrixmusic/in-the-name-of-love" title="In the Name of Love" target="_blank" style="color: #cccccc; text-decoration: none;">In the Name of Love</a></div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Jazz Map -->
 <section class="venues">
