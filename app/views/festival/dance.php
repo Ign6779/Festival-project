@@ -20,20 +20,14 @@ include __DIR__ . '/../header.php';
 <!-- detail pages 1 -->
 <?php
 $idForDetailPage = 25;
+include __DIR__ . '/../components/page.php';
 ?>
-<div class="detail-pages">
-        <?php
-        // include __DIR__ . '/../components/page.php';
-        ?>
-</div>
+
 <!-- detail pages 2 -->
 <?php
 $idForDetailPage = 27;
+include __DIR__ . '/../components/page.php';
 ?>
-<div class="detail-pages">
-        <?php
-        include __DIR__ . '/../components/page.php';
-        ?></div>
 
 <!-- schedule overview -->
 <div class="text-center container-fluid" id="schedule">

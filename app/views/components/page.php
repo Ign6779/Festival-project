@@ -23,18 +23,19 @@
           $imgsrc = "";
           foreach ($images as $image) {
             $imgsrc = $image->getName();
-            echo '<div id="polaroid"' . ($index) . '"><img class="polaroid-pic" src="/img/' . $imgsrc . '" alt="pic' . $index . '">';
+            echo '<div id="polaroid' . $index . '"><img class="polaroid-pic" src="/img/' . $imgsrc . '" alt="pic' . $index . '"></div>';
             $index++;
             }
 
             ?>
 
         <div class="artist-songs" id="top3songs">
-          <div><p>Top Song: <?php echo $topSong ?></p>
+          <p>Top Song: <?php echo $topSong ?></p>
         </div>
         <!-- MEDIA PLAYER -->
         <div class="audio-player">
           <iframe width="auto" height="100px" scrolling="no" frameborder="no" allow="autoplay" src=<? echo $song?>></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
         </div>
+      </div>
     </div>
 </div>
