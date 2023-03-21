@@ -113,6 +113,13 @@ class JazzRepository extends Repository
                 $artist->setId($row['artistId']);
                 $artist->setName($row['artistName']);
                 $artist->setDescription($row['artistDes']);
+                $artist->setSong("");
+                $artist->setTopSong("");
+                $image = new Image();
+                $image->setId(100);
+                $image->setName("");
+                $image->setArtistId(100);
+                $artist->addImage($image);
 
                 $jazzEvents[$jazzEventId]->addArtist($artist);
             }

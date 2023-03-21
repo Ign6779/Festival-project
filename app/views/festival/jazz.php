@@ -254,7 +254,7 @@ include __DIR__ . '/../header.php';
         par1.className = "card-text";
         button.className = "btn btn-primary";
 
-        img.setAttribute("src", card.imgSource);
+        img.setAttribute("src", `/img/${card.imgSource}`);
         header.innerHTML = "<b>" + card.artists[0].name + "</b>";
         par1.innerHTML = card.artists[0].description;
         par1.innerHTML += "<br> time: " + card.startTime + " - " + card.endTime;
