@@ -121,7 +121,7 @@
 #carousel{
     align-items: center;
 }
-.card{
+/* .card{
     position: relative;
     height: 80%;
     padding: 30px;
@@ -129,7 +129,7 @@
     flex-wrap: wrap;
     gap: 30%;
     border-radius: 15px;
-}
+} */
 .card-img-right{
     background-color: black;
     height: 100%;
@@ -200,7 +200,7 @@
   opacity: 0;
 }
 /* DETAIL PAGES */
-#detail-page-block{
+/* #detail-page-block{
   display: grid;
   position: relative;
   width: 90%;
@@ -252,7 +252,7 @@
   margin: 10px;
 }
 #polaroid3{
-  position: absolute;
+  position: relative;
   height: 300px;
   width: 250px;
   background-color: black;
@@ -265,7 +265,7 @@
   margin: 10px;
 }
 .polaroid-pic{
-    width: 80%;
+    width: 200px;
     height: auto;
     margin-top: 10px;
 }
@@ -274,7 +274,7 @@
   grid-row: 4;
 }
 /* MUSIC PLAYER POSITION */
-.audio-player{
+/* .audio-player{
   grid-column: 6;
   grid-row: 7;
-}
+}  */

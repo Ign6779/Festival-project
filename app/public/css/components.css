@@ -117,3 +117,42 @@ body {
     text-align: center;
     font-size: 30px;
 }
+/* detail pages on jazz and dance */
+#detailPage {
+    position: absolute;
+  }
+  
+  #detail-page-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+  
+  #detail-page-block h1.artist-name,
+  #detail-page-block p.artist-description {
+    margin: 0;
+  }
+  
+  #top3songs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  #top3songs div {
+    margin-bottom: 10px;
+  }
+  
+  .audio-player {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .polaroid-pic{
+    width: 150px;
+    height: auto;
+  }
+  #polaroid{
+    margin-left: 20px;
+  }

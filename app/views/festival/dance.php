@@ -23,7 +23,7 @@ $idForDetailPage = 25;
 ?>
 <div class="detail-pages">
         <?php
-        include __DIR__ . '/../components/page.php';
+        // include __DIR__ . '/../components/page.php';
         ?>
 </div>
 <!-- detail pages 2 -->
@@ -33,8 +33,7 @@ $idForDetailPage = 27;
 <div class="detail-pages">
         <?php
         include __DIR__ . '/../components/page.php';
-        ?>
-</div>
+        ?></div>
 
 <!-- schedule overview -->
 <div class="text-center container-fluid" id="schedule">
