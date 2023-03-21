@@ -21,4 +21,9 @@ class JazzService {
     public function getByDate($date) {
         return $this->repository->getByDate($date);
     }
+
+    public function getArtists() {
+        $artists = $this->repository->getArtists();
+        return $artists;
+    }
 }
