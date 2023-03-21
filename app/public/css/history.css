@@ -5,13 +5,14 @@
 /* Ask for help for positioning bc they are totally not centered */
 #history-header-text{
     position: absolute;
-    top: 50%;
-    left: 40%;
+    top: 30%;
+    left: 30%;
     color: white;
+    font-size: 80px;
 }
 #history-header-button{
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
 }
 .history-header{
@@ -40,9 +41,13 @@ ul.tour-locations-list {
 .li-options{
     padding-bottom: 20px;
 }
-.history-tour-map{
+#history-tour-map{
     width: 55%;
-    height: 85%;
+    height: 600px;
+    padding-top: 10px;
+}
+.tour-map{
+    margin:0;
 }
 th,tr{
     width: 18%;
@@ -70,6 +75,7 @@ th,tr{
 .history-locations{
     background-color: #9EADEA;
     padding-bottom: 30px;
+    margin:0;
 }
 #carousel-history-image{
     width: 500px;
@@ -80,6 +86,11 @@ th,tr{
     right: 10px;
     position: absolute;
     left: 10px;
+}
+#tour-stops-heading{
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 

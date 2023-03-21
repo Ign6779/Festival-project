@@ -11,13 +11,17 @@ function returnActive($count)
 }
 ?>
 
+<!-- pointer to the top of the page -->
+<div class="pointer-to-top">
+<a class="arrow-up" href="#top">&#8593</a>
+</div>
+
 <div class="history-header">
     <img src="/img/history-header.png" alt="Image of Haarlem St. Bavo church" id="history-header-image">
     <h1 id="history-header-text">Historical Haarlem</h1>
     <br><a class="btn-red" id="history-header-button" href="festival/overview">Buy Tickets</a>
 
 </div>
-
 <section class="history-timetable">
     <h2>Timetable</h2>
     <?php
@@ -39,7 +43,7 @@ function returnActive($count)
 </section>
 
 <section class="history-locations">
-    <h2>Tour Stops</h2>
+    <h2 id="tour-stops-heading">Tour Stops</h2>
 
     <div id="carouselExampleControls" class="carousel slide container" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -75,9 +79,8 @@ function returnActive($count)
     </div>
 
 </section>
-
 <section class="tour-map">
-    <img src="/img/history-map.png" alt="map of tour locations" class="history-tour-map" />
+    <img src="/img/history-map.png" alt="map of tour locations" id="history-tour-map" />
     <div class="tour-locations">
         <h2>Tour Locations</h2>
         <ol class="tour-locations-li">
