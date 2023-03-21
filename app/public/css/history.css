@@ -52,6 +52,35 @@ th,tr{
     padding-right: 20px;
 }
 
+/* tour carousel */
+
+#tour-carousel-prev{
+    width: 30px;
+    height: 30px;
+    background-color: #111D4A;
+}
+#tour-carousel-next{
+    height: 30px;
+    width: 30px;
+    background-color: #111D4A;
+}
+.tour-locations-li{
+    font-size: 20px;
+}
+.history-locations{
+    background-color: #9EADEA;
+    padding-bottom: 30px;
+}
+#carousel-history-image{
+    width: 500px;
+    height: 400px;
+}
+.history-carousel-arrows{
+    font-weight: bold;
+    right: 10px;
+    position: absolute;
+    left: 10px;
+}
 
 
 /* Problems I ran into: */
