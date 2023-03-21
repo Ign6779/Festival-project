@@ -60,6 +60,12 @@ include __DIR__ . '/../header.php';
   </section>
 
   <script>
+    //saving aside content
+    const restaurantInfoDiv = document.getElementById('restaurant-aside');
+    const originalAsideContent = restaurantInfoDiv.innerHTML;
+
+
+    //restaurant card things
     function getRestaurantInfo(id) { //api!
     fetch ('http://localhost/api/yummy/getOne?id=' + id, {
       method: 'GET'
@@ -71,12 +77,27 @@ include __DIR__ . '/../header.php';
           console.log(restaurant); //just double checking
           const restaurantInfoDiv = document.getElementById('restaurant-aside');
           restaurantInfoDiv.innerHTML = `
-          <h2>${restaurant.name}</h2>
-              <img src="/../img/${restaurant.image}">
-              <p>${restaurant.content}</p>
+            <h2>${restaurant.name}</h2>
+            <img src="/../img/${restaurant.image}">
+            <p>${restaurant.content}</p>
+
+            <form class="restaurant-form">
+              <div class="mb-3">
+                <label for="restaurantFormName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="restaurantFormName" placeholder="Name Surname">
+              </div>
+              <div class="mb-3">
+                <label for="restaurantFormEmail" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="restaurantFormEmail" placeholder="name@example.com">
+              </div>
+              <h3>Select date</h3>
+              <h3>Session</h3>
+              <h3>Comments</h3>
+            </form>
           `;
 
           // display the restaurant info div
+          restaurantInfoDiv.classList.add('active');
           restaurantInfoDiv.style.display = 'block';
       })
       .catch(error => console.log(error));
@@ -86,6 +107,19 @@ include __DIR__ . '/../header.php';
     Array.from(cards).forEach(card => {
       const restaurantId = card.dataset.id;
       card.addEventListener('click', () => {getRestaurantInfo(restaurantId)});
+    });
+
+
+    //restaurant-aside things
+    document.addEventListener('click', (event) => {
+    if (event.target.closest('.restaurant-card') || event.target.closest('#restaurant-aside')) {
+      return;
+    } else {
+      const restaurantInfoDiv = document.getElementById('restaurant-aside');
+      restaurantInfoDiv.innerHTML = originalAsideContent;
+      restaurantInfoDiv.classList.remove('active');
+      //restaurantInfoDiv.style.display = 'none';
+    }
     });
   </script>
 <?php
