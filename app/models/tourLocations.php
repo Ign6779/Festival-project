@@ -54,11 +54,11 @@ class TourLocations implements \JsonSerializable {
         return $this;
     }
 
-    public function setPicture(): string {
+    public function getPicture(): string {
         return $this->picture;
     }
 
-    public function getPicture($picture): self {
+    public function setPicture($picture): self {
         $this->picture = $picture;
         return $this;
     }

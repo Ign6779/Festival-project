@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../../services/locationservice.php';
+require_once __DIR__ . '/../../services/tourlocationsservice.php';
 
 class HistoryController
 {
@@ -8,13 +8,13 @@ class HistoryController
 
     function __construct()
     {
-        $this->locationService = new LocationService();
+        $this->locationService = new TourLocationsService();
     }
 
     public function index()
     {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            $locations = $this->locationService->getAll();
+            $locations = $this->locationService->getAllTourlocations();
             echo json_encode($locations);
         }
     }
@@ -23,7 +23,7 @@ class HistoryController
     public function getOneLocaion()
     {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            $location = $this->locationService->getOne($_GET["id"]);
+            $location = $this->locationService->getById($_GET["id"]);
             echo json_encode($location);
         }
     }

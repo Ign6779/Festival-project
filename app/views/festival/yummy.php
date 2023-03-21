@@ -59,6 +59,11 @@ include __DIR__ . '/../header.php';
     </aside>
   </section>
 
+<!-- pointer to the top of the page -->
+<div class="pointer-to-top">
+<a class="arrow-up" href="#top">&#8593</a>
+</div>
+
   <script>
     function getRestaurantInfo(id) { //api!
     fetch ('http://localhost/api/yummy/getOne?id=' + id, {

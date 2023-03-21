@@ -1,6 +1,12 @@
 <?php
 include __DIR__ . '/../header.php';
 ?>
+
+<!-- pointer to the top of the page -->
+<div class="pointer-to-top">
+<a class="arrow-up" href="#top">&#8593</a>
+</div>
+
 <div class="festival-overview-header">
     <img src="/img/festival-overview-head.png" alt="Festival Image" id="overview-header-image">
     <h1 class="title">The Haarlem Festival</h1>
