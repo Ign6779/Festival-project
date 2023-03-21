@@ -50,4 +50,36 @@ class DanceRepository extends Repository {
             echo $e;
         }
     }
+
+    public function getArtists(){
+        try{
+            $stmt = $this->connection->prepare("SELECT artist.id, artist.name AS name, artist.description AS description, artist.song AS song, artist.top_song AS top_song, artistImages.image AS artistImage, artistImages.id AS imageId FROM artist INNER JOIN artistImages ON artist.id = artistImages.artist_id;");
+            $stmt->execute();
+            $artists = [];
+            while ($row = $stmt->fetch()) {
+                $artistId = $row['id'];
+                if (!isset($artists[$artistId])) { 
+                    $artist = new Artist();
+                    $artist->setId($row['id']);
+                    $artist->setName($row['name']);
+                    $artist->setSong($row['song']);
+                    $artist->setTopSong($row['top_song']);
+                    $artist->setDescription($row['description']);
+                    $artists[$artistId] = $artist;
+                }
+                $image = new Image();
+                $image->setId($row['imageId']);
+                $image->setName($row['artistImage']);
+                $image->setArtistId($row['id']);
+                
+                $artists[$artistId]->addImage($image);
+
+            }
+            return array_values($artists);
+        }
+        catch (PDOException $e) {
+            echo $e;
+        }
+        
+    }
 }

@@ -102,10 +102,11 @@ include __DIR__ . '/../header.php';
 <section class="pages">
     <div class="detail-pages">
         <?php
+        $idForDetailPage = 6;
         include __DIR__ . '/../components/page.php';
         ?>
-
         <?php
+        $idForDetailPage = 3;
         include __DIR__ . '/../components/page.php';
         ?>
     </div>
