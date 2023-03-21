@@ -12,10 +12,5 @@ class DanceService {
         $danceEvents = $this->repository->getAll();
         return $danceEvents;
     }
-
-    public function getArtists() {
-        $artists = $this->repository->getArtists();
-        return $artists;
-    }
 }
 ?>
