@@ -70,6 +70,21 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+
+    margin: 1em;
+}
+#restaurant-aside.active {
+    border: 3px solid;
+    padding: 5px;
+    border-radius: 10px;
+
+    /* background: linear-gradient(to bottom, rgba(46, 155, 123, 0.7), rgba(17, 29, 74, 0.7)); */
+}
+
+#restaurant-form {
+    justify-content: left;
+    text-align: left;
+    color: red;
 }
 
 .restaurant-card {
