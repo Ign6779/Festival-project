@@ -36,8 +36,7 @@ h3 {
 
 body {
     width: 100%;
-    font-family: "Source Sans Pro";
-    background-color: #FFF8F0;
+    background-color: #FFF8F0 !important;
     margin: 0;
     /* position: relative; */
 }
