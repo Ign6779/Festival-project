@@ -17,24 +17,23 @@ class JazzController extends Controller
     {
         $events = $this->jazzService->getAll();
         $dates = $this->jazzService->getDatesOfEvents();
-        $artists = $this->jazzService->getArtists();
-        //$sortedEvents = sortEventsByDate($events, '2023-07-28');
+        $sortedEvents = sortEventsByDate($events, '2023-07-28');
         require __DIR__ . '/../views/festival/jazz.php';
     }
 }
-// function sortEventsByDate($events, $date)
-// {
-//     $sortedEvents = [];
-//     $count = 0;
-//     foreach ($events as $event) {
-//         if ($event->getDate() == $date) {
-//             $sortedEvents[$count] = $event;
-//             $count++;
-//         }
-//     }
-//     if ($sortedEvents != null)
-//         return $sortedEvents;
-//     else
-//         return null;
-// }
+function sortEventsByDate($events, $date)
+{
+    $sortedEvents = [];
+    $count = 0;
+    foreach ($events as $event) {
+        if ($event->getDate() == $date) {
+            $sortedEvents[$count] = $event;
+            $count++;
+        }
+    }
+    if ($sortedEvents != null)
+        return $sortedEvents;
+    else
+        return null;
+}
 ?>
