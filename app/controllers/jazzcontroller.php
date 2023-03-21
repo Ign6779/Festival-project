@@ -17,23 +17,8 @@ class JazzController extends Controller
     {
         $events = $this->jazzService->getAll();
         $dates = $this->jazzService->getDatesOfEvents();
-        $sortedEvents = sortEventsByDate($events, '2023-07-28');
+        $artists = $this->jazzService->getArtists();
         require __DIR__ . '/../views/festival/jazz.php';
     }
-}
-function sortEventsByDate($events, $date)
-{
-    $sortedEvents = [];
-    $count = 0;
-    foreach ($events as $event) {
-        if ($event->getDate() == $date) {
-            $sortedEvents[$count] = $event;
-            $count++;
-        }
-    }
-    if ($sortedEvents != null)
-        return $sortedEvents;
-    else
-        return null;
 }
 ?>
