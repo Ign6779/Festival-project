@@ -2,6 +2,9 @@
 class Location implements \JsonSerializable
 {
     private int $id;
+
+    private string $name;
+
     private string $location;
 
     private string $description;
@@ -23,6 +26,16 @@ class Location implements \JsonSerializable
     public function setId(int $id): self
     {
         $this->id = $id;
+        return $this;
+    }
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
         return $this;
     }
 

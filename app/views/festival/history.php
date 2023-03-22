@@ -1,6 +1,20 @@
 <?php
 include __DIR__ . '/../header.php';
+
+function returnActive($count)
+{
+    $active = "";
+    if ($count == 1) {
+        $active = "active";
+    }
+    return $active;
+}
 ?>
+
+<!-- pointer to the top of the page -->
+<div class="pointer-to-top">
+<a class="arrow-up" href="#top">&#8593</a>
+</div>
 
 <div class="history-header">
     <img src="/img/history-header.png" alt="Image of Haarlem St. Bavo church" id="history-header-image">
@@ -8,31 +22,14 @@ include __DIR__ . '/../header.php';
     <br><a class="btn-red" id="history-header-button" href="festival/overview">Buy Tickets</a>
 
 </div>
-
 <section class="history-timetable">
-    <h2 id="opit">Timetable</h2>
-    <!-- <table>
-        <tr class="history-timetable-header">
-            <th class="history timetable">Date</th>
-            <th class="history timetable">Hour</th>
-            <th class="history timetable">Available seats<br>English tour</th>
-            <th class="history timetable">Available seats<br>Dutch tour</th>
-            <th class="history timetable">Available seats<br>Chinese tour</th>
-        </tr>
-        <tr>
-
-        </tr>
-
-        <tr>
-        </tr>
-    </table> -->
+    <h2>Timetable</h2>
     <?php
-    echo '<table>';
-    echo '<thead><tr><th>id</th><th>Date</th><th>Time</th><th>Available seats English</th><th>Available seats Nl</th><th>Available seats Ch</th></thead>';
+    echo '<table class="history-table-display">';
+    echo '<thead><tr><th>Date</th><th>Time</th><th>Available seats<br>English</th><th>Available seats<br>Dutch</th><th>Available seats<br>Chinese</th></thead>';
     echo '<tbody>';
     foreach ($tours as $tour) {
-        echo '<tr>';
-        echo '<td>' . $tour->getId() . '</td>';
+        echo '<tr class="history-table-display"">';
         echo '<td>' . $tour->getDate() . '</td>';
         echo '<td>' . $tour->getTime() . '</td>';
         echo '<td>' . $tour->getAvaliableSeatsEn() . '</td>';
@@ -46,16 +43,17 @@ include __DIR__ . '/../header.php';
 </section>
 
 <section class="history-locations">
-    <h2>Tour Stops</h2>
+    <h2 id="tour-stops-heading">Tour Stops</h2>
 
     <div id="carouselExampleControls" class="carousel slide container" data-bs-ride="carousel">
         <div class="carousel-inner">
             <? $count = 1;
             foreach ($locations as $location) {
                 ?>
-                <div id="<? echo $location->getId(); ?>" class="carousel-item <? ?>active">
+                <div id="<? echo $location->getId(); ?>" class="carousel-item <? echo returnActive($count);
+                   $count++; ?>">
                     <div class="d-flex justify-content-center w-100 h-100">
-                        <img src="/img/<? echo $location->getImage(); ?>" class="align-middle w-50 "
+                        <img src="/img/<? echo $location->getImage(); ?>" class="align-middle w-30 " id="carousel-history-image"
                             alt="<? echo $location->getImage(); ?>">
                     </div>
                 </div>
@@ -65,12 +63,12 @@ include __DIR__ . '/../header.php';
 
         <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControls"
             data-bs-slide="prev">
-            <span class="carousel-control-prev-icon btn btn-primary" aria-hidden="true"></span>
+            <span class="carousel-control-prev-icon btn btn-primary" id ="tour-carousel-prev"aria-hidden="true"><p class="history-carousel-arrows">&#8592 </p></span>
             <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleControls"
             data-bs-slide="next">
-            <span class="carousel-control-next-icon btn btn-primary" aria-hidden="true"></span>
+            <span class="carousel-control-next-icon btn btn-primary" id="tour-carousel-next" aria-hidden="true"><p class="history-carousel-arrows">&#8594 </p></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
@@ -81,50 +79,17 @@ include __DIR__ . '/../header.php';
     </div>
 
 </section>
-
 <section class="tour-map">
-    <img src="/img/history-map.png" alt="map of tour locations" class="history-tour-map" />
+    <img src="/img/history-map.png" alt="map of tour locations" id="history-tour-map" />
     <div class="tour-locations">
         <h2>Tour Locations</h2>
-        <ul class="tour-locations-list">
-            <li>
-                <div class="li-circle">1</div>
-                <div class="li-options">Start location:<br>Bavo Church (Grote Markt 22, 2011 RD Haarlem)</div>
-            </li>
-            <li>
-                <div class="li-circle">2</div>
-                <div class="li-options">Grote Markt (Grote Markt, 2011 RD Haarlem) </div>
-            </li>
-            <li>
-                <div class="li-circle">3</div>
-                <div class="li-options">De Hallen Haarlem (Grote Markt 16, 2011 RD Haarlem)</div>
-            </li>
-            <li>
-                <div class="li-circle">4</div>
-                <div class="li-options">Proveniershof (Grote Houtstraat 142D, 2011 SV Haarlem) </div>
-            </li>
-            <h3>Break location:</h3>
-            <li>
-                <div class="li-circle">5</div>
-                <div class="li-options">Jopenkerk (Gedempte Voldersgracht 2, 2011 WD Haarlem) </div>
-            </li>
-            <li>
-                <div class="li-circle">6</div>
-                <div class="li-options">Waalse Kerk (Begijnhof 28, 2011 HE Haarlem) </div>
-            </li>
-            <li>
-                <div class="li-circle">7</div>
-                <div class="li-options">Molen de Adriaan (Papentorenvest 1A, 2011 AV Haarlem) </div>
-            </li>
-            <li>
-                <div class="li-circle">8</div>
-                <div class="li-options">Amsterdamse Poort (2011 BZ Haarlem) </div>
-            </li>
-            <li>
-                <div class="li-circle">9</div>
-                <div class="li-options">Hofje van Bakenes (Wijde Appelaarsteeg 11F, 2011HB Haarlem) </div>
-            </li>
-        </ul>
+        <ol class="tour-locations-li">
+            <?php
+            foreach ($locations as $location) {
+                echo '<li>'.$location->getName().'('.$location->getLocation().')'.'</li>';
+            }
+            ?>
+        </ol>
     </div>
 </section>
 
@@ -151,14 +116,14 @@ include __DIR__ . '/../header.php';
     function getLocation(locationInput) {
         var location = document.getElementById("location-information");
         header = document.createElement("h2");
-        header.innerHTML = locationInput.location;
+        header.innerHTML = locationInput.name;
         pargraph = document.createElement("p");
         pargraph.innerHTML = locationInput.description;
-        img = document.createElement("img");
-        img.src = "/img/" + locationInput.img;
+        // img = document.createElement("img");
+        // img.src = "/img/" + locationInput.img;
         location.appendChild(header);
         location.appendChild(pargraph);
-        location.appendChild(img);
+        // location.appendChild(img);
     }
 
 </script>

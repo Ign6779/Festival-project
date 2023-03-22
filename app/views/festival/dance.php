@@ -229,6 +229,11 @@ All access: €250,00</div>
     </div>
 </div>
 
+<!-- pointer to the top of the page -->
+<div class="pointer-to-top">
+<a class="arrow-up" href="#top">&#8593</a>
+</div>
+
 <?php
 include __DIR__ . '/../footer.php';
 ?>
@@ -318,3 +323,4 @@ swipe.on("swipeleft", (ev) => {
 swipe.on("swiperight", (ev) => {
   prev();
 });
+

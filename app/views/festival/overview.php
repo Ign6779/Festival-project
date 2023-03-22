@@ -125,6 +125,12 @@ include __DIR__ . '/../header.php';
         </div>
     </div>
 </section>
+
+<!-- pointer to the top of the page -->
+<div class="pointer-to-top">
+<a class="arrow-up" href="#top">&#8593</a>
+</div>
+
 <?php
 include __DIR__ . '/../footer.php';
 ?>

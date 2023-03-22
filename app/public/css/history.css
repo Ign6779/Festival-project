@@ -5,13 +5,14 @@
 /* Ask for help for positioning bc they are totally not centered */
 #history-header-text{
     position: absolute;
-    top: 50%;
-    left: 40%;
+    top: 30%;
+    left: 30%;
     color: white;
+    font-size: 80px;
 }
 #history-header-button{
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
 }
 .history-header{
@@ -24,7 +25,7 @@
     height: 500px;
     width: 100%;
 }
-ul.tour-locations-list {
+ol.tour-locations-list {
     list-style-type: none;
     font-size: 20 px;
 }
@@ -40,9 +41,13 @@ ul.tour-locations-list {
 .li-options{
     padding-bottom: 20px;
 }
-.history-tour-map{
+#history-tour-map{
     width: 55%;
-    height: 85%;
+    height: 600px;
+    padding-top: 10px;
+}
+.tour-map{
+    margin:0;
 }
 th,tr{
     width: 18%;
@@ -52,9 +57,54 @@ th,tr{
     padding-right: 20px;
 }
 
+/* tour carousel */
 
+#tour-carousel-prev{
+    width: 30px;
+    height: 30px;
+    background-color: #111D4A;
+}
+#tour-carousel-next{
+    height: 30px;
+    width: 30px;
+    background-color: #111D4A;
+}
+.tour-locations-li{
+    font-size: 20px;
+}
+.history-locations{
+    background-color: #9EADEA;
+    padding-bottom: 30px;
+    margin:0;
+}
+#carousel-history-image{
+    width: 500px;
+    height: 400px;
+}
+.history-carousel-arrows{
+    font-weight: bold;
+    right: 10px;
+    position: absolute;
+    left: 10px;
+}
+#tour-stops-heading{
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.history-table-display{
+    border: 1px solid;
+
+}
+.history-table-display:nth-child(odd){
+    background-color: #9EADEA
+
+}
+.history-table-display:nth-child(even){
+    background-color: #2E9B7B
+}
 
 /* Problems I ran into: */
-/* can't position button and Haarlem History in the middle */
+/* can't position button and Haarlem History i the middle */
 /* first-child, second-child, etc. isn't working */
 /* need to rename the class names for the li elements */
