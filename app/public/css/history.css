@@ -25,7 +25,7 @@
     height: 500px;
     width: 100%;
 }
-ul.tour-locations-list {
+ol.tour-locations-list {
     list-style-type: none;
     font-size: 20 px;
 }
@@ -92,9 +92,19 @@ th,tr{
     padding-bottom: 10px;
     padding-top: 10px;
 }
+.history-table-display{
+    border: 1px solid;
 
+}
+.history-table-display:nth-child(odd){
+    background-color: #9EADEA
+
+}
+.history-table-display:nth-child(even){
+    background-color: #2E9B7B
+}
 
 /* Problems I ran into: */
-/* can't position button and Haarlem History in the middle */
+/* can't position button and Haarlem History i the middle */
 /* first-child, second-child, etc. isn't working */
 /* need to rename the class names for the li elements */

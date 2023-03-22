@@ -25,11 +25,11 @@ function returnActive($count)
 <section class="history-timetable">
     <h2>Timetable</h2>
     <?php
-    echo '<table>';
+    echo '<table class="history-table-display">';
     echo '<thead><tr><th>Date</th><th>Time</th><th>Available seats<br>English</th><th>Available seats<br>Dutch</th><th>Available seats<br>Chinese</th></thead>';
     echo '<tbody>';
     foreach ($tours as $tour) {
-        echo '<tr>';
+        echo '<tr class="history-table-display"">';
         echo '<td>' . $tour->getDate() . '</td>';
         echo '<td>' . $tour->getTime() . '</td>';
         echo '<td>' . $tour->getAvaliableSeatsEn() . '</td>';
