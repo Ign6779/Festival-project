@@ -233,6 +233,12 @@ All access: €250,00</div>
 include __DIR__ . '/../footer.php';
 ?>
 
+<div class="testing">
+<?php
+include __DIR__ . '/../components/Calendar.php';
+?>
+</div>
+
  <!-- FUNCTIONALITY FOR CAROUSEL -->
 <script>
     const $ = selector => {
