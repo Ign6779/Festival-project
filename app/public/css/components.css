@@ -105,7 +105,8 @@ body {
     width: 50px;
     right: 10px;
     bottom: 10px;
-    background-color: #000;
+    color: #333;
+    background-color: #888;
     opacity: 0.9;
     position: fixed;
     border-radius: 50%;
@@ -119,6 +120,7 @@ body {
     position: sticky;
     text-align: center;
     font-size: 30px;
+    font-family: 'Source Sans Pro' ;
     font-weight: bold;
 }
 .arrow-up, .arrow-up:hover, .arrow-up:active, .arrow-up:visited, .arrow-up:focus{
