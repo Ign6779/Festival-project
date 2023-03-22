@@ -128,6 +128,89 @@ include __DIR__ . '/../header.php';
     </div>
 </section>
 
+
+<section>
+
+<!-- BEGINNING OF TICKETS -->
+
+<aside class="filter_options">
+    <h3 id="filter_h3">Filter Options</h3>
+    <fieldset>
+        <legend>Event</legend>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="filter_jazz" id="filter_jazz">
+  <label class="form-check-label" for="filter_jazz">
+    Jazz
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="filter_dance" id="filter_dance">
+  <label class="form-check-label" for="filter_dance">
+    Dance
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="filter_history" id="filter_history">
+  <label class="form-check-label" for="filter_history">
+    History
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="filter_yummy" id="filter_yummy">
+  <label class="form-check-label" for="filter_yummy">
+    Yummy
+  </label>
+</div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Date</legend>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="filter_26" id="filter_26">
+  <label class="form-check-label" for="filter_26">
+    July 26
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="filter_27" id="filter_27">
+  <label class="form-check-label" for="filter_27">
+    July 27
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="filter_28" id="filter_28">
+  <label class="form-check-label" for="filter_28">
+    July 28
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="filter_29" id="filter_29">
+  <label class="form-check-label" for="filter_29">
+    July 29
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="filter_30" id="filter_30">
+  <label class="form-check-label" for="filter_30">
+    July 30
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="filter_31" id="filter_31">
+  <label class="form-check-label" for="filter_31">
+    July 31
+  </label>
+</div>
+    </fieldset>
+</aside>
+
+
+
+</section>
+
+
+<!-- END OF TICKETS -->
+
 <script>
 
     $(document).ready(function () {
