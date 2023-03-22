@@ -128,6 +128,7 @@ function returnActive($count)
 
 </script>
 
+
 <?php
 include __DIR__ . '/../footer.php';
 ?>
