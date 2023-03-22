@@ -3,9 +3,6 @@ require __DIR__ . '/controller.php';
 
 class AdminController extends Controller
 {
-
-    private $danceService;
-
     public function __construct()
     {
 
@@ -16,5 +13,7 @@ class AdminController extends Controller
     {
         require __DIR__ . '/../views/admin/index.php';
     }
+
+    
 }
 ?>
