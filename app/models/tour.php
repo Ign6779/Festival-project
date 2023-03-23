@@ -1,63 +1,95 @@
 <?php
-class Tour implements \JsonSerializable {
+class Tour implements \JsonSerializable
+{
     private int $id;
+    private int $eventId;
     private string $date;
-    private string $time;
-    private int $availableSeatsEn;
-    private int $availableSeatsNl;
-    private int $availableSeatsCh;
+    private string $startTime;
+    private string $endTime;
+    private string $language;
+    private int $seats;
+
 
     #[ReturnTypeWillChange]
 
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         $vars = get_object_vars($this);
         return $vars;
     }
 
-    public function getId():int {
+    public function getId(): int
+    {
         return $this->id;
     }
-    public function setId(int $id):self {
+    public function setId(int $id): self
+    {
         $this->id = $id;
         return $this;
     }
 
-    public function getDate():string {
+    public function getEventId(): int
+    {
+        return $this->eventId;
+    }
+
+    public function setEventId(int $id): self
+    {
+        $this->eventId = $id;
+        return $this;
+    }
+
+    public function getDate(): string
+    {
         return $this->date;
     }
-    public function setDate(string $date):self {
+    public function setDate(string $date): self
+    {
         $this->date = $date;
         return $this;
     }
 
-    public function getTime():string {
-        return $this->time;
+    public function getStartTime(): string
+    {
+        return $this->startTime;
     }
-    public function setTime(string $time):self {
-        $this->time = $time;
+    public function setStartTime(string $time): self
+    {
+        $this->startTime = $time;
         return $this;
     }
 
-    public function getAvaliableSeatsEn():int {
-        return $this->availableSeatsEn;
-    }
-    public function setAvailableSeatsEn(int $availableSeatsEn):self {
-        $this->availableSeatsEn = $availableSeatsEn;
+    public function getEndtTime(): string
+    {
+        return $this->endTime;
     }
 
-    public function getAvailableSeatsNl():int {
-        return $this->availableSeatsNl;
-    }
-    public function setAvailableSeatsNl(int $availableSeatsNl):self {
-        $this->availableSeatsNl = $availableSeatsNl;
+    public function setEndTime(string $time): self
+    {
+        $this->endTime = $time;
         return $this;
     }
 
-    public function getAvailableSeatsCh():int {
-        return $this->availableSeatsCh;
+    public function getLanguage(): string
+    {
+        return $this->language;
     }
-    public function setAvailableSeatsCh(int $availableSeatsCh):self {
-        $this->availableSeatsCh = $availableSeatsCh;
+
+    public function setLanguage(string $language): self
+    {
+        $this->language = $language;
+        return $this;
+    }
+
+
+    public function getSeats(): int
+    {
+        return $this->seats;
+    }
+
+    public function setSeats(int $seats): self
+    {
+        $this->seats = $seats;
         return $this;
     }
 }

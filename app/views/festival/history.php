@@ -13,7 +13,7 @@ function returnActive($count)
 
 <!-- pointer to the top of the page -->
 <div class="pointer-to-top">
-<a class="arrow-up" href="#top">&#8593</a>
+    <a class="arrow-up" href="#top">&#8593</a>
 </div>
 
 <div class="history-header">
@@ -26,15 +26,15 @@ function returnActive($count)
     <h2>Timetable</h2>
     <?php
     echo '<table class="history-table-display">';
-    echo '<thead><tr><th>Date</th><th>Time</th><th>Available seats<br>English</th><th>Available seats<br>Dutch</th><th>Available seats<br>Chinese</th></thead>';
+    echo '<thead><tr><th>Date</th><th>Start Time</th><th>End time<th>Language</th><th>Seats</th></thead>';
     echo '<tbody>';
     foreach ($tours as $tour) {
         echo '<tr class="history-table-display"">';
         echo '<td>' . $tour->getDate() . '</td>';
-        echo '<td>' . $tour->getTime() . '</td>';
-        echo '<td>' . $tour->getAvaliableSeatsEn() . '</td>';
-        echo '<td>' . $tour->getAvailableSeatsNl() . '</td>';
-        echo '<td>' . $tour->getAvailableSeatsCh() . '</td>';
+        echo '<td>' . $tour->getStartTime() . '</td>';
+        echo '<td>' . $tour->getEndtTime() . '</td>';
+        echo '<td>' . $tour->getLanguage() . '</td>';
+        echo '<td>' . $tour->getSeats() . '</td>';
         echo '</tr>';
     }
     echo '</tbody>';
@@ -53,8 +53,8 @@ function returnActive($count)
                 <div id="<? echo $location->getId(); ?>" class="carousel-item <? echo returnActive($count);
                    $count++; ?>">
                     <div class="d-flex justify-content-center w-100 h-100">
-                        <img src="/img/<? echo $location->getImage(); ?>" class="align-middle w-30 " id="carousel-history-image"
-                            alt="<? echo $location->getImage(); ?>">
+                        <img src="/img/<? echo $location->getImage(); ?>" class="align-middle w-30 "
+                            id="carousel-history-image" alt="<? echo $location->getImage(); ?>">
                     </div>
                 </div>
             <?
@@ -63,12 +63,16 @@ function returnActive($count)
 
         <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControls"
             data-bs-slide="prev">
-            <span class="carousel-control-prev-icon btn btn-primary" id ="tour-carousel-prev"aria-hidden="true"><p class="history-carousel-arrows">&#8592 </p></span>
+            <span class="carousel-control-prev-icon btn btn-primary" id="tour-carousel-prev" aria-hidden="true">
+                <p class="history-carousel-arrows">&#8592 </p>
+            </span>
             <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleControls"
             data-bs-slide="next">
-            <span class="carousel-control-next-icon btn btn-primary" id="tour-carousel-next" aria-hidden="true"><p class="history-carousel-arrows">&#8594 </p></span>
+            <span class="carousel-control-next-icon btn btn-primary" id="tour-carousel-next" aria-hidden="true">
+                <p class="history-carousel-arrows">&#8594 </p>
+            </span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
@@ -86,7 +90,7 @@ function returnActive($count)
         <ol class="tour-locations-li">
             <?php
             foreach ($locations as $location) {
-                echo '<li>'.$location->getName().'('.$location->getLocation().')'.'</li>';
+                echo '<li>' . $location->getName() . '(' . $location->getLocation() . ')' . '</li>';
             }
             ?>
         </ol>

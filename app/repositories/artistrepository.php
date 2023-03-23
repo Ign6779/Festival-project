@@ -71,10 +71,11 @@ class ArtistRepository extends Repository
     function getOne($id)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT * FROM artist WHERE id = :id");
+            $stmt = $this->connection->prepare("SELECT artist.id, artist.name AS name, artist.description AS description, artist.song AS song, artist.top_song AS top_song, artistImages.image AS artistImage, artistImages.id AS imageId FROM `artist` 
+            inner JOIN artistImages on artistImages.artist_id= artist.id where artist.id = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
-
+            $images = [];
             while ($row = $stmt->fetch()) {
                 $artist = new Artist();
                 $artist->setId($row['id']);
@@ -87,12 +88,19 @@ class ArtistRepository extends Repository
                     $artist->setTopSong($row['top_song']);
                 }
                 $artist->setDescription($row['description']);
+                $image = new Image();
+                $image->setId($row['imageId']);
+                $image->setName($row['artistImage']);
+                $image->setArtistId($row['id']);
+                array_push($images, $image);
             }
+            $artist->setImages($images);
             return $artist;
         } catch (PDOException $e) {
             echo $e;
         }
     }
+
 
     function getByname($name)
     {

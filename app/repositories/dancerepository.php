@@ -2,14 +2,17 @@
 require __DIR__ . '/repository.php';
 require __DIR__ . '/../models/dance.php';
 
-class DanceRepository extends Repository {
-    public function getAll() {
+class DanceRepository extends Repository
+{
+    public function getAll()
+    {
         try {
-            $stmt = $this->connection->prepare("SELECT d.*, v.name AS venueName, v.location, a.id as artistId, a.name AS artistName 
+            $stmt = $this->connection->prepare("SELECT d.*, v.name AS venueName, v.location, a.id as artistId, a.name AS artistName , e.date , e.start_time as startTime , e.end_time as endTime 
             FROM dance d 
             LEFT JOIN venue v ON d.venueId = v.id 
             LEFT JOIN danceArtist da ON d.id = da.danceId 
-            LEFT JOIN artist a ON da.artistId = a.id;");
+            LEFT JOIN artist a ON da.artistId = a.id
+            LEFT JOIN events e ON e.id= d.event_id;");
             $stmt->execute();
 
             $danceEvents = [];
@@ -17,7 +20,7 @@ class DanceRepository extends Repository {
             while ($row = $stmt->fetch()) {
                 $danceEventId = $row['id'];
 
-                if (!isset($danceEvents[$danceEventId])) { 
+                if (!isset($danceEvents[$danceEventId])) {
                     $danceEvent = new DanceEvent();
                     $danceEvent->setId($row['id']);
                     $danceEvent->setDate($row['date']);
@@ -45,25 +48,30 @@ class DanceRepository extends Repository {
             }
 
             return array_values($danceEvents);
-        }
-        catch (PDOException $e) {
+        } catch (PDOException $e) {
             echo $e;
         }
     }
 
-    public function getArtists(){
-        try{
+    public function getArtists()
+    {
+        try {
             $stmt = $this->connection->prepare("SELECT artist.id, artist.name AS name, artist.description AS description, artist.song AS song, artist.top_song AS top_song, artistImages.image AS artistImage, artistImages.id AS imageId FROM artist INNER JOIN artistImages ON artist.id = artistImages.artist_id;");
             $stmt->execute();
             $artists = [];
             while ($row = $stmt->fetch()) {
                 $artistId = $row['id'];
-                if (!isset($artists[$artistId])) { 
+                if (!isset($artists[$artistId])) {
                     $artist = new Artist();
                     $artist->setId($row['id']);
                     $artist->setName($row['name']);
-                    $artist->setSong($row['song']);
-                    $artist->setTopSong($row['top_song']);
+                    if ($row['song'] == null && $row['top_song'] == null) {
+                        $artist->setSong("");
+                        $artist->setTopSong("");
+                    } else {
+                        $artist->setSong($row['song']);
+                        $artist->setTopSong($row['top_song']);
+                    }
                     $artist->setDescription($row['description']);
                     $artists[$artistId] = $artist;
                 }
@@ -71,15 +79,14 @@ class DanceRepository extends Repository {
                 $image->setId($row['imageId']);
                 $image->setName($row['artistImage']);
                 $image->setArtistId($row['id']);
-                
+
                 $artists[$artistId]->addImage($image);
 
             }
             return array_values($artists);
-        }
-        catch (PDOException $e) {
+        } catch (PDOException $e) {
             echo $e;
         }
-        
+
     }
 }

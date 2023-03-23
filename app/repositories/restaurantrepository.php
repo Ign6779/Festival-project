@@ -3,12 +3,15 @@ require __DIR__ . '/repository.php';
 require __DIR__ . '/../models/restaurant.php';
 //require __DIR__ . '/../models/session.php';
 
-class RestaurantRepository extends Repository {
-    public function getAll() { //cannot use the same structure as other times since it gets info from many tables, including an array within a class.
+class RestaurantRepository extends Repository
+{
+    public function getAll()
+    { //cannot use the same structure as other times since it gets info from many tables, including an array within a class.
         try {
-            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, s.date, s.startTime, s.endTime, s.seats, s.price, s.reducedPrice 
+            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, e.date, e.start_time as startTime, e.end_time as endTime, s.seats, s.price
             FROM restaurants r 
-            LEFT JOIN sessions s ON r.id = s.restaurantId"); //only way i could imagine of doing it tbh
+            LEFT JOIN sessions s ON r.id = s.restaurantId
+            LEFT JOIN events e on e.id = s.event_id"); //only way i could imagine of doing it tbh
             $stmt->execute();
 
             $restaurants = [];
@@ -18,7 +21,7 @@ class RestaurantRepository extends Repository {
 
                 if (!isset($restaurants[$restaurantId])) { //since we get multiple times the same fields
                     $restaurant = new Restaurant();
-                    $restaurant-> setId($row['id']);
+                    $restaurant->setId($row['id']);
                     $restaurant->setName($row['name']);
                     $restaurant->setLocation($row['location']);
                     $restaurant->setDescription($row['description']);
@@ -39,19 +42,18 @@ class RestaurantRepository extends Repository {
                 $session->setEndTime($row['endTime']);
                 $session->setSeats($row['seats']);
                 $session->setPrice($row['price']);
-                $session->setReducedPrice($row['reducedPrice']);
 
                 $restaurants[$restaurantId]->addSession($session);
             }
 
             return array_values($restaurants);
-        }
-        catch (PDOException $e) {
+        } catch (PDOException $e) {
             echo $e;
         }
     }
 
-    public function getBasicInfo() {
+    public function getBasicInfo()
+    {
         try {
             $stmt = $this->connection->prepare("SELECT * 
             FROM restaurants");
@@ -65,27 +67,28 @@ class RestaurantRepository extends Repository {
                 $restaurant->setId($row['id']);
                 $restaurant->setName($row['name']);
                 $restaurant->setDescription($row['description']);
-                $restaurant ->setDuration($row['duration']);
+                $restaurant->setDuration($row['duration']);
                 $restaurant->setHalal($row['halal']);
                 $restaurant->setVegan($row['vegan']);
                 $restaurant->setStars($row['stars']);
                 $restaurant->setImage($row['image']);
-                
+
                 $restaurants[$restaurantId] = $restaurant;
             }
-        }
-        catch (PDOException $e) {
+        } catch (PDOException $e) {
             echo $e;
         }
 
         return $restaurants;
     }
 
-    public function getById(int $id) {
+    public function getById(int $id)
+    {
         try {
-            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, s.date, s.startTime, s.endTime, s.seats, s.price, s.reducedPrice 
+            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, e.date, e.start_time as startTime, e.end_time as endTime, s.seats, s.price 
             FROM restaurants r 
             LEFT JOIN sessions s ON r.id = s.restaurantId
+            LEFT JOIN events e on e.id = s.event_id
             WHERE r.id = ?");
             $stmt->execute([$id]);
 
@@ -113,14 +116,12 @@ class RestaurantRepository extends Repository {
                 $session->setEndTime($row['endTime']);
                 $session->setSeats($row['seats']);
                 $session->setPrice($row['price']);
-                $session->setReducedPrice($row['reducedPrice']);
 
                 $restaurant->addSession($session);
             }
 
             return $restaurant;
-        }
-        catch (PDOException $e) {
+        } catch (PDOException $e) {
             echo $e;
         }
     }

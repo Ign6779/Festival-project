@@ -33,6 +33,14 @@
         </div>
     </div>
 
+    <div class="form-group row justify-content-center">
+        <div class="col-5">
+            <label for="artisttopsong">Images</label>
+            <input multiple="true" type="file" name="images[]" required />
+        </div>
+        <? var_dump($artist->getImages()) ?>
+    </div>
+
     <div class="row justify-content-center">
         <button type="submit" class="btn btn-primary col-5" name="updateartist">Update</button>
     </div>

@@ -47,7 +47,7 @@ include __DIR__ . '/../header.php';
                     ?>
                     <div class="col-sm-3">
                         <button id=<?= $jazzButtonName ?> class="button-container"
-                            onclick="filterByDate('<? echo $date ?>')">
+                            onclick="filterByDate('<? echo $date; ?>')">
                             <h3>
                                 <? echo $dayNumber; ?>
                             </h3>
@@ -145,7 +145,7 @@ include __DIR__ . '/../header.php';
 
 <!-- pointer to the top of the page -->
 <div class="pointer-to-top">
-<a class="arrow-up" href="#top">&#8593</a>
+    <a class="arrow-up" href="#top">&#8593</a>
 </div>
 
 </body>

@@ -7,11 +7,12 @@ class JazzRepository extends Repository
     public function getAll()
     {
         try {
-            $stmt = $this->connection->prepare("SELECT j.*, v.name AS venueName, v.location,a.id as artistId, a.name AS artistName
+            $stmt = $this->connection->prepare("SELECT j.*, v.name AS venueName, v.location,a.id as artistId, a.name AS artistName, e.date, e.start_time as startTime, e.end_time as endTime
             FROM jazz j 
             LEFT JOIN venue v ON j.venueId = v.id 
             LEFT JOIN jazzArtist ja ON j.id = ja.jazzId 
-            LEFT JOIN artist a ON ja.artistId = a.id;");
+            LEFT JOIN artist a ON ja.artistId = a.id
+            LEFT JOIN events e on e.id = j.event_id;");
             $stmt->execute();
 
             $jazzEvents = [];
@@ -54,7 +55,7 @@ class JazzRepository extends Repository
     {
         try {
             $stmt = $this->connection->prepare("SELECT date 
-            FROM jazz GROUP BY date");
+            FROM events WHERE event_type= 'jazz' GROUP BY date");
             $stmt->execute();
 
             $dates = [];
@@ -74,13 +75,14 @@ class JazzRepository extends Repository
     public function getByDate($date)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT j.*, v.name AS venueName, v.location,a.id as artistId, a.name AS artistName, a.description AS artistDes, i.image AS source 
+            $stmt = $this->connection->prepare("SELECT j.*, v.name AS venueName, v.location,a.id as artistId, a.name AS artistName, a.description AS artistDes, i.image AS source, e.date , e.start_time as startTime, e.end_time as endTime
             FROM jazz j
             LEFT JOIN venue v ON j.venueId = v.id 
             LEFT JOIN jazzArtist ja ON j.id = ja.jazzId 
             LEFT JOIN artist a ON ja.artistId = a.id
             LEFT JOIN `artistImages` i ON ja.artistId = i.artist_id
-            WHERE j.date = :i;");
+            LEFT JOIN events e on e.id= j.event_id
+            WHERE e.date = :i;");
             $stmt->bindParam(':i', $date);
             $stmt->execute();
 
@@ -130,19 +132,25 @@ class JazzRepository extends Repository
         }
     }
 
-    public function getArtists(){
-        try{
+    public function getArtists()
+    {
+        try {
             $stmt = $this->connection->prepare("SELECT artist.id, artist.name AS name, artist.description AS description, artist.song AS song, artist.top_song AS top_song, artistImages.image AS artistImage, artistImages.id AS imageId FROM artist INNER JOIN artistImages ON artist.id = artistImages.artist_id;");
             $stmt->execute();
             $artists = [];
             while ($row = $stmt->fetch()) {
                 $artistId = $row['id'];
-                if (!isset($artists[$artistId])) { 
+                if (!isset($artists[$artistId])) {
                     $artist = new Artist();
                     $artist->setId($row['id']);
                     $artist->setName($row['name']);
-                    $artist->setSong($row['song']);
-                    $artist->setTopSong($row['top_song']);
+                    if ($row['song'] == null && $row['top_song'] == null) {
+                        $artist->setSong("");
+                        $artist->setTopSong("");
+                    } else {
+                        $artist->setSong($row['song']);
+                        $artist->setTopSong($row['top_song']);
+                    }
                     $artist->setDescription($row['description']);
                     $artists[$artistId] = $artist;
                 }
@@ -150,16 +158,15 @@ class JazzRepository extends Repository
                 $image->setId($row['imageId']);
                 $image->setName($row['artistImage']);
                 $image->setArtistId($row['id']);
-                
+
                 $artists[$artistId]->addImage($image);
 
             }
             return array_values($artists);
-        }
-        catch (PDOException $e) {
+        } catch (PDOException $e) {
             echo $e;
         }
-        
+
     }
 }
 ?>
