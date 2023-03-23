@@ -147,7 +147,6 @@ class ArtistRepository extends Repository
     {
         try {
             $stmt = $this->connection->prepare("UPDATE `artistImages` SET image= :name WHERE id =:imageId");
-            $stmt->bindParam(':artistId', $artistId);
             $stmt->bindParam(':imageId', $imageId);
             $stmt->bindParam(':name', $name);
             $stmt->execute();

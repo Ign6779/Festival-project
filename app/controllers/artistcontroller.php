@@ -31,7 +31,8 @@ class ArtistController extends Controller
             $this->artistService->insertArtist($name, $description, $song, $topSong);
             $artist = $this->artistService->getByname($name);
             for ($x = 0; $x < count($_FILES['images']['name']); $x++) {
-                $this->artistService->insetImage($artist->getId(), $_FILES['images']['name'][$x]);
+                $imageName = htmlspecialchars($_FILES['images']['name'][$x]);
+                $this->artistService->insetImage($artist->getId(), $imageName);
                 $tmp_img = htmlspecialchars($_FILES['images']['tmp_name'][$x]);
                 $destination = 'img/' . $_FILES['images']['name'][$x];
                 move_uploaded_file($tmp_img, $destination);
@@ -52,12 +53,22 @@ class ArtistController extends Controller
     public function updateArtist()
     {
         if (isset($_POST['updateartist'])) {
+            $count = 0;
             $id = htmlspecialchars($_GET['artistid']);
             $name = htmlspecialchars($_POST['artistname']);
             $description = htmlspecialchars($_POST['artistdescription']);
             $song = htmlspecialchars($_POST['artistSong']);
             $topSong = htmlspecialchars($_POST['artisttopsong']);
             $this->artistService->update($id, $name, $description, $song, $topSong);
+            $artist = $this->artistService->getOne($id);
+            foreach ($artist->getImages() as $image) {
+                $imageName = htmlspecialchars($_FILES['imagesup']['name'][$count]);
+                $this->artistService->updateImage($artist->getId(), $image->getId(), $imageName);
+                $tmp_img = htmlspecialchars($_FILES['imagesup']['tmp_name'][$count]);
+                $destination = 'img/' . $_FILES['imagesup']['name'][$count];
+                move_uploaded_file($tmp_img, $destination);
+                $count++;
+            }
             $this->index();
         }
     }

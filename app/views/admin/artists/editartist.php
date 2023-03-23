@@ -1,6 +1,7 @@
 <? include __DIR__ . '/../adminheader.php' ?>
 
-<form method="POST" action="/artist/updateArtist?artistid=<? echo $artist->getId(); ?>" class="container ">
+<form method="POST" action="/artist/updateArtist?artistid=<? echo $artist->getId(); ?>" class="container "
+    enctype="multipart/form-data">
     <div class="form-group row justify-content-center">
         <div class="col-5">
             <label for="artistname">Artist name</label>
@@ -35,18 +36,35 @@
 
     <div class="form-group row justify-content-center">
         <div class="col-5">
-            <label for="artisttopsong">Images</label>
-            <input multiple="true" type="file" name="images[]" required />
+            <label for="artistImages">Images</label>
+            <input multiple="true" type="file" name="imagesup[]" accept=".jpg, .jpeg, .png"
+                onchange="validateFiles(this)" required />
+            <p>Note the old pictures will be delted when updated. So please chose pictures.
+            </p>
         </div>
-        <? var_dump($artist->getImages()) ?>
     </div>
 
     <div class="row justify-content-center">
         <button type="submit" class="btn btn-primary col-5" name="updateartist">Update</button>
     </div>
+
+    <div class="row justify-content-center">
+        <p id="errormessage" class="col-5"></p>
+    </div>
 </form>
 
 
 <script>
-
+    function validateFiles(input) {
+        if (input.files.length != 3) {
+            input.value = "";
+            document.getElementById("errormessage").style.color = 'red';
+            document.getElementById("errormessage").style.textAlign = 'center';
+            document.getElementById("errormessage").className = "mt-5";
+            document.getElementById("errormessage").innerHTML = "You need to upload 3 pictures.";
+        }
+        else {
+            document.getElementById("errormessage").innerHTML = "";
+        }
+    }
 </script>
