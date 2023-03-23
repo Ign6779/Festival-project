@@ -143,10 +143,34 @@ class ArtistRepository extends Repository
         }
     }
 
+    function updateImage($artistId, $imageId, $name)
+    {
+        try {
+            $stmt = $this->connection->prepare("UPDATE `artistImages` SET image= :name WHERE id =:imageId");
+            $stmt->bindParam(':artistId', $artistId);
+            $stmt->bindParam(':imageId', $imageId);
+            $stmt->bindParam(':name', $name);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
     function delete($artistid)
     {
         try {
             $stmt = $this->connection->prepare("DELETE FROM artist WHERE id = :id");
+            $stmt->bindParam(':id', $artistid);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    function deletePictures($artistid)
+    {
+        try {
+            $stmt = $this->connection->prepare("DELETE FROM `artistImages` WHERE artist_id = :id");
             $stmt->bindParam(':id', $artistid);
             $stmt->execute();
         } catch (PDOException $e) {

@@ -43,6 +43,12 @@ class ArtistService
     public function delete($id)
     {
         $this->repository->delete($id);
+        $this->repository->deletePictures($id);
+    }
+
+    public function updateImage($artistId, $imageId, $name)
+    {
+        $this->repository->updateImage($artistId, $imageId, $name);
     }
 
 }
