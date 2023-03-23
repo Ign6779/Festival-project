@@ -117,64 +117,13 @@ body {
     text-align: center;
     font-size: 30px;
 }
-/* detail pages on jazz and dance */
-/* #detailPage {
-    position: absolute;
-  }
-  
-  #detail-page-block{
-  display: grid;
-  position: relative;
-  width: 90%;
-  background: rgba(244, 237, 237, 0.3);
-  height: 700px;
-  }
-  .artist-name{
-    grid-column-start: 5;
-    grid-column-end: 7;
-    grid-row: 1;
-  }
-  
-  #detail-page-block h1.artist-name,
-  #detail-page-block p.artist-description {
-    grid-row: 2;
-  }
-  
-  #top3songs {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  #top3songs div {
-    margin-bottom: 10px;
-  }
-  
-  .audio-player {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .polaroid-pic{
-    width: 150px;
-    height: auto;
-  }
-  #polaroid{
-    margin-left: 20px;
-  } */
 
-
-
-
-
-
-  #detail-page-block{
-  display: grid;
-  position: relative;
-  width: 90%;
-  background: rgba(244, 237, 237, 0.3);
-  height: 700px;
+#detail-page-block{
+display: grid;
+position: relative;
+width: 90%;
+background: rgba(244, 237, 237, 0.3);
+height: 700px;
 
 }
 #top3songs{
@@ -281,7 +230,7 @@ body {
   float: center;
   font-weight: 600;
 }
-/* CALENDAR */
+/* CALENDAR BAR */
 #calendar-toggle{
   background-color: #2E9B7B;
   min-height: 60px;
@@ -292,7 +241,6 @@ body {
 #cal-text{
   color: white;
   padding:5px;
-  width: 100%;
 }
 .cal-arrow{
   color: white;
@@ -302,10 +250,10 @@ body {
   width:auto;
   margin: 0;
 }
-/* pasted */
+/* CALENDAR */
 :root {
   --numDays: 5;
-  --numHours: 12;
+  --numHours: 17;
   --timeHeight: 40px;
   --calBgColor: #fff;
   --eventBorderColor: #f2d3d8;
@@ -316,10 +264,17 @@ body {
 }
 
 .calendar {
+  display: none;
   display: grid;
   gap: 10px;
   grid-template-columns: auto 1fr;
   margin: 2rem;
+  width: 1300px;
+}
+.cal-component{
+  position: relative;
+  display: inline-block;
+  min-width: 1500px;
 }
 
 .timeline {
