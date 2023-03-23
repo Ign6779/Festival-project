@@ -272,7 +272,6 @@ body {
 }
 #ticket-btn{
   float: right;
-  /* float: bottom; */
   margin-bottom: 30px;
   margin-right: 10px;
   background-color: #92140C;
@@ -281,4 +280,25 @@ body {
 .price{
   float: center;
   font-weight: 600;
+}
+/* CALENDAR */
+#calendar-toggle{
+  background-color: #2E9B7B;
+  min-height: 60px;
+  max-height: 100px;
+  display: inline-flex;
+  flex-direction: row;
+}
+#cal-text{
+  color: white;
+  padding:5px;
+  width: 100%;
+}
+.cal-arrow{
+  color: white;
+  float: right;
+  top: 0;
+  font-size: 60px;
+  width:auto;
+  margin: 0;
 }
