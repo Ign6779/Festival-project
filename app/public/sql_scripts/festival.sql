@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Mar 23, 2023 at 02:10 PM
+-- Generation Time: Mar 24, 2023 at 03:39 PM
 -- Server version: 10.9.4-MariaDB-1:10.9.4+maria~ubu2204
 -- PHP Version: 8.0.25
 
@@ -101,7 +101,6 @@ INSERT INTO `artistImages` (`id`, `artist_id`, `image`) VALUES
 (16, 29, 'NR-1.jpg'),
 (17, 29, 'NR-2.jpeg'),
 (18, 29, 'NR-3.jpg'),
-(19, 1, 'jazz-9-gumbo-kings.png'),
 (20, 2, 'jazz-10-evolve.png'),
 (21, 3, 'jazz-6-ntjam-rosie.png'),
 (22, 4, 'jazz-14-wicked-jazz-sounds.png'),
@@ -113,7 +112,6 @@ INSERT INTO `artistImages` (`id`, `artist_id`, `image`) VALUES
 (28, 10, 'jazz-26-myles-sanko.png'),
 (29, 11, 'jazz-27-ruis-soundsystem.png'),
 (30, 12, 'jazz-28-the-family-XL.png'),
-(31, 13, 'jazz-15-gare-du-nord.png'),
 (32, 14, 'jazz-16-rilan-and-the-bombadiers.png'),
 (33, 15, 'jazz-17-soul-six.png'),
 (34, 16, 'jazz-20-han-bennink.png'),
@@ -487,28 +485,6 @@ INSERT INTO `sessions` (`id`, `restaurantId`, `seats`, `price`, `event_id`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tickets`
---
-
-CREATE TABLE `tickets` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `content` varchar(255) NOT NULL,
-  `price` float NOT NULL,
-  `type` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tickets`
---
-
-INSERT INTO `tickets` (`id`, `title`, `content`, `price`, `type`) VALUES
-(1, '3 Day Pass (JAZZ)', 'Enjoy the Haarlem Jazz during the festival without limitations!\r\nWith this ticket, you gain entry to all artist on the 27th, 28th and the 29th of July.\r\n', 250, 3),
-(2, 'BACK2BACK', 'Nicky Romero / Afrojack\r\n27th July, 20:00 - 02:00\r\nLichtfabriek (Minckelersweg 2, 2031 EM Haarlem)', 75, 2);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tourLocations`
 --
 
@@ -646,6 +622,12 @@ INSERT INTO `venue` (`id`, `name`, `location`) VALUES
 --
 
 --
+-- Indexes for table `artist`
+--
+ALTER TABLE `artist`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `artistImages`
 --
 ALTER TABLE `artistImages`
@@ -707,12 +689,6 @@ ALTER TABLE `sessions`
   ADD KEY `fk_restaurantId` (`restaurantId`);
 
 --
--- Indexes for table `tickets`
---
-ALTER TABLE `tickets`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `tourLocations`
 --
 ALTER TABLE `tourLocations`
@@ -741,10 +717,16 @@ ALTER TABLE `venue`
 --
 
 --
+-- AUTO_INCREMENT for table `artist`
+--
+ALTER TABLE `artist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
 -- AUTO_INCREMENT for table `artistImages`
 --
 ALTER TABLE `artistImages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `dance`
@@ -793,12 +775,6 @@ ALTER TABLE `restaurants`
 --
 ALTER TABLE `sessions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `tickets`
---
-ALTER TABLE `tickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tourLocations`
