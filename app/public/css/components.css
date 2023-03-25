@@ -235,12 +235,12 @@ height: 700px;
   background-color: #2E9B7B;
   min-height: 60px;
   max-height: 100px;
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
 }
 #cal-text{
+  flex: 1;
   color: white;
-  padding:5px;
 }
 .cal-arrow{
   color: white;
@@ -264,12 +264,14 @@ height: 700px;
 }
 
 .calendar {
-  display: none;
-  display: grid;
+  display: inline-grid;
   gap: 10px;
   grid-template-columns: auto 1fr;
   margin: 2rem;
   width: 1300px;
+}
+#cal-drop-down{
+  display: none;
 }
 .cal-component{
   position: relative;
@@ -279,6 +281,7 @@ height: 700px;
 
 .timeline {
   display: grid;
+  float: left;
   grid-template-rows: repeat(var(--numHours), var(--timeHeight));
 }
 
