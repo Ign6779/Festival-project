@@ -3,20 +3,27 @@ include __DIR__ . '/../header.php';
 ?>
 <!-- top section with title and picture carasol -->
 <div class="text-center container-fluid" id="top-section">
-    <h1 class="Dance-Title"> Dance! </h1>
-    <div class="text-center container" id="carousel">
-        <ul class="list">
-            <li class="hide"><img src="/img/dance-carousel-1.jpg"></li>
-            <li class="prev"><img src="/img/dance-carousel-2.jpg"></li>
-            <li class="act"><img src="/img/dance-carousel-3.jpg"></li>
-            <li class="next"><img src="/img/dance-carousel-4.jpg"></li>
-            <li class="next new-next"><img src="/img/dance-carousel-5.webp"></li>
-        </ul>
-    </div>
-
-<div class="swipe"></div>
+    <!-- <h1 class="Dance-Title"> Dance! </h1> -->
+    <img src="/img/dancelogo.png" alt="DANCE" class="dance-logo">
 </div>
-
+<!-- Carousel -->
+<div class="carousel" data-carousel="1" data-speed="2000">
+  <span class="carousel-control-left"></span>
+  <span class="carousel-control-right"></span>
+  <div class="carousel-content">
+    <!-- add extra last pic first and extra first pic last for hover effect to work properly  -->
+    <!-- <img src="/img/dance-carousel-1.jpg" alt="image 5" /> -->
+    <!-- <img src="/img/dance-carousel-2.jpg" alt="image 1" /> -->
+    <!-- <img src="/img/dance-carousel-4.jpg" alt="image 3" /> -->
+    <!-- <img src="/img/dance-carousel-5.webp" alt="image 4" /> -->
+    <img src="/img/dance-carousel-5.jpg" alt="image 6" />
+    <img src="/img/dance-carousel-6.webp" alt="image 7" />
+    <img src="/img/dance-carousel-7.jpg" alt="image 8" />
+    <img src="/img/dance-carousel-8.jpg" alt="image 9" />
+    <img src="/img/dance-carousel-3.jpg" alt="image 2" />
+    <img src="/img/dance-carousel-9.jpg" alt="image 10" />
+  </div>
+</div>
 <!-- detail pages 1 -->
 <?php
 $idForDetailPage = 25;
@@ -237,90 +244,82 @@ All access: €250,00</div>
 <?php
 include __DIR__ . '/../footer.php';
 ?>
-
- <!-- FUNCTIONALITY FOR CAROUSEL -->
 <script>
-    const $ = selector => {
-  return document.querySelector(selector);
-};
+if (document.querySelectorAll(".carousel").length > 0) {
+  let carousels = document.querySelectorAll(".carousel");
+  carousels.forEach(carousel => newCarousel(carousel));
 
-function next() {
-  if ($(".hide")) {
-    $(".hide").remove(); 
+  function newCarousel(carousel) {
+    let carouselChildren = document.querySelector(
+      `.carousel[data-carousel="${carousel.dataset.carousel}"]`
+    ).children;
+    let speed = carousel.dataset.speed;
+    let carouselContent = document.querySelectorAll(`.carousel-content`)[
+      carousel.dataset.carousel - 1
+    ];
+    const carouselLength = carouselContent.children.length;
+    let width = window.innerWidth;
+    let count = width;
+    let counterIncrement = width;
+    let int = setInterval(timer, speed);
+
+    // initial transform
+    carouselContent.style.transform = `translateX(-${width}px)`;
+
+    function timer() {
+      if (count >= (counterIncrement - 2) * (carouselLength - 2)) {
+        count = 0;
+        carouselContent.style.transform = `translateX(-${count}px)`;
+      }
+      count = count + counterIncrement;
+      carouselContent.style.transform = `translateX(-${count}px)`;
+    }
+
+    function carouselClick() {
+      // left click
+      carouselChildren[0].addEventListener("click", function() {
+        count = count - width;
+        carouselContent.style.transform = `translateX(-${count - 100}px)`;
+        if (count < counterIncrement) {
+          count = counterIncrement * (carouselLength - 2);
+          carouselContent.style.transform = `translateX(-${count - 100}px)`;
+        }
+      });
+      // right click
+      carouselChildren[1].addEventListener("click", function() {
+        count = count + width;
+        carouselContent.style.transform = `translateX(-${count + 100}px)`;
+        if (count >= counterIncrement * (carouselLength - 1)) {
+          count = counterIncrement;
+          carouselContent.style.transform = `translateX(-${count + 100}px)`;
+        }
+      });
+    }
+
+    function carouselHoverEffect() {
+      // left hover effect events
+      carouselChildren[0].addEventListener("mouseenter", function() {
+        carouselContent.style.transform = `translateX(-${count - 100}px)`;
+        clearInterval(int);
+      });
+      carouselChildren[0].addEventListener("mouseleave", function() {
+        carouselContent.style.transform = `translateX(-${count}px)`;
+        int = setInterval(timer, speed);
+      });
+
+      // right hover effect events
+      carouselChildren[1].addEventListener("mouseenter", function() {
+        carouselContent.style.transform = `translateX(-${count + 100}px)`;
+        clearInterval(int);
+      });
+      carouselChildren[1].addEventListener("mouseleave", function() {
+        carouselContent.style.transform = `translateX(-${count}px)`;
+        int = setInterval(timer, speed);
+      });
+    }
+
+    carouselHoverEffect();
+    carouselClick();
   }
-
-  /* Step */
-
-  if ($(".prev")) {
-    $(".prev").classList.add("hide");
-    $(".prev").classList.remove("prev");
-  }
-
-  $(".act").classList.add("prev");
-  $(".act").classList.remove("act");
-
-  $(".next").classList.add("act");
-  $(".next").classList.remove("next");
-
-  /* New Next */
-
-  $(".new-next").classList.remove("new-next");
-
-  const addedEl = document.createElement('li');
-
-  $(".list").appendChild(addedEl);
-  addedEl.classList.add("next","new-next");
 }
-
-function prev() {
-  $(".new-next").remove();
-    
-  /* Step */
-
-  $(".next").classList.add("new-next");
-
-  $(".act").classList.add("next");
-  $(".act").classList.remove("act");
-
-  $(".prev").classList.add("act");
-  $(".prev").classList.remove("prev");
-
-  /* New Prev */
-
-  $(".hide").classList.add("prev");
-  $(".hide").classList.remove("hide");
-
-  const addedEl = document.createElement('li');
-
-  $(".list").insertBefore(addedEl, $(".list").firstChild);
-  addedEl.classList.add("hide");
-}
-
-slide = element => {
-  /* Next slide */
-  
-  if (element.classList.contains('next')) {
-    next();
-    
-  /* Previous slide */
-    
-  } else if (element.classList.contains('prev')) {
-    prev();
-  }
-}
-
-const slider = $(".list"),
-      swipe = new Hammer($(".swipe"));
-
-slider.onclick = event => {
-  slide(event.target);
-}
-
-swipe.on("swipeleft", (ev) => {
-  next();
-});
-
-swipe.on("swiperight", (ev) => {
-  prev();
-});
-
+</script>
