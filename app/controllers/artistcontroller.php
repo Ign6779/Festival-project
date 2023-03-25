@@ -13,7 +13,11 @@ class ArtistController extends Controller
 
     public function index()
     {
+        $artists = $this->artistService->getAll();
+        $artist = $this->artistService->getOne($id);
         require __DIR__ . '/../views/admin/artists/index.php';
+        require_once __DIR__ . '/../views/components/page.php';
+        require_once __DIR__ . '/../views/festival/dance.php';
     }
 
     public function addArtistForm()

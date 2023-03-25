@@ -19,6 +19,7 @@ include __DIR__ . '/../header.php';
 
 <!-- detail pages 1 -->
 <?php
+
 $idForDetailPage = 25;
 include __DIR__ . '/../components/page.php';
 ?>

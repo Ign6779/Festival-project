@@ -68,7 +68,7 @@ class ArtistRepository extends Repository
         }
     }
 
-    function getOne($id)
+    public function getOne($id)
     {
         try {
             $stmt = $this->connection->prepare("SELECT artist.id, artist.name AS name, artist.description AS description, artist.song AS song, artist.top_song AS top_song, artistImages.image AS artistImage, artistImages.id AS imageId FROM `artist` 

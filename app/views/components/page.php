@@ -1,7 +1,7 @@
 <?php
         $name = "";
         $description = "";
-        $images = [];
+        $images[] = "";
         $song = "";
         $topSong = "";
     foreach ($artists as $artist) {
