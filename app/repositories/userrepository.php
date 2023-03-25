@@ -22,8 +22,9 @@ class UserRepository extends Repository
     function getByUsername($username)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT * FROM users WHERE username = ?");
-            $stmt->execute([$username]);
+            $stmt = $this->connection->prepare("SELECT * FROM users WHERE username = :username");
+            $stmt->bindParam(':username', $username);
+            $stmt->execute();
 
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
             $user = $stmt->fetch();
