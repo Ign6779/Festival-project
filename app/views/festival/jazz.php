@@ -87,7 +87,8 @@ include __DIR__ . '/../header.php';
                     </a>
                 </div>
 
-                <div class="col-sm-1 btn-carousel"><a class="carousel-control" href="#myCarousel" data-slide="next">
+                <div class="col-sm-1 btn-carousel">
+                    <a class="carousel-control" href="#myCarousel" data-slide="next">
                         <span class="glyphicon glyphicon-chevron-right" onclick="chgSlide()"></span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -236,6 +237,7 @@ include __DIR__ . '/../header.php';
 
                 carouselInactive.appendChild(divCardW2);
                 secondHalf.forEach((card, i) => load(card, 1));
+                console.log(data);
             })
             .catch(err => console.error(err));
     }
@@ -256,6 +258,7 @@ include __DIR__ . '/../header.php';
         divCardBody.style.height = "320px";
         divCardBody.className = "card-body";
         img.className = "card-img-top";
+        img.height = 140;
         header.className = "card-title";
         par1.className = "card-text";
         button.className = "btn btn-primary";

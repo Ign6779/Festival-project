@@ -11,8 +11,10 @@ class JazzController {
     public function index() {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $events = $this->jazzService->getAll();
+            $dates = $this->jazzService->getDatesOfEvents();
                 
             echo json_encode($events);
+            echo json_encode($dates);
         }
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
