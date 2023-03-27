@@ -27,32 +27,26 @@ class LoginController extends Controller
                 switch ($user) {
                     case null:
                         $message = "Wrong password or email address!";
-                        include __DIR__ . '/../views/messages/error.php';
                         require __DIR__ . '/../views/login/login.php';
                         break;
 
-                    // case !null:
-                    //     require __DIR__ . '/../views/home/homepage.php';
-                    //     $_SESSION["user"] = $user;
-                    //     break;
-
-                    // //just for testing
-                    default:
+                    case $user->getRole() == "admin":
                         $_SESSION["user"] = $user;
-                        require_once __DIR__ . '/../views/home/homePage.php';
+                        require __DIR__ . '/../views/admin/index.php';
                         break;
 
-                    // case $user->getType() == "admin":
-                    //     $_SESSION["user"] = $user;
-                    //     header('location:/admin');
-                    //     break;
+                    case $user->getRole() == "customer":
+                        $_SESSION["user"] = $user;
+                        require __DIR__ . '/../views/home/homepage.php';
+                        break;
 
-                    // case $user->getType() == "customer":
-                    //     $_SESSION["user"] = $user;
-                    //     header('location:/');
-                    //     break;
+                    case $user->getRole() == "employee":
+                        $_SESSION["user"] = $user;
+                        //require the page for the employee
+                        break;
                 }
-            } 
+
+            }
         }
     }
 
@@ -76,22 +70,15 @@ class LoginController extends Controller
                 $usernameToCheck = $this->userService->getByUsername($username);
                 $emailToCheck = $this->userService->getUserByEmail($email);
                 if ($usernameToCheck == null && $emailToCheck == null) {
+                    //when address and phone input fields are added
+                    // $this->userService->createUser($role, $email, $password, $address, $phone);
                     $this->userService->createUser(0, $email, $password, date("Y/m/d"), $username);
+                    require_once __DIR__ . '/../views/home/homePage.php';
                 } else {
-                    ?>
-                    <script>
-                        alert("username or email already in use! please try something else");
-                    </script>
-                    <?
+                    $message = "username or email already in use! please try something else";
                     require_once __DIR__ . '/../views/login/register.php';
                 }
-                //when address and phone input fields are added
-                // $this->userService->createUser($role, $email, $password, $address, $phone);
-                require_once __DIR__ . '/../views/home/homePage.php';
-            } else {
-                // require_once __DIR__ . '/../views/login/register.php';
-                // $message = "Please fill in the required information!";
-                // include __DIR__ . '/../views/warning.php';
+
             }
         }
     }

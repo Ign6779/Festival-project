@@ -14,7 +14,6 @@ class UserService
     public function getAll()
     {
         return $this->repository->getAll();
-        ;
     }
 
     public function getByUsername($username)

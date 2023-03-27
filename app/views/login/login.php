@@ -1,5 +1,17 @@
 <?php
 include __DIR__ . '/../header.php';
+
+function returnVisible($message)
+{
+  $visble = "";
+  if ($message != "") {
+    $visble = "d-block";
+  } else {
+    $visble = "d-none";
+  }
+  return $visble;
+}
+
 ?>
 
 <section class="vh-100">
@@ -25,14 +37,14 @@ include __DIR__ . '/../header.php';
           <!-- Email input -->
           <div class="form-outline mb-4">
             <input type="text" id="form3Example4" name="emailOrUsernameInput" class="form-control form-control-lg"
-              placeholder="Enter a valid email address or username" required/>
+              placeholder="Enter a valid email address or username" required />
             <label class="form-label" for="form3Example3">Email address or username</label>
           </div>
 
           <!-- Password input -->
           <div class="form-outline mb-3">
             <input type="password" id="form3Example4" name="passwordInput" class="form-control form-control-lg"
-              placeholder="Enter password" required/>
+              placeholder="Enter password" required />
             <label class="form-label" for="form3Example4">Password</label>
           </div>
 
@@ -43,9 +55,17 @@ include __DIR__ . '/../header.php';
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">
-            <input type="submit" class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;" name="login" value="Login">
+            <input type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"
+              name="login" value="Login">
           </div>
+
+          <div class="row d-flex justify-content-center align-items-center mt-3 <? echo returnVisible($message); ?>">
+            <div class="col alert alert-danger d-flex justify-content-center align-items-center" role="alert">
+              <? echo $message ?> <button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close"></button>
+            </div>
+          </div>
+
 
         </form>
       </div>
