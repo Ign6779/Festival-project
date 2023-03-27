@@ -1,9 +1,17 @@
 <?php
-require __DIR__ . '/repository.php';
-require __DIR__ . '/../models/ticket.php';
+require_once __DIR__ . '/repository.php';
+require_once __DIR__ . '/../models/ticket.php';
+require_once __DIR__ . '/../services/eventservice.php';
+
 
 class TicketRepository extends Repository
 {
+    private $eventService;
+    function __construct()
+    {
+        parent::__construct();
+        $this->eventService = new EventService();
+    }
     function getAll()
     {
         try {
@@ -11,8 +19,17 @@ class TicketRepository extends Repository
             LEFT JOIN ticket_event te on t.id = te.ticket_id;");
             $stmt->execute();
 
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Ticket');
-            $tickets = $stmt->fetchAll();
+            $tickets = array();
+            while ($row = $stmt->fetch()) {
+                $ticket = new Ticket();
+                $ticket->setId($row['id']);
+                $ticket->setType($row['type']);
+                $ticket->setPrice($row['price']);
+                $event = $this->eventService->getOne($row['event_id']);
+                $ticket->setEvent($event);
+                $ticket->setTitle($row['title']);
+                array_push($tickets, $ticket);
+            }
 
             return $tickets;
         } catch (PDOException $e) {

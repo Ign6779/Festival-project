@@ -1,9 +1,11 @@
 <?php
-require __DIR__ . 'repository.php';
-require __DIR__ . '/../models/event.php';
+require_once __DIR__ . '/repository.php';
+require_once __DIR__ . '/../models/event.php';
 
-class EventRepository extends Repository {
-    function getAll() {
+class EventRepository extends Repository
+{
+    function getAll()
+    {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM events");
             $stmt->execute();
@@ -12,13 +14,13 @@ class EventRepository extends Repository {
             $events = $stmt->fetchAll();
 
             return $events;
-        }
-        catch (PDOException $e){
+        } catch (PDOException $e) {
             echo $e;
         }
     }
 
-    function getByType($type) {
+    function getByType($type)
+    {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM events WHERE [type] = ?");
             $stmt->execute([$type]);
@@ -27,8 +29,23 @@ class EventRepository extends Repository {
             $events = $stmt->fetchAll();
 
             return $events;
+        } catch (PDOException $e) {
+            echo $e;
         }
-        catch (PDOException $e) {
+    }
+
+    function getOne($id)
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM events WHERE id = :id");
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Event');
+            $event = $stmt->fetch();
+
+            return $event;
+        } catch (PDOException $e) {
             echo $e;
         }
     }
