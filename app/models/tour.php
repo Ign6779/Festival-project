@@ -2,7 +2,7 @@
 class Tour implements \JsonSerializable
 {
     private int $id;
-    private int $eventId;
+    private int $event_id;
     private string $date;
     private string $startTime;
     private string $endTime;
