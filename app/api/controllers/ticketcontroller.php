@@ -25,11 +25,26 @@ class TicketController
     {
         $filteredTickets = array();
         $tickets = $this->ticketService->getAll();
-        $optionevent = htmlspecialchars($_GET['event']);
+
         foreach ($tickets as $ticket) {
-            if ($ticket->getEvent()->getType() == $optionevent) {
-                array_push($filteredTickets, $ticket);
+            if (isset($_GET['event']) && isset($_GET['date'])) {
+                $optionEvent = htmlspecialchars($_GET['event']);
+                $optionDate = htmlspecialchars($_GET['date']);
+                if ($ticket->getEvent()->getType() == $optionEvent && $ticket->getEvent()->getDate() == $optionDate) {
+                    array_push($filteredTickets, $ticket);
+                }
+            } elseif (isset($_GET['event']) && !isset($_GET['date'])) {
+                $optionEvent = htmlspecialchars($_GET['event']);
+                if ($ticket->getEvent()->getType() == $optionEvent) {
+                    array_push($filteredTickets, $ticket);
+                }
+            } elseif (!isset($_GET['event']) && isset($_GET['date'])) {
+                $optionDate = htmlspecialchars($_GET['date']);
+                if ($ticket->getEvent()->getDate() == $optionDate) {
+                    array_push($filteredTickets, $ticket);
+                }
             }
+
         }
         echo json_encode($filteredTickets);
     }

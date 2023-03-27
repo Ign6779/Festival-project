@@ -8,19 +8,19 @@ include __DIR__ . '/../header.php';
     <legend>Select event</legend>
 
     <div>
-      <input type="radio" id="filter_yummy" name="event_type" value="filter_yummy" onclick="filter('yummy')">
+      <input type="radio" id="" name="event_type" value="yummy">
       <label for="filter_yummy">Yummy</label>
     </div>
     <div>
-      <input type="radio" id="filter_dance" name="event_type" value="filter_dance" onclick="filter('dance')">
+      <input type="radio" id="" name="event_type" value="dance">
       <label for="filter_dance">Dance</label>
     </div>
     <div>
-      <input type="radio" id="filter_history" name="event_type" value="filter_history" onclick="filter('history')">
+      <input type="radio" id="" name="event_type" value="history">
       <label for="filter_history">History</label>
     </div>
     <div>
-      <input type="radio" id="filter_jazz" name="event_type" value="filter_jazz" onclick="filter('jazz')">
+      <input type="radio" id="" name="event_type" value="jazz">
       <label for="filter_jazz">Jazz</label>
     </div>
 
@@ -30,19 +30,19 @@ include __DIR__ . '/../header.php';
     <legend>Select date</legend>
 
     <div>
-      <input type="radio" id="filter_26" name="event_date" value="filter_26">
+      <input type="radio" id="" name="event_date" value="2023-07-26">
       <label for="filter_26">July 26th</label>
     </div>
     <div>
-      <input type="radio" id="filter_27" name="event_date" value="filter_27">
+      <input type="radio" id="" name="event_date" value="2023-07-27">
       <label for="filter_27">July 27th</label>
     </div>
     <div>
-      <input type="radio" id="filter_28" name="event_date" value="filter_28">
+      <input type="radio" id="" name="event_date" value="2023-07-28">
       <label for="filter_28">July 28th</label>
     </div>
     <div>
-      <input type="radio" id="filter_29" name="event_date" value="filter_29">
+      <input type="radio" id="" name="event_date" value="2023-07-29">
       <label for="filter_29">July 29th</label>
     </div>
 
@@ -55,6 +55,24 @@ include __DIR__ . '/../header.php';
 
 <script>
 
+  var isEventSelected = false;
+  var isDateSelected = false;
+
+  document.getElementById("filter_event_type").addEventListener('click', function (event) {
+    if (event.target && event.target.matches("input[type='radio']")) {
+      isEventSelected = true;
+      filter(isEventSelected, isDateSelected);
+    }
+  });
+
+  document.getElementById("filter_event_date").addEventListener('click', function (event) {
+    if (event.target && event.target.matches("input[type='radio']")) {
+      isDateSelected = true;
+      filter(isEventSelected, isDateSelected);
+    }
+  });
+
+
   fetch('http://localhost/api/ticket', {
     method: 'GET'
   })
@@ -65,10 +83,24 @@ include __DIR__ . '/../header.php';
     .catch(error => console.log(error));
 
 
-  function filter(event) {
-    fetch('http://localhost/api/ticket/filter?event=' + event, {
-      method: 'GET'
-    })
+  function filter(isEventSelected, isDateSelected) {
+
+    var link = "";
+    if (isEventSelected && isDateSelected) {
+      var event = document.querySelector('input[name = event_type]:checked').value;
+      var date = document.querySelector('input[name = event_date]:checked').value;
+      link = 'http://localhost/api/ticket/filter?event=' + event + '&date=' + date;
+    }
+    else if (!isEventSelected && isDateSelected) {
+      var date = document.querySelector('input[name = event_date]:checked').value;
+      link = "http://localhost/api/ticket/filter?date=" + date;
+    }
+    else if (isEventSelected && !isDateSelected) {
+      var event = document.querySelector('input[name = event_type]:checked').value;
+      link = "http://localhost/api/ticket/filter?event=" + event;
+    }
+
+    fetch(link)
       .then(result => result.json())
       .then((data) => {
         console.log(data);
