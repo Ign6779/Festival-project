@@ -109,7 +109,9 @@ function returnSelected($id)
             </div>
 
             <div class="cart-and-items">
+                <div id="cartamount">
 
+                </div>
                 <button class="cart" onclick="showItemsInCart()">
                     <img id="cart-icon-img" src="/img/cart-icon.png" alt="cart-icon">
                 </button>
@@ -131,8 +133,20 @@ function returnSelected($id)
             var x = document.getElementById("items-in-cart");
             if (x.style.display === "none") {
                 x.style.display = "block";
+                x.innerHTML = "";
+                fetch('/api/cart').then(result => result.json())
+                    .then((data) => {
+                        console.log(data);
+                        data.foreach();
+                    })
+                    .catch(error => console.log(error));
+
             } else {
                 x.style.display = "none";
             }
+        }
+
+        function loadTicket() {
+
         }
     </script>

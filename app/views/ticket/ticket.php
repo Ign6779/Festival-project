@@ -27,7 +27,7 @@ include __DIR__ . '/../header.php';
     </fieldset>
 
     <fieldset id="filter_event_date">
-      
+
       <legend>Select date</legend>
 
       <div>
@@ -62,7 +62,7 @@ include __DIR__ . '/../header.php';
 
 
 <script>
-
+  window.onload = cartCount;
   var isEventSelected = false;
   var isDateSelected = false;
 
@@ -123,11 +123,37 @@ include __DIR__ . '/../header.php';
     var addTocart = document.createElement("a");
     addTocart.className = "btn btn-primary";
     addTocart.innerHTML = "Add to cart";
+    addTocart.onclick = function () {
+      addToCart(ticketInput.id);
+    };
     cardTitle.innerHTML = ticketInput.title;
     price.innerHTML = ticketInput.price;
     divCardBody.append(cardTitle, numberSelector, price, addTocart);
     divCard.appendChild(divCardBody);
     tickets.appendChild(divCard);
+  }
+
+  function cartCount() {
+    var cartAmount = document.getElementById("cartamount");
+    cartAmount.innerHTML = "";
+    fetch('/api/cart/cartCount').then(result => result.json())
+      .then((data) => {
+        console.log(data);
+        cartAmount.innerHTML = data;
+
+      })
+      .catch(error => console.log(error));
+  }
+
+  function addToCart(id) {
+    fetch('/api/cart/addToCart?qnt=1&ticketId=' + id, {
+      method: 'GET'
+    }).then(result => result.json())
+      .then((data) => {
+        console.log(data);
+        cartCount();
+      })
+      .catch(error => console.log(error));
   }
 
 </script>
