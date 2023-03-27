@@ -72,19 +72,7 @@ include __DIR__ . '/../header.php';
     }
   });
 
-
-  fetch('http://localhost/api/ticket', {
-    method: 'GET'
-  })
-    .then(result => result.json())
-    .then((data) => {
-      console.log(data);
-    })
-    .catch(error => console.log(error));
-
-
   function filter(isEventSelected, isDateSelected) {
-
     var link = "";
     if (isEventSelected && isDateSelected) {
       var event = document.querySelector('input[name = event_type]:checked').value;
