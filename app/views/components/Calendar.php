@@ -1,3 +1,8 @@
+
+<?php
+    $eventStartTime = "";
+    $eventEndTime = "";
+?>
 <div class="cal-component">
     <button class="card w-75" id="calendar-toggle" onclick="CalClicked()">
     <div class="card-body" id="cal-text">
@@ -34,8 +39,7 @@
             <p class="date-day">Thu</p>
         </div>
         <div class="events">
-            <div class="event start-2 end-5 securities">
-            <!-- <p class="title">Securities Regulation</p> -->
+            <div class="event start-<?php echo $eventStartTime; ?> end-<?php echo $eventEndTime; ?> securities">
             <p class="time">2 PM - 5 PM</p>
             </div>
         </div>
