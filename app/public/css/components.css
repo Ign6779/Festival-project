@@ -236,10 +236,17 @@ height: 700px;
   max-height: 100px;
   display: flex;
   flex-direction: row;
+  align-self: center;
+  left: 15%;
+  margin:0;
 }
 #cal-text{
-  flex: 1;
   color: white;
+  display: inline-block;
+}
+#cal-text h3{
+  margin: 0;
+  top:0;
 }
 .cal-arrow{
   color: white;
@@ -268,6 +275,7 @@ height: 700px;
   grid-template-columns: auto 1fr;
   margin: 2rem;
   width: 1300px;
+  align-self: center;
 }
 #cal-drop-down{
   display: none;
@@ -408,13 +416,6 @@ height: 700px;
 .date {
   height: 60px
 }
-
- /* Global / Etc */
-
-body {
-  font-family: system-ui, sans-serif;
-}
-
 .dance-event {
   background: var(--eventColor1);
 }
