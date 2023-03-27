@@ -1,53 +1,58 @@
 <?php
 include __DIR__ . '/../header.php';
 ?>
+  <aside class="filter_events">
 
-<aside class="filter_events">
+  <fieldset id="filter_event_type">
+      <legend>Select event</legend>
 
-<fieldset id="filter_event_type">
-    <legend>Select event</legend>
+      <div>
+        <input type="radio" id="filter_yummy" name="event_type" value="filter_yummy">
+        <label for="filter_yummy">Yummy</label>
+      </div>
+      <div>
+        <input type="radio" id="filter_dance" name="event_type" value="filter_dance">
+        <label for="filter_dance">Dance</label>
+      </div>
+      <div>
+        <input type="radio" id="filter_history" name="event_type" value="filter_history">
+        <label for="filter_history">History</label>
+      </div>
+      <div>
+        <input type="radio" id="filter_jazz" name="event_type" value="filter_jazz">
+        <label for="filter_jazz">Jazz</label>
+      </div>
+      
+  </fieldset>
 
-    <div>
-      <input type="radio" id="filter_yummy" name="event_type" value="filter_yummy">
-      <label for="filter_yummy">Yummy</label>
-    </div>
-    <div>
-      <input type="radio" id="filter_dance" name="event_type" value="filter_dance">
-      <label for="filter_dance">Dance</label>
-    </div>
-    <div>
-      <input type="radio" id="filter_history" name="event_type" value="filter_history">
-      <label for="filter_history">History</label>
-    </div>
-    <div>
-      <input type="radio" id="filter_jazz" name="event_type" value="filter_jazz">
-      <label for="filter_jazz">Jazz</label>
-    </div>
-    
-</fieldset>
+  <fieldset id="filter_event_date">
+      <legend>Select date</legend>
 
-<fieldset id="filter_event_date">
-    <legend>Select date</legend>
-
-    <div>
-      <input type="radio" id="filter_26" name="event_date" value="filter_26">
-      <label for="filter_26">July 26th</label>
-    </div>
-    <div>
-      <input type="radio" id="filter_27" name="event_date" value="filter_27">
-      <label for="filter_27">July 27th</label>
-    </div>
-    <div>
-      <input type="radio" id="filter_28" name="event_date" value="filter_28">
-      <label for="filter_28">July 28th</label>
-    </div>
-    <div>
-      <input type="radio" id="filter_29" name="event_date" value="filter_29">
-      <label for="filter_29">July 29th</label>
-    </div>
-    
-</fieldset>
-</aside>
+      <div>
+        <input type="radio" id="filter_26" name="event_date" value="filter_26">
+        <label for="filter_26">July 26th</label>
+      </div>
+      <div>
+        <input type="radio" id="filter_27" name="event_date" value="filter_27">
+        <label for="filter_27">July 27th</label>
+      </div>
+      <div>
+        <input type="radio" id="filter_28" name="event_date" value="filter_28">
+        <label for="filter_28">July 28th</label>
+      </div>
+      <div>
+        <input type="radio" id="filter_29" name="event_date" value="filter_29">
+        <label for="filter_29">July 29th</label>
+      </div>
+      
+  </fieldset>
+  </aside>
+  <div class="cal-section-on-ticketpage">
+    <?php
+    // include __DIR__ . '/../components/Calendar.php';
+    ?>
+    <h1>testing h1</h1>
+  </div>
 
 
 
