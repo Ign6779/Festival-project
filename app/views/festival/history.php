@@ -182,9 +182,8 @@ function returnActive($count)
 
     // beginning of ticket script
 
-
     document.getElementsById("filter_event_date").addEventListener("click",(e)=>{
-        switch(e.target.getAttribute("id")){
+        switch(e.target.getAttribute(getSelectedValue)){
           case 'filter_26':
                 alert("26th")
                 break;

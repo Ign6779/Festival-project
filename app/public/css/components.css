@@ -19,23 +19,22 @@
 }
 /* Fonts */
 h1 {
-    font-family: "Corben";
+    font-family: "Corben" !important;
 }
 
 h2 {
-    font-family: "Mandali";
+    font-family: "Mandali" !important;
 }
 
 h3 {
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans Pro'!important;
 }
 
 /* body styling */
 
 body {
     width: 100%;
-    font-family: "Source Sans Pro";
-    background-color: #FFF8F0;
+    background-color: #FFF8F0 !important;
     margin: 0px;
     /* position: relative; */
 }
