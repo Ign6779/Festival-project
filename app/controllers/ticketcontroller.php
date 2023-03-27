@@ -14,7 +14,7 @@ class TicketController extends Controller
     public function index()
     {
         $tickets = $this->ticketService->getAll();
-        require __DIR__ . '/../views/festival/ticket.php';
+        require __DIR__ . '/../views/ticket/ticket.php';
     }
 }
 ?>
