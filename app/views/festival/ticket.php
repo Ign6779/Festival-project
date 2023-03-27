@@ -4,7 +4,7 @@ include __DIR__ . '/../header.php';
 
 <aside class="filter_events">
 
-<fieldset class="filter_event_type">
+<fieldset id="filter_event_type">
     <legend>Select event</legend>
 
     <div>
@@ -26,8 +26,8 @@ include __DIR__ . '/../header.php';
     
 </fieldset>
 
-<fieldset class="filter_event_date">
-    <legend>Select event</legend>
+<fieldset id="filter_event_date">
+    <legend>Select date</legend>
 
     <div>
       <input type="radio" id="filter_26" name="event_date" value="filter_26">
@@ -47,20 +47,19 @@ include __DIR__ . '/../header.php';
     </div>
     
 </fieldset>
-
-
-
 </aside>
 
 
-<?php
-include __DIR__ . '/../footer.php';
-?>
-
 
 <script>
-    document.getElementsByName("event_date").addEventListener("click",(e)=>{
-        switch(e.target.getAttribute("id")){
+  document.getElementsById("filter_event_date").addEventListener("click",(e)=>{
+        switch(e.target.getAttribute(getSelectedValue)){
+          case 'filter_26':
+                alert("26th")
+                break;
+            case 'filter_27':
+                alert("27th")
+                break;
             case 'filter_28':
                 alert("28th")
                 break;
@@ -69,4 +68,14 @@ include __DIR__ . '/../footer.php';
                 break;
         }
     })
+</script>
+
+
+<?php
+include __DIR__ . '/../footer.php';
+?>
+
+
+<script>
+
 </script>
