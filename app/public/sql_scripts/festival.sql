@@ -432,6 +432,20 @@ CREATE TABLE `order` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `order_ticket`
+--
+
+CREATE TABLE `order_ticket` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `ticket_id` int(11) NOT NULL,
+  `qr_code` varchar(240) NOT NULL,
+  `is_scaned` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `restaurants`
 --
 
