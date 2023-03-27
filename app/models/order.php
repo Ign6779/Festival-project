@@ -6,6 +6,8 @@ class Order implements \JsonSerializable {
     private bool $paid;
     private string $time_of_purchase;
 
+    private array $boughtTickets;
+
 
     #[ReturnTypeWillChange]
     public function jsonSerialize() {
@@ -40,6 +42,17 @@ class Order implements \JsonSerializable {
     public function setEventId(string $time_of_purchase): self {
         $this->time_of_purchase = $time_of_purchase;
         return $this;
+    }
+    public function getBoughtTickets(): array {
+        return $this->boughtTickets;
+    }
+    public function setBoughtTicket(array $boughtTickets): self {
+        $this->boughtTickets = $boughtTickets;
+        return $this;
+    }
+    //get the type of the error in the addBoughtTicket...
+    public function addBoughtTiket($boughtTicket) {
+        $this->boughtTickets[] = $boughtTicket;
     }
 }
 ?>
