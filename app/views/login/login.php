@@ -16,11 +16,13 @@ function returnVisible($message)
 
 <section class="vh-100">
   <div class="container-fluid h-custom">
-    <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="row-md-12 d-flex justify-content-center align-items-center h-100">
+      
       <div class="col-md-9 col-lg-6 col-xl-5">
         <img src="/img/login.png" class="img-fluid" alt="Sample image">
       </div>
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+      <div class="col-md-3">
         <form action="/login/login" method="post">
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
             <p class="lead fw-normal mb-0 me-3">Sign in with</p>
@@ -65,8 +67,6 @@ function returnVisible($message)
                 aria-label="Close"></button>
             </div>
           </div>
-
-
         </form>
       </div>
     </div>
