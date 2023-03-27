@@ -611,7 +611,7 @@ INSERT INTO `tours` (`id`, `event_id`, `language`, `seats`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `role` int(1) NOT NULL,
+  `role` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `phone` int(15) DEFAULT NULL,
@@ -625,9 +625,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `username`, `password`, `phone`, `address`, `email`, `registration`) VALUES
-(0, 0, 'gnas', '$2y$10$3i245PoMfgnkgnLc0YjFruWeYhmBcp1KubBKmKk9oQeCTffmAKQDy', 123456789, 'PurePainStreet, 4', 'ignas@gmail.com', '2023-02-01'),
-(2, 0, 'stupidCatalin', '$2y$10$P4yGos0mu6EQ56vyPLF/1enCAxYML9TUv8GNKQM5ZdoIzo9hcohUS', 12365489, 'test', 'catalin@gmail.com', '2023-03-08'),
-(3, 0, 'test', '$2y$10$JlZLGLdTcXQiCvRhbB/WAOlVpMPaH2vrlqOXe3.FMuLnno5cyZkKu', 12365489, 'test', 'sssss@gmail.com', '2023-03-09');
+(0, 'admin', 'gnas', '$2y$10$3i245PoMfgnkgnLc0YjFruWeYhmBcp1KubBKmKk9oQeCTffmAKQDy', 123456789, 'PurePainStreet, 4', 'ignas@gmail.com', '2023-02-01'),
+(2, 'customer', 'stupidCatalin', '$2y$10$P4yGos0mu6EQ56vyPLF/1enCAxYML9TUv8GNKQM5ZdoIzo9hcohUS', 12365489, 'test', 'catalin@gmail.com', '2023-03-08'),
+(3, 'employee', 'test', '$2y$10$JlZLGLdTcXQiCvRhbB/WAOlVpMPaH2vrlqOXe3.FMuLnno5cyZkKu', 12365489, 'test', 'sssss@gmail.com', '2023-03-09');
 
 -- --------------------------------------------------------
 
