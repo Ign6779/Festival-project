@@ -215,26 +215,67 @@ All access: €250,00</div>
 </div>
 
 <!-- venues -->
-<div class="text-center container-fluid" id="venue-section">
-    <div class="card">
-    <h1> venues </h1>
-    <div class="card-body" style="float: left;">
-        venues here
+<section class="venues">
+    <div class="venues-container">
+        <div id="map">
+        </div>
+        <div class="venues-details">
+            <h1 class="map-title">Haarlem map</h1>
+            <div class="locations">
+                <p class="map-text">Club Stalker</p>
+                <p class="map-text">Caprera Openluchttheater </p>
+                <p class="map-text">Jopenkerk</p>
+                <p class="map-text">Lichtfabriek</p>
+                <p class="map-text">Club Ruis</p>
+                <p class="map-text">XO the Club</p>
+            </div>
+        </div>
     </div>
-    <div class="map">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.4373439418973!2d4.637868015802284!3d52.38062167978804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5ef691268e66d%3A0xfa51f5aae7c4d62d!2sTeylers%20Museum!5e0!3m2!1snl!2snl!4v1677013723273!5m2!1snl!2snl"
-            width="500px" height="500px" style="border:2px solid black; margin-right:2%;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <p >e-mail:
-            info@teyeler.nl <br>
-            phone:
-            023 - 517 58 50 (office)<br>
-            <b>open from 10.00 - 17.00 </b>
-        </p>
-    </div>
-    </div>
-</div>
+</section>
+<script>
+    function initMap() {
+        var location = { lat: 52.387, lng: 4.646 };
+        var location1 = { lat: 52.38242045263527, lng: 4.634314196367745 };
+        var location2 = { lat: 52.413872340092304, lng: 4.60728320157679 };
+        var location3 = { lat: 52.38139130065097, lng: 4.629720769386906 };
+        var location4 = { lat: 52.38646249857356, lng: 4.651785284733283 };
+        var location5 = { lat: 52.382369947943666, lng: 4.636397355896557 };
+        var location6 = { lat: 52.38133850935916, lng: 4.635226413569577 };
+
+        var map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 12,
+            center: location
+        });
+        var marker1 = new google.maps.Marker({
+            position: location1,
+            map: map
+        });
+        var marker2 = new google.maps.Marker({
+            position: location2,
+            map: map
+        });
+        var marker3 = new google.maps.Marker({
+            position: location3,
+            map: map
+        });
+        var marker4 = new google.maps.Marker({
+            position: location4,
+            map: map
+        });
+        var marker5 = new google.maps.Marker({
+            position: location5,
+            map: map
+        });
+        var marker6 = new google.maps.Marker({
+            position: location6,
+            map: map
+        });
+    }
+</script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC87xRP5re_yw-jqZE9wjTViX80gXYntHw&callback=initMap">
+    </script>
 
 <!-- pointer to the top of the page -->
 <div class="pointer-to-top">
