@@ -419,6 +419,19 @@ INSERT INTO `kids` (`id`, `activity_title`, `activity_description`, `img`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `order`
+--
+
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `paid` tinyint(1) NOT NULL,
+  `time_of_purchase` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `restaurants`
 --
 
@@ -485,7 +498,29 @@ INSERT INTO `sessions` (`id`, `restaurantId`, `seats`, `price`, `event_id`) VALU
 (18, 6, 100, 35, 17);
 
 -- --------------------------------------------------------
+--
+-- Table structure for table `ticket`
+--
 
+CREATE TABLE `ticket` (
+  `id` int(11) NOT NULL,
+  `type` varchar(90) NOT NULL,
+  `price` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ticket_event`
+--
+
+CREATE TABLE `ticket_event` (
+  `id` int(11) NOT NULL,
+  `ticket_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ---
 --
 -- Table structure for table `tourLocations`
 --
