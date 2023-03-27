@@ -107,14 +107,6 @@ function returnSelected($id)
                 <img src="/img/logo-of-page.png" alt="Logo">
             </div>
 
-            <div>
-                <input type="text" class="search-input" placeholder="Search here ...">
-
-                <button class="search-button">
-                    <img src="/img/search-icon2.png" alt="search icon">
-                </button>
-            </div>
-
             <div class="cart-and-items">
 
                 <button class="cart" onclick="showItemsInCart()">
