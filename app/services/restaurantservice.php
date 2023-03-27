@@ -22,5 +22,10 @@ class RestaurantService {
         $restaurant = $this->repository->getById($id);
         return $restaurant;
     }
+
+    public function AddRestaurant(Restaurant $restaurant) {
+        $this->repository->AddRestaurant($restaurant);
+        return $restaurant;
+    }
 }
 ?>

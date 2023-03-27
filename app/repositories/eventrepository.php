@@ -32,5 +32,7 @@ class EventRepository extends Repository {
             echo $e;
         }
     }
+
+    function 
 }
 ?>
