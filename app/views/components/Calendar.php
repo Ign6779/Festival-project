@@ -1,3 +1,10 @@
+
+<?php
+    $eventStartTime = "3";
+    $eventEndTime = "5";
+    $eventType = "jazz-event";
+?>
+<!-- the correct time and event name will show up on ticket but position of event itself is just based on closest hour -->
 <div class="cal-component">
     <button class="card w-75" id="calendar-toggle" onclick="CalClicked()">
     <div class="card-body" id="cal-text">
@@ -27,6 +34,7 @@
         <div class="time-marker">1 AM</div>
         <div class="time-marker">2 AM</div>
     </div>
+    <!-- THE 26TH -->
     <div class="days">
         <div class="day mon">
         <div class="date">
@@ -34,66 +42,49 @@
             <p class="date-day">Thu</p>
         </div>
         <div class="events">
-            <div class="event start-2 end-5 securities">
-            <!-- <p class="title">Securities Regulation</p> -->
-            <p class="time">2 PM - 5 PM</p>
+            <div class="event start-<?php echo $eventStartTime; ?> end-<?php echo $eventEndTime; ?> <?php echo $eventType; ?>">
+            <p class="time">EVENT NAME <br> <?php echo $eventStartTime; ?> - <?php echo $eventEndTime; ?></p>
             </div>
         </div>
         </div>
+        <!-- THE 27TH -->
         <div class="day tues">
         <div class="date">
             <p class="date-num">27th</p>
             <p class="date-day">Fri</p>
         </div>
         <div class="events">
-            <div class="event start-10 end-12 corp-fi">
-            <!-- <p class="title">Corporate Finance</p> -->
-            <p class="time">10 AM - 12 PM</p>
-            </div>
-            <div class="event start-1 end-4 ent-law">
-            <!-- <p class="title">Entertainment Law</p> -->
-            <p class="time">1PM - 4PM</p>
-            </div>
+            <!-- for all tickets in cart, if event date == 27th, paste events -->
         </div>
         </div>
+        <!-- THE 28TH -->
         <div class="day wed">
         <div class="date">
             <p class="date-num">28th</p>
             <p class="date-day">Sat</p>
         </div>
         <div class="events">
-            <div class="event start-11 end-12 writing">
-            <!-- <p class="title">Writing Seminar</p> -->
-            <p class="time">11 AM - 12 PM</p>
-            </div>
-            <div class="event start-2 end-5 securities">
-            <!-- <p class="title">Securities Regulation</p> -->
-            <p class="time">2 PM - 5 PM</p>
-            </div>
+            <!-- for all tickets in cart, if event date == 28th, paste events -->
         </div>
         </div>
+        <!-- THE 29TH -->
         <div class="day thurs">
         <div class="date">
             <p class="date-num">29th</p>
             <p class="date-day">Sun</p>
         </div>
         <div class="events">
-            <div class="event start-10 end-12 corp-fi">
-            <!-- <p class="title">Corporate Finance</p> -->
-            <p class="time">10 AM - 12 PM</p>
-            </div>
-            <div class="event start-4 end-5 ent-law">
-            <!-- <p class="title">Entertainment Law</p> -->
-            <p class="time">1PM - 4PM</p>
-            </div>
+            <!-- for all tickets in cart, if event date == 29th, paste events -->
         </div>
         </div>
+        <!-- THE 30TH -->
         <div class="day fri">
         <div class="date">
             <p class="date-num">30th</p>
             <p class="date-day">Mon</p>
         </div>
         <div class="events">
+            <!-- for all tickets in cart, if event date == 30th, paste events -->
         </div>
         </div>
     </div>

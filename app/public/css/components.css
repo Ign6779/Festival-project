@@ -252,7 +252,7 @@ height: 700px;
 /* CALENDAR */
 :root {
   --numDays: 5;
-  --numHours: 17;
+  --numHours: 18;
   --timeHeight: 40px;
   --calBgColor: #fff;
   --eventBorderColor: #f2d3d8;
@@ -299,7 +299,13 @@ height: 700px;
 }
 
 /* Place on Timeline */
+.start-9 {
+  grid-row-start: 1;
+}
 .start-10 {
+  grid-row-start: 2;
+}
+.start-11 {
   grid-row-start: 2;
 }
 
@@ -314,27 +320,75 @@ height: 700px;
 .start-2 {
   grid-row-start: 6;
 }
-
+.start-3 {
+  grid-row-start: 7;
+}
+.start-4 {
+  grid-row-start: 8;
+}
+.start-5 {
+  grid-row-start: 9;
+}
+.start-6 {
+  grid-row-start: 10;
+}
+.start-7 {
+  grid-row-start: 11;
+}
+.start-8 {
+  grid-row-start: 12;
+}
+.start-9 {
+  grid-row-start: 13;
+}
+.start-10 {
+  grid-row-start: 14;
+}
+.start-11 {
+  grid-row-start: 15;
+}
 .end-12 {
   grid-row-end: 4;
 }
-
 .end-1 {
   grid-row-end: 5;
 }
-
 .end-3 {
   grid-row-end: 7;
 }
-
 .end-4 {
   grid-row-end: 8;
 }
-
 .end-5 {
   grid-row-end: 9;
 }
-
+.end-6 {
+  grid-row-end: 10;
+}
+.end-7 {
+  grid-row-end: 11;
+}
+.end-8 {
+  grid-row-end: 12;
+}
+.end-9 {
+  grid-row-end: 13;
+}
+.end-10 {
+  grid-row-end: 14;
+}
+.end-11 {
+  grid-row-end: 15;
+}
+.end-12 {
+  grid-row-end: 16;
+}
+.end-1am {
+  grid-row-end: 17;
+}
+.end-2am {
+  grid-row-end: 18;
+}
 /* Event */
 
 .title {
@@ -361,19 +415,19 @@ body {
   font-family: system-ui, sans-serif;
 }
 
-.corp-fi {
+.dance-event {
   background: var(--eventColor1);
 }
 
-.ent-law {
+.jazz-event {
   background: var(--eventColor2);
 }
 
-.writing {
+.history-event {
   background: var(--eventColor3);
 }
 
-.securities {
+.kids-event {
   background: var(--eventColor4);
 }
 
