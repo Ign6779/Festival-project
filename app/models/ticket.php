@@ -1,43 +1,64 @@
 <?php
+require_once __DIR__ . '/event.php';
 
-class Ticket implements \JsonSerializable {
+class Ticket implements \JsonSerializable
+{
     private int $id;
+    private string $title;
     private string $type;
     private int $price;
-    private int $event_id;
+    private Event $event;
 
     #[ReturnTypeWillChange]
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         $vars = get_object_vars($this);
         return $vars;
     }
 
-    public function getId(): int {
+    public function getId(): int
+    {
         return $this->id;
     }
-    public function setId(int $id): self {
+    public function setId(int $id): self
+    {
         $this->id = $id;
         return $this;
     }
-    public function getType(): string {
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+        return $this;
+    }
+    public function getType(): string
+    {
         return $this->type;
     }
-    public function setType(string $type): self {
+    public function setType(string $type): self
+    {
         $this->type = $type;
         return $this;
     }
-    public function getPrice(): int {
+    public function getPrice(): int
+    {
         return $this->price;
     }
-    public function setPrice(int $price): self {
+    public function setPrice(int $price): self
+    {
         $this->price = $price;
         return $this;
     }
-    public function getEvenetId(): int {
-        return $this->event_id;
+    public function getEvent(): Event
+    {
+        return $this->event;
     }
-    public function setEventId(int $event_id): self {
-        $this->event_id = $event_id;
+    public function setEvent(Event $event): self
+    {
+        $this->event = $event;
         return $this;
     }
 }
