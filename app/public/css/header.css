@@ -35,6 +35,8 @@ select {
 
 .logo {
     margin: 0 auto;
+    position: relative;
+    left: -200px;
 }
 
 label {
