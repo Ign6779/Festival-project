@@ -127,11 +127,11 @@ class RestaurantRepository extends Repository
     }
 
     public function AddRestaurant(Restaurant $restaurant) {
-        try {
-            $stmt = $this->connection->prepare("INSERT INTO restaurants (name, location, description, content, halal, vegan, stars, duration, image)
-            VALUES (:name, :location, :description, :content, :halal, :vegan, :stars, :duration, :image)");
+    try {
+        $stmt = $this->connection->prepare("INSERT INTO restaurants (name, location, description, content, halal, vegan, stars, duration, image)
+        VALUES (:name, :location, :description, :content, :halal, :vegan, :stars, :duration, :image)"); //have to use the : because there's a lot of variables
 
-        $stmt->bindValue(':name', $restaurant->getName(), PDO::PARAM_STR);
+        $stmt->bindValue(':name', $restaurant->getName(), PDO::PARAM_STR); //same reason as above
         $stmt->bindValue(':location', $restaurant->getLocation(), PDO::PARAM_STR);
         $stmt->bindValue(':description', $restaurant->getDescription(), PDO::PARAM_STR);
         $stmt->bindValue(':content', $restaurant->getContent(), PDO::PARAM_STR);
@@ -146,5 +146,39 @@ class RestaurantRepository extends Repository
             echo $e;
         }
     }
+
+    public function UpdateRestaurant(int $id, Restaurant $restaurant) {
+    try {
+        $stmt = $this->connection->prepare("UPDATE restaurants 
+        SET name=:name, location=:location, description=:description, content=:content, halal=:halal, vegan=:vegan, stars=:stars, duration=:duration, image=:image 
+        WHERE id=:id");
+
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':name', $restaurant->getName(), PDO::PARAM_STR);
+        $stmt->bindValue(':location', $restaurant->getLocation(), PDO::PARAM_STR);
+        $stmt->bindValue(':description', $restaurant->getDescription(), PDO::PARAM_STR);
+        $stmt->bindValue(':content', $restaurant->getContent(), PDO::PARAM_STR);
+        $stmt->bindValue(':halal', $restaurant->getHalal(), PDO::PARAM_BOOL);
+        $stmt->bindValue(':vegan', $restaurant->getVegan(), PDO::PARAM_BOOL);
+        $stmt->bindValue(':stars', $restaurant->getStars(), PDO::PARAM_INT);
+        $stmt->bindValue(':duration', $restaurant->getDuration(), PDO::PARAM_STR);
+        $stmt->bindValue(':image', $restaurant->getImage(), PDO::PARAM_STR);
+
+        $stmt->execute();
+    } catch (PDOException $e) {
+        echo $e;
+    }
+
+    public function DeleteRestaurant(int $id) {
+    try {
+        $stmt = $this->connection->prepare("DELETE FROM restaurants 
+        xWHERE id=:id");
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT); //gonna use this from now on
+        $stmt->execute();
+    } catch (PDOException $e) {
+        echo $e;
+    }
+}
+}
 }
 ?>
