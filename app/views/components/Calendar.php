@@ -3,6 +3,11 @@
     $eventStartTime = "3";
     $eventEndTime = "5";
     $eventType = "jazz-event";
+    // this loop gets the start time and end time rounded to whole number
+    // foreach ($tickets as $ticket) {
+    //     $start_hour = (int)substr($ticket['starttime'], 0, 2);
+    //     $end_hour = (int)substr($ticket['endtime'], 0, 2);
+    // }
 ?>
 <!-- the correct time and event name will show up on ticket but position of event itself is just based on closest hour -->
 <div class="cal-component">
