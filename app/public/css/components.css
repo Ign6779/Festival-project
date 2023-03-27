@@ -236,9 +236,7 @@ height: 700px;
   max-height: 100px;
   display: flex;
   flex-direction: row;
-  align-self: center;
-  left: 15%;
-  margin:0;
+  padding-left: 20px;
 }
 #cal-text{
   color: white;
@@ -274,7 +272,7 @@ height: 700px;
   gap: 10px;
   grid-template-columns: auto 1fr;
   margin: 2rem;
-  width: 1300px;
+  width: 1100px;
   align-self: center;
 }
 #cal-drop-down{

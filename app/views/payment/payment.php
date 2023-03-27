@@ -2,9 +2,11 @@
 include __DIR__ . '/../header.php';
 ?>
 <div class="payment-body">
-<?php
-include '/app/views/components/Calendar.php';
-?>
+    <div class="cal-body">
+        <?php
+        include '/app/views/components/Calendar.php';
+        ?>
+    </div>
 <?php
 include '/app/views/components/paymentForm.php';
 ?>

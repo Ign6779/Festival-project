@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . '/../header.php';
 ?>
+<div class="ticketpage">
   <aside class="filter_events">
 
   <fieldset id="filter_event_type">
@@ -49,9 +50,9 @@ include __DIR__ . '/../header.php';
   </aside>
   <div class="cal-section-on-ticketpage">
     <?php
-    // include __DIR__ . '/../components/Calendar.php';
+    include __DIR__ . '/../components/Calendar.php';
     ?>
-    <h1>testing h1</h1>
+  </div>
   </div>
 
 

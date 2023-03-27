@@ -1,4 +1,13 @@
 .filter_events{
-    width:30%;
-    padding-left: 10px;
+    padding-left: 40px;
+    justify-content: space-between;
+    flex-direction: column;
 }
+.ticketpage{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+}
+/* .cal-section-on-ticketpage{
+
+} */
+
