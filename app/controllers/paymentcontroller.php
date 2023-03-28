@@ -1,19 +1,19 @@
 <?php
 require __DIR__ . '/controller.php';
-require __DIR__ . '/../services/paymentservice.php';
+require __DIR__ . '/../services/orderservice.php';
 
 class PaymentController extends Controller
 {
-    private $paymentService;
+    private $orderService;
 
     public function __construct()
     {
-        $this->paymentService = new PaymentService();
+        $this->orderService = new OrderService();
     }
     
     public function index()
     {
-        $tickets = $this->paymentService->getAll();
+        $tickets = $this->orderService->getAll();
         require __DIR__ . '/../views/payment/payment.php';
     }
 }

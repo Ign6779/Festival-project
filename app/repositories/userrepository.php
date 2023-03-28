@@ -68,6 +68,40 @@ class UserRepository extends Repository
         }
     }
 
+    function deleteUser($userid)
+    {
+        try {
+            $stmt = $this->connection->prepare("DELETE FROM users WHERE id = :id");
+            $stmt->bindParam(':id', $userid);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    function inserUser($name, $description, $song, $topSong)
+    {
+        try {
+            $stmt = $this->connection->prepare("INSERT INTO users (id, name) VALUES (NULL, :name)");
+            $stmt->bindParam(':name', $name);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    function updateUser($id, $name, $description, $song, $topSong)
+    {
+        try {
+            $stmt = $this->connection->prepare("UPDATE users SET name=:name, description=:des, song=:song, top_song=:topsong WHERE id = :id");
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':name', $name);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
 //when address and phone input fields are added
 
 // function createUser($role, $email, $password, $address, $phone)

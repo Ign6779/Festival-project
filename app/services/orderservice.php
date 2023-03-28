@@ -1,10 +1,10 @@
 <?php
-require __DIR__ . '/../repositories/paymentrepository.php';
-class PaymentService {
+require __DIR__ . '/../repositories/orderrepository.php';
+class OrderService {
     private $repository;
 
     public function __construct() {
-        $this->repository = new PaymentRepository();
+        $this->repository = new OrderRepository();
     }
 
     public function getAll() {

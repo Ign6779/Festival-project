@@ -2,7 +2,7 @@
 require __DIR__ . '/repository.php';
 require __DIR__ . '/../models/order.php';
 
-class PaymentRepository extends Repository
+class OrderRepository extends Repository
 {
     function getAll()
     {
