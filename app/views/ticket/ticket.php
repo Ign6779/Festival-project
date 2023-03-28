@@ -27,7 +27,7 @@ include __DIR__ . '/../header.php';
     </fieldset>
 
     <fieldset id="filter_event_date">
-      
+
       <legend>Select date</legend>
 
       <div>
@@ -62,7 +62,7 @@ include __DIR__ . '/../header.php';
 
 
 <script>
-
+  window.onload = cartCount;
   var isEventSelected = false;
   var isDateSelected = false;
 
@@ -116,49 +116,43 @@ include __DIR__ . '/../header.php';
     divCardBody.className = "ticket-card-body";
     var cardTitle = document.createElement("h1");
     cardTitle.className = "card-title";
-    var numberSelector = document.createElement("div");
-    var price = document.createElement("p");
-      // number selector
-    var quantityLabel = document.createElement("label");
-    quantityLabel.innerHTML = "Quantity:";
-    var quantityInput = document.createElement("input");
-    quantityInput.type = "number";
-    quantityInput.value = 1;
-    quantityInput.min = 1;
-    quantityInput.max = 10;
-    quantityInput.step = 1;
-    // "+" button
-    var plusButton = document.createElement("button");
-    plusButton.innerHTML = "+";
-    plusButton.addEventListener("click", function() {
-      quantityInput.stepUp();
-    });
-    // "-" button
-    var minusButton = document.createElement("button");
-    minusButton.innerHTML = "-";
-    minusButton.addEventListener("click", function() {
-      quantityInput.stepDown();
-    });
-    price.className = "card-text";
-    var addTocart = document.createElement("a");
-    addTocart.className = "btn btn-primary";
-    addTocart.innerHTML = "Add to cart";
-    cardTitle.innerHTML = ticketInput.title;
-    price.innerHTML = ticketInput.price;
-    numberSelector.append(quantityLabel, minusButton, quantityInput, plusButton);
     var price = document.createElement("p");
     price.className = "card-text";
     var addTocart = document.createElement("a");
     addTocart.className = "btn btn-primary";
     addTocart.innerHTML = "Add to cart";
-    addTocart.addEventListener("click", function() {
-      // click event "Add to cart"
-  });
+    addTocart.onclick = function () {
+      addToCart(ticketInput.id);
+    };
     cardTitle.innerHTML = ticketInput.title;
     price.innerHTML = ticketInput.price;
     divCardBody.append(cardTitle, numberSelector, price, addTocart);
     divCard.appendChild(divCardBody);
     tickets.appendChild(divCard);
+  }
+
+  function cartCount() {
+    var cartAmount = document.getElementById("cartamount");
+    cartAmount.innerHTML = "";
+    fetch('/api/cart/cartCount').then(result => result.json())
+      .then((data) => {
+        console.log(data);
+        cartAmount.innerHTML = data;
+
+      })
+      .catch(error => console.log(error));
+  }
+
+  function addToCart(id) {
+    fetch('/api/cart/addToCart?qnt=1&ticketId=' + id, {
+      method: 'GET'
+    }).then(result => result.json())
+      .then((data) => {
+        console.log(data);
+        cartCount();
+        itemCount(id);
+      })
+      .catch(error => console.log(error));
   }
 
 </script>
