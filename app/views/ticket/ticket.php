@@ -126,7 +126,7 @@ include __DIR__ . '/../header.php';
     };
     cardTitle.innerHTML = ticketInput.title;
     price.innerHTML = ticketInput.price;
-    divCardBody.append(cardTitle, numberSelector, price, addTocart);
+    divCardBody.append(cardTitle, price, addTocart);
     divCard.appendChild(divCardBody);
     tickets.appendChild(divCard);
   }
