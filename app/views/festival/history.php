@@ -50,7 +50,7 @@ function returnActive($count)
         <a class="btn-red"href="festival/overview">Buy Tickets</a>
     </div>
     <div class="history-tickets" id="history-family-ticket">
-        <h2>Single Ticket - 60,00</h2>
+        <h2>Family Ticket - 60,00</h2>
         <p>&#8226; 4 people<br>&#8226; A free drink of choice per person</p>
         <a class="btn-red"href="festival/overview">Buy Tickets</a>
     </div>
