@@ -152,6 +152,7 @@ include __DIR__ . '/../header.php';
       .then((data) => {
         console.log(data);
         cartCount();
+        itemCount(id);
       })
       .catch(error => console.log(error));
   }

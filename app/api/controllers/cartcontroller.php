@@ -1,11 +1,14 @@
 <?php
 require_once __DIR__ . '/../../services/cartservice.php';
+require_once __DIR__ . '/../../services/ticketservice.php';
 class CartController
 {
     private $cartService;
+    private $ticketService;
     function __construct()
     {
         $this->cartService = new CarteService();
+        $this->ticketService = new TicketService();
     }
 
     function index()
@@ -38,8 +41,8 @@ class CartController
 
     function increaseQuantity()
     {
-        if (isset($_GET['phoneId'])) {
-            $id = htmlspecialchars($_GET['phoneId']);
+        if (isset($_GET['ticketId'])) {
+            $id = htmlspecialchars($_GET['ticketId']);
             $cart = $this->cartService->increaseQuantity($id);
             header('Content-Type: application/json');
             echo json_encode($cart);
@@ -48,13 +51,35 @@ class CartController
 
     function decreaseQuantity()
     {
-        if (isset($_GET['phoneId'])) {
-            $id = htmlspecialchars($_GET['phoneId']);
+        if (isset($_GET['ticketId'])) {
+            $id = htmlspecialchars($_GET['ticketId']);
             $cart = $this->cartService->decreaseQuantity($id);
             header('Content-Type: application/json');
             echo json_encode($cart);
         }
 
     }
+
+    function getItemsInCart()
+    {
+        $cart = array();
+        if (isset($_SESSION["cart"])) {
+            $cart = $_SESSION["cart"];
+        }
+        $items = array();
+        foreach ($cart as $productid => $qnt) {
+            $item = $this->ticketService->getOne($productid);
+            array_push($items, $item);
+        }
+        echo json_encode($items);
+    }
+
+    function qantityOfItem()
+    {
+        $id = htmlspecialchars($_GET['ticketId']);
+        $quantity = $this->cartService->qantityOfItem($id);
+        echo json_encode($quantity);
+    }
+
 
 }

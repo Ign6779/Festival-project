@@ -85,7 +85,7 @@ class CarteService
         return $sum;
     }
 
-    public function qantityOfPhone($id)
+    public function qantityOfItem($id)
     {
         $cart = array();
         if (isset($_SESSION["cart"])) {

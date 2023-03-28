@@ -100,7 +100,7 @@ function returnSelected($id)
                     <option <? echo returnSelected("/kids"); ?> value="/kids">Kids</option>
                 </select>
 
-                <a href="/ticket" class="remove-style menu-list-option <? echo returnStyle("ticket"); ?>">Tickets</a>
+                <a href="/ticket" class="remove-style menu-list-option <? echo returnStyle("/ticket"); ?>">Tickets</a>
             </div>
 
 
@@ -109,9 +109,6 @@ function returnSelected($id)
             </div>
 
             <div class="cart-and-items">
-                <div id="cartamount">
-
-                </div>
                 <button class="cart" onclick="showItemsInCart()">
                     <img id="cart-icon-img" src="/img/cart-icon.png" alt="cart-icon">
                 </button>
@@ -119,25 +116,42 @@ function returnSelected($id)
 
                 <div id="items-in-cart" class="items-in-cart">
                     My cart
+                    <div id="cartamount">
+
+                    </div>
+
+                    <div id="items">
+
+                    </div>
+
+                    <div>
+                        <a href="" class="btn btn-primary">Payment</a>
+                    </div>
+
                 </div>
             </div>
         </div>
     </nav>
 
     <script>
+        window.load = cartCount;
         function redirct(src) {
             window.location = src;
         }
 
         function showItemsInCart() {
             var x = document.getElementById("items-in-cart");
+            var items = document.getElementById("items");
             if (x.style.display === "none") {
                 x.style.display = "block";
-                x.innerHTML = "";
-                fetch('/api/cart').then(result => result.json())
+                items.innerHTML = "";
+                fetch('http://localhost/api/cart/getItemsInCart').then(result => result.json())
                     .then((data) => {
                         console.log(data);
-                        data.foreach();
+                        data.forEach(element => {
+                            loadItems(element);
+                            itemCount(element.id);
+                        });
                     })
                     .catch(error => console.log(error));
 
@@ -146,7 +160,77 @@ function returnSelected($id)
             }
         }
 
-        function loadTicket() {
+        function loadItems(ticketInput) {
+            var items = document.getElementById("items");
+            divTicket = document.createElement("div");
+            ticketTitle = document.createElement("p");
+            ticketTitle.innerHTML = ticketInput.title;
+            ticketDate = document.createElement("p");
+            ticketDate.innerHTML = ticketInput.event.date;
+            aIncrease = document.createElement("a");
+            aDecrease = document.createElement("a");
+            input = document.createElement("input");
+            input.id = "amountOfItem" + ticketInput.id;
+            aIncrease.innerHTML = "+";
+            aDecrease.innerHTML = "-";
+            aIncrease.className = "btn btn-primary";
+            aDecrease.className = "btn btn-primary";
 
+            aIncrease.onclick = function () {
+                increaseItem(ticketInput.id);
+            };
+
+            aDecrease.onclick = function () {
+                decreaseItem(ticketInput.id);
+            };
+            divTicket.append(ticketTitle, ticketDate, aDecrease, input, aIncrease);
+            items.appendChild(divTicket);
+        }
+
+        function itemCount(id) {
+            var itemCount = document.getElementById("amountOfItem" + id);
+            itemCount.value = "";
+            fetch('http://localhost/api/cart/qantityOfItem?ticketId=' + id).then(result => result.json())
+                .then((data) => {
+                    console.log(data);
+                    itemCount.value = data;
+                })
+                .catch(error => console.log(error));
+        }
+
+        function cartCount() {
+            var cartAmount = document.getElementById("cartamount");
+            cartAmount.innerHTML = "";
+            fetch('/api/cart/cartCount').then(result => result.json())
+                .then((data) => {
+                    console.log(data);
+                    cartAmount.innerHTML = data;
+
+                })
+                .catch(error => console.log(error));
+        }
+
+        function increaseItem(id) {
+            fetch('/api/cart/increaseQuantity?ticketId=' + id, {
+                method: 'GET'
+            }).then(result => result.json())
+                .then((data) => {
+                    console.log(data);
+                    cartCount();
+                    itemCount(id);
+                })
+                .catch(error => console.log(error));
+        }
+
+        function decreaseItem(id) {
+            fetch('/api/cart/decreaseQuantity?ticketId=' + id, {
+                method: 'GET'
+            }).then(result => result.json())
+                .then((data) => {
+                    console.log(data);
+                    cartCount();
+                    itemCount(id);
+                })
+                .catch(error => console.log(error));
         }
     </script>
