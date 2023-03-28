@@ -23,6 +23,7 @@ function returnActive($count)
 
 </div>
 <section class="history-timetable">
+    <div>
     <h2>Timetable</h2>
     <?php
     echo '<table class="history-table-display">';
@@ -30,6 +31,7 @@ function returnActive($count)
     echo '<tbody>';
     foreach ($tours as $tour) {
         echo '<tr class="history-table-display"">';
+        
         echo '<td>' . $tour->getDate() . '</td>';
         echo '<td>' . $tour->getStartTime() . '</td>';
         echo '<td>' . $tour->getEndtTime() . '</td>';
@@ -40,6 +42,18 @@ function returnActive($count)
     echo '</tbody>';
     echo '</table>';
     ?>
+    </div>
+
+    <div class="history-tickets" id="history-single-ticket">
+        <h2>Single Ticket - 17,50</h2>
+        <p>&#8226; 1 person<br>&#8226; A free drink of choice</p>
+        <a class="btn-red"href="festival/overview">Buy Tickets</a>
+    </div>
+    <div class="history-tickets" id="history-family-ticket">
+        <h2>Single Ticket - 60,00</h2>
+        <p>&#8226; 4 people<br>&#8226; A free drink of choice per person</p>
+        <a class="btn-red"href="festival/overview">Buy Tickets</a>
+    </div>
 </section>
 
 <section class="history-locations">
