@@ -117,12 +117,43 @@ include __DIR__ . '/../header.php';
     var cardTitle = document.createElement("h1");
     cardTitle.className = "card-title";
     var numberSelector = document.createElement("div");
-    numberSelector.className = "number-selector";
+    var price = document.createElement("p");
+      // number selector
+    var quantityLabel = document.createElement("label");
+    quantityLabel.innerHTML = "Quantity:";
+    var quantityInput = document.createElement("input");
+    quantityInput.type = "number";
+    quantityInput.value = 1;
+    quantityInput.min = 1;
+    quantityInput.max = 10;
+    quantityInput.step = 1;
+    // "+" button
+    var plusButton = document.createElement("button");
+    plusButton.innerHTML = "+";
+    plusButton.addEventListener("click", function() {
+      quantityInput.stepUp();
+    });
+    // "-" button
+    var minusButton = document.createElement("button");
+    minusButton.innerHTML = "-";
+    minusButton.addEventListener("click", function() {
+      quantityInput.stepDown();
+    });
+    price.className = "card-text";
+    var addTocart = document.createElement("a");
+    addTocart.className = "btn btn-primary";
+    addTocart.innerHTML = "Add to cart";
+    cardTitle.innerHTML = ticketInput.title;
+    price.innerHTML = ticketInput.price;
+    numberSelector.append(quantityLabel, minusButton, quantityInput, plusButton);
     var price = document.createElement("p");
     price.className = "card-text";
     var addTocart = document.createElement("a");
     addTocart.className = "btn btn-primary";
     addTocart.innerHTML = "Add to cart";
+    addTocart.addEventListener("click", function() {
+      // click event "Add to cart"
+  });
     cardTitle.innerHTML = ticketInput.title;
     price.innerHTML = ticketInput.price;
     divCardBody.append(cardTitle, numberSelector, price, addTocart);
