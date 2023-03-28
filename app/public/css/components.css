@@ -103,19 +103,29 @@ body {
     width: 50px;
     right: 10px;
     bottom: 10px;
-    background-color: #888888;
+    color: #333;
+    background-color: #888;
     opacity: 0.9;
     position: fixed;
     border-radius: 50%;
+    z-index: 9999;
 }
-.pointer-to-top a{
+.arrow-up{
     color:#FFFFFF;
     text-decoration: none;
+    padding-left: 15px;
     display: inline-block;
     position: sticky;
     text-align: center;
     font-size: 30px;
+    font-family: 'Source Sans Pro' ;
+    font-weight: bold;
 }
+.arrow-up, .arrow-up:hover, .arrow-up:active, .arrow-up:visited, .arrow-up:focus{
+    text-decoration:none;
+    color: white;
+}
+
 
 #detail-page-block{
 display: grid;
