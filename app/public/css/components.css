@@ -20,14 +20,17 @@
 /* Fonts */
 h1 {
     font-family: "Corben" !important;
+    margin: 0px !important;
 }
 
 h2 {
     font-family: "Mandali" !important;
+    margin: 0px !important;
 }
 
 h3 {
     font-family: 'Source Sans Pro'!important;
+    margin: 0px !important;
 }
 
 /* body styling */
