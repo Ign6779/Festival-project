@@ -2,7 +2,7 @@
 class Tour implements \JsonSerializable
 {
     private int $id;
-    private int $eventId;
+    private int $event_id;
     private string $date;
     private string $startTime;
     private string $endTime;
@@ -30,12 +30,12 @@ class Tour implements \JsonSerializable
 
     public function getEventId(): int
     {
-        return $this->eventId;
+        return $this->event_id;
     }
 
     public function setEventId(int $id): self
     {
-        $this->eventId = $id;
+        $this->event_id = $id;
         return $this;
     }
 
