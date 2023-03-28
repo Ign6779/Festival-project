@@ -45,6 +45,13 @@ class UserService
         $this->repository->createUser($role, $email, $password, $registration, $username);
     }
 
+    public function deleteUser($id)
+    {
+        $this->repository->deleteUser($id);
+    }
+
+
+
 //when address and phone input fields are added
 
 // public function createUser($role, $email, $password, $address, $phone){
