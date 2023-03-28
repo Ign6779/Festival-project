@@ -34,6 +34,22 @@ class TourRepository extends Repository
             echo $e;
         }
     }
+    function getTourByDate($date)
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT e.date, e.start_time as startTime, e.end_time as endTime,  t.* FROM tours t
+            LEFT JOIN events e ON e.id = t.event_id WHERE date = ?;");
+            $stmt->execute([$date]);
+
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Tour');
+            $tours = $stmt->fetchAll();
+
+            return $tours;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+    
 }
 
 ?>
