@@ -7,6 +7,7 @@ class Event implements \JsonSerializable
     private string $start_time;
     private string $end_time;
     private string $event_type;
+    private int $seats;
 
 
     #[ReturnTypeWillChange]
@@ -61,6 +62,16 @@ class Event implements \JsonSerializable
     public function setEndTime(string $end_time): self
     {
         $this->end_time = $end_time;
+        return $this;
+    }
+
+    public function getSeats(): int 
+    {
+        return $this->seats;
+    }
+    public function setSeats(int $seats):self 
+    {
+        $this->seats = $seats;
         return $this;
     }
 }

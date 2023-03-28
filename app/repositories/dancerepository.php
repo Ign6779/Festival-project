@@ -7,7 +7,7 @@ class DanceRepository extends Repository
     public function getAll()
     {
         try {
-            $stmt = $this->connection->prepare("SELECT d.*, v.name AS venueName, v.location, a.id as artistId, a.name AS artistName , e.date , e.start_time as startTime , e.end_time as endTime 
+            $stmt = $this->connection->prepare("SELECT d.*, v.name AS venueName, v.location, a.id as artistId, a.name AS artistName , e.date , e.start_time as startTime , e.end_time as endTime, e.seats AS availableTickets
             FROM dance d 
             LEFT JOIN venue v ON d.venueId = v.id 
             LEFT JOIN danceArtist da ON d.id = da.danceId 

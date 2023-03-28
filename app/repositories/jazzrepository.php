@@ -7,7 +7,7 @@ class JazzRepository extends Repository
     public function getAll()
     {
         try {
-            $stmt = $this->connection->prepare("SELECT j.*, v.name AS venueName, v.location,a.id as artistId, a.name AS artistName, e.date, e.start_time as startTime, e.end_time as endTime
+            $stmt = $this->connection->prepare("SELECT j.*, v.name AS venueName, v.location,a.id as artistId, a.name AS artistName, e.date, e.start_time as startTime, e.end_time as endTime, e.seats as availableTickets
             FROM jazz j 
             LEFT JOIN venue v ON j.venueId = v.id 
             LEFT JOIN jazzArtist ja ON j.id = ja.jazzId 

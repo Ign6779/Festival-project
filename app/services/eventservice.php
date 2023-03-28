@@ -17,9 +17,9 @@ class EventService
         return $events;
     }
 
-    public function getOne($id)
+    public function getById($id)
     {
         $repository = new EventRepository();
-        return $repository->getOne($id);
+        return $repository->getById($id);
     }
 }

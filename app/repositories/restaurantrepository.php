@@ -8,7 +8,7 @@ class RestaurantRepository extends Repository
     public function getAll()
     { //cannot use the same structure as other times since it gets info from many tables, including an array within a class.
         try {
-            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, e.date, e.start_time as startTime, e.end_time as endTime, s.seats, s.price
+            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, e.date, e.start_time as startTime, e.end_time as endTime, e.seats, s.price
             FROM restaurants r 
             LEFT JOIN sessions s ON r.id = s.restaurantId
             LEFT JOIN events e on e.id = s.event_id"); //only way i could imagine of doing it tbh
@@ -85,7 +85,7 @@ class RestaurantRepository extends Repository
     public function getById(int $id)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, e.date, e.start_time as startTime, e.end_time as endTime, s.seats, s.price 
+            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, e.date, e.start_time as startTime, e.end_time as endTime, e.seats, s.price 
             FROM restaurants r 
             LEFT JOIN sessions s ON r.id = s.restaurantId
             LEFT JOIN events e on e.id = s.event_id

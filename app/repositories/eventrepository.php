@@ -34,7 +34,7 @@ class EventRepository extends Repository
         }
     }
 
-    function getOne($id)
+    function getById($id)
     {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM events WHERE id = :id");
