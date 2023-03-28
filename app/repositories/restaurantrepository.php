@@ -82,8 +82,7 @@ class RestaurantRepository extends Repository
         return $restaurants;
     }
 
-    public function getById(int $id)
-    {
+    public function getById(int $id) {
         try {
             $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, e.date, e.start_time as startTime, e.end_time as endTime, s.seats, s.price 
             FROM restaurants r 
@@ -165,8 +164,9 @@ class RestaurantRepository extends Repository
         $stmt->bindValue(':image', $restaurant->getImage(), PDO::PARAM_STR);
 
         $stmt->execute();
-    } catch (PDOException $e) {
-        echo $e;
+        } catch (PDOException $e) {
+            echo $e;
+        }
     }
 
     public function DeleteRestaurant(int $id) {
@@ -175,10 +175,9 @@ class RestaurantRepository extends Repository
         xWHERE id=:id");
         $stmt->bindValue(':id', $id, PDO::PARAM_INT); //gonna use this from now on
         $stmt->execute();
-    } catch (PDOException $e) {
-        echo $e;
+        } catch (PDOException $e) {
+            echo $e;
+        }
     }
-}
-}
 }
 ?>
