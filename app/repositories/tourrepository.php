@@ -7,7 +7,7 @@ class TourRepository extends Repository
     function getAll()
     {
         try {
-            $stmt = $this->connection->prepare("SELECT e.date, e.start_time as startTime, e.end_time as endTime,  t.* FROM tours t
+            $stmt = $this->connection->prepare("SELECT e.date, e.start_time as startTime, e.end_time as endTime,  t.*, e.seats FROM tours t
             LEFT JOIN events e ON e.id = t.event_id;");
             $stmt->execute();
 
