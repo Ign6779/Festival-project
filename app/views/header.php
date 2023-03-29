@@ -125,7 +125,7 @@ function returnSelected($id)
                     </div>
 
                     <div>
-                        <a href="" class="btn btn-primary">Payment</a>
+                        <a href="/payment" class="btn btn-primary">Payment</a>
                     </div>
 
                 </div>
