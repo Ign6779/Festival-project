@@ -1,25 +1,40 @@
 <?php
 require __DIR__ . '/../repositories/eventrepository.php';
+//require __DIR__ . '/../models/event.php';
 
 class EventService
 {
+    private $repository;
+
+    public function __construct() {
+        $this->repository = new EventRepository();
+    }
     public function getAll()
     {
-        $repository = new EventRepository();
-        $events = $repository->getAll();
+        $events = $this->repository->getAll();
         return $events;
     }
 
     public function getByType($type)
     {
-        $repository = new EventRepository();
-        $events = $repository->getByType($type);
+        $events = $this->repository->getByType($type);
         return $events;
     }
 
     public function getById($id)
     {
-        $repository = new EventRepository();
-        return $repository->getById($id);
+        return $this->repository->getById($id);
+    }
+
+    public function CreateEvent(Event $event) {
+        $this->repository->CreateEvent($event);
+    }
+
+    public function UpdateEvent(Event $event) {
+        $this->repository->UpdateEvent($event);
+    }
+
+    public function DeleteEvent(int $id) {
+        $this->repository->DeleteEvent($id);
     }
 }
