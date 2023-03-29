@@ -82,10 +82,27 @@ function returnSelected($id)
 
         <div class="nav-section2">
 
-            
+            <div class="logo">
+                <img src="/img/logo-of-page.png" alt="Logo">
+            </div>
+
+            <div id="menu-list" class="menu-list">
+                <select name="CRUD" id="CRUD" onchange="redirct(this.value)"
+                    class="menu-list-option <? echo returnStyle("festival"); ?>">
+                    <option <? echo returnSelected("/"); ?> disabled>Events</option>
+                    <option <? echo returnSelected("/"); ?> value="/festival">Venues</option>
+                    <option <? echo returnSelected("/"); ?> value="/yummy">Artists</option>
+                    <option <? echo returnSelected("/"); ?> value="/history">Restaurants</option>
+                    <option <? echo returnSelected("/"); ?> value="/dance">Sessions</option>
+                    <option <? echo returnSelected("/"); ?> value="/jazz">Reservations</option>
+                    <option <? echo returnSelected("/"); ?> value="/kids">Users</option>
+                </select>
+
+                <a href="/" class="remove-style menu-list-option <? echo returnStyle("/"); ?>">Orders</a>
+            </div>
         </div>
     </nav>
 
     <script>
-       
+
     </script>
