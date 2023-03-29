@@ -130,7 +130,7 @@ class RestaurantRepository extends Repository
         }
     }
 
-    public function CreateRestaurant(Restaurant $restaurant) {
+    public function createRestaurant(Restaurant $restaurant) {
         try {
             $stmt = $this->connection->prepare("INSERT INTO restaurants (name, location, description, content, halal, vegan, stars, duration, image)
             VALUES (:name, :location, :description, :content, :halal, :vegan, :stars, :duration, :image)");
@@ -152,7 +152,7 @@ class RestaurantRepository extends Repository
         }
     }
 
-    public function UpdateRestaurant(Restaurant $restaurant) {
+    public function updateRestaurant(Restaurant $restaurant) {
         try {
             $stmt = $this->connection->prepare("UPDATE restaurants 
             SET name = :name, location = :location, description = :description, content = :content, halal = :halal, vegan = :vegan, stars = :stars, duration = :duration, image = :image 
@@ -175,7 +175,7 @@ class RestaurantRepository extends Repository
         }
     }
 
-    public function DeleteRestaurant(int $id) {
+    public function deleteRestaurant(int $id) {
         try {
             $stmt = $this->connection->prepare("DELETE FROM restaurants WHERE id = :id");
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
