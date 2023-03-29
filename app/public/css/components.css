@@ -459,3 +459,10 @@ height: 700px;
   font-size: 3rem;
   font-weight: 100;
 }
+
+/* SHARE BUTTONS */
+.share{
+  position: relative;
+  float: right;
+  z-index: 99999;
+}

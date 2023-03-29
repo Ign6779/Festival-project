@@ -3,6 +3,9 @@ include __DIR__ . '/../header.php';
 // include '/app/models/jazz.php';
 ?>
 <!-- Header of the jazz page -->
+<?php
+        include __DIR__ . '/../components/shareButtons.php';
+    ?>  
 <div>
     <section class="jazz-header">
         <img class="img-responsive" src="/img/jazz-1-background.png" alt="Jazz">
