@@ -13,8 +13,8 @@ class UserController
     public function index()
     {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            $user = $this->userService->getAll();
-            echo json_encode($user);
+            $users = $this->userService->getAll();
+            echo json_encode($users);
         }
     }
 
