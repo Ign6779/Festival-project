@@ -1,8 +1,8 @@
 <? include __DIR__ . '/../adminheader.php' ?>
 
 <div class="row justify-content-end mt-5">
-    <div class="col-md-2 "><a href="/user/addUserForm" class="btn btn-primary">Add an user
-    </a>
+    <div class="col-md-1 "><a href="/user/addUserForm" class="btn btn-primary">Add an user
+        </a>
     </div>
 </div>
 <table class="container table">
@@ -63,7 +63,7 @@
 
         tdRegistration = document.createElement("td");
         tdRegistration.innerHTML = userInput.registration;
-        
+
         tdButtons = document.createElement("td");
 
         aEdit = document.createElement("a");

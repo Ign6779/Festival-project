@@ -12,8 +12,6 @@ class User implements \JsonSerializable
     private string $password;
     private int $phoneNumber;
     private string $address;
-    //private date $registrationDate;
-
     private string $phone;
     private string $email;
     private string $registration;
@@ -37,14 +35,6 @@ class User implements \JsonSerializable
         return $this;
     }
 
-    // public function getRole():Role {
-    //     return $this->role;
-    // }
-    // public function setRole(int $role):self { //i am really not sure if this works; must test
-    //     $this->role = Role::tryFrom($role);
-    //     return $this;
-    // }
-
     public function getRole(): string
     {
         return $this->role;
@@ -62,6 +52,17 @@ class User implements \JsonSerializable
     public function setUsername(string $username): self
     {
         $this->username = $username;
+        return $this;
+    }
+
+    public function getEmail():  string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
         return $this;
     }
 

@@ -39,24 +39,15 @@
     <div class="form-group row justify-content-center">
         <div class="col-5">
             <label for="password">Password</label>
-            <input type="text" class="form-control" id="password" name="password" required>
+            <input type="password" class="form-control" id="password" name="password" required>
         </div>
     </div>
 
-    <div class="form-group row justify-content-center">
-        <div class="col-5">
-            <label for="registration">Registration</label>
-            <input type="text" class="form-control" id="registration" name="registration" required>
-        </div>
-    </div>
-
-    <!-- rest of the fields -->
-
     <div class="row justify-content-center">
-        <button type="submit" class="btn btn-primary col-5" name="adduser">Add</button>
+        <button type="submit" class="btn btn-primary col-4" name="adduser">Add</button>
     </div>
 
     <div class="row justify-content-center">
-        <p id="errormessage" class="col-5"></p>
+        <p id="errormessage" class="col-4"></p>
     </div>
 </form>
