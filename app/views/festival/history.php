@@ -25,8 +25,9 @@ function returnActive($count)
     <br><a class="btn-red" id="history-header-button" href="festival/overview">Buy Tickets</a>
 </div>
 <section class="history-timetable">
-    <div>
+    <div class="timetable-div">
         <h2>Timetable</h2>
+        <div class="timetable-scroller">
         <?php
         echo '<table class="history-table-display">';
         echo '<thead><tr><th>Date</th><th>Start Time</th><th>End time<th>Language</th><th>Seats</th></thead>';
@@ -44,6 +45,7 @@ function returnActive($count)
         echo '</tbody>';
         echo '</table>';
         ?>
+        </div>
     </div>
 
     <div class="history-tickets" id="history-single-ticket">
@@ -178,11 +180,8 @@ function returnActive($count)
 
         pargraph.classList.add("col-xl-6");
         pargraph.style.alignItems = "center";
-        // img = document.createElement("img");
-        // img.src = "/img/" + locationInput.img;
         location.appendChild(header);
         location.appendChild(pargraph);
-        // location.appendChild(img);
     }
 
 </script>
