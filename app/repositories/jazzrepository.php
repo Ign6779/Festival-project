@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/repository.php';
-require __DIR__ . '/../models/jazz.php';
+require_once __DIR__ . '/repository.php';
+require_once __DIR__ . '/../models/jazz.php';
 
 class JazzRepository extends Repository
 {

@@ -50,7 +50,7 @@ class TicketRepository extends Repository
                 $ticket->setId($row['id']);
                 $ticket->setType($row['type']);
                 $ticket->setPrice($row['price']);
-                $event = $this->eventService->getOne($row['event_id']);
+                $event = $this->eventService->getById($row['event_id']);
                 $ticket->setEvent($event);
                 $ticket->setTitle($row['title']);
             }

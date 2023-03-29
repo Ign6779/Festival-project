@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/repository.php';
-require __DIR__ . '/../models/restaurant.php';
+require_once __DIR__ . '/repository.php';
+require_once __DIR__ . '/../models/restaurant.php';
 //require __DIR__ . '/../models/session.php';
 
 class RestaurantRepository extends Repository

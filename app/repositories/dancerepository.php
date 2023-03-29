@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/repository.php';
-require __DIR__ . '/../models/dance.php';
+require_once __DIR__ . '/repository.php';
+require_once __DIR__ . '/../models/dance.php';
 
 class DanceRepository extends Repository
 {
