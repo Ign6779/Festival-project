@@ -33,14 +33,7 @@ function returnSelected($id)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haarlem festival</title>
-    <link rel="stylesheet" href="/css/kids.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="/css/jazz.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="/css/history.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="/css/login.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="/css/dance.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="/css/overview.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/header.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="/css/homepage.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/components.css?v=<?php echo time(); ?>">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -87,22 +80,25 @@ function returnSelected($id)
             </div>
 
             <div id="menu-list" class="menu-list">
-                <select name="CRUD" id="CRUD" onchange="redirct(this.value)"
-                    class="menu-list-option <? echo returnStyle("festival"); ?>">
-                    <option <? echo returnSelected("/"); ?> disabled>Events</option>
-                    <option <? echo returnSelected("/"); ?> value="/festival">Venues</option>
-                    <option <? echo returnSelected("/"); ?> value="/yummy">Artists</option>
-                    <option <? echo returnSelected("/"); ?> value="/history">Restaurants</option>
-                    <option <? echo returnSelected("/"); ?> value="/dance">Sessions</option>
-                    <option <? echo returnSelected("/"); ?> value="/jazz">Reservations</option>
-                    <option <? echo returnSelected("/"); ?> value="/kids">Users</option>
-                </select>
+                <a href="/order" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Orders</a>
 
-                <a href="/" class="remove-style menu-list-option <? echo returnStyle("/"); ?>">Orders</a>
+                <select name="CRUD" id="CRUD" onchange="redirct(this.value)"
+                    class="menu-list-option <? echo returnStyle("/user"); ?>">
+                    <option <? echo returnSelected("/event"); ?> value="/event">Events</option>
+                    <option <? echo returnSelected("/venue"); ?> value="/venue">Venues</option>
+                    <option <? echo returnSelected("/artist"); ?> value="/artist">Artists</option>
+                    <option <? echo returnSelected("/restaurant"); ?> value="/restaurant">Restaurants</option>
+                    <option <? echo returnSelected("/session"); ?> value="/session">Sessions</option>
+                    <option <? echo returnSelected("/reservation"); ?> value="/reservation">Reservations</option>
+                    <option <? echo returnSelected("/user"); ?> value="/user">Users</option>
+                </select>
             </div>
         </div>
     </nav>
 
     <script>
-
+        window.load = cartCount;
+        function redirct(src) {
+            window.location = src;
+        }
     </script>
