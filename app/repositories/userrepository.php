@@ -52,14 +52,31 @@ class UserRepository extends Repository
         }
     }
 
-    function createUser($role, $email, $password, $registration, $username)
+    public function getUserById($id){
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM users WHERE id = :id");
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+            $user = $stmt->fetch();
+
+            return $user;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    function createUser($role, $username, $email, $address, $phone, $password, $registration)
     {
         try {
             $hasedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $this->connection->prepare("INSERT INTO users (id, role, username, email, address, phone, password, registration) VALUES (NULL, :r, :username, :email, 'test', '12365489', :pass, :registration)");
+            $stmt = $this->connection->prepare("INSERT INTO users (id, role, username, email, address, phone, password, registration) VALUES (NULL, :r, :username, :email, :address, :phone, :pass, :registration)");
             $stmt->bindParam(':r', $role);
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':address', $address);
+            $stmt->bindParam(':phone', $phone);
             $stmt->bindParam(':pass', $hasedPassword);
             $stmt->bindParam(':registration', $registration);
             $stmt->execute();
@@ -79,53 +96,22 @@ class UserRepository extends Repository
         }
     }
 
-    function inserUser($name, $description, $song, $topSong)
+    function updateUser($id, $role, $username, $email, $address, $phone, $password, $registration)
     {
         try {
-            $stmt = $this->connection->prepare("INSERT INTO users (id, name) VALUES (NULL, :name)");
-            $stmt->bindParam(':name', $name);
-            $stmt->execute();
-        } catch (PDOException $e) {
-            echo $e;
-        }
-    }
-
-    function updateUser($id, $name, $description, $song, $topSong)
-    {
-        try {
-            $stmt = $this->connection->prepare("UPDATE users SET name=:name, description=:des, song=:song, top_song=:topsong WHERE id = :id");
+            $stmt = $this->connection->prepare("UPDATE users SET role=:role, username=:username, email=:email, address=:address, phone=:phone, password=:password, registration=:registration WHERE id = :id");
             $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':role', $role);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':address', $address);
+            $stmt->bindParam(':phone', $phone);
+            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':registration', $registration);
             $stmt->execute();
         } catch (PDOException $e) {
             echo $e;
         }
     }
-
-//when address and phone input fields are added
-
-// function createUser($role, $email, $password, $address, $phone)
-// {
-//     try {
-//         $hasedPassword = password_hash($password, PASSWORD_DEFAULT);
-//         $stmt = $this->connection->prepare("INSERT INTO users (id, role, username, email, address, phone, password, registration) VALUES (NULL, :r, :username, :email, :adr, :phone, :pass, :registration)");
-//         $stmt->bindParam(':r', $role);
-//         $stmt->bindParam(':username', $email);
-//         $stmt->bindParam(':email', $email);
-//         $stmt->bindParam(':adr', $address);
-//         $stmt->bindParam(':pass', $hasedPassword);
-//         $stmt->bindParam(':phone', $phone);
-//         $stmt->bindParam(':registration', $registration);
-//         $stmt->execute();
-//     } catch (PDOException $e) {
-//         echo $e;
-//     }
-// }
-
-// function insert($user) {
-//     try {
-//         $stmt = $this->connection->prepare("INSERT INTO users ()")
-//     }
-// }
 }
 ?>

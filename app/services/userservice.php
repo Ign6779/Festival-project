@@ -25,6 +25,11 @@ class UserService
         return $this->repository->getUserByEmail($email);
     }
 
+    public function getUserById($id){
+        return $this->repository->getUserById($id);
+    }
+
+
     public function verifyUser($emailOrUsername, $password)
     {
         if (strpos($emailOrUsername, "@")) {
@@ -40,9 +45,9 @@ class UserService
         return null;
     }
 
-    public function createUser($role, $email, $password, $registration, $username)
+    public function createUser($role, $username, $email, $address, $phone, $password, $registration)
     {
-        $this->repository->createUser($role, $email, $password, $registration, $username);
+        $this->repository->createUser($role, $username, $email, $address, $phone, $password, $registration);
     }
 
     public function deleteUser($id)
@@ -50,13 +55,9 @@ class UserService
         $this->repository->deleteUser($id);
     }
 
-
-
-//when address and phone input fields are added
-
-// public function createUser($role, $email, $password, $address, $phone){
-//     $this->repository->createUser($role, $email, $password, $address, $phone);
-// }
-
+    public function updateUser($id, $role, $username, $email, $address, $phone, $password, $registration)
+    {
+        $this->repository->updateUser($id, $role, $username, $email, $address, $phone, $password, $registration);
+    }
 }
 ?>
