@@ -105,15 +105,15 @@ class SessionRepository extends Repository {
             $stmt1->bindValue(':date', $session->getDate(), PDO::PARAM_STR);
             $stmt1->bindValue(':start_time', $session->getStartTime(), PDO::PARAM_STR);
             $stmt1->bindValue(':end_time', $session->getEndTime(), PDO::PARAM_STR);
-            $stmt1->bindValue(':event_type', $session->getType(), PDO::PARAM_STR);
+            $stmt1->bindValue(':event_type', 'yummy');
             $stmt1->bindValue(':seats', $session->getSeats(), PDO::PARAM_INT);
 
             $stmt1->execute();
 
             //filling in the sessions table part
             $eventId = $this->connection->lastInsertId();//if this works i am a fucking genius
-            $stmt2 = $this->connection->prepare("INSERT INTO sessions 
-            (restaurantId, price, event_id) VALUES (:restaurantId, :price: :event_id)");
+            $stmt2 = $this->connection->prepare("INSERT INTO sessions (restaurantId, price, event_id) 
+            VALUES (:restaurantId, :price, :event_id)");
             $stmt2->bindValue(':restaurantId', $session->getRestaurantId(), PDO::PARAM_STR);
             $stmt2->bindValue(':price', $session->getPrice(), PDO::PARAM_STR);
             $stmt2->bindValue(':event_id', $eventId);
@@ -127,8 +127,8 @@ class SessionRepository extends Repository {
     public function UpdateSession(Session $session) {
         try {
             // Update event record
-            $stmt = $this->connection->prepare("UPDATE event 
-            SET date = :date, startTime = :startTime, endTime = :endTime 
+            $stmt = $this->connection->prepare("UPDATE events 
+            SET date = :date, start_time = :startTime, end_time = :endTime 
             WHERE id = :id");
             $stmt->bindValue(':id', $session->getEventId(), PDO::PARAM_INT);
             $stmt->bindValue(':date', $session->getDate(), PDO::PARAM_STR);
@@ -149,7 +149,7 @@ class SessionRepository extends Repository {
 
     public function DeleteSession(int $id) {
         try {
-            $stmt = $this->connection->prepare("DELETE FROM sessions WHERE id = :id"); //IF the foreign keys are set correctly, this *should* work
+            $stmt = $this->connection->prepare("DELETE FROM events WHERE id = :id"); //IF the foreign keys are set correctly, this *should* work
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
         } catch  (PDOException $e) {

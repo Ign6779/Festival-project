@@ -142,7 +142,7 @@ class RestaurantRepository extends Repository
             $stmt->bindValue(':halal', $restaurant->getHalal(), PDO::PARAM_BOOL);
             $stmt->bindValue(':vegan', $restaurant->getVegan(), PDO::PARAM_BOOL);
             $stmt->bindValue(':stars', $restaurant->getStars(), PDO::PARAM_INT);
-            $stmt->bindValue(':duration', $restaurant->getDuration(), PDO::PARAM_FLOAT);
+            $stmt->bindValue(':duration', $restaurant->getDuration(), PDO::PARAM_STR);
             $stmt->bindValue(':image', $restaurant->getImage(), PDO::PARAM_STR);
 
 
@@ -165,7 +165,7 @@ class RestaurantRepository extends Repository
             $stmt->bindValue(':halal', $restaurant->getHalal(), PDO::PARAM_BOOL);
             $stmt->bindValue(':vegan', $restaurant->getVegan(), PDO::PARAM_BOOL);
             $stmt->bindValue(':stars', $restaurant->getStars(), PDO::PARAM_INT);
-            $stmt->bindValue(':duration', $restaurant->getDuration(), PDO::PARAM_FLOAT);
+            $stmt->bindValue(':duration', $restaurant->getDuration(), PDO::PARAM_STR);
             $stmt->bindValue(':image', $restaurant->getImage(), PDO::PARAM_STR);
             $stmt->bindValue(':id', $restaurant->getId(), PDO::PARAM_INT);
 
