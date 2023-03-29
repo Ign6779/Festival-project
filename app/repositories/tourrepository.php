@@ -49,6 +49,7 @@ class TourRepository extends Repository
             $stmt1->execute();
 
             $eventId = $this->connection->lastInsertId();
+            
             $stmt2 = $this->connection->prepare("INSERT INTO tours (event_id, language) 
             VALUES (:eventId, :language)");
             

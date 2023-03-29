@@ -19,4 +19,16 @@ class LocationService
     {
         return $this->repository->getOne($id);
     }
+
+    public function createLocation(Location $location) {
+        $this->repository->createLocation($location);
+    }
+
+    public function updateLocation(Location $location) {
+        $this->repository->updateLocation($location);
+    }
+
+    public function deleteLocation(int $id) {
+        $this->repository->deleteLocation($id);
+    }
 }
