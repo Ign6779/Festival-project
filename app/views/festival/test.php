@@ -10,5 +10,5 @@ $newEvent->setEndTime('15:40:00');
 $newEvent->setType('test2');
 $newEvent->setSeats(10000);
 
-$this->eventService->DeleteEvent(96);
+
 ?>
