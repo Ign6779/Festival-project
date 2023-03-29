@@ -7,7 +7,7 @@ class DanceRepository extends Repository
     public function getAll()
     {
         try {
-            $stmt = $this->connection->prepare("SELECT d.*, v.name AS venueName, v.location, a.id as artistId, a.name AS artistName , e.date , e.start_time as startTime , e.end_time as endTime, e.seats AS availableTickets
+            $stmt = $this->connection->prepare("SELECT d.*, v.name AS venueName, v.location, a.id as artistId, a.name AS artistName , e.date , e.start_time as startTime , e.end_time as endTime, e.seats AS availableTickets, e.id AS event_id 
             FROM dance d 
             LEFT JOIN venue v ON d.venueId = v.id 
             LEFT JOIN danceArtist da ON d.id = da.danceId 
@@ -29,6 +29,7 @@ class DanceRepository extends Repository
                     $danceEvent->setSession($row['session']);
                     $danceEvent->setAvailableTickets($row['availableTickets']);
                     $danceEvent->setPrice($row['price']);
+                    $danceEvent->setEventId($row['event_id']);
 
                     $venue = new Venue();
                     $venue->setId($row['venueId']);
@@ -88,5 +89,69 @@ class DanceRepository extends Repository
             echo $e;
         }
 
+    }
+
+    public function createDance(Dance $dance) {
+        try {
+            $stmt1 = $this->connection->prepare("INSERT INTO events (date, start_time, end_time, event_type, seats)
+            VALUES (:date, :start_time, :end_time, :event_type, :seats)");
+
+            $stmt1->bindValue(':date', $dance->getDate(), PDO::PARAM_STR);
+            $stmt1->bindValue(':start_time', $dance->getStartTime(), PDO::PARAM_STR);
+            $stmt1->bindValue(':end_time', $dance->getEndTime(), PDO::PARAM_STR);
+            $stmt1->bindValue(':event_type', 'dance');
+            $stmt1->bindValue(':seats', $dance->getAvailableTickets(), PDO::PARAM_INT);
+
+            $stmt1->execute();
+
+            //filling in the sessions table part
+            $eventId = $this->connection->lastInsertId();//if this works i am a fucking genius
+            $stmt2 = $this->connection->prepare("INSERT INTO dance (venueId, session, price, event_id) 
+            VALUES (:venueId, :session, :price, :event_id)");
+            
+            $stmt2->bindValue(':venueId', $dance->getVenue(), PDO::PARAM_STR);
+            $smtm2->bindValue(':session', $dance->getSession(), PDO::PARAM_STR);
+            $stmt2->bindValue(':price', $dance->getPrice(), PDO::PARAM_STR);
+            $stmt2->bindValue(':event_id', $dance);
+
+            $stmt2->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function updateDance(Dance $dance) {
+        try {
+            $stmt = $this->connection->prepare("UPDATE events 
+            SET date = :date, start_time = :startTime, end_time = :endTime 
+            WHERE id = :id");
+            $stmt->bindValue(':id', $dance->getEventId(), PDO::PARAM_INT);
+            $stmt->bindValue(':date', $dance->getDate(), PDO::PARAM_STR);
+            $stmt->bindValue(':startTime', $dance->getStartTime(), PDO::PARAM_STR);
+            $stmt->bindValue(':endTime', $dance->getEndTime(), PDO::PARAM_STR);
+            
+            $stmt->execute();
+
+            $stmt = $this->connection->prepare("UPDATE dance 
+            SET venueId = :venueId, session = :session, price = :price");
+            
+            $stmt->bindValue(':venueId', $dance->getVenue(), PDO::PARAM_STR);
+            $smtm->bindValue(':session', $dance->getSession(), PDO::PARAM_STR);
+            $stmt->bindValue(':price', $dance->getPrice(), PDO::PARAM_STR);
+
+            $smtm->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function deleteDance(int $id) {
+        try {
+            $stmt = $this->connection->prepare("DELETE FROM events WHERE id = :id");
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
     }
 }

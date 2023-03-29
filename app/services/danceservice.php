@@ -17,5 +17,17 @@ class DanceService {
         $artists = $this->repository->getArtists();
         return $artists;
     }
+
+    public function createDance(Dance $dance) {
+        $this->repository->createDance($dance);
+    }
+
+    public function updateDance(Dance $dance) {
+        $this->repository->updateDance($dance);
+    }
+
+    public function deleteDance(int $id) {
+        $this->repository->deleteDance($id);
+    }
 }
 ?>

@@ -12,6 +12,7 @@ class DanceEvent implements \JsonSerializable {
     private int $availableTickets;
     private float $price;
     private array $artists;
+    private int $eventId;
 
     #[ReturnTypeWillChange]
 
@@ -97,5 +98,13 @@ class DanceEvent implements \JsonSerializable {
     }
     public function addArtist(Artist $artist) {
         $this->artists[] = $artist;
+    }
+
+    public function getEventId():int {
+        return $this->eventId;
+    }
+    public function setEventId(int $eventId):self {
+        $this->eventId = $eventId;
+        return $this;
     }
 }
