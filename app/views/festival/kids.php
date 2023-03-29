@@ -27,9 +27,10 @@ function returnBackground($count)
 <div class="flex">
     <h1 class="h1-kids ">The Secret of Professor Teyler</h1>
     <img src="/img/Kids-meusum.png" alt="kids-meusum" class="img-responsive">
-
 </div>
-
+<?php
+        include __DIR__ . '/../components/shareButtons.php';
+    ?>  
 <div class="kids-intro">
     This event will be held from 28 to 31 July. It’s specially made for kids by Teyler
     museum.

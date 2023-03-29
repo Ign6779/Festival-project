@@ -3,8 +3,8 @@
     padding: 3%;
 }
 .dance-logo{
-  align-self: center;
   height: 100px;
+  margin-left: 100px;
 }
 #detailPage{
     background: radial-gradient(50% 50% at 50% 50%, rgba(46, 155, 123, 0.68) 26.35%, #9EADEA 100%);

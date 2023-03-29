@@ -98,12 +98,13 @@
 </section>
 <!-- instagram feed -->
 <div class="homepage-instagram">
-    <h2 class="ig-title">See our instragram below!</h2>
+    <h2 class="ig-title">Keep up with our instragram below!</h2>
 </div>
 <?php 
 // query the user media
+
 $fields = "id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username";
-$token = "IGQVJVOC1HQldLM3g3NG5hX0tDNElqLWM4cjU0RzNYelRzLWNOU1lMUnJLalhNc3Vxd1NtSXYtVTRiYU1fenN0VXJ5UjZADaE4wZAFBOR3hENE14NkdMRkdxS2gwOWtmU21qaUVkZAndDQ1Mzb2ZA5Y3lnegZDZD";
+$token = "IGQVJYVzB0ZAk5CSlMweFdSM3RDY2dlY0NEbVF2ZAERGUXE5R2FoUFVfbGZAxaFI4d05XOHp5RjYybER3ZAXVJYWRtaFNtS29wajlRRk1XdU1uN0hZAclZA4amZADa0xQS0ZAuNnpFUXBxRFFpYjJ3LW0yOEFEUgZDZD";
 $limit = 10;
 
 $json_feed_url="https://graph.instagram.com/me/media?fields={$fields}&access_token={$token}&limit={$limit}";
