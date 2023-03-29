@@ -7,6 +7,8 @@ class Session implements \JsonSerializable {
     private int $seats;
     private float $price;
     private float $reducedPrice;
+    private int $restaurantId;
+    private int $eventId;
 
     #[ReturnTypeWillChange]
     public function jsonSerialize() {
@@ -67,6 +69,22 @@ class Session implements \JsonSerializable {
     }
     public function setReducedPrice(float $reducedPrice):self {
         $this->reducedPrice = $reducedPrice;
+        return $this;
+    }
+
+    public function getRestaurantId():int {
+        return $this->restaurantId;
+    }
+    public function setRestaurantId(int $restaurantId):self {
+        $this->restaurantId = $restaurantId;
+        return $this;
+    }
+
+    public function getEventId():int {
+        return $this->eventId;
+    }
+    public function setEventId(int $eventId):self {
+        $this->eventId = $eventId;
         return $this;
     }
 }
