@@ -138,7 +138,8 @@ class SessionRepository extends Repository {
             $stmt->execute();
 
             // Update session record
-            $stmt = $this->connection->prepare("UPDATE sessions SET restaurantId = :restaurantId, price = :price WHERE id = :id");
+            $stmt = $this->connection->prepare("UPDATE sessions 
+            SET restaurantId = :restaurantId, price = :price WHERE id = :id");
             $stmt->bindValue(':id', $session->getId(), PDO::PARAM_INT);
             $stmt->bindValue(':restaurantId', $session->getRestaurantId());
             $stmt->bindValue(':price', $session->getPrice(), PDO::PARAM_STR);
