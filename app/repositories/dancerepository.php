@@ -16,7 +16,7 @@ class DanceRepository extends Repository
             $stmt->execute();
 
             $danceEvents = [];
-
+w
             while ($row = $stmt->fetch()) {
                 $danceEventId = $row['id'];
 

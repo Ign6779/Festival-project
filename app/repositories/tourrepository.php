@@ -34,6 +34,18 @@ class TourRepository extends Repository
             echo $e;
         }
     }
+
+    function CreateTour(Tour $tour) {
+
+    }
+
+    function UpdateTour(Tour $tour) {
+
+    }
+
+    function DeleteTour(Tour $tour) {
+
+    }
 }
 
 ?>
