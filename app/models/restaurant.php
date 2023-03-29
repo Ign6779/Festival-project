@@ -11,7 +11,7 @@ class Restaurant implements \JsonSerializable {
     private bool $vegan;
     private int $stars;
     private array $sessions; //we store them in an array; its the only way i could bring the erd into php
-    private string $duration;
+    private float $duration;
     private string $image;
 
     #[ReturnTypeWillChange]
@@ -96,10 +96,10 @@ class Restaurant implements \JsonSerializable {
         $this->sessions[] = $session;
     }
 
-    public function getDuration():string {
+    public function getDuration():float {
         return $this->duration;
     }
-    public function setDuration(string $duration):self {
+    public function setDuration(float $duration):self {
         $this->duration = $duration;
         return $this;
     }
