@@ -17,4 +17,16 @@ class TourService {
         $tour = $this->repository->getById($id);
         return $tour;
     }
+
+    public function createTour(Tour $tour) {
+        $this->repository->createTour($tour);
+    }
+
+    public function updateTour(Tour $tour) {
+        $this->repository->updateTour($tour);
+    }
+
+    public function deleteTour(int $id) {
+        $this->repository->deleteTour($tour);
+    }
 }

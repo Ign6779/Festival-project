@@ -23,16 +23,16 @@ class RestaurantService {
         return $restaurant;
     }
 
-    public function CreateRestaurant(Restaurant $restaurant) {
-        $this->repository->CreateRestaurant($restaurant);
+    public function createRestaurant(Restaurant $restaurant) {
+        $this->repository->createRestaurant($restaurant);
     }
 
-    public function UpdateRestaurant(Restaurant $restaurant) {
-        $this->repository->UpdateRestaurant($restaurant);
+    public function updateRestaurant(Restaurant $restaurant) {
+        $this->repository->updateRestaurant($restaurant);
     }
 
-    public function DeleteRestaurant(int $id) {
-        $this->repository->DeleteRestaurant($id);
+    public function deleteRestaurant(int $id) {
+        $this->repository->deleteRestaurant($id);
     }
 }
 ?>

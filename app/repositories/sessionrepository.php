@@ -94,7 +94,7 @@ class SessionRepository extends Repository {
         }
     }
 
-    public function CreateSession(Session $session) {
+    public function createSession(Session $session) {
         try {
             //setting in on two statements since it fills two tables. can be done in one, but for better understanding
 
@@ -114,6 +114,7 @@ class SessionRepository extends Repository {
             $eventId = $this->connection->lastInsertId();//if this works i am a fucking genius
             $stmt2 = $this->connection->prepare("INSERT INTO sessions (restaurantId, price, event_id) 
             VALUES (:restaurantId, :price, :event_id)");
+            
             $stmt2->bindValue(':restaurantId', $session->getRestaurantId(), PDO::PARAM_STR);
             $stmt2->bindValue(':price', $session->getPrice(), PDO::PARAM_STR);
             $stmt2->bindValue(':event_id', $eventId);
@@ -124,7 +125,7 @@ class SessionRepository extends Repository {
         }
     }
 
-    public function UpdateSession(Session $session) {
+    public function updateSession(Session $session) {
         try {
             // Update event record
             $stmt = $this->connection->prepare("UPDATE events 
@@ -147,7 +148,7 @@ class SessionRepository extends Repository {
         }
     }
 
-    public function DeleteSession(int $id) {
+    public function deleteSession(int $id) {
         try {
             $stmt = $this->connection->prepare("DELETE FROM events WHERE id = :id"); //IF the foreign keys are set correctly, this *should* work
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);

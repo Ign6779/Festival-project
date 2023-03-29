@@ -59,7 +59,7 @@ class Tour implements \JsonSerializable
         return $this;
     }
 
-    public function getEndtTime(): string
+    public function getEndTime(): string
     {
         return $this->endTime;
     }

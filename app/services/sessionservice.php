@@ -23,16 +23,16 @@ class SessionService {
         return $session;
     }
 
-    public function CreateSession(Session $session) {
-        $this->repository->CreateSession($session);
+    public function createSession(Session $session) {
+        $this->repository->createSession($session);
     }
 
-    public function UpdateSession(Session $session) {
-        $this->repository->UpdateSession($session);
+    public function updateSession(Session $session) {
+        $this->repository->updateSession($session);
     }
 
-    public function DeleteSession(int $id) {
-        $this->repository->DeleteSession($id);
+    public function deleteSession(int $id) {
+        $this->repository->deleteSession($id);
     }
 }
 
