@@ -8,7 +8,7 @@ class RestaurantRepository extends Repository
     public function getAll()
     { //cannot use the same structure as other times since it gets info from many tables, including an array within a class.
         try {
-            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, e.date, e.start_time as startTime, e.end_time as endTime, e.seats, s.price
+            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, e.date, e.start_time as startTime, e.end_time as endTime, e.seats, s.restaurantId, s.price, e.id as event_id
             FROM restaurants r 
             LEFT JOIN sessions s ON r.id = s.restaurantId
             LEFT JOIN events e on e.id = s.event_id"); //only way i could imagine of doing it tbh
@@ -42,6 +42,8 @@ class RestaurantRepository extends Repository
                 $session->setEndTime($row['endTime']);
                 $session->setSeats($row['seats']);
                 $session->setPrice($row['price']);
+                $session->setRestaurantId($row['restaurantId']);
+                $session->setEventId($row['event_id']);
 
                 $restaurants[$restaurantId]->addSession($session);
             }
@@ -85,7 +87,7 @@ class RestaurantRepository extends Repository
     public function getById(int $id)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, e.date, e.start_time as startTime, e.end_time as endTime, e.seats, s.price 
+            $stmt = $this->connection->prepare("SELECT r.*, s.id AS sessionId, e.date, e.start_time as startTime, e.end_time as endTime, e.seats, s.restaurantId, s.price, e.id as event_id
             FROM restaurants r 
             LEFT JOIN sessions s ON r.id = s.restaurantId
             LEFT JOIN events e on e.id = s.event_id
@@ -116,6 +118,8 @@ class RestaurantRepository extends Repository
                 $session->setEndTime($row['endTime']);
                 $session->setSeats($row['seats']);
                 $session->setPrice($row['price']);
+                $session->setRestaurantId($row['restaurantId']);
+                $session->setEventId($row['event_id']);
 
                 $restaurant->addSession($session);
             }
@@ -126,6 +130,60 @@ class RestaurantRepository extends Repository
         }
     }
 
-    
+    public function CreateRestaurant(Restaurant $restaurant) {
+        try {
+            $stmt = $this->connection->prepare("INSERT INTO restaurants (name, location, description, content, halal, vegan, stars, duration, image)
+            VALUES (:name, :location, :description, :content, :halal, :vegan, :stars, :duration, :image)");
+
+            $stmt->bindValue(':name', $restaurant->getName(), PDO::PARAM_STR);
+            $stmt->bindValue(':location', $restaurant->getLocation(), PDO::PARAM_STR);
+            $stmt->bindValue(':description', $restaurant->getDescription(), PDO::PARAM_STR);
+            $stmt->bindValue(':content', $restaurant->getContent(), PDO::PARAM_STR);
+            $stmt->bindValue(':halal', $restaurant->getHalal(), PDO::PARAM_BOOL);
+            $stmt->bindValue(':vegan', $restaurant->getVegan(), PDO::PARAM_BOOL);
+            $stmt->bindValue(':stars', $restaurant->getStars(), PDO::PARAM_INT);
+            $stmt->bindValue(':duration', $restaurant->getDuration(), PDO::PARAM_FLOAT);
+            $stmt->bindValue(':image', $restaurant->getImage(), PDO::PARAM_STR);
+
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function UpdateRestaurant(Restaurant $restaurant) {
+        try {
+            $stmt = $this->connection->prepare("UPDATE restaurants 
+            SET name = :name, location = :location, description = :description, content = :content, halal = :halal, vegan = :vegan, stars = :stars, duration = :duration, image = :image 
+            WHERE id = :id");
+
+            $stmt->bindValue(':name', $restaurant->getName(), PDO::PARAM_STR);
+            $stmt->bindValue(':location', $restaurant->getLocation(), PDO::PARAM_STR);
+            $stmt->bindValue(':description', $restaurant->getDescription(), PDO::PARAM_STR);
+            $stmt->bindValue(':content', $restaurant->getContent(), PDO::PARAM_STR);
+            $stmt->bindValue(':halal', $restaurant->getHalal(), PDO::PARAM_BOOL);
+            $stmt->bindValue(':vegan', $restaurant->getVegan(), PDO::PARAM_BOOL);
+            $stmt->bindValue(':stars', $restaurant->getStars(), PDO::PARAM_INT);
+            $stmt->bindValue(':duration', $restaurant->getDuration(), PDO::PARAM_FLOAT);
+            $stmt->bindValue(':image', $restaurant->getImage(), PDO::PARAM_STR);
+            $stmt->bindValue(':id', $restaurant->getId(), PDO::PARAM_INT);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function DeleteRestaurant(int $id) {
+        try {
+            $stmt = $this->connection->prepare("DELETE FROM restaurants WHERE id = :id");
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 }
 ?>

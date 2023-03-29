@@ -1,0 +1,161 @@
+<?php
+require __DIR__ . '/repository.php';
+require __DIR__ . '/../models/session.php';
+
+class SessionRepository extends Repository {
+    public function getAll() {
+        try {
+            $stmt = $this->connection->prepare("SELECT e.date, e.start_time AS startTime, e.end_time AS endTime, e.seats, s.*
+            FROM sessions s
+            LEFT JOIN events e ON e.id = s.event_id");
+            $stmt->execute();
+
+            $sessions = [];
+
+            while ($row = $stmt->fetch()) {
+                $session = new Session();
+                $session->setId($row['id']);
+                $session->setDate($row['date']);
+                $session->setStartTime($row['startTime']);
+                $session->setEndTime($row['endTime']);
+                $session->setSeats($row['seats']);
+                $session->setPrice($row['price']);
+                $session->setRestaurantId($row['restaurantId']);
+                $session->setEventId($row['event_id']);
+
+                $sessions[] = $session;
+            }
+
+            return $sessions;
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function getById(int $id) {
+        try {
+            $stmt = $this->connection->prepare("SELECT e.date, e.start_time AS startTime, e.end_time AS endTime, e.seats, s.*
+            FROM sessions s
+            LEFT JOIN events e ON e.id = s.event_id
+            WHERE id = :id");
+
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $session = new Session();
+
+            while ($row = $stmt->fetch()) {
+                $session->setId($row['id']);
+                $session->setDate($row['date']);
+                $session->setStartTime($row['startTime']);
+                $session->setEndTime($row['endTime']);
+                $session->setSeats($row['seats']);
+                $session->setPrice($row['price']);
+                $session->setRestaurantId($row['restaurantId']);
+                $session->setEventId($row['event_id']);
+            }
+
+            return $session;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function getByRestaurant(int $id) {
+        try {
+            $stmt = $this->connection->prepare("SELECT e.date, e.start_time AS startTime, e.end_time AS endTime, e.seats, s.*
+            FROM sessions s
+            LEFT JOIN events e ON e.id = s.event_id
+            WHERE restaurantId = :restaurantId");
+            $stmt->bindValue('restaurantId', $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $sessions = [];
+
+            while ($row = $stmt->fetch()) {
+                $session = new Session();
+                $session->setId($row['id']);
+                $session->setDate($row['date']);
+                $session->setStartTime($row['startTime']);
+                $session->setEndTime($row['endTime']);
+                $session->setSeats($row['seats']);
+                $session->setPrice($row['price']);
+                $session->setRestaurantId($row['restaurantId']);
+                $session->setEventId($row['event_id']);
+
+                $sessions[] = $session;
+            }
+
+            return $sessions;
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function CreateSession(Session $session) {
+        try {
+            //setting in on two statements since it fills two tables. can be done in one, but for better understanding
+
+            //filling in the events table part
+            $stmt1 = $this->connection->prepare("INSERT INTO events (date, start_time, end_time, event_type, seats)
+            VALUES (:date, :start_time, :end_time, :event_type, :seats)");
+
+            $stmt1->bindValue(':date', $session->getDate(), PDO::PARAM_STR);
+            $stmt1->bindValue(':start_time', $session->getStartTime(), PDO::PARAM_STR);
+            $stmt1->bindValue(':end_time', $session->getEndTime(), PDO::PARAM_STR);
+            $stmt1->bindValue(':event_type', $session->getType(), PDO::PARAM_STR);
+            $stmt1->bindValue(':seats', $session->getSeats(), PDO::PARAM_INT);
+
+            $stmt1->execute();
+
+            //filling in the sessions table part
+            $eventId = $this->connection->lastInsertId();//if this works i am a fucking genius
+            $stmt2 = $this->connection->prepare("INSERT INTO sessions 
+            (restaurantId, price, event_id) VALUES (:restaurantId, :price: :event_id)");
+            $stmt2->bindValue(':restaurantId', $session->getRestaurantId(), PDO::PARAM_STR);
+            $stmt2->bindValue(':price', $session->getPrice(), PDO::PARAM_STR);
+            $stmt2->bindValue(':event_id', $eventId);
+
+            $stmt2->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function UpdateSession(Session $session) {
+        try {
+            // Update event record
+            $stmt = $this->connection->prepare("UPDATE event 
+            SET date = :date, startTime = :startTime, endTime = :endTime 
+            WHERE id = :id");
+            $stmt->bindValue(':id', $session->getEventId(), PDO::PARAM_INT);
+            $stmt->bindValue(':date', $session->getDate(), PDO::PARAM_STR);
+            $stmt->bindValue(':startTime', $session->getStartTime(), PDO::PARAM_STR);
+            $stmt->bindValue(':endTime', $session->getEndTime(), PDO::PARAM_STR);
+            $stmt->execute();
+
+            // Update session record
+            $stmt = $this->connection->prepare("UPDATE sessions SET restaurantId = :restaurantId, price = :price WHERE id = :id");
+            $stmt->bindValue(':id', $session->getId(), PDO::PARAM_INT);
+            $stmt->bindValue(':restaurantId', $session->getRestaurantId());
+            $stmt->bindValue(':price', $session->getPrice(), PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function DeleteSession(int $id) {
+        try {
+            $stmt = $this->connection->prepare("DELETE FROM sessions WHERE id = :id"); //IF the foreign keys are set correctly, this *should* work
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch  (PDOException $e) {
+            echo $e;
+        }
+    }
+}
+
+?>
