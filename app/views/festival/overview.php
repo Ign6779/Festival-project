@@ -1,9 +1,6 @@
 <?php
 include __DIR__ . '/../header.php';
-?>
-    <?php
-        include __DIR__ . '/../components/shareButtons.php';
-    ?>  
+?> 
 <div class="festival-overview-header">
     <img src="/img/festival-overview-head.png" alt="Festival Image" id="overview-header-image">
     <h1 class="title">The Haarlem Festival</h1>

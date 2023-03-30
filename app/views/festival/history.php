@@ -15,9 +15,6 @@ function returnActive($count)
 <div class="pointer-to-top">
     <a class="arrow-up" href="#top">&#8593</a>
 </div>
-<?php
-        include __DIR__ . '/../components/shareButtons.php';
-    ?>  
 
 <div class="history-header">
     <img src="/img/history-header.png" alt="Image of Haarlem St. Bavo church" id="history-header-image">
