@@ -28,7 +28,7 @@ class JazzRepository extends Repository
                     $jazzEvent->setEndTime($row['endTime']);
                     $jazzEvent->setAvailableTickets($row['availableTickets']);
                     $jazzEvent->setPrice($row['price']);
-                    $jazzevent->setEventId($row['eventId']);
+                    $jazzEvent->setEventId($row['event_id']);
 
                     $venue = new Venue();
                     $venue->setId($row['venueId']);
@@ -198,6 +198,7 @@ class JazzRepository extends Repository
     }
 
     public function updateJazz(Jazz $jazz) {
+        try {
         $stmt = $this->connection->prepare("UPDATE events 
             SET date = :date, start_time = :startTime, end_time = :endTime 
             WHERE id = :eventId");
@@ -219,7 +220,7 @@ class JazzRepository extends Repository
             $stmt->exectute();
     } catch (PDOException $e) {
         echo $e;
-    }
+    }}
 
     public function deleteJazz(int $id) {
         try {
