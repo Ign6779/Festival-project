@@ -104,7 +104,7 @@
 // query the user media
 
 $fields = "id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username";
-$token = "IGQVJVNkg5T2pGNjdxRFUyTUVTLV8tZAlZAZAUllFTl9YZAnZATQ0R3TlhEUWRBTE5vR05HdnEyTHktN0l4NURTOGJaSWFYOF8yck1QOElmcFQ5MzEwN19DclI2SG90ZAnViT3B2anJMQ3ZArd1VuTnlLYktCaAZDZD";
+$token = "IGQVJYeVEwb2lNLTdxNVc1OFYwQVNVazg3aFV6eXZAfWGZALOEJGUTJzWjYyLWxWaGljWnNXWVRxX3FJY0RSUU5kZA2VaVVhEbHpKZAVY5a2JBRjZAYVzFKV0tyTzZAoLUpCWmY0bW9QQkhqRWVrcEJCaVNxWQZDZD";
 $limit = 10;
 
 $json_feed_url="https://graph.instagram.com/me/media?fields={$fields}&access_token={$token}&limit={$limit}";
