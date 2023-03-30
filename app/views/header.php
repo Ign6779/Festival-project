@@ -107,12 +107,35 @@ function returnSelected($id)
             <div class="logo">
                 <img src="/img/logo-of-page.png" alt="Logo">
             </div>
+            <!-- SHARE THE PAGE BTNS -->
+            <div class="share">
+                <h5 style="color: white;">Share this page!</h5>
+            <button id="twitter-button" class="btn btn-primary mr-2">
+                <i class="fab fa-twitter mr-2"></i>Twitter
+            </button>
+            <button id="facebook-button" class="btn btn-primary">
+                <i class="fab fa-facebook-f mr-2"></i>Facebook
+            </button>
+            </div>
+            <script>
+                document.getElementById('twitter-button').addEventListener('click', function() {
+                var url = encodeURIComponent(window.location.href);
+                var text = encodeURIComponent(document.title);
+                var shareUrl = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + text;
+                window.open(shareUrl, '_blank');
+            });
 
+            document.getElementById('facebook-button').addEventListener('click', function() {
+                var url = encodeURIComponent(window.location.href);
+                var shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+                window.open(shareUrl, '_blank');
+            });
+            </script>
             <div class="cart-and-items">
                 <button class="cart" onclick="showItemsInCart()">
                     <img id="cart-icon-img" src="/img/cart-icon.png" alt="cart-icon">
                 </button>
-
+                
 
                 <div id="items-in-cart" class="items-in-cart">
                     My cart
@@ -123,15 +146,19 @@ function returnSelected($id)
                     <div id="items">
 
                     </div>
-
+                    
                     <div>
                         <a href="" class="btn btn-primary">Payment</a>
                     </div>
+                    
 
                 </div>
+                
             </div>
+            
         </div>
     </nav>
+    
 
     <script>
         window.load = cartCount;

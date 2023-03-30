@@ -5,9 +5,6 @@ include __DIR__ . '/../header.php';
 <div class="text-center container-fluid" id="top-section">
     <!-- <h1 class="Dance-Title"> Dance! </h1> -->
     <img src="/img/dancelogo.png" alt="DANCE" class="dance-logo">
-    <?php
-        include __DIR__ . '/../components/shareButtons.php';
-    ?>  
 </div>
 
 <!-- Carousel -->
