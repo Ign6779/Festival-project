@@ -63,6 +63,7 @@ include __DIR__ . '/../header.php';
 
 <script>
   window.onload = cartCount;
+  window.onload = addToCalender;
   var isEventSelected = false;
   var isDateSelected = false;
 
@@ -123,7 +124,8 @@ include __DIR__ . '/../header.php';
     addTocart.innerHTML = "Add to cart";
     addTocart.onclick = function () {
       addToCart(ticketInput.id);
-      addToCalender(ticketInput);
+      // addToCalender(ticketInput);
+      addToCalender();
     };
     cardTitle.innerHTML = ticketInput.title;
     price.innerHTML = ticketInput.price;
@@ -150,44 +152,9 @@ include __DIR__ . '/../header.php';
     }).then(result => result.json())
       .then((data) => {
         console.log(data);
-        cartCount();
-        itemCount(id);
+        loadCart();
       })
       .catch(error => console.log(error));
-  }
-
-  function addToCalender(ticketInput) {
-    var calendarEvent;
-    switch (ticketInput.event.date) {
-      case "2023-07-26":
-        calendarEvent = document.getElementById("26th");
-        break;
-
-      case "2023-07-27":
-        calendarEvent = document.getElementById("27th");
-        break;
-
-      case "2023-07-28":
-        calendarEvent = document.getElementById("28th");
-        break;
-
-      case "2023-07-29":
-        calendarEvent = document.getElementById("29th");
-        break;
-
-      case "2023-07-30":
-        calendarEvent = document.getElementById("30th");
-        break;
-    }
-    startTime = ticketInput.event.start_time.split(':');
-    endTime = ticketInput.event.end_time.split(':');
-    var divEvent = document.createElement("div");
-    divEvent.className = "event start-" + startTime[0] + " end-" + endTime[0] + " " + ticketInput.event.event_type + "-event";
-    var pEvent = document.createElement("p");
-    pEvent.className = "time";
-    pEvent.innerHTML = ticketInput.title + "<br>" + startTime[0] + " " + endTime[0];
-    divEvent.appendChild(pEvent);
-    calendarEvent.appendChild(divEvent);
   }
 
 </script>

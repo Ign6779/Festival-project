@@ -48,6 +48,7 @@ class TicketController
         }
         echo json_encode($filteredTickets);
     }
+
 }
 
 
