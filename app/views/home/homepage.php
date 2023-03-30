@@ -14,7 +14,7 @@
             <br>
         </h3>
         <h2>Haarlem really has it all.</h2>
-        <br><a class="btn-red" href="festival/overview">View Festival Activities</a>
+        <br><a class="btn-red" href="festival">View Festival Activities</a>
     </section>
 
 <!-- History section -->
@@ -88,7 +88,7 @@
 <!-- Festival section -->
 <section class="homepage-festival">
     <h2 id="homepage-check-festival-text">Check out the festival here!</h2>
-    <a class="btn-purple" href="festival/overview" id="homepage-check-festival-button">See festival events</a>
+    <a class="btn-purple" href="festival" id="homepage-check-festival-button">See festival events</a>
 </section>
 
 <!-- Mobile section -->
