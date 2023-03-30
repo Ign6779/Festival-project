@@ -63,6 +63,7 @@ include __DIR__ . '/../header.php';
 
 <script>
   window.onload = cartCount;
+  window.onload = addToCalender;
   var isEventSelected = false;
   var isDateSelected = false;
 
@@ -123,6 +124,8 @@ include __DIR__ . '/../header.php';
     addTocart.innerHTML = "Add to cart";
     addTocart.onclick = function () {
       addToCart(ticketInput.id);
+      // addToCalender(ticketInput);
+      addToCalender();
     };
     cardTitle.innerHTML = ticketInput.title;
     price.innerHTML = ticketInput.price;
@@ -149,8 +152,7 @@ include __DIR__ . '/../header.php';
     }).then(result => result.json())
       .then((data) => {
         console.log(data);
-        cartCount();
-        itemCount(id);
+        loadCart();
       })
       .catch(error => console.log(error));
   }

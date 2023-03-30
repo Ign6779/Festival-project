@@ -118,6 +118,7 @@ label {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 .items-in-cart {

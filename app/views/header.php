@@ -137,7 +137,7 @@ function returnSelected($id)
                 </button>
                 
 
-                <div id="items-in-cart" class="items-in-cart">
+                <div id="items-in-cart" class="items-in-cart" style="overflow:hidden; overflow-y: scroll; ">
                     My cart
                     <div id="cartamount">
 
@@ -148,7 +148,7 @@ function returnSelected($id)
                     </div>
                     
                     <div>
-                        <a href="" class="btn btn-primary">Payment</a>
+                        <a href="/payment" class="btn btn-primary">Payment</a>
                     </div>
                     
 
@@ -172,15 +172,7 @@ function returnSelected($id)
             if (x.style.display === "none") {
                 x.style.display = "block";
                 items.innerHTML = "";
-                fetch('http://localhost/api/cart/getItemsInCart').then(result => result.json())
-                    .then((data) => {
-                        console.log(data);
-                        data.forEach(element => {
-                            loadItems(element);
-                            itemCount(element.id);
-                        });
-                    })
-                    .catch(error => console.log(error));
+                loadCart();
 
             } else {
                 x.style.display = "none";
@@ -190,10 +182,8 @@ function returnSelected($id)
         function loadItems(ticketInput) {
             var items = document.getElementById("items");
             divTicket = document.createElement("div");
-            ticketTitle = document.createElement("p");
-            ticketTitle.innerHTML = ticketInput.title;
-            ticketDate = document.createElement("p");
-            ticketDate.innerHTML = ticketInput.event.date;
+            ticketp = document.createElement("p");
+            ticketp.innerHTML = ticketInput.title + "<br>" + ticketInput.event.date;
             aIncrease = document.createElement("a");
             aDecrease = document.createElement("a");
             input = document.createElement("input");
@@ -210,7 +200,7 @@ function returnSelected($id)
             aDecrease.onclick = function () {
                 decreaseItem(ticketInput.id);
             };
-            divTicket.append(ticketTitle, ticketDate, aDecrease, input, aIncrease);
+            divTicket.append(ticketp, aDecrease, input, aIncrease);
             items.appendChild(divTicket);
         }
 
@@ -232,7 +222,6 @@ function returnSelected($id)
                 .then((data) => {
                     console.log(data);
                     cartAmount.innerHTML = data;
-
                 })
                 .catch(error => console.log(error));
         }
@@ -243,8 +232,7 @@ function returnSelected($id)
             }).then(result => result.json())
                 .then((data) => {
                     console.log(data);
-                    cartCount();
-                    itemCount(id);
+                    loadCart();
                 })
                 .catch(error => console.log(error));
         }
@@ -255,9 +243,55 @@ function returnSelected($id)
             }).then(result => result.json())
                 .then((data) => {
                     console.log(data);
-                    cartCount();
-                    itemCount(id);
+                    loadCart();
                 })
                 .catch(error => console.log(error));
+        }
+
+        function loadCart() {
+            var items = document.getElementById("items");
+            items.innerHTML = "";
+            fetch('http://localhost/api/cart/getItemsInCart').then(result => result.json())
+                .then((data) => {
+                    console.log(data);
+                    data.forEach(element => {
+                        loadItems(element);
+                        itemCount(element.id);
+                    });
+                    cartCount();
+                })
+                .catch(error => console.log(error));
+        }
+
+        function addToCalender() {
+            fetch('http://localhost/api/cart/getItemsInCart').then(result => result.json())
+                .then((data) => {
+                    console.log(data);
+                    data.forEach(element => {
+                        loadCalender(element);
+                    });
+
+                })
+                .catch(error => console.log(error));
+        }
+
+        function loadCalender(ticketInput) {
+            date = ticketInput.event.date.split('-');
+            startTime = ticketInput.event.start_time.split(':');
+            endTime = ticketInput.event.end_time.split(':');
+            var calendarEvent = document.getElementById(date[2] + "th");
+            var pEvent = document.createElement("p");
+            pEvent.className = "time";
+            pEvent.innerHTML = ticketInput.title + "<br>" + startTime[0] + " " + endTime[0];
+            var divEventExsit = document.getElementsByClassName("event start-" + startTime[0] + " end-" + endTime[0] + " " + ticketInput.event.event_type + "-event")[0];
+            if (divEventExsit == null) {
+                // divEventExsit.remove();
+                var divEvent = document.createElement("div");
+                divEvent.className = "event start-" + startTime[0] + " end-" + endTime[0] + " " + ticketInput.event.event_type + "-event";
+                divEvent.appendChild(pEvent);
+                calendarEvent.appendChild(divEvent);
+            }
+
+
         }
     </script>
