@@ -250,15 +250,21 @@ function returnSelected($id)
 
         function loadCalender(ticketInput) {
             date = ticketInput.event.date.split('-');
-            var calendarEvent = document.getElementById(date[2] + "th");
             startTime = ticketInput.event.start_time.split(':');
             endTime = ticketInput.event.end_time.split(':');
-            var divEvent = document.createElement("div");
-            divEvent.className = "event start-" + startTime[0] + " end-" + endTime[0] + " " + ticketInput.event.event_type + "-event";
+            var calendarEvent = document.getElementById(date[2] + "th");
             var pEvent = document.createElement("p");
             pEvent.className = "time";
             pEvent.innerHTML = ticketInput.title + "<br>" + startTime[0] + " " + endTime[0];
-            divEvent.appendChild(pEvent);
-            calendarEvent.appendChild(divEvent);
+            var divEventExsit = document.getElementsByClassName("event start-" + startTime[0] + " end-" + endTime[0] + " " + ticketInput.event.event_type + "-event")[0];
+            if (divEventExsit == null) {
+                // divEventExsit.remove();
+                var divEvent = document.createElement("div");
+                divEvent.className = "event start-" + startTime[0] + " end-" + endTime[0] + " " + ticketInput.event.event_type + "-event";
+                divEvent.appendChild(pEvent);
+                calendarEvent.appendChild(divEvent);
+            }
+
+
         }
     </script>
