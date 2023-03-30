@@ -22,7 +22,7 @@ function returnActive($count)
 <div class="history-header">
     <img src="/img/history-header.png" alt="Image of Haarlem St. Bavo church" id="history-header-image">
     <h1 id="history-header-text">Historical Haarlem</h1>
-    <br><a class="btn-red" id="history-header-button" href="festival/overview">Buy Tickets</a>
+    <br><a class="btn-red" id="history-header-button" href="/ticket">Buy Tickets</a>
 </div>
 <section class="history-timetable">
     <div class="timetable-div">
@@ -37,7 +37,7 @@ function returnActive($count)
 
             echo '<td>' . $tour->getDate() . '</td>';
             echo '<td>' . $tour->getStartTime() . '</td>';
-            echo '<td>' . $tour->getEndtTime() . '</td>';
+            echo '<td>' . $tour->getEndTime() . '</td>';
             echo '<td>' . $tour->getLanguage() . '</td>';
             echo '<td>' . $tour->getSeats() . '</td>';
             echo '</tr>';
@@ -51,12 +51,12 @@ function returnActive($count)
     <div class="history-tickets" id="history-single-ticket">
         <h2>Single Ticket - 17,50</h2>
         <p>&#8226; 1 person<br>&#8226; A free drink of choice</p>
-        <a class="btn-red" href="festival/overview">Buy Tickets</a>
+        <a class="btn-red" href="/ticket">Buy Tickets</a>
     </div>
     <div class="history-tickets" id="history-family-ticket">
         <h2>Family Ticket - 60,00</h2>
         <p>&#8226; 4 people<br>&#8226; A free drink of choice per person</p>
-        <a class="btn-red" href="festival/overview">Buy Tickets</a>
+        <a class="btn-red" href="/ticket">Buy Tickets</a>
     </div>
 </section>
 

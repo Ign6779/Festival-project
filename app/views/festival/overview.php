@@ -7,8 +7,8 @@ include __DIR__ . '/../header.php';
 <div class="festival-overview-header">
     <img src="/img/festival-overview-head.png" alt="Festival Image" id="overview-header-image">
     <h1 class="title">The Haarlem Festival</h1>
-    <button class="btn-red" id="buy-ticket-btn">Buy Tickets</button>
-    <button class="btn-red" id="see-schedule-btn">See Schedule</button>
+    <a href="/ticket" class="btn-red" id="buy-ticket-btn">Buy Tickets</a>
+    <a href="#schedule-section" class="btn-red" id="see-schedule-btn">See Schedule</a>
 </div>
 <div class="festival-description-block">
     <div class="white-block">
@@ -21,7 +21,7 @@ include __DIR__ . '/../header.php';
     <div class="left-round" id="yummy-round">
         <img src="/img/overview-yummy.png" class="picture-left" alt="picture" id="overview-left-pic">
     </div>
-    <div class="right-text" id="yummy-right"><p><h1>Yummy!</h1><br>If you want to celebrate a festival, you have to do it on a full stomach! Restaurants all over Haarlem have joined to create a special menu for the occasion. Being such an international city, you are sure to enjoy your evening, whether it be with your family or on a romantic dinner with your partner!</p><button class="btn-red">see event</button></div>
+    <div class="right-text" id="yummy-right"><p><h1>Yummy!</h1><br>If you want to celebrate a festival, you have to do it on a full stomach! Restaurants all over Haarlem have joined to create a special menu for the occasion. Being such an international city, you are sure to enjoy your evening, whether it be with your family or on a romantic dinner with your partner!</p><a href="/yummy" class="btn-red">See event</a></div>
 
 </section>
 <!-- HISTORY -->
@@ -29,21 +29,21 @@ include __DIR__ . '/../header.php';
     <div class="right-round" id="history-picture-round">
         <img src="/img/overview-history.png" class="picture-right" alt="picture" id="overview-right-pic">
     </div>
-    <div class="left-text" id="history-left"><p><h1>Historical walk</h1> <br>Visit Haarlem’s most beautiful sights and get to learn more about it’s rich and interesting history. Join an informational tour throughout the city today!</p><button class="btn-red">see event</button></div>
+    <div class="left-text" id="history-left"><p><h1>Historical walk</h1> <br>Visit Haarlem’s most beautiful sights and get to learn more about it’s rich and interesting history. Join an informational tour throughout the city today!</p><a href="/history" class="btn-red">See event</a></div>
 
 </section>
 <!-- DANCE -->
 <section class="event-section" id="dance-section">
     <img src="/img/Overview-dance-cover.png" alt="Dance Event Image" class="dance-image">
     <h1 id="dance-title">Ready to Dance?</h1>
-    <button class="btn-purple" id="dance-event-btn">see event</button>
+    <a href="/dance" class="btn-purple" id="dance-event-btn">See event</a>
 </section>
 <!-- JAZZ -->
 <section class="event-section" id="jazz-section">
 <div class="left-round" id="jazz-picture-round">
     <img src="/img/overview-jazz.png" class="picture-left" alt="picture" id="overview-left-pic">
 </div>
-<div class="right-text"><p><h1>Haarlem Jazz</h1><br>Annually, the Grote Markt in the heart of the historic capital of Haarlem hosts the concert series known as Haarlem Jazz. Both well-known and unknown Dutch musicians will perform for the audience's amazement. We're here waiting for you.</p><button class="btn-red">see event</button></div>
+<div class="right-text"><p><h1>Haarlem Jazz</h1><br>Annually, the Grote Markt in the heart of the historic capital of Haarlem hosts the concert series known as Haarlem Jazz. Both well-known and unknown Dutch musicians will perform for the audience's amazement. We're here waiting for you.</p><a href="/jazz" class="btn-red">see event</a></div>
 
 </section>
 <!-- KIDS -->
@@ -51,10 +51,10 @@ include __DIR__ . '/../header.php';
     <div class="right-round" id="kids-picture-round">
         <img src="/img/overview-kids.png" class="picture-right" alt="picture" id="overview-right-pic">
     </div>
-    <div class="left-text"><p><h1>Teylers Museum</h1><br> In this event, children play and learn while solving the mystery of the event. Teylers museum contains ancient and fascinating artefacts that will amaze everyone. </p><button class="btn-red">see event</button></div>
+    <div class="left-text"><p><h1>Teylers Museum</h1><br> In this event, children play and learn while solving the mystery of the event. Teylers museum contains ancient and fascinating artefacts that will amaze everyone. </p><a href="/kids" class="btn-red">see event</a></div>
 </section>
 <!-- SCHEDULE OVERVIEW -->
-<section class="schedule-section">
+<section class="schedule-section" id="schedule-section">
     <h1 class="schedule-title">Schedule</h1>
     <div class="overview-schedule-container">
         <div class="day-card" id="thursday-card">

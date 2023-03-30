@@ -8,7 +8,7 @@ include __DIR__ . '/../header.php';
 <body>
   <div id="yummy-header">
     <h1 id="yummy-title">YUMMY! HAARLEM</h1>
-    <button class="red-button" id="header-button">Buy tickets</button> 
+    <a href="/ticket" class="btn-red" id="header-button">Buy tickets</a> 
   </div>
   <?php
         include __DIR__ . '/../components/shareButtons.php';
