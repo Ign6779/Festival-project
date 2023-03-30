@@ -7,7 +7,56 @@
     display: grid;
     grid-template-columns: 200px 1fr;
 }
-/* .cal-section-on-ticketpage{
-
-} */
+.filter_events{
+    position:sticky;
+    top: 0;
+  }
+  .ticket-comp {
+    height: 200px;
+    position: relative;
+    border: 2px solid black;
+    background-color: #fff8f0;
+    /* background: #21DC84; */
+    padding: 1%;
+    color: black;
+    padding: 1em 2em;
+    width: 50%;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    margin-left: 250px;
+    box-shadow: 14px 15px 6px #7a7a7a;
+  
+  }
+  .ticket-comp:before,
+  .ticket-comp:after{
+    height:200px;
+    width:70px;
+    content: '';
+    position: absolute;
+    top: 3em;
+    top: 40%;
+    height: 2em;
+    width: 1.6em;
+    border: 2px solid black;
+  }
+  .ticket-comp:before {
+    left: -2px;
+    border-radius: 0 1em 1em 0;
+    border-left-color: #fff8f0;
+  }
+  .ticket-comp:after {
+    right: -2px;
+    border-radius: 1em 0 0 1em;
+    border-right-color: #fff8f0;
+  }
+.ticket-comp a{
+    background-color: #92140C;
+    right: 20px;
+    bottom: 20px;
+    position: absolute;
+}
+  .ticket-price {
+    float: center;
+    font-weight: 600;
+  }
 

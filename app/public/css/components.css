@@ -233,44 +233,6 @@ body {
   grid-row: 5;
 }
 
-/* TICKET */
-#ticket-comp {
-  height: 100px;
-  background-color: #21DC84;
-  display: inline-flex;
-  flex-direction: row;
-  padding: 0;
-  min-height: 200px;
-  border-radius: 34px;
-}
-
-#ticket_img {
-  height: 100%;
-  width: 150px;
-  background-color: darkblue;
-  float: left;
-  margin-left: 0;
-  border-radius: 34px 0px 0px 34px;
-}
-
-.ticket-card-body {
-  padding-left: 5%;
-  width: 100%;
-}
-
-#ticket-btn {
-  float: right;
-  margin-bottom: 30px;
-  margin-right: 10px;
-  background-color: #92140C;
-  border-radius: 50px;
-}
-
-.price {
-  float: center;
-  font-weight: 600;
-}
-
 /* CALENDAR BAR */
 #calendar-toggle {
   background-color: #2E9B7B;
