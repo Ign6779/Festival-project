@@ -34,7 +34,7 @@ function returnActive($count)
 
             echo '<td>' . $tour->getDate() . '</td>';
             echo '<td>' . $tour->getStartTime() . '</td>';
-            echo '<td>' . $tour->getEndtTime() . '</td>';
+            echo '<td>' . $tour->getEndTime() . '</td>';
             echo '<td>' . $tour->getLanguage() . '</td>';
             echo '<td>' . $tour->getSeats() . '</td>';
             echo '</tr>';

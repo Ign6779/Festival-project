@@ -14,7 +14,6 @@
             <th scope="col">Email</th>
             <th scope="col">Address</th>
             <th scope="col">Phone</th>
-            <th scope="col">Password</th>
             <th scope="col">Registration</th>
             <th scope="col">Buttons</th>
         </tr>
@@ -58,9 +57,6 @@
         tdPhone = document.createElement("td");
         tdPhone.innerHTML = userInput.phone;
 
-        tdPassword = document.createElement("td");
-        tdPassword.innerHTML = userInput.password;
-
         tdRegistration = document.createElement("td");
         tdRegistration.innerHTML = userInput.registration;
 
@@ -77,7 +73,7 @@
             deleteUser(userInput.id);
         };
         tdButtons.append(aEdit, aDelete);
-        tr.append(tdId, tdName, tdRole, tdEmail, tdAddress, tdPhone, tdPassword, tdRegistration, tdButtons)
+        tr.append(tdId, tdName, tdRole, tdEmail, tdAddress, tdPhone, tdRegistration, tdButtons)
         tbody.appendChild(tr);
     }
 
