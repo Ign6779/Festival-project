@@ -3,6 +3,9 @@ include __DIR__ . '/../header.php';
 // include '/app/models/jazz.php';
 ?>
 <!-- Header of the jazz page -->
+<?php
+        include __DIR__ . '/../components/shareButtons.php';
+    ?>  
 <div>
     <section class="jazz-header">
         <img class="img-responsive" src="/img/jazz-1-background.png" alt="Jazz">
@@ -63,40 +66,27 @@ include __DIR__ . '/../header.php';
         </div>
 
         <!-- Jazz Cards -->
-        <section class="cards">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                </ol>
-
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                    <div id="carousel-item-0" class="carousel-item active"></div>
-                    <div id="carousel-item-1" class="carousel-item"></div>
-                </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div id="carousel-item-0" class="carousel-item active"></div>
+                <div id="carousel-item-1" class="carousel-item"></div>
             </div>
-
-            <!-- Left and right controls -->
-            <div class="row">
-                <div class="col-sm-11 btn-carousel">
-                    <a class="carousel-control" href="#myCarousel" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" onclick="chgSlide()"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </div>
-
-                <div class="col-sm-1 btn-carousel">
-                    <a class="carousel-control" href="#myCarousel" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" onclick="chgSlide()"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
 </div>
-</section>
-</section>
+
 
 </div class="containe-pages">
 <!-- Jazz Detailed Pages -->
@@ -278,15 +268,4 @@ include __DIR__ . '/../header.php';
 
         carousel.appendChild(divCard);
     }
-
-    function chgSlide() {
-        element1 = document.getElementById("carousel-item-0");
-        element2 = document.getElementById("carousel-item-1");
-
-        tempClassName = element1.className;
-
-        element1.className = element2.className;
-        element2.className = tempClassName;
-    }
-
 </script>

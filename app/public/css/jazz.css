@@ -130,86 +130,6 @@
   column-count: 2;
 }
 
-/* style from bootstarp components page */
-
-/* style for detail pages component */
-
-#detail-page-block {
-  display: grid;
-  /* grid-auto-columns:1fr; */
-  position: relative;
-  width: 90%;
-  background: rgba(244, 237, 237, 0.3);
-  height: 550px;
-
-}
-
-.artist-name {
-  grid-column-start: 5;
-  grid-column-end: 6;
-  grid-row: 1;
-}
-
-.artist-description {
-  grid-column-start: 3;
-  grid-column-end: 7;
-  grid-row: 2;
-}
-
-/* .artist-polaroids{
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 3;
-    grid-row-end: 6;
-  } */
-.polaroid1 {
-  position: absolute;
-  height: 300px;
-  width: 250px;
-  background-color: grey;
-  z-index: 1;
-  grid-column: 1;
-  grid-row-start: 2;
-  grid-row-end: 4;
-}
-
-.polaroid2 {
-  position: absolute;
-  height: 300px;
-  width: 250px;
-  background-color: white;
-  z-index: 2;
-  grid-column: 2;
-  grid-row-start: 1;
-  grid-row-end: 3;
-}
-
-.polaroid3 {
-  position: absolute;
-  height: 300px;
-  width: 250px;
-  background-color: black;
-  z-index: 3;
-  grid-column: 3;
-  grid-row-start: 2;
-  grid-row-end: 4;
-}
-
-.artist-songs {
-  display: table;
-  grid-column-start: 4;
-  grid-column-end: 7;
-  grid-row: 3;
-}
-
-.artist-songs img {
-  height: 100px;
-  width: 100px;
-  background-color: white;
-  border-radius: 20px;
-  margin: 10px;
-}
-
 .cards {
   position: relative;
   top: 150px;
@@ -260,5 +180,8 @@
   font-family: 'Baloo Chettan';
 }
 
-
+.carousel {
+  position: relative;
+  top: 200px;
+}
 
