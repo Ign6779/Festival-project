@@ -89,7 +89,7 @@ function returnSelected($id)
 
                 <select name="Events" id="Events" onchange="redirct(this.value)"
                     class="menu-list-option <? echo returnStyle("festival"); ?>">
-                    <option <? echo returnSelected("/"); ?> disabled>Events</option>
+                    <option selected disabled>Events</option>
                     <option <? echo returnSelected("/festival"); ?> value="/festival">Festival
                     </option>
                     <option <? echo returnSelected("/yummy"); ?> value="/yummy">Dining</option>
@@ -110,32 +110,32 @@ function returnSelected($id)
             <!-- SHARE THE PAGE BTNS -->
             <div class="share">
                 <h5 style="color: white;">Share this page!</h5>
-            <button id="twitter-button" class="btn btn-primary mr-2">
-                <i class="fab fa-twitter mr-2"></i>Twitter
-            </button>
-            <button id="facebook-button" class="btn btn-primary">
-                <i class="fab fa-facebook-f mr-2"></i>Facebook
-            </button>
+                <button id="twitter-button" class="btn btn-primary mr-2">
+                    <i class="fab fa-twitter mr-2"></i>Twitter
+                </button>
+                <button id="facebook-button" class="btn btn-primary">
+                    <i class="fab fa-facebook-f mr-2"></i>Facebook
+                </button>
             </div>
             <script>
-                document.getElementById('twitter-button').addEventListener('click', function() {
-                var url = encodeURIComponent(window.location.href);
-                var text = encodeURIComponent(document.title);
-                var shareUrl = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + text;
-                window.open(shareUrl, '_blank');
-            });
+                document.getElementById('twitter-button').addEventListener('click', function () {
+                    var url = encodeURIComponent(window.location.href);
+                    var text = encodeURIComponent(document.title);
+                    var shareUrl = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + text;
+                    window.open(shareUrl, '_blank');
+                });
 
-            document.getElementById('facebook-button').addEventListener('click', function() {
-                var url = encodeURIComponent(window.location.href);
-                var shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
-                window.open(shareUrl, '_blank');
-            });
+                document.getElementById('facebook-button').addEventListener('click', function () {
+                    var url = encodeURIComponent(window.location.href);
+                    var shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+                    window.open(shareUrl, '_blank');
+                });
             </script>
             <div class="cart-and-items">
                 <button class="cart" onclick="showItemsInCart()">
                     <img id="cart-icon-img" src="/img/cart-icon.png" alt="cart-icon">
                 </button>
-                
+
 
                 <div id="items-in-cart" class="items-in-cart" style="overflow:hidden; overflow-y: scroll; ">
                     My cart
@@ -146,19 +146,19 @@ function returnSelected($id)
                     <div id="items">
 
                     </div>
-                    
+
                     <div>
                         <a href="/payment" class="btn btn-primary">Payment</a>
                     </div>
-                    
+
 
                 </div>
-                
+
             </div>
-            
+
         </div>
     </nav>
-    
+
 
     <script>
         window.load = cartCount;

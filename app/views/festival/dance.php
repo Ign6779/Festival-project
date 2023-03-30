@@ -91,14 +91,14 @@ include __DIR__ . '/../components/page.php';
         </div>
     </div>
     <div class="text-center container justify-content-center" id="transparent-block">
-        <button class="btn-purple">1 Day Pass</button>
+        <a href="/ticket" class="btn-purple">1 Day Pass</a>
     </div>
     <div class="text-center container" id="transparent-block">
         <div class="text-center container" id="artist-list-right"><h3>Three day pass price</h3> <br> Get the ultimate 3-day ticket and get access to all the events listed below!
 All access: €250,00</div>
     </div>
     <div class="text-center container justify-content-center" id="transparent-block">
-        <button class="btn-purple" id="three-day-btn">3 Day Pass</button>
+        <a href="/ticket" class="btn-purple" id="three-day-btn">3 Day Pass</a>
     </div>
 </div>
 
@@ -132,7 +132,7 @@ All access: €250,00</div>
         ?>
         </table>
         <div class="text-center container justify-content-center">
-            <button class="btn-purple">Get a Ticket</button>
+            <a href="/ticket" class="btn-purple">Get a Ticket</a>
         </div>
     </div>
     <div class="text-left container" id="green-side-with-picture">
@@ -172,7 +172,7 @@ All access: €250,00</div>
         ?>
             </table>
             <div class="text-center container justify-content-center">
-                <button class="btn-purple">Get a Ticket</button>
+                <a href="/ticket" class="btn-purple">Get a Ticket</a>
             </div>
         </div>
     </div>
@@ -207,7 +207,7 @@ All access: €250,00</div>
         ?>
         </table>
         <div class="text-center container justify-content-center">
-            <button class="btn-purple">Get a Ticket</button>
+            <a href="/ticket" class="btn-purple">Get a Ticket</a>
         </div>
     </div>
     <div class="text-left container" id="white-side-with-picture-left">
