@@ -1,9 +1,6 @@
 <?php
 include __DIR__ . '/../header.php';
 ?>
-<?php
-include __DIR__ . '/../components/shareButtons.php';
-?>
 <div>
     <section class="jazz-header">
         <img class="img-responsive" src="/img/jazz-1-background.png" alt="Jazz">
