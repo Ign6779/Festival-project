@@ -26,4 +26,16 @@ class JazzService {
         $artists = $this->repository->getArtists();
         return $artists;
     }
+
+    public function createJazz(Jazz $jazz) {
+        $this->repository->createJazz($jazz);
+    }
+
+    public function updateJazz(Jazz $jazz) {
+        $this->repository->updateJazz($jazz);
+    }
+
+    public function deleteJazz(int $id) {
+        $this->repository->deleteJazz($jazz);
+    }
 }

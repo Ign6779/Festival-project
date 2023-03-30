@@ -124,8 +124,8 @@ class DanceRepository extends Repository
         try {
             $stmt = $this->connection->prepare("UPDATE events 
             SET date = :date, start_time = :startTime, end_time = :endTime 
-            WHERE id = :id");
-            $stmt->bindValue(':id', $dance->getEventId(), PDO::PARAM_INT);
+            WHERE id = :eventId");
+            $stmt->bindValue(':eventId', $dance->getEventId(), PDO::PARAM_INT);
             $stmt->bindValue(':date', $dance->getDate(), PDO::PARAM_STR);
             $stmt->bindValue(':startTime', $dance->getStartTime(), PDO::PARAM_STR);
             $stmt->bindValue(':endTime', $dance->getEndTime(), PDO::PARAM_STR);
@@ -133,11 +133,13 @@ class DanceRepository extends Repository
             $stmt->execute();
 
             $stmt = $this->connection->prepare("UPDATE dance 
-            SET venueId = :venueId, session = :session, price = :price");
+            SET venueId = :venueId, session = :session, price = :price
+            WHERE id = :id");
             
             $stmt->bindValue(':venueId', $dance->getVenue(), PDO::PARAM_STR);
             $smtm->bindValue(':session', $dance->getSession(), PDO::PARAM_STR);
             $stmt->bindValue(':price', $dance->getPrice(), PDO::PARAM_STR);
+            $stmt->bindVAlue(':id', $dance->getId(), PDO::PARAM_INT);
 
             $smtm->execute();
         } catch (PDOException $e) {
