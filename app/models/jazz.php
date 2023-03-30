@@ -1,15 +1,16 @@
 <?php
 require __DIR__ . '/venue.php';
 require __DIR__ . '/artist.php';
+require __DIR__ . '/event.php';
 
-class JazzEvent implements \JsonSerializable {
+class JazzEvent extends Event implements \JsonSerializable {
     private int $id;
     private Venue $venue;
-    private string $date;
-    private string $startTime;
-    private string $endTime;
-    private int $availableTickets;
-    private float $price;
+    // private string $date;
+    // private string $startTime;
+    // private string $endTime;
+    // private int $availableTickets;
+    // private float $price;
     private array $artists;
     private string $imgSource;
     private int $eventId;
@@ -41,45 +42,45 @@ class JazzEvent implements \JsonSerializable {
         return $this;
     }
 
-    public function getDate(): string {
-        return $this->date;
-    }
-    public function setDate(string $date): self {
-        $this->date = $date;
-        return $this;
-    }
+    // public function getDate(): string {
+    //     return $this->date;
+    // }
+    // public function setDate(string $date): self {
+    //     $this->date = $date;
+    //     return $this;
+    // }
 
-    public function getStartTime(): string {
-        return $this->startTime;
-    }
-    public function setStartTime(string $startTime): self {
-        $this->startTime = $startTime;
-        return $this;
-    }
+    // public function getStartTime(): string {
+    //     return $this->startTime;
+    // }
+    // public function setStartTime(string $startTime): self {
+    //     $this->startTime = $startTime;
+    //     return $this;
+    // }
 
-    public function getEndTime(): string {
-        return $this->endTime;
-    }
-    public function setEndTime(string $endTime): self {
-        $this->endTime = $endTime;
-        return $this;
-    }
+    // public function getEndTime(): string {
+    //     return $this->endTime;
+    // }
+    // public function setEndTime(string $endTime): self {
+    //     $this->endTime = $endTime;
+    //     return $this;
+    // }
 
-    public function getAvailableTickets(): int {
-        return $this->availableTickets;
-    }
-    public function setAvailableTickets(int $availableTickets): self {
-        $this->availableTickets = $availableTickets;
-        return $this;
-    }
+    // public function getAvailableTickets(): int {
+    //     return $this->availableTickets;
+    // }
+    // public function setAvailableTickets(int $availableTickets): self {
+    //     $this->availableTickets = $availableTickets;
+    //     return $this;
+    // }
 
-    public function getPrice(): float {
-        return $this->price;
-    }
-    public function setPrice(float $price): self {
-        $this->price = $price;
-        return $this;
-    }
+    // public function getPrice(): float {
+    //     return $this->price;
+    // }
+    // public function setPrice(float $price): self {
+    //     $this->price = $price;
+    //     return $this;
+    // }
 
     public function getArtists(): array {
         return $this->artists;

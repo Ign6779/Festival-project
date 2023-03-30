@@ -7,7 +7,7 @@ class DanceRepository extends Repository
     public function getAll()
     {
         try {
-            $stmt = $this->connection->prepare("SELECT d.*, v.name AS venueName, v.location, a.id as artistId, a.name AS artistName , e.date , e.start_time as startTime , e.end_time as endTime, e.seats AS availableTickets, e.id AS event_id 
+            $stmt = $this->connection->prepare("SELECT d.*, v.name AS venueName, v.location, a.id as artistId, a.name AS artistName , e.date , e.start_time as startTime , e.end_time as endTime, e.seats AS availableTickets, e.price AS price, e.id AS event_id 
             FROM dance d 
             LEFT JOIN venue v ON d.venueId = v.id 
             LEFT JOIN danceArtist da ON d.id = da.danceId 
@@ -27,7 +27,7 @@ class DanceRepository extends Repository
                     $danceEvent->setStartTime($row['startTime']);
                     $danceEvent->setEndTime($row['endTime']);
                     $danceEvent->setSession($row['session']);
-                    $danceEvent->setAvailableTickets($row['availableTickets']);
+                    $danceEvent->setSeats($row['availableTickets']);
                     $danceEvent->setPrice($row['price']);
                     $danceEvent->setEventId($row['event_id']);
 
@@ -93,25 +93,26 @@ class DanceRepository extends Repository
 
     public function createDance(Dance $dance) {
         try {
-            $stmt1 = $this->connection->prepare("INSERT INTO events (date, start_time, end_time, event_type, seats)
-            VALUES (:date, :start_time, :end_time, :event_type, :seats)");
+            $stmt1 = $this->connection->prepare("INSERT INTO events (title, date, start_time, end_time, event_type, seats, price)
+            VALUES (:title, :date, :start_time, :end_time, :event_type, :seats, :price)");
 
+            $smtm1->bindValue(':title', $dance->getSession(), PDO::PARAM_STR);
             $stmt1->bindValue(':date', $dance->getDate(), PDO::PARAM_STR);
             $stmt1->bindValue(':start_time', $dance->getStartTime(), PDO::PARAM_STR);
             $stmt1->bindValue(':end_time', $dance->getEndTime(), PDO::PARAM_STR);
             $stmt1->bindValue(':event_type', 'dance');
-            $stmt1->bindValue(':seats', $dance->getAvailableTickets(), PDO::PARAM_INT);
+            $stmt1->bindValue(':seats', $dance->getSeats(), PDO::PARAM_INT);
+            $stmt1->bindValue(':price', $dance->getPrice(), PDO::PARAM_STR);
 
             $stmt1->execute();
 
             //filling in the sessions table part
             $eventId = $this->connection->lastInsertId();//if this works i am a fucking genius
             $stmt2 = $this->connection->prepare("INSERT INTO dance (venueId, session, price, event_id) 
-            VALUES (:venueId, :session, :price, :event_id)");
+            VALUES (:venueId, :session, :event_id)");
             
             $stmt2->bindValue(':venueId', $dance->getVenue(), PDO::PARAM_STR);
             $smtm2->bindValue(':session', $dance->getSession(), PDO::PARAM_STR);
-            $stmt2->bindValue(':price', $dance->getPrice(), PDO::PARAM_STR);
             $stmt2->bindValue(':event_id', $dance);
 
             $stmt2->execute();
@@ -123,22 +124,25 @@ class DanceRepository extends Repository
     public function updateDance(Dance $dance) {
         try {
             $stmt = $this->connection->prepare("UPDATE events 
-            SET date = :date, start_time = :startTime, end_time = :endTime 
+            SET title = :title date = :date, start_time = :startTime, end_time = :endTime, seats = :seats, price = :price 
             WHERE id = :eventId");
+
             $stmt->bindValue(':eventId', $dance->getEventId(), PDO::PARAM_INT);
+            $smtm->bindValue(':title', $dance->getSession(), PDO::PARAM_STR);
             $stmt->bindValue(':date', $dance->getDate(), PDO::PARAM_STR);
             $stmt->bindValue(':startTime', $dance->getStartTime(), PDO::PARAM_STR);
             $stmt->bindValue(':endTime', $dance->getEndTime(), PDO::PARAM_STR);
+            $stmt->bindValue(':seats', $dance->getSeats(), PDO::PARAM_INT);
+            $stmt->bindValue(':price', $dance->getPrice(), PDO::PARAM_STR);
             
             $stmt->execute();
 
             $stmt = $this->connection->prepare("UPDATE dance 
-            SET venueId = :venueId, session = :session, price = :price
+            SET venueId = :venueId, session = :session 
             WHERE id = :id");
             
             $stmt->bindValue(':venueId', $dance->getVenue(), PDO::PARAM_STR);
             $smtm->bindValue(':session', $dance->getSession(), PDO::PARAM_STR);
-            $stmt->bindValue(':price', $dance->getPrice(), PDO::PARAM_STR);
             $stmt->bindVAlue(':id', $dance->getId(), PDO::PARAM_INT);
 
             $smtm->execute();

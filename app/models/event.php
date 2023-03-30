@@ -3,11 +3,13 @@
 class Event implements \JsonSerializable
 {
     private int $id;
+    private string $title;
     private string $date;
     private string $start_time;
     private string $end_time;
     private string $event_type;
     private int $seats;
+    private float $price;
 
 
     #[ReturnTypeWillChange]
@@ -24,6 +26,14 @@ class Event implements \JsonSerializable
     public function setId(int $id): self
     {
         $this->id = $id;
+        return $this;
+    }
+
+    public function getTitle():string {
+        return $this->title;
+    }
+    public function setTitle(string $title):self {
+        $this->title = $title;
         return $this;
     }
 
@@ -73,6 +83,14 @@ class Event implements \JsonSerializable
     public function setSeats(int $seats):self 
     {
         $this->seats = $seats;
+        return $this;
+    }
+
+    public function getPrice():float {
+        return $this->price;
+    }
+    public function setPrice(float $price):self {
+        $this->price = $price;
         return $this;
     }
 }
