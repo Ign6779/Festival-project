@@ -54,7 +54,7 @@ include __DIR__ . '/../header.php';
     </div>
 
     <aside id="restaurant-aside">
-      this will be the map
+      
     </aside>
   </section>
 
