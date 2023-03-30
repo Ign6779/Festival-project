@@ -16,7 +16,7 @@ include __DIR__ . '/../header.php';
     <!-- <img src="/img/dance-carousel-1.jpg" alt="image 5" /> -->
     <!-- <img src="/img/dance-carousel-2.jpg" alt="image 1" /> -->
     <!-- <img src="/img/dance-carousel-4.jpg" alt="image 3" /> -->
-    <!-- <img src="/img/dance-carousel-5.webp" alt="image 4" /> -->
+    <img src="/img/dance-carousel-5.webp" alt="image 4" />
     <img src="/img/dance-carousel-5.jpg" alt="image 6" />
     <img src="/img/dance-carousel-6.webp" alt="image 7" />
     <img src="/img/dance-carousel-7.jpg" alt="image 8" />
