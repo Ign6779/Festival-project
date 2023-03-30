@@ -21,18 +21,25 @@
 h1 {
     font-family: "Corben" !important;
     margin: 0px !important;
+    font-size: 52px !important;
 }
 
 h2 {
     font-family: "Mandali" !important;
     margin: 0px !important;
+    font-size: 35px !important;
+
 }
 
 h3 {
     font-family: 'Source Sans Pro'!important;
     margin: 0px !important;
+    font-size: 24px!important;
 }
 
+p{ 
+    font-size: 16px;
+}
 /* body styling */
 
 body {

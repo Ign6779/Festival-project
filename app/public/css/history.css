@@ -133,6 +133,9 @@ th,tr{
     height: 500px;
     width: 500px;
 }
+.timetable-scroller th{
+    position:sticky;
+}
 .timetable-div{
     padding-left: 30px;
     padding-top: 20px;
