@@ -180,7 +180,7 @@
   font-family: 'Baloo Chettan';
 }
 
-.carousel {
+#carouselExampleIndicators {
   position: relative;
   top: 200px;
 }
