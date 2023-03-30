@@ -1,8 +1,6 @@
 <?php
 include __DIR__ . '/../header.php';
-// include '/app/models/jazz.php';
 ?>
-<!-- Header of the jazz page -->
 <?php
         include __DIR__ . '/../components/shareButtons.php';
     ?>  
