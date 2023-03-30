@@ -97,7 +97,6 @@ class JazzRepository extends Repository
                     $jazzEvent->setDate($row['date']);
                     $jazzEvent->setStartTime($row['startTime']);
                     $jazzEvent->setEndTime($row['endTime']);
-                    $jazzEvent->setAvailableTickets($row['availableTickets']);
                     $jazzEvent->setPrice($row['price']);
                     $jazzEvent->setImgSource($row['source']);
 
