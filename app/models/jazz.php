@@ -12,6 +12,7 @@ class JazzEvent implements \JsonSerializable {
     private float $price;
     private array $artists;
     private string $imgSource;
+    private int $eventId;
 
     #[ReturnTypeWillChange]
 
@@ -96,6 +97,14 @@ class JazzEvent implements \JsonSerializable {
     }
     public function setImgSource(string $imgSource): self {
         $this->imgSource = $imgSource;
+        return $this;
+    }
+
+    public function getEventId():id {
+        return $this->eventId;
+    }
+    public function setEventId(int $eventId):self {
+        $this->eventId = $eventId;
         return $this;
     }
 }
