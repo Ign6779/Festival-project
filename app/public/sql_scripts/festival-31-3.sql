@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Mar 28, 2023 at 07:44 PM
+-- Generation Time: Mar 30, 2023 at 10:09 PM
 -- Server version: 10.11.2-MariaDB-1:10.11.2+maria~ubu2204
 -- PHP Version: 8.1.16
 
@@ -135,7 +135,6 @@ CREATE TABLE `dance` (
   `id` int(11) NOT NULL,
   `venueId` int(11) NOT NULL,
   `session` varchar(255) NOT NULL,
-  `price` float NOT NULL,
   `event_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -143,20 +142,20 @@ CREATE TABLE `dance` (
 -- Dumping data for table `dance`
 --
 
-INSERT INTO `dance` (`id`, `venueId`, `session`, `price`, `event_id`) VALUES
-(1, 1, 'Back2Back', 75, 18),
-(2, 2, 'Club', 60, 19),
-(3, 3, 'Club', 60, 20),
-(4, 4, 'Club', 60, 21),
-(5, 5, 'Club', 60, 22),
-(6, 6, 'Back2Back', 110, 23),
-(7, 3, 'Club', 60, 24),
-(8, 1, 'TiestoWorld', 75, 25),
-(9, 2, 'Club', 60, 26),
-(10, 6, 'Back2Back', 110, 27),
-(11, 3, 'Club', 60, 28),
-(12, 4, 'Club', 90, 29),
-(13, 2, 'Club', 60, 30);
+INSERT INTO `dance` (`id`, `venueId`, `session`, `event_id`) VALUES
+(1, 1, 'Back2Back', 18),
+(2, 2, 'Club', 19),
+(3, 3, 'Club', 20),
+(4, 4, 'Club', 21),
+(5, 5, 'Club', 22),
+(6, 6, 'Back2Back', 23),
+(7, 3, 'Club', 24),
+(8, 1, 'TiestoWorld', 25),
+(9, 2, 'Club', 26),
+(10, 6, 'Back2Back', 27),
+(11, 3, 'Club', 28),
+(12, 4, 'Club', 29),
+(13, 2, 'Club', 30);
 
 -- --------------------------------------------------------
 
@@ -202,108 +201,110 @@ INSERT INTO `danceArtist` (`id`, `danceId`, `artistId`) VALUES
 
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
   `date` date NOT NULL,
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
   `event_type` varchar(255) NOT NULL,
-  `seats` int(11) NOT NULL
+  `seats` int(11) NOT NULL,
+  `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `date`, `start_time`, `end_time`, `event_type`, `seats`) VALUES
-(1, '2023-07-26', '18:00:00', '19:30:00', 'yummy', 40),
-(2, '2023-07-26', '19:30:00', '21:00:00', 'yummy', 40),
-(3, '2023-07-26', '21:00:00', '22:30:00', 'yummy', 40),
-(4, '2023-07-26', '17:00:00', '19:00:00', 'yummy', 52),
-(5, '2023-07-26', '19:00:00', '21:00:00', 'yummy', 52),
-(6, '2023-07-26', '21:00:00', '23:00:00', 'yummy', 52),
-(7, '2023-07-26', '17:00:00', '19:00:00', 'yummy', 60),
-(8, '2023-07-26', '19:00:00', '21:00:00', 'yummy', 60),
-(9, '2023-07-26', '17:30:00', '19:00:00', 'yummy', 45),
-(10, '2023-07-26', '19:00:00', '20:30:00', 'yummy', 45),
-(11, '2023-07-26', '19:30:00', '21:00:00', 'yummy', 45),
-(12, '2023-07-26', '17:00:00', '18:30:00', 'yummy', 36),
-(13, '2023-07-26', '18:30:00', '20:00:00', 'yummy', 36),
-(14, '2023-07-26', '20:00:00', '21:30:00', 'yummy', 36),
-(15, '2023-07-26', '16:30:00', '18:00:00', 'yummy', 100),
-(16, '2023-07-26', '18:00:00', '19:30:00', 'yummy', 100),
-(17, '2023-07-26', '19:30:00', '21:00:00', 'yummy', 100),
-(18, '2023-07-27', '20:00:00', '02:00:00', 'dance', 1500),
-(19, '2023-07-27', '22:00:00', '23:30:00', 'dance', 200),
-(20, '2023-07-27', '23:00:00', '00:30:00', 'dance', 300),
-(21, '2023-07-27', '22:00:00', '23:00:00', 'dance', 200),
-(22, '2023-07-27', '22:00:00', '23:30:00', 'dance', 200),
-(23, '2023-07-28', '14:00:00', '23:00:00', 'dance', 2000),
-(24, '2023-07-28', '22:00:00', '23:30:00', 'dance', 300),
-(25, '2023-07-28', '21:00:00', '01:00:00', 'dance', 1500),
-(26, '2023-07-28', '23:00:00', '00:30:00', 'dance', 200),
-(27, '2023-07-29', '14:00:00', '23:00:00', 'dance', 2000),
-(28, '2023-07-29', '19:00:00', '20:30:00', 'dance', 300),
-(29, '2023-07-29', '21:00:00', '22:30:00', 'dance', 1500),
-(30, '2023-07-29', '18:00:00', '19:30:00', 'dance', 200),
-(31, '2023-07-26', '18:00:00', '19:00:00', 'jazz', 300),
-(32, '2023-07-26', '19:30:00', '20:30:00', 'jazz', 300),
-(33, '2023-07-26', '21:00:00', '22:00:00', 'jazz', 300),
-(34, '2023-07-26', '18:00:00', '19:00:00', 'jazz', 200),
-(35, '2023-07-26', '19:30:00', '20:30:00', 'jazz', 200),
-(36, '2023-07-26', '21:00:00', '22:00:00', 'jazz', 200),
-(37, '2023-07-27', '18:00:00', '19:00:00', 'jazz', 300),
-(38, '2023-07-27', '19:30:00', '20:30:00', 'jazz', 300),
-(39, '2023-07-27', '21:00:00', '22:00:00', 'jazz', 300),
-(40, '2023-07-27', '18:00:00', '19:00:00', 'jazz', 200),
-(41, '2023-07-27', '19:30:00', '20:30:00', 'jazz', 200),
-(42, '2023-07-27', '21:00:00', '22:00:00', 'jazz', 200),
-(43, '2023-07-28', '18:00:00', '19:00:00', 'jazz', 300),
-(44, '2023-07-28', '19:30:00', '20:30:00', 'jazz', 300),
-(45, '2023-07-28', '21:00:00', '22:00:00', 'jazz', 300),
-(46, '2023-07-28', '18:00:00', '19:00:00', 'jazz', 150),
-(47, '2023-07-28', '19:30:00', '20:30:00', 'jazz', 150),
-(48, '2023-07-28', '21:00:00', '22:00:00', 'jazz', 150),
-(49, '2023-07-29', '15:00:00', '16:00:00', 'jazz', 0),
-(50, '2023-07-29', '16:00:00', '17:00:00', 'jazz', 0),
-(51, '2023-07-29', '17:00:00', '18:00:00', 'jazz', 0),
-(52, '2023-07-29', '18:00:00', '19:00:00', 'jazz', 0),
-(53, '2023-07-29', '19:00:00', '20:00:00', 'jazz', 0),
-(54, '2023-07-29', '20:00:00', '21:00:00', 'jazz', 0),
-(55, '2023-07-26', '10:00:00', '12:30:00', 'history', 12),
-(56, '2023-07-26', '10:00:00', '12:30:00', 'history', 12),
-(57, '2023-07-26', '10:00:00', '12:30:00', 'history', 0),
-(58, '2023-07-26', '13:00:00', '15:30:00', 'history', 12),
-(59, '2023-07-26', '13:00:00', '15:30:00', 'history', 12),
-(60, '2023-07-26', '13:00:00', '15:30:00', 'history', 0),
-(61, '2023-07-26', '16:00:00', '18:30:00', 'history', 12),
-(62, '2023-07-26', '16:00:00', '18:30:00', 'history', 12),
-(63, '2023-07-26', '16:00:00', '18:30:00', 'history', 0),
-(64, '2023-07-27', '10:00:00', '12:30:00', 'history', 12),
-(65, '2023-07-27', '10:00:00', '12:30:00', 'history', 12),
-(66, '2023-07-27', '10:00:00', '12:30:00', 'history', 0),
-(67, '2023-07-27', '13:00:00', '15:30:00', 'history', 12),
-(68, '2023-07-27', '13:00:00', '15:30:00', 'history', 12),
-(69, '2023-07-27', '13:00:00', '15:30:00', 'history', 12),
-(70, '2023-07-27', '16:00:00', '18:30:00', 'history', 12),
-(71, '2023-07-27', '16:00:00', '18:30:00', 'history', 12),
-(72, '2023-07-27', '16:00:00', '18:30:00', 'history', 0),
-(73, '2023-07-28', '10:00:00', '12:30:00', 'history', 24),
-(74, '2023-07-28', '10:00:00', '12:30:00', 'history', 24),
-(75, '2023-07-28', '10:00:00', '12:30:00', 'history', 0),
-(76, '2023-07-28', '13:00:00', '15:30:00', 'history', 24),
-(77, '2023-07-28', '13:00:00', '15:30:00', 'history', 24),
-(78, '2023-07-28', '13:00:00', '15:30:00', 'history', 12),
-(79, '2023-07-28', '16:00:00', '18:30:00', 'history', 12),
-(80, '2023-07-28', '16:00:00', '18:30:00', 'history', 12),
-(81, '2023-07-28', '16:00:00', '18:30:00', 'history', 12),
-(82, '2023-07-29', '10:00:00', '12:30:00', 'history', 24),
-(83, '2023-07-29', '10:00:00', '12:30:00', 'history', 24),
-(84, '2023-07-29', '10:00:00', '12:30:00', 'history', 12),
-(85, '2023-07-29', '13:00:00', '15:30:00', 'history', 36),
-(86, '2023-07-29', '13:00:00', '15:30:00', 'history', 36),
-(87, '2023-07-29', '13:00:00', '15:30:00', 'history', 24),
-(88, '2023-07-29', '16:00:00', '18:30:00', 'history', 12),
-(89, '2023-07-29', '16:00:00', '18:30:00', 'history', 12),
-(90, '2023-07-29', '16:00:00', '18:30:00', 'history', 0);
+INSERT INTO `events` (`id`, `title`, `date`, `start_time`, `end_time`, `event_type`, `seats`, `price`) VALUES
+(1, 'Restaurant Mr&Ms', '2023-07-26', '18:00:00', '19:30:00', 'yummy', 40, 45),
+(2, 'Restaurant Mr&Ms', '2023-07-26', '19:30:00', '21:00:00', 'yummy', 40, 45),
+(3, 'Restaurant Mr&Ms', '2023-07-26', '21:00:00', '22:30:00', 'yummy', 40, 45),
+(4, 'Ratatouille', '2023-07-26', '17:00:00', '19:00:00', 'yummy', 52, 45),
+(5, 'Ratatouille', '2023-07-26', '19:00:00', '21:00:00', 'yummy', 52, 45),
+(6, 'Ratatouille', '2023-07-26', '21:00:00', '23:00:00', 'yummy', 52, 45),
+(7, 'Restaurant ML', '2023-07-26', '17:00:00', '19:00:00', 'yummy', 60, 45),
+(8, 'Restaurant ML', '2023-07-26', '19:00:00', '21:00:00', 'yummy', 60, 45),
+(9, 'Restaurant Fris', '2023-07-26', '17:30:00', '19:00:00', 'yummy', 45, 45),
+(10, 'Restaurant Fris', '2023-07-26', '19:00:00', '20:30:00', 'yummy', 45, 45),
+(11, 'Restaurant Fris', '2023-07-26', '19:30:00', '21:00:00', 'yummy', 45, 45),
+(12, 'Specktakel', '2023-07-26', '17:00:00', '18:30:00', 'yummy', 36, 35),
+(13, 'Specktakel', '2023-07-26', '18:30:00', '20:00:00', 'yummy', 36, 35),
+(14, 'Specktakel', '2023-07-26', '20:00:00', '21:30:00', 'yummy', 36, 35),
+(15, 'Grand Cafe Brinkman', '2023-07-26', '16:30:00', '18:00:00', 'yummy', 100, 35),
+(16, 'Grand Cafe Brinkman', '2023-07-26', '18:00:00', '19:30:00', 'yummy', 100, 35),
+(17, 'Grand Cafe Brinkman', '2023-07-26', '19:30:00', '21:00:00', 'yummy', 100, 35),
+(18, 'Back2Back - Nicky Romero / Afrojack', '2023-07-27', '20:00:00', '02:00:00', 'dance', 1500, 75),
+(19, 'Club - Tiesto', '2023-07-27', '22:00:00', '23:30:00', 'dance', 200, 60),
+(20, 'Club - Hardwell', '2023-07-27', '23:00:00', '00:30:00', 'dance', 300, 60),
+(21, 'Club - Armin van Buuren', '2023-07-27', '22:00:00', '23:00:00', 'dance', 200, 60),
+(22, 'Club - Martin Garrix', '2023-07-27', '22:00:00', '23:30:00', 'dance', 200, 60),
+(23, 'Back2Back - Hardwell / Martin Garrix / Armin van Buuren', '2023-07-28', '14:00:00', '23:00:00', 'dance', 2000, 110),
+(24, 'Club - Afrojack', '2023-07-28', '22:00:00', '23:30:00', 'dance', 300, 60),
+(25, 'Tiesto World ', '2023-07-28', '21:00:00', '01:00:00', 'dance', 1500, 75),
+(26, 'Club - Nicky Romero', '2023-07-28', '23:00:00', '00:30:00', 'dance', 200, 60),
+(27, 'Back2Back - Afrojack / Tiesto / Nicky Romero', '2023-07-29', '14:00:00', '23:00:00', 'dance', 2000, 110),
+(28, 'Club - Armin van Buuren', '2023-07-29', '19:00:00', '20:30:00', 'dance', 300, 60),
+(29, 'Club - Hardwell', '2023-07-29', '21:00:00', '22:30:00', 'dance', 1500, 90),
+(30, 'Club - Martin Garrix', '2023-07-29', '18:00:00', '19:30:00', 'dance', 200, 60),
+(31, 'Gumbo Kings', '2023-07-26', '18:00:00', '19:00:00', 'jazz', 300, 15),
+(32, 'Evolve', '2023-07-26', '19:30:00', '20:30:00', 'jazz', 300, 15),
+(33, 'Ntjam Rosie', '2023-07-26', '21:00:00', '22:00:00', 'jazz', 300, 15),
+(34, 'Wicked Jazz Sounds', '2023-07-26', '18:00:00', '19:00:00', 'jazz', 200, 10),
+(35, 'Tom Thomsom Assemble', '2023-07-26', '19:30:00', '20:30:00', 'jazz', 200, 10),
+(36, 'Jonna Frazer', '2023-07-26', '21:00:00', '22:00:00', 'jazz', 200, 10),
+(37, 'Fox & The Mayors', '2023-07-27', '18:00:00', '19:00:00', 'jazz', 300, 15),
+(38, 'Uncle Sue', '2023-07-27', '19:30:00', '20:30:00', 'jazz', 300, 15),
+(39, 'Chris Allen', '2023-07-27', '21:00:00', '22:00:00', 'jazz', 300, 15),
+(40, 'Myles Sanko', '2023-07-27', '18:00:00', '19:00:00', 'jazz', 200, 10),
+(41, 'Ruis Soundsystem', '2023-07-27', '19:30:00', '20:30:00', 'jazz', 200, 10),
+(42, 'The Family XL', '2023-07-27', '21:00:00', '22:00:00', 'jazz', 200, 10),
+(43, 'Gare du Nord', '2023-07-28', '18:00:00', '19:00:00', 'jazz', 300, 15),
+(44, 'Rilan & The Bombadiers', '2023-07-28', '19:30:00', '20:30:00', 'jazz', 300, 15),
+(45, 'Soul Six', '2023-07-28', '21:00:00', '22:00:00', 'jazz', 300, 15),
+(46, 'Han Bennink', '2023-07-28', '18:00:00', '19:00:00', 'jazz', 150, 10),
+(47, 'The Nordanians', '2023-07-28', '19:30:00', '20:30:00', 'jazz', 150, 10),
+(48, 'Lilith Merlot', '2023-07-28', '21:00:00', '22:00:00', 'jazz', 150, 10),
+(49, 'Ruis Soundsystem', '2023-07-29', '15:00:00', '16:00:00', 'jazz', 0, 0),
+(50, 'Wicked Jazz Sounds', '2023-07-29', '16:00:00', '17:00:00', 'jazz', 0, 0),
+(51, 'Evolve', '2023-07-29', '17:00:00', '18:00:00', 'jazz', 0, 0),
+(52, 'The Nordanians', '2023-07-29', '18:00:00', '19:00:00', 'jazz', 0, 0),
+(53, 'Gumbo Kings', '2023-07-29', '19:00:00', '20:00:00', 'jazz', 0, 0),
+(54, 'Gare du Nord', '2023-07-29', '20:00:00', '21:00:00', 'jazz', 0, 0),
+(55, 'Walk through historical Haarlem-English', '2023-07-26', '10:00:00', '12:30:00', 'history', 12, 17.5),
+(56, 'Walk through historical Haarlem-Dutch', '2023-07-26', '10:00:00', '12:30:00', 'history', 12, 17.5),
+(57, 'Walk through historical Haarlem-Chinese', '2023-07-26', '10:00:00', '12:30:00', 'history', 0, 17.5),
+(58, 'Walk through historical Haarlem-English', '2023-07-26', '13:00:00', '15:30:00', 'history', 12, 17.5),
+(59, 'Walk through historical Haarlem-Dutch', '2023-07-26', '13:00:00', '15:30:00', 'history', 12, 17.5),
+(60, 'Walk through historical Haarlem-Chinese', '2023-07-26', '13:00:00', '15:30:00', 'history', 0, 17.5),
+(61, 'Walk through historical Haarlem-English', '2023-07-26', '16:00:00', '18:30:00', 'history', 12, 17.5),
+(62, 'Walk through historical Haarlem-Dutch', '2023-07-26', '16:00:00', '18:30:00', 'history', 12, 17.5),
+(63, 'Walk through historical Haarlem-Chinese', '2023-07-26', '16:00:00', '18:30:00', 'history', 0, 17.5),
+(64, 'Walk through historical Haarlem-English', '2023-07-27', '10:00:00', '12:30:00', 'history', 12, 17.5),
+(65, 'Walk through historical Haarlem-Dutch', '2023-07-27', '10:00:00', '12:30:00', 'history', 12, 17.5),
+(66, 'Walk through historical Haarlem-Chinese', '2023-07-27', '10:00:00', '12:30:00', 'history', 0, 17.5),
+(67, 'Walk through historical Haarlem-English', '2023-07-27', '13:00:00', '15:30:00', 'history', 12, 17.5),
+(68, 'Walk through historical Haarlem-Dutch', '2023-07-27', '13:00:00', '15:30:00', 'history', 12, 17.5),
+(69, 'Walk through historical Haarlem-Chinese', '2023-07-27', '13:00:00', '15:30:00', 'history', 12, 17.5),
+(70, 'Walk through historical Haarlem-English', '2023-07-27', '16:00:00', '18:30:00', 'history', 12, 17.5),
+(71, 'Walk through historical Haarlem-Dutch', '2023-07-27', '16:00:00', '18:30:00', 'history', 12, 17.5),
+(72, 'Walk through historical Haarlem-Chinese', '2023-07-27', '16:00:00', '18:30:00', 'history', 0, 17.5),
+(73, 'Walk through historical Haarlem-English', '2023-07-28', '10:00:00', '12:30:00', 'history', 24, 17.5),
+(74, 'Walk through historical Haarlem-Dutch', '2023-07-28', '10:00:00', '12:30:00', 'history', 24, 17.5),
+(75, 'Walk through historical Haarlem-Chinese', '2023-07-28', '10:00:00', '12:30:00', 'history', 0, 17.5),
+(76, 'Walk through historical Haarlem-English', '2023-07-28', '13:00:00', '15:30:00', 'history', 24, 17.5),
+(77, 'Walk through historical Haarlem-Dutch', '2023-07-28', '13:00:00', '15:30:00', 'history', 24, 17.5),
+(78, 'Walk through historical Haarlem-Chinese', '2023-07-28', '13:00:00', '15:30:00', 'history', 12, 17.5),
+(79, 'Walk through historical Haarlem-English', '2023-07-28', '16:00:00', '18:30:00', 'history', 12, 17.5),
+(80, 'Walk through historical Haarlem-Dutch', '2023-07-28', '16:00:00', '18:30:00', 'history', 12, 17.5),
+(81, 'Walk through historical Haarlem-Chinese', '2023-07-28', '16:00:00', '18:30:00', 'history', 12, 17.5),
+(82, 'Walk through historical Haarlem-English', '2023-07-29', '10:00:00', '12:30:00', 'history', 24, 17.5),
+(83, 'Walk through historical Haarlem-Dutch', '2023-07-29', '10:00:00', '12:30:00', 'history', 24, 17.5),
+(84, 'Walk through historical Haarlem-Chinese', '2023-07-29', '10:00:00', '12:30:00', 'history', 12, 17.5),
+(85, 'Walk through historical Haarlem-English', '2023-07-29', '13:00:00', '15:30:00', 'history', 36, 17.5),
+(86, 'Walk through historical Haarlem-Dutch', '2023-07-29', '13:00:00', '15:30:00', 'history', 36, 17.5),
+(87, 'Walk through historical Haarlem-Chinese', '2023-07-29', '13:00:00', '15:30:00', 'history', 24, 17.5),
+(88, 'Walk through historical Haarlem-English', '2023-07-29', '16:00:00', '18:30:00', 'history', 12, 17.5),
+(89, 'Walk through historical Haarlem-Dutch', '2023-07-29', '16:00:00', '18:30:00', 'history', 12, 17.5),
+(90, 'Walk through historical Haarlem-Chinese', '2023-07-29', '16:00:00', '18:30:00', 'history', 0, 17.5);
 
 -- --------------------------------------------------------
 
@@ -314,7 +315,6 @@ INSERT INTO `events` (`id`, `date`, `start_time`, `end_time`, `event_type`, `sea
 CREATE TABLE `jazz` (
   `id` int(11) NOT NULL,
   `venueId` int(11) NOT NULL,
-  `price` float NOT NULL,
   `event_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -322,31 +322,31 @@ CREATE TABLE `jazz` (
 -- Dumping data for table `jazz`
 --
 
-INSERT INTO `jazz` (`id`, `venueId`, `price`, `event_id`) VALUES
-(1, 1, 15, 31),
-(2, 1, 15, 32),
-(3, 1, 15, 33),
-(4, 2, 10, 34),
-(5, 2, 10, 35),
-(6, 2, 10, 36),
-(7, 1, 15, 37),
-(8, 1, 15, 38),
-(9, 1, 15, 39),
-(10, 2, 10, 40),
-(11, 2, 10, 41),
-(12, 2, 10, 42),
-(13, 1, 15, 43),
-(14, 1, 15, 44),
-(15, 1, 15, 45),
-(16, 3, 10, 46),
-(17, 3, 10, 47),
-(18, 3, 10, 48),
-(19, 4, 0, 49),
-(20, 4, 0, 50),
-(21, 4, 0, 51),
-(22, 4, 0, 52),
-(23, 4, 0, 53),
-(24, 4, 0, 54);
+INSERT INTO `jazz` (`id`, `venueId`, `event_id`) VALUES
+(1, 1, 31),
+(2, 1, 32),
+(3, 1, 33),
+(4, 2, 34),
+(5, 2, 35),
+(6, 2, 36),
+(7, 1, 37),
+(8, 1, 38),
+(9, 1, 39),
+(10, 2, 40),
+(11, 2, 41),
+(12, 2, 42),
+(13, 1, 43),
+(14, 1, 44),
+(15, 1, 45),
+(16, 3, 46),
+(17, 3, 47),
+(18, 3, 48),
+(19, 4, 49),
+(20, 4, 50),
+(21, 4, 51),
+(22, 4, 52),
+(23, 4, 53),
+(24, 4, 54);
 
 -- --------------------------------------------------------
 
@@ -437,7 +437,7 @@ CREATE TABLE `order` (
 CREATE TABLE `order_ticket` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `ticket_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
   `qr_code` varchar(240) NOT NULL,
   `is_scaned` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -482,7 +482,6 @@ INSERT INTO `restaurants` (`id`, `name`, `location`, `description`, `content`, `
 CREATE TABLE `sessions` (
   `id` int(11) NOT NULL,
   `restaurantId` int(11) NOT NULL,
-  `price` float NOT NULL,
   `event_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -490,246 +489,24 @@ CREATE TABLE `sessions` (
 -- Dumping data for table `sessions`
 --
 
-INSERT INTO `sessions` (`id`, `restaurantId`, `price`, `event_id`) VALUES
-(1, 1, 45, 1),
-(2, 1, 45, 2),
-(3, 1, 45, 3),
-(4, 2, 45, 4),
-(5, 2, 45, 5),
-(6, 2, 45, 6),
-(7, 3, 45, 7),
-(8, 3, 45, 8),
-(10, 4, 45, 9),
-(11, 4, 45, 10),
-(12, 4, 45, 11),
-(13, 5, 35, 12),
-(14, 5, 35, 13),
-(15, 5, 35, 14),
-(16, 6, 35, 15),
-(17, 6, 35, 16),
-(18, 6, 35, 17);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ticket`
---
-
-CREATE TABLE `ticket` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `type` varchar(90) NOT NULL,
-  `price` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `ticket`
---
-
-INSERT INTO `ticket` (`id`, `title`, `type`, `price`) VALUES
-(1, 'Restaurant Mr&Ms', 'single ticket', 45),
-(2, 'Restaurant Mr&Ms', 'single ticket', 45),
-(3, 'Restaurant Mr&Ms', 'single ticket', 45),
-(4, 'Ratatouille', 'single ticket', 45),
-(5, 'Ratatouille', 'single ticket', 45),
-(6, 'Ratatouille', 'single ticket', 45),
-(7, 'Restaurant ML', 'single ticket', 45),
-(8, 'Restaurant ML', 'single ticket', 45),
-(9, 'Restaurant Fris', 'single ticket', 45),
-(10, 'Restaurant Fris', 'single ticket', 45),
-(11, 'Restaurant Fris', 'single ticket', 45),
-(12, 'Specktakel', 'single ticket', 35),
-(13, 'Specktakel', 'single ticket', 35),
-(14, 'Specktakel', 'single ticket', 35),
-(15, 'Grand Cafe Brinkman', 'single ticket', 35),
-(16, 'Grand Cafe Brinkman', 'single ticket', 35),
-(17, 'Grand Cafe Brinkman', 'single ticket', 35),
-(18, 'Back2Back - Nicky Romero / Afrojack', 'single ticket', 75),
-(19, 'Club - Tiesto', 'single ticket', 60),
-(20, 'Club - Hardwell', 'single ticket', 60),
-(21, 'Club - Armin van Buuren', 'single ticket', 60),
-(22, 'Club - Martin Garrix', 'single ticket', 60),
-(23, 'Back2Back - Hardwell / Martin Garrix / Armin van Buuren', 'single ticket', 110),
-(24, 'Club - Afrojack', 'single ticket', 60),
-(25, 'Tiesto World ', 'single ticket', 75),
-(26, 'Club - Nicky Romero', 'single ticket', 60),
-(27, 'Back2Back - Afrojack / Tiesto / Nicky Romero', 'single ticket', 110),
-(28, 'Club - Armin van Buuren', 'single ticket', 60),
-(29, 'Club - Hardwell', 'single ticket', 90),
-(30, 'Club - Martin Garrix', 'single ticket', 60),
-(31, 'Gumbo Kings', 'single ticket', 15),
-(32, 'Evolve', 'single ticket', 15),
-(33, 'Ntjam Rosie', 'single ticket', 15),
-(34, 'Wicked Jazz Sounds', 'single ticket', 10),
-(35, 'Tom Thomsom Assemble', 'single ticket', 10),
-(36, 'Jonna Frazer', 'single ticket', 10),
-(37, 'Fox & The Mayors', 'single ticket', 15),
-(38, 'Uncle Sue', 'single ticket', 15),
-(39, 'Chris Allen', 'single ticket', 15),
-(40, 'Myles Sanko', 'single ticket', 10),
-(41, 'Ruis Soundsystem', 'single ticket', 10),
-(42, 'The Family XL', 'single ticket', 10),
-(43, 'Gare du Nord', 'single ticket', 15),
-(44, 'Rilan & The Bombadiers', 'single ticket', 15),
-(45, 'Soul Six', 'single ticket', 15),
-(46, 'Han Bennink', 'single ticket', 10),
-(47, 'The Nordanians', 'single ticket', 10),
-(48, 'Lilith Merlot', 'single ticket', 10),
-(49, 'Ruis Soundsystem', 'single ticket', 0),
-(50, 'Wicked Jazz Sounds', 'single ticket', 0),
-(51, 'Evolve', 'single ticket', 0),
-(52, 'The Nordanians', 'single ticket', 0),
-(53, 'Gumbo Kings', 'single ticket', 0),
-(54, 'Gare du Nord', 'single ticket', 0),
-(55, 'Walk through historical Haarlem-English', 'single ticket', 17.5),
-(56, 'Walk through historical Haarlem-Dutch', 'single ticket', 17.5),
-(57, 'Walk through historical Haarlem-Chinese', 'single ticket', 17.5),
-(58, 'Walk through historical Haarlem-English', 'single ticket', 17.5),
-(59, 'Walk through historical Haarlem-Dutch', 'single ticket', 17.5),
-(60, 'Walk through historical Haarlem-Chinese', 'single ticket', 17.5),
-(61, 'Walk through historical Haarlem-English', 'single ticket', 17.5),
-(62, 'Walk through historical Haarlem-Dutch', 'single ticket', 17.5),
-(63, 'Walk through historical Haarlem-Chinese', 'single ticket', 17.5),
-(64, 'Walk through historical Haarlem-English', 'single ticket', 17.5),
-(65, 'Walk through historical Haarlem-Dutch', 'single ticket', 17.5),
-(66, 'Walk through historical Haarlem-Chinese', 'single ticket', 17.5),
-(67, 'Walk through historical Haarlem-English', 'single ticket', 17.5),
-(68, 'Walk through historical Haarlem-Dutch', 'single ticket', 17.5),
-(69, 'Walk through historical Haarlem-Chinese', 'single ticket', 17.5),
-(70, 'Walk through historical Haarlem-English', 'single ticket', 17.5),
-(71, 'Walk through historical Haarlem-Dutch', 'single ticket', 17.5),
-(72, 'Walk through historical Haarlem-Chinese', 'single ticket', 17.5),
-(73, 'Walk through historical Haarlem-English', 'single ticket', 17.5),
-(74, 'Walk through historical Haarlem-Dutch', 'single ticket', 17.5),
-(75, 'Walk through historical Haarlem-Chinese', 'single ticket', 17.5),
-(76, 'Walk through historical Haarlem-English', 'single ticket', 17.5),
-(77, 'Walk through historical Haarlem-Dutch', 'single ticket', 17.5),
-(78, 'Walk through historical Haarlem-Chinese', 'single ticket', 17.5),
-(79, 'Walk through historical Haarlem-English', 'single ticket', 17.5),
-(80, 'Walk through historical Haarlem-Dutch', 'single ticket', 17.5),
-(81, 'Walk through historical Haarlem-Chinese', 'single ticket', 17.5),
-(82, 'Walk through historical Haarlem-English', 'single ticket', 17.5),
-(83, 'Walk through historical Haarlem-Dutch', 'single ticket', 17.5),
-(84, 'Walk through historical Haarlem-Chinese', 'single ticket', 17.5),
-(85, 'Walk through historical Haarlem-English', 'single ticket', 17.5),
-(86, 'Walk through historical Haarlem-Dutch', 'single ticket', 17.5),
-(87, 'Walk through historical Haarlem-Chinese', 'single ticket', 17.5),
-(88, 'Walk through historical Haarlem-English', 'single ticket', 17.5),
-(89, 'Walk through historical Haarlem-Dutch', 'single ticket', 17.5),
-(90, 'Walk through historical Haarlem-Chinese', 'single ticket', 17.5);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ticket_event`
---
-
-CREATE TABLE `ticket_event` (
-  `id` int(11) NOT NULL,
-  `ticket_id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `ticket_event`
---
-
-INSERT INTO `ticket_event` (`id`, `ticket_id`, `event_id`) VALUES
-(3, 18, 18),
-(4, 19, 19),
-(5, 20, 20),
-(6, 21, 21),
-(7, 22, 22),
-(8, 23, 23),
-(9, 24, 24),
-(10, 25, 25),
-(11, 26, 26),
-(12, 27, 27),
-(13, 28, 28),
-(14, 29, 29),
-(15, 30, 30),
-(16, 31, 31),
-(17, 32, 32),
-(18, 33, 33),
-(19, 34, 34),
-(20, 35, 35),
-(21, 36, 36),
-(22, 37, 37),
-(23, 38, 38),
-(24, 39, 39),
-(25, 40, 40),
-(26, 41, 41),
-(27, 42, 42),
-(28, 43, 43),
-(29, 44, 44),
-(30, 45, 45),
-(31, 46, 46),
-(32, 47, 47),
-(59, 43, 43),
-(60, 44, 44),
-(61, 45, 45),
-(62, 46, 46),
-(63, 47, 47),
-(64, 48, 48),
-(65, 49, 49),
-(66, 50, 50),
-(67, 51, 51),
-(68, 52, 52),
-(69, 53, 53),
-(70, 54, 54),
-(71, 1, 1),
-(72, 2, 2),
-(73, 3, 3),
-(74, 4, 4),
-(75, 5, 5),
-(76, 6, 6),
-(77, 7, 7),
-(78, 8, 8),
-(79, 9, 9),
-(80, 10, 10),
-(81, 11, 11),
-(82, 12, 12),
-(83, 13, 13),
-(84, 14, 14),
-(85, 15, 15),
-(86, 16, 16),
-(87, 17, 17),
-(88, 55, 55),
-(89, 56, 56),
-(90, 57, 57),
-(91, 58, 58),
-(92, 59, 59),
-(93, 60, 60),
-(94, 61, 61),
-(95, 62, 62),
-(96, 63, 63),
-(97, 64, 64),
-(98, 65, 65),
-(99, 66, 66),
-(100, 67, 67),
-(101, 68, 68),
-(102, 69, 69),
-(103, 70, 70),
-(104, 71, 71),
-(105, 72, 72),
-(106, 73, 73),
-(107, 74, 74),
-(108, 75, 75),
-(109, 76, 76),
-(110, 77, 77),
-(111, 78, 78),
-(112, 79, 79),
-(113, 80, 80),
-(114, 81, 81),
-(115, 82, 82),
-(116, 83, 83),
-(117, 84, 84),
-(118, 85, 85),
-(119, 86, 86),
-(120, 87, 87),
-(121, 88, 88),
-(122, 89, 89),
-(123, 90, 90);
+INSERT INTO `sessions` (`id`, `restaurantId`, `event_id`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 2, 4),
+(5, 2, 5),
+(6, 2, 6),
+(7, 3, 7),
+(8, 3, 8),
+(10, 4, 9),
+(11, 4, 10),
+(12, 4, 11),
+(13, 5, 12),
+(14, 5, 13),
+(15, 5, 14),
+(16, 6, 15),
+(17, 6, 16),
+(18, 6, 17);
 
 -- --------------------------------------------------------
 
@@ -939,7 +716,7 @@ ALTER TABLE `order`
 ALTER TABLE `order_ticket`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_orderTicket_orderId` (`order_id`),
-  ADD KEY `fk_orderTicket_ticketId` (`ticket_id`);
+  ADD KEY `fk_orderTicket_eventId` (`event_id`);
 
 --
 -- Indexes for table `restaurants`
@@ -954,20 +731,6 @@ ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_sessions_restaurantId` (`restaurantId`),
   ADD KEY `fk_sessions_eventId` (`event_id`);
-
---
--- Indexes for table `ticket`
---
-ALTER TABLE `ticket`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ticket_event`
---
-ALTER TABLE `ticket_event`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_ticketEvent_ticketId` (`ticket_id`),
-  ADD KEY `fk_ticketEvent_eventId` (`event_id`);
 
 --
 -- Indexes for table `tourLocations`
@@ -1026,7 +789,7 @@ ALTER TABLE `danceArtist`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `jazz`
@@ -1062,25 +825,13 @@ ALTER TABLE `order_ticket`
 -- AUTO_INCREMENT for table `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `ticket`
---
-ALTER TABLE `ticket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
-
---
--- AUTO_INCREMENT for table `ticket_event`
---
-ALTER TABLE `ticket_event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tourLocations`
@@ -1154,8 +905,8 @@ ALTER TABLE `order`
 -- Constraints for table `order_ticket`
 --
 ALTER TABLE `order_ticket`
-  ADD CONSTRAINT `fk_orderTicket_orderId` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_orderTicket_ticketId` FOREIGN KEY (`ticket_id`) REFERENCES `ticket` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_orderTicket_eventId` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_orderTicket_orderId` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `sessions`
@@ -1163,13 +914,6 @@ ALTER TABLE `order_ticket`
 ALTER TABLE `sessions`
   ADD CONSTRAINT `fk_sessions_eventId` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_sessions_restaurantId` FOREIGN KEY (`restaurantId`) REFERENCES `restaurants` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `ticket_event`
---
-ALTER TABLE `ticket_event`
-  ADD CONSTRAINT `fk_ticketEvent_eventId` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_ticketEvent_ticketId` FOREIGN KEY (`ticket_id`) REFERENCES `ticket` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tours`

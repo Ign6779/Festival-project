@@ -1,13 +1,15 @@
 <?php
-class Tour implements \JsonSerializable
+require __DIR__ . '/event.php';
+
+class Tour extends Event implements \JsonSerializable
 {
     private int $id;
     private int $event_id;
-    private string $date;
-    private string $startTime;
-    private string $endTime;
+    // private string $date;
+    // private string $startTime;
+    // private string $endTime;
     private string $language;
-    private int $seats;
+    // private int $seats;
 
 
     #[ReturnTypeWillChange]
@@ -39,36 +41,36 @@ class Tour implements \JsonSerializable
         return $this;
     }
 
-    public function getDate(): string
-    {
-        return $this->date;
-    }
-    public function setDate(string $date): self
-    {
-        $this->date = $date;
-        return $this;
-    }
+    // public function getDate(): string
+    // {
+    //     return $this->date;
+    // }
+    // public function setDate(string $date): self
+    // {
+    //     $this->date = $date;
+    //     return $this;
+    // }
 
-    public function getStartTime(): string
-    {
-        return $this->startTime;
-    }
-    public function setStartTime(string $time): self
-    {
-        $this->startTime = $time;
-        return $this;
-    }
+    // public function getStartTime(): string
+    // {
+    //     return $this->startTime;
+    // }
+    // public function setStartTime(string $time): self
+    // {
+    //     $this->startTime = $time;
+    //     return $this;
+    // }
 
-    public function getEndTime(): string
-    {
-        return $this->endTime;
-    }
+    // public function getEndTime(): string
+    // {
+    //     return $this->endTime;
+    // }
 
-    public function setEndTime(string $time): self
-    {
-        $this->endTime = $time;
-        return $this;
-    }
+    // public function setEndTime(string $time): self
+    // {
+    //     $this->endTime = $time;
+    //     return $this;
+    // }
 
     public function getLanguage(): string
     {
@@ -82,15 +84,15 @@ class Tour implements \JsonSerializable
     }
 
 
-    public function getSeats(): int
-    {
-        return $this->seats;
-    }
+    // public function getSeats(): int
+    // {
+    //     return $this->seats;
+    // }
 
-    public function setSeats(int $seats): self
-    {
-        $this->seats = $seats;
-        return $this;
-    }
+    // public function setSeats(int $seats): self
+    // {
+    //     $this->seats = $seats;
+    //     return $this;
+    // }
 }
 ?>
