@@ -108,8 +108,8 @@ $token = "IGQVJXbW56Y0RkNW5WQjNzSkt3amVrMllOeFcwY1lqU0RMYk1JOHNqSEVoX0lLS0YxczRW
 $limit = 10;
 
 $json_feed_url = "https://graph.instagram.com/me/media?fields={$fields}&access_token={$token}&limit={$limit}";
-try{
 $json_feed = @file_get_contents($json_feed_url);
+if ($json_feed) {
 $contents = json_decode($json_feed, true, 512, JSON_BIGINT_AS_STRING);
 
 echo "<div class='ig_feed_container'>";
@@ -147,9 +147,10 @@ foreach ($contents["data"] as $post) {
         ";
 }
 echo "</div>";
-}catch (Exception $e) {
-    echo '<a href="https://www.instagram.com/" target="_blank">Click here to see our Instagram!</a>';
+} else{
+    echo '<a href="https://www.instagram.com/hfest2023/" target="_blank"style="display: block; text-align: center; font-size: 24px;">Click here to see our Instagram!</a>';
 }
+
     ?>
 
 <!-- pointer to the top of the page -->
