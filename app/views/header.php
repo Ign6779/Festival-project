@@ -183,7 +183,7 @@ function returnSelected($id)
             var items = document.getElementById("items");
             divTicket = document.createElement("div");
             ticketp = document.createElement("p");
-            ticketp.innerHTML = ticketInput.title + "<br>" + ticketInput.event.date;
+            ticketp.innerHTML = ticketInput.title + "<br>" + ticketInput.date;
             aIncrease = document.createElement("a");
             aDecrease = document.createElement("a");
             input = document.createElement("input");
@@ -233,6 +233,7 @@ function returnSelected($id)
                 .then((data) => {
                     console.log(data);
                     loadCart();
+                    addToCalender();
                 })
                 .catch(error => console.log(error));
         }
@@ -244,6 +245,7 @@ function returnSelected($id)
                 .then((data) => {
                     console.log(data);
                     loadCart();
+                    addToCalender();
                 })
                 .catch(error => console.log(error));
         }
@@ -276,18 +278,18 @@ function returnSelected($id)
         }
 
         function loadCalender(ticketInput) {
-            date = ticketInput.event.date.split('-');
-            startTime = ticketInput.event.start_time.split(':');
-            endTime = ticketInput.event.end_time.split(':');
+            date = ticketInput.date.split('-');
+            startTime = ticketInput.start_time.split(':');
+            endTime = ticketInput.end_time.split(':');
             var calendarEvent = document.getElementById(date[2] + "th");
             var pEvent = document.createElement("p");
             pEvent.className = "time";
             pEvent.innerHTML = ticketInput.title + "<br>" + startTime[0] + " " + endTime[0];
-            var divEventExsit = document.getElementsByClassName("event start-" + startTime[0] + " end-" + endTime[0] + " " + ticketInput.event.event_type + "-event")[0];
+            var divEventExsit = document.getElementsByClassName("event start-" + startTime[0] + " end-" + endTime[0] + " " + ticketInput.event_type + "-event")[0];
             if (divEventExsit == null) {
                 // divEventExsit.remove();
                 var divEvent = document.createElement("div");
-                divEvent.className = "event start-" + startTime[0] + " end-" + endTime[0] + " " + ticketInput.event.event_type + "-event";
+                divEvent.className = "event start-" + startTime[0] + " end-" + endTime[0] + " " + ticketInput.event_type + "-event";
                 divEvent.appendChild(pEvent);
                 calendarEvent.appendChild(divEvent);
             }
