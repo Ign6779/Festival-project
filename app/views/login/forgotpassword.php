@@ -12,7 +12,8 @@ include __DIR__ . '/../header.php';
                 <form action="" method="post">
                     <div>
                         <h1>Reset your password</h1>
-                        <p class="text-reset-password">An e-mail will be send to you with instructions on how to reset your password.</p>
+                        <p class="text-reset-password">An e-mail will be send to you with instructions on how to reset
+                            your password.</p>
                     </div>
                     <!-- Email input -->
                     <div class="form-outline mb-4">

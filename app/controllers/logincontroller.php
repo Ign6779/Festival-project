@@ -70,8 +70,6 @@ class LoginController extends Controller
                 $usernameToCheck = $this->userService->getByUsername($username);
                 $emailToCheck = $this->userService->getUserByEmail($email);
                 if ($usernameToCheck == null && $emailToCheck == null) {
-                    //when address and phone input fields are added
-                    // $this->userService->createUser($role, $email, $password, $address, $phone);
                     $this->userService->createUser(0, $email, $password, date("Y/m/d"), $username);
                     require_once __DIR__ . '/../views/home/homePage.php';
                 } else {
@@ -83,24 +81,26 @@ class LoginController extends Controller
         }
     }
 
-    public function resetpassword()
-    {
-        if (isset($_POST["reset-request-submit"])) {
+    // public function resetpassword()
+    // {
+    //     if (isset($_POST["reset-request-submit"])) {
 
-            $selector = bin2hex(random_bytes(8));
-            $token = random_bytes(32);
+    //         $selector = bin2hex(random_bytes(8));
+    //         $token = random_bytes(32);
 
-            $url = "the site url?selector=" . $selector . "&validator=" . bin2hex($token);
+    //         $url = "the site url?selector=" . $selector . "&validator=" . bin2hex($token);
 
-            $expires = date("U") + 1800;
+    //         $expires = date("U") + 1800;
 
 
 
-        } else {
-            //in case the request isn't sent
-        }
-        require_once __DIR__ . '/../views/login/resetpassword.php';
-    }
+    //     } else {
+    //         //in case the request isn't sent
+    //     }
+    //     require_once __DIR__ . '/../views/login/resetpassword.php';
+    // }
+
+    
 
     public function logout()
     {
