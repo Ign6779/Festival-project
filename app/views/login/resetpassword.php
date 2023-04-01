@@ -9,7 +9,7 @@ include __DIR__ . '/../header.php';
                 <img src="/img/login.png" class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <form action="" method="post">
+                <form action="/login/updatePassword?email=<? echo $_GET['email']; ?>" method="post">
                     <div>
                         <h1 class="reset-header">Reset your password</h1>
                     </div>
@@ -28,7 +28,7 @@ include __DIR__ . '/../header.php';
                     <!-- Button -->
                     <div class="text-center text-lg-start mt-4 pt-2">
                         <input type="submit" value="Reset your password" class="btn btn-primary btn-lg"
-                            style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;" name="resetpassword">
                     </div>
                 </form>
             </div>
