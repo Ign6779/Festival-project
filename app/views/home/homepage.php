@@ -103,65 +103,54 @@
 <?php
 // query the user media
 
-// $fields = "id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username";
-// $token = "IGQVJYLUZAzTXBLaUZAJQWtaSlRFU2JvY1dndG5VM3hFRTVsRjVHUVg1c01VUHdZAbUNxUkxQU1dwUU5KcThMQ29OenZAubVg2bGVZARzJoSFRldEExVW12YlJ6dzVNLWY1RWxmSU95b0x1VkdHcHFXVmJmYgZDZD";
-// $limit = 10;
+$fields = "id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username";
+$token = "IGQVJXbW56Y0RkNW5WQjNzSkt3amVrMllOeFcwY1lqU0RMYk1JOHNqSEVoX0lLS0YxczRWLURPQUVmS0VPMDM4dGNhU0drTDl4TUJTR3dSX19pSVMxTWZAfeHREQTAxREt5WEpFYXpqS2tGTmNaZADFSSQZDZD";
+$limit = 10;
 
-// $json_feed_url = "https://graph.instagram.com/me/media?fields={$fields}&access_token={$token}&limit={$limit}";
-// $json_feed = @file_get_contents($json_feed_url);
-// $contents = json_decode($json_feed, true, 512, JSON_BIGINT_AS_STRING);
+$json_feed_url = "https://graph.instagram.com/me/media?fields={$fields}&access_token={$token}&limit={$limit}";
+try{
+$json_feed = @file_get_contents($json_feed_url);
+$contents = json_decode($json_feed, true, 512, JSON_BIGINT_AS_STRING);
 
-// echo "<div class='ig_feed_container'>";
-// foreach ($contents["data"] as $post) {
+echo "<div class='ig_feed_container'>";
+foreach ($contents["data"] as $post) {
 
-//     $username = isset($post["username"]) ? $post["username"] : "";
-//     $caption = isset($post["caption"]) ? $post["caption"] : "";
-//     $media_url = isset($post["media_url"]) ? $post["media_url"] : "";
-//     $permalink = isset($post["permalink"]) ? $post["permalink"] : "";
-//     $media_type = isset($post["media_type"]) ? $post["media_type"] : "";
+    $username = isset($post["username"]) ? $post["username"] : "";
+    $caption = isset($post["caption"]) ? $post["caption"] : "";
+    $media_url = isset($post["media_url"]) ? $post["media_url"] : "";
+    $permalink = isset($post["permalink"]) ? $post["permalink"] : "";
+    $media_type = isset($post["media_type"]) ? $post["media_type"] : "";
 
-//     echo "
-//             <div class='ig_post_container'>
-//                 <div>";
+    echo "
+            <div class='ig_post_container'>
+                <div>";
 
-//     if ($media_type == "VIDEO") {
-//         echo "<video controls style='width:100%; display: block !important;'>
-//                             <source src='{$media_url}' type='video/mp4'>
-//                             Your browser does not support the video tag.
-//                         </video>";
-//     } else {
-//         echo "<img src='{$media_url}' />";
-//     }
+    if ($media_type == "VIDEO") {
+        echo "<video controls style='width:100%; display: block !important;'>
+                            <source src='{$media_url}' type='video/mp4'>
+                            Your browser does not support the video tag.
+                        </video>";
+    } else {
+        echo "<img src='{$media_url}' />";
+    }
 
-//     echo "</div>
-//                 <div class='ig_post_details'>
-//                     <div>
-//                         <strong>@{$username}</strong> {$caption}
-//                     </div>
-//                     <div class='ig_view_link'>
-//                         <a href='{$permalink}' target='_blank'>View on Instagram</a>
-//                     </div>
-//                 </div>
-//             </div>
-//         ";
-// }
-// echo "</div>"
-//     ?>
-
-<div id="card-container">
-        <br>
-    <div id="instafeed-container"></div>
-    <script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
-<script type="text/javascript">
-    var userFeed = new Instafeed({
-        get: 'user',
-        target: "instafeed-container",
-        resolution: 'low_resolution',
-        accessToken: 'IGQVJWYXpqTU0weU1rRGlZAYkVVTXN3cDNhNnc4bjZAJRklnaFptWGt1ZAW5FUGo2QVRpa01LYUhDOW1SbVBZARWVTNF82SGdOczRUR0d4SXNRdWF1Rm8yX2dnWjhIQmMyQ0FPYU8xZAXplWlhqUVJ5ZA01McwZDZD',
-        template: '<a href="{{link}}" target="_blank"><img src="{{image}}" width="400"></a>'
-    });
-    userFeed.run();
-</script>
+    echo "</div>
+                <div class='ig_post_details'>
+                    <div>
+                        <strong>@{$username}</strong> {$caption}
+                    </div>
+                    <div class='ig_view_link'>
+                        <a href='{$permalink}' target='_blank'>View on Instagram</a>
+                    </div>
+                </div>
+            </div>
+        ";
+}
+echo "</div>";
+}catch (Exception $e) {
+    echo '<a href="https://www.instagram.com/" target="_blank">Click here to see our Instagram!</a>';
+}
+    ?>
 
 <!-- pointer to the top of the page -->
 <div class="pointer-to-top">
