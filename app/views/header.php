@@ -287,13 +287,10 @@ function returnSelected($id)
             pEvent.innerHTML = ticketInput.title + "<br>" + startTime[0] + " " + endTime[0];
             var divEventExsit = document.getElementsByClassName("event start-" + startTime[0] + " end-" + endTime[0] + " " + ticketInput.event_type + "-event")[0];
             if (divEventExsit == null) {
-                // divEventExsit.remove();
                 var divEvent = document.createElement("div");
                 divEvent.className = "event start-" + startTime[0] + " end-" + endTime[0] + " " + ticketInput.event_type + "-event";
                 divEvent.appendChild(pEvent);
                 calendarEvent.appendChild(divEvent);
             }
-
-
         }
     </script>

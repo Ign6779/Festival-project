@@ -1,18 +1,15 @@
 <?php
 require_once __DIR__ . '/../../services/cartservice.php';
-require_once __DIR__ . '/../../services/ticketservice.php';
 require_once __DIR__ . '/../../services/eventservice.php';
 
 class CartController
 {
     private $cartService;
-    private $ticketService;
     private $eventService;
 
     function __construct()
     {
         $this->cartService = new CarteService();
-        $this->ticketService = new TicketService();
         $this->eventService = new EventService();
 
     }

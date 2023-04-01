@@ -125,7 +125,7 @@ include __DIR__ . '/../header.php';
     addTocart.innerHTML = "Add to cart";
     addTocart.onclick = function () {
       addToCart(ticketInput.id);
-      // addToCalender(ticketInput);
+      
       addToCalender();
     };
     cardTitle.innerHTML = ticketInput.title;
