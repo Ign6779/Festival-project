@@ -52,7 +52,8 @@ class UserRepository extends Repository
         }
     }
 
-    public function getUserById($id){
+    public function getUserById($id)
+    {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM users WHERE id = :id");
             $stmt->bindParam(':id', $id);
@@ -108,6 +109,19 @@ class UserRepository extends Repository
             $stmt->bindParam(':phone', $phone);
             $stmt->bindParam(':password', $password);
             $stmt->bindParam(':registration', $registration);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    function updatePassword($email, $password)
+    {
+        try {
+            $hasedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $stmt = $this->connection->prepare("UPDATE users SET password=:password WHERE email = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $hasedPassword);
             $stmt->execute();
         } catch (PDOException $e) {
             echo $e;

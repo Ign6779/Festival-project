@@ -1,6 +1,12 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 require_once __DIR__ . '/controller.php';
 require_once __DIR__ . '/../services/userservice.php';
+require_once __DIR__ . '/../lib/phpEmaiLib/Exception.php';
+require_once __DIR__ . '/../lib/phpEmaiLib/PHPMailer.php';
+require_once __DIR__ . '/../lib/phpEmaiLib/SMTP.php';
 
 class LoginController extends Controller
 {
@@ -60,6 +66,11 @@ class LoginController extends Controller
         require_once __DIR__ . '/../views/login/forgotpassword.php';
     }
 
+    public function resetPassword()
+    {
+        require_once __DIR__ . '/../views/login/resetpassword.php';
+    }
+
     public function signUp()
     {
         if (isset($_POST['register'])) {
@@ -70,9 +81,7 @@ class LoginController extends Controller
                 $usernameToCheck = $this->userService->getByUsername($username);
                 $emailToCheck = $this->userService->getUserByEmail($email);
                 if ($usernameToCheck == null && $emailToCheck == null) {
-                    //when address and phone input fields are added
-                    // $this->userService->createUser($role, $email, $password, $address, $phone);
-                    $this->userService->createUser(0, $email, $password, date("Y/m/d"), $username);
+                    // $this->userService->createUser(0, $email, $password, date("Y/m/d"), $username);
                     require_once __DIR__ . '/../views/home/homePage.php';
                 } else {
                     $message = "username or email already in use! please try something else";
@@ -83,24 +92,65 @@ class LoginController extends Controller
         }
     }
 
-    public function resetpassword()
+    public function sendEmailToRest()
     {
-        if (isset($_POST["reset-request-submit"])) {
-
-            $selector = bin2hex(random_bytes(8));
-            $token = random_bytes(32);
-
-            $url = "the site url?selector=" . $selector . "&validator=" . bin2hex($token);
-
-            $expires = date("U") + 1800;
-
-
-
-        } else {
-            //in case the request isn't sent
+        if (isset($_POST['sendRestEmail'])) {
+            if (isset($_POST['emailInput'])) {
+                $email = htmlspecialchars($_POST['emailInput']);
+                $user = $this->userService->getUserByEmail($email);
+                if ($user == null) {
+                    $message = "Email not found! please use a correct email.";
+                    require_once __DIR__ . '/../views/login/forgotpassword.php';
+                    return;
+                }
+                $mail = new PHPMailer(true);
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'hf759043@gmail.com';
+                $mail->Password = 'drtkrbeutygbrkzx';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+                $mail->setFrom('hf759043@gmail.com', 'Haarlem festival');
+                $mail->addAddress($email);
+                $mail->isHTML(true);
+                $mail->Subject = "Rest password";
+                $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Click the link below to reset your password:<br><br><a href="http://localhost/login/resetPassword?email=' . $user->getEmail() . '">Reset Password</a><br><br>Alternatively, you can copy and paste the following URL into your browser:<br>http://localhost/login/resetPassword?email=' . $user->getEmail() . '<br><br>Thank you,<br>Haarlem festival';
+                $mail->AltBody = 'Dear ' . $user->getUsername() . ',\n\nClick the link below to reset your password:\nhttp://localhost/login/resetPassword?email=' . $user->getEmail() . '\n\nAlternatively, you can copy and paste the following URL into your browser:\nhttp://localhost/login/resetPassword?email=' . $user->getEmail() . '\n\nThank you,\nHaarlem festival';
+                $mail->send();
+            }
         }
-        require_once __DIR__ . '/../views/login/resetpassword.php';
     }
+
+    public function updatePassword()
+    {
+        if (isset($_POST['resetpassword'])) {
+            $email = htmlspecialchars($_GET['email']);
+            $password = htmlspecialchars($_POST['passwordInput']);
+            $this->userService->updatePassword($email, $password);
+            $this->login();
+        }
+    }
+    // public function resetpassword()
+    // {
+    //     if (isset($_POST["reset-request-submit"])) {
+
+    //         $selector = bin2hex(random_bytes(8));
+    //         $token = random_bytes(32);
+
+    //         $url = "the site url?selector=" . $selector . "&validator=" . bin2hex($token);
+
+    //         $expires = date("U") + 1800;
+
+
+
+    //     } else {
+    //         //in case the request isn't sent
+    //     }
+    //     require_once __DIR__ . '/../views/login/resetpassword.php';
+    // }
+
+
 
     public function logout()
     {
