@@ -97,23 +97,43 @@ class UserRepository extends Repository
         }
     }
 
-    function updateUser($id, $role, $username, $email, $address, $phone, $password, $registration)
+    function updateUser($user)
     {
         try {
-            $stmt = $this->connection->prepare("UPDATE users SET role=:role, username=:username, email=:email, address=:address, phone=:phone, password=:password, registration=:registration WHERE id = :id");
-            $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':role', $role);
-            $stmt->bindParam(':username', $username);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':address', $address);
-            $stmt->bindParam(':phone', $phone);
-            $stmt->bindParam(':password', $password);
-            $stmt->bindParam(':registration', $registration);
+            $stmt = $this->connection->prepare("UPDATE users SET role=:role, username=:username, email=:email, address=:address, phone=:phone, password=:password, registration=:registration, `reset_token`= :token,`reset_token_expiration`=:token_expiration WHERE id = :id");
+            $stmt->bindParam(':id', $user->getId());
+            $stmt->bindParam(':role', $user->getRole());
+            $stmt->bindParam(':username', $user->getUsername());
+            $stmt->bindParam(':email', $user->getEmail());
+            $stmt->bindParam(':address', $user->getAddress());
+            $stmt->bindParam(':phone', $user->getPhone());
+            $stmt->bindParam(':password', $user->getPassword());
+            $stmt->bindParam(':registration', $user->getRegistration());
+            $stmt->bindParam(':token', $user->getToken());
+            $stmt->bindParam(':token_expiration', $user->getTokenExperationDate());
             $stmt->execute();
         } catch (PDOException $e) {
             echo $e;
         }
     }
+
+    // function updateUser($id, $role, $username, $email, $address, $phone, $password, $registration)
+    // {
+    //     try {
+    //         $stmt = $this->connection->prepare("UPDATE users SET role=:role, username=:username, email=:email, address=:address, phone=:phone, password=:password, registration=:registration WHERE id = :id");
+    //         $stmt->bindParam(':id', $id);
+    //         $stmt->bindParam(':role', $role);
+    //         $stmt->bindParam(':username', $username);
+    //         $stmt->bindParam(':email', $email);
+    //         $stmt->bindParam(':address', $address);
+    //         $stmt->bindParam(':phone', $phone);
+    //         $stmt->bindParam(':password', $password);
+    //         $stmt->bindParam(':registration', $registration);
+    //         $stmt->execute();
+    //     } catch (PDOException $e) {
+    //         echo $e;
+    //     }
+    // }
 
     function updatePassword($email, $password)
     {

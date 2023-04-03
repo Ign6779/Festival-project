@@ -57,14 +57,19 @@ class UserService
         $this->repository->deleteUser($id);
     }
 
-    public function updateUser($id, $role, $username, $email, $address, $phone, $password, $registration)
-    {
-        $this->repository->updateUser($id, $role, $username, $email, $address, $phone, $password, $registration);
-    }
+    // public function updateUser($id, $role, $username, $email, $address, $phone, $password, $registration)
+    // {
+    //     $this->repository->updateUser($id, $role, $username, $email, $address, $phone, $password, $registration);
+    // }
 
     public function updatePassword($email, $password)
     {
         $this->repository->updatePassword($email, $password);
+    }
+
+    function updateUser($user)
+    {
+        $this->repository->updateUser($user);
     }
 }
 ?>

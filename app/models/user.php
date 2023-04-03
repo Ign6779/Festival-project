@@ -15,7 +15,22 @@ class User implements \JsonSerializable
     private string $phone;
     private string $email;
     private string $registration;
-
+    private ?string $reset_token;
+    private ?DateTime $reset_token_expiration;
+    public function __construct(
+        string $username, string $password, string $email, string $role, int $phoneNumber, string $address, string $phone, string $registration, ?string $reset_token = null, ?DateTime $reset_token_expiration = null
+    ) {
+        $this->username = $username;
+        $this->password = $password;
+        $this->email = $email;
+        $this->role = $role;
+        $this->phoneNumber = $phoneNumber;
+        $this->address = $address;
+        $this->phone = $phone;
+        $this->registration = $registration;
+        $this->reset_token = $reset_token;
+        $this->reset_token_expiration = $reset_token_expiration;
+    }
     #[ReturnTypeWillChange]
 
     public function jsonSerialize()
@@ -55,7 +70,7 @@ class User implements \JsonSerializable
         return $this;
     }
 
-    public function getEmail():  string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -95,14 +110,31 @@ class User implements \JsonSerializable
         $this->address = $address;
         return $this;
     }
-
-    public function getDate(): date
-    { //might not be a basic datatype
-        return $this->date;
-    }
-    public function setDate(date $date): self
+    public function getRegistration(): string
     {
-        $this->date = $date;
+        return $this->registration;
+    }
+    public function setRegistration(string $registration): self
+    {
+        $this->registration = $registration;
+        return $this;
+    }
+    public function getToken(): string
+    {
+        return $this->reset_token;
+    }
+    public function setToken(string $reset_token): self
+    {
+        $this->reset_token = $reset_token;
+        return $this;
+    }
+    public function getTokenExperationDate(): DateTime
+    {
+        return $this->reset_token_expiration;
+    }
+    public function setTokenExperationDate(DateTime $date): self
+    {
+        $this->reset_token_expiration = $date;
         return $this;
     }
 }

@@ -107,11 +107,11 @@ class LoginController extends Controller
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'hf759043@gmail.com';
-                $mail->Password = 'drtkrbeutygbrkzx';
+                $mail->Username = 'haarlemfestival2023@gmail.com';
+                $mail->Password = 'huycjscntxlsxnit';
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
-                $mail->setFrom('hf759043@gmail.com', 'Haarlem festival');
+                $mail->setFrom('haarlemfestival2023@gmail.com', 'Haarlem festival');
                 $mail->addAddress($email);
                 $mail->isHTML(true);
                 $mail->Subject = "Rest password";
