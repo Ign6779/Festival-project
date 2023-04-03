@@ -1,14 +1,17 @@
 <?php
 require_once __DIR__ . '/../../services/cartservice.php';
-require_once __DIR__ . '/../../services/ticketservice.php';
+require_once __DIR__ . '/../../services/eventservice.php';
+
 class CartController
 {
     private $cartService;
-    private $ticketService;
+    private $eventService;
+
     function __construct()
     {
         $this->cartService = new CarteService();
-        $this->ticketService = new TicketService();
+        $this->eventService = new EventService();
+
     }
 
     function index()
@@ -68,7 +71,7 @@ class CartController
         }
         $items = array();
         foreach ($cart as $productid => $qnt) {
-            $item = $this->ticketService->getOne($productid);
+            $item = $this->eventService->getById($productid);
             array_push($items, $item);
         }
         echo json_encode($items);
