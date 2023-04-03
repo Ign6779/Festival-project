@@ -5,14 +5,12 @@ class User implements \JsonSerializable
 {
 
     private int $id;
-    // private Role $role;
-
     private string $role;
     private string $username;
     private string $password;
     private int $phoneNumber;
-    private string $address;
-    private string $phone;
+    private ?string $address;
+    private ?string $phone;
     private string $email;
     private string $registration;
 
