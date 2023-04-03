@@ -19,7 +19,7 @@ function returnVisible($message)
                 <img src="/img/login.png" class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <form action="/login/sendEmailToRest" method="POST">
+                <form action="/forgotpassword/sendEmailToRest" method="POST">
                     <div>
                         <h1>Reset your password</h1>
                         <p class="text-reset-password">An e-mail will be send to you with instructions on how to reset
