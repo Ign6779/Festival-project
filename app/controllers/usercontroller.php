@@ -21,6 +21,11 @@ class UserController extends Controller
         require __DIR__ . '/../views/admin/users/adduser.php';
     }
 
+    public function editUser()
+    {
+        require __DIR__ . '/../views/user/edituser.php';
+    }
+
     public function addUser()
     {
         if (isset($_POST['adduser'])) {

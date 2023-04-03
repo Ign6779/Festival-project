@@ -70,6 +70,7 @@ function returnSelected($id)
                 <? if (isset($_SESSION["user"])) {
                     ?>
                     <a href="/login/logout" class="btn btn-danger">Logout</a>
+                    <a href="/user/edituser"><i id="account-icon" class="fa-solid fa-user"></i></a>
                 <?
                 } else {
                     ?>
