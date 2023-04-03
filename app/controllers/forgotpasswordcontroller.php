@@ -39,6 +39,12 @@ class ForgotPasswordController extends Controller
                     require_once __DIR__ . '/../views/login/forgotpassword.php';
                     return;
                 }
+                $resetToken = bin2hex(random_bytes(32));
+                $resetTokenExpiration = date('Y-m-d H:i:s', strtotime('+15 minutes'));
+                $resetTokenExpirationDate = DateTime::createFromFormat('Y-m-d H:i:s', $resetTokenExpiration);
+                $user->setToken($resetToken);
+                $user->setTokenExpirationDate($resetTokenExpirationDate);
+                $this->userService->updateUser($user);
                 $mail = new PHPMailer(true);
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
@@ -51,8 +57,8 @@ class ForgotPasswordController extends Controller
                 $mail->addAddress($email);
                 $mail->isHTML(true);
                 $mail->Subject = "Rest password";
-                $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Click the link below to reset your password:<br><br><a href="http://localhost/resetpassword/resetPassword?email=' . $user->getEmail() . '">Reset Password</a><br><br>Alternatively, you can copy and paste the following URL into your browser:<br>http://localhost/login/resetPassword?email=' . $user->getEmail() . '<br><br>Thank you,<br>Haarlem festival';
-                $mail->AltBody = 'Dear ' . $user->getUsername() . ',\n\nClick the link below to reset your password:\nhttp://localhost/login/resetPassword?email=' . $user->getEmail() . '\n\nAlternatively, you can copy and paste the following URL into your browser:\nhttp://localhost/login/resetPassword?email=' . $user->getEmail() . '\n\nThank you,\nHaarlem festival';
+                $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Click the link below to reset your password:<br><br><a href="http://localhost/resetpassword?token=' . $resetToken . '">Reset Password</a><br><br>Alternatively, you can copy and paste the following URL into your browser:<br>http://localhost/resetPassword?token=' . $resetToken . '<br><br>Thank you,<br>Haarlem festival';
+                $mail->AltBody = 'Dear ' . $user->getUsername() . ',\n\nClick the link below to reset your password:\nhttp://localhost/resetpassword?token=' . $resetToken . '\n\nAlternatively, you can copy and paste the following URL into your browser:\nhttp://localhost/resetPassword?token=' . $resetToken . '\n\nThank you,\nHaarlem festival';
                 $mail->send();
             }
         }

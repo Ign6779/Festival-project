@@ -8,27 +8,13 @@ class User implements \JsonSerializable
     private string $role;
     private string $username;
     private string $password;
-    private int $phoneNumber;
     private ?string $address;
-    private ?string $phone;
+    private ?int $phone;
     private string $email;
     private string $registration;
     private ?string $reset_token;
     private ?DateTime $reset_token_expiration;
-    public function __construct(
-        string $username, string $password, string $email, string $role, int $phoneNumber, string $address, string $phone, string $registration, ?string $reset_token = null, ?DateTime $reset_token_expiration = null
-    ) {
-        $this->username = $username;
-        $this->password = $password;
-        $this->email = $email;
-        $this->role = $role;
-        $this->phoneNumber = $phoneNumber;
-        $this->address = $address;
-        $this->phone = $phone;
-        $this->registration = $registration;
-        $this->reset_token = $reset_token;
-        $this->reset_token_expiration = $reset_token_expiration;
-    }
+
     #[ReturnTypeWillChange]
 
     public function jsonSerialize()
@@ -89,24 +75,22 @@ class User implements \JsonSerializable
         return $this;
     }
 
-    public function getPhone(): int
+    public function getPhone(): ?int
     {
-        return $this->phoneNumber;
+        return $this->phone ?? null;
     }
-    public function setPhone(int $phoneNumber): self
+    public function setPhone(?int $phoneNumber): void
     {
-        $this->phoneNumber = $phoneNumber;
-        return $this;
+        $this->phone = $phoneNumber;
     }
 
-    public function getAddress(): string
+    public function getAddress(): ?string
     {
-        return $this->address;
+        return $this->address ?? null;
     }
-    public function setAddress(string $address): self
+    public function setAddress(?string $address): void
     {
         $this->address = $address;
-        return $this;
     }
     public function getRegistration(): string
     {
@@ -117,23 +101,23 @@ class User implements \JsonSerializable
         $this->registration = $registration;
         return $this;
     }
-    public function getToken(): string
+    public function getToken(): ?string
     {
-        return $this->reset_token;
+        return $this->reset_token ?? null;
     }
-    public function setToken(string $reset_token): self
+    public function setToken(?string $reset_token): void
     {
         $this->reset_token = $reset_token;
-        return $this;
+      
     }
-    public function getTokenExperationDate(): DateTime
+    public function getTokenExpirationDate(): ?DateTime
     {
-        return $this->reset_token_expiration;
+        return $this->reset_token_expiration ?? null;
     }
-    public function setTokenExperationDate(DateTime $date): self
+    public function setTokenExpirationDate(?DateTime $date): void
     {
         $this->reset_token_expiration = $date;
-        return $this;
+      
     }
 }
 ?>

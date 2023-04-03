@@ -31,7 +31,10 @@ class UserService
         return $this->repository->getUserById($id);
     }
 
-
+    public function getUserByToken($token)
+    {
+        return $this->repository->getUserByToken($token);
+    }
     public function verifyUser($emailOrUsername, $password)
     {
         if (strpos($emailOrUsername, "@")) {
@@ -55,16 +58,6 @@ class UserService
     public function deleteUser($id)
     {
         $this->repository->deleteUser($id);
-    }
-
-    // public function updateUser($id, $role, $username, $email, $address, $phone, $password, $registration)
-    // {
-    //     $this->repository->updateUser($id, $role, $username, $email, $address, $phone, $password, $registration);
-    // }
-
-    public function updatePassword($email, $password)
-    {
-        $this->repository->updatePassword($email, $password);
     }
 
     function updateUser($user)
