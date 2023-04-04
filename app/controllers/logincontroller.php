@@ -37,17 +37,17 @@ class LoginController extends Controller
                         break;
 
                     case $user->getRole() == "admin":
-                        $_SESSION["user"] = $user;
+                        $_SESSION["user"] = $user->getId();
                         require __DIR__ . '/../views/admin/index.php';
                         break;
 
                     case $user->getRole() == "customer":
-                        $_SESSION["user"] = $user;
+                        $_SESSION["user"] = $user->getId();
                         require __DIR__ . '/../views/home/homepage.php';
                         break;
 
                     case $user->getRole() == "employee":
-                        $_SESSION["user"] = $user;
+                        $_SESSION["user"] = $user->getId();
                         //require the page for the employee
                         break;
                 }
