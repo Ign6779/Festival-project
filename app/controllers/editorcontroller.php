@@ -12,6 +12,7 @@ class EditorController extends Controller {
 
 
     public function index(){
+        $contents= $this->editorService->getAll();
         require __DIR__ . '/../views/admin/homepage-edit.php';
     }
     public function updateEditor($id, $newContent)

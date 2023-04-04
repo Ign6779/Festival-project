@@ -9,11 +9,9 @@
 </section>
 <section class="homepage-context">
 
-    <h3>Welcome to the city of endless possibilities: A charming historic district, fascinating museums, unique <br>
+    <h2>Welcome to the city of endless possibilities: A charming historic district, fascinating museums, unique <br>
         shops, a wide variety of dining options, and a lovely beach,
-        <br>
-    </h3>
-    <h2>Haarlem really has it all.</h2>
+        <br> Haarlem really has it all.</h2>
     <br><a class="btn-red" href="festival">View Festival Activities</a>
 </section>
 
