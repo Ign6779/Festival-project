@@ -15,9 +15,9 @@ class EditorService
         return $contents;
     }
 
-    public function updateContent($id, $content)
+    public function update($id, $content)
     {
-        $this->repository->updateContent($id, $content);
+        $this->repository->update($id, $content);
     }
 
 }

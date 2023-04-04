@@ -17,7 +17,7 @@ class EditorRepository extends Repository{
             echo $e;
         }
     }
-    function updateContent($id, $content){
+    function update($id, $content){
         try{
             $sql = "UPDATE editor
             SET content = :content, created = NOW()

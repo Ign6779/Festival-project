@@ -20,8 +20,28 @@ var edit = function(index) {
 
 var save = function(index) {
   var markup = $('#editor-' + index).summernote('code');
+  var editedContent = $(`.click2edit:eq(${index})`).html();
+  saveContent(index, editedContent);
   $('#editor-' + index).summernote('destroy');
 };
+
+function saveContent(index, newContent) {
+    data = {id: index, content: newContent};
+    fetch('http://localhost/api/editor/updateContent', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json',},
+      body: JSON.stringify(data),
+      })
+      .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        console.log('Content updated successfully.');
+    })
+    .catch(error => {
+        console.error('Error updating content:', error);
+    });
+}
 
 </script>
 <h1>Edit homepage:</h1>
