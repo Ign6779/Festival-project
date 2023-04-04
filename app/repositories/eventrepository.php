@@ -100,5 +100,13 @@ class EventRepository extends Repository
             echo $e;
         }
     }
+
+    function UpdateAvailableSeats(int $id){
+        try {
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 }
 ?>
