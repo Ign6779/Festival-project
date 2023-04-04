@@ -116,7 +116,7 @@ class User implements \JsonSerializable
     }
     public function setTokenExpirationDate(?DateTime $date): void
     {
-        $this->reset_token_expiration = $date;
+        $this->reset_token_expiration =  $date;
       
     }
 }
