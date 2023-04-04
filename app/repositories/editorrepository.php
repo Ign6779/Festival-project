@@ -2,7 +2,7 @@
 require_once __DIR__ . '/repository.php';
 
 class EditorRepository extends Repository{
-    function UpdateContent($id, $content){
+    function updateContent($id, $content){
         try{
             $sql = "UPDATE editor
             SET content = :content, created = NOW()

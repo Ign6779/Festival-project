@@ -12,17 +12,11 @@ class EditorController extends Controller {
 
 
     public function index(){
-
+        require __DIR__ . '/../views/admin/homepage-edit.php';
     }
     public function updateEditor($id, $newContent)
     {
-        $editorModel = $this->loadModel('EditorModel');
-        $updated = $editorModel->updateEditorContent($id, $newContent);
-        if ($updated) {
-            // Show success message or redirect to success page
-        } else {
-            // Show error message or redirect to error page
-        }
+
     }
 }
 ?>
