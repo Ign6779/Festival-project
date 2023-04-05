@@ -1,5 +1,16 @@
 <?php
 include __DIR__ . '/../header.php';
+$contentById = [];
+try{
+    foreach ($contents as $content) {
+        $contentById[$content->getId()] = $content->getContent();
+    }
+    if (empty($contentById)){
+        echo '<p style="color: red; font-weight: bold;">No data in content table in database</p>';
+    }
+} catch (PDOException $e) {
+    echo $e;
+}
 ?> 
 <div class="festival-overview-header">
     <img src="/img/festival-overview-head.png" alt="Festival Image" id="overview-header-image">
@@ -9,8 +20,7 @@ include __DIR__ . '/../header.php';
 </div>
 <div class="festival-description-block">
     <div class="white-block">
-        <p class="description">The Haarlem Festival is suitable for anyone and everyone. No matter your tastes, age or nationality.</p> <br>
-        <p >Check out our local artists at the jazz event, learn about Haarlem history, enjoy a personalized eating experience or dance the night away! We also have a fun experience for the younger ones: an exciting treasure hunt at the acclaimed Teylers museum!</p>
+        <p class="description"><?php echo $contentById[7]; ?></p>
     </div>
 </div>
 <!-- YUMMY -->
@@ -18,7 +28,7 @@ include __DIR__ . '/../header.php';
     <div class="left-round" id="yummy-round">
         <img src="/img/overview-yummy.png" class="picture-left" alt="picture" id="overview-left-pic">
     </div>
-    <div class="right-text" id="yummy-right"><p><h1>Yummy!</h1><br>If you want to celebrate a festival, you have to do it on a full stomach! Restaurants all over Haarlem have joined to create a special menu for the occasion. Being such an international city, you are sure to enjoy your evening, whether it be with your family or on a romantic dinner with your partner!</p><a href="/yummy" class="btn-red">See event</a></div>
+    <div class="right-text" id="yummy-right"><p><?php echo $contentById[8]; ?></p><a href="/yummy" class="btn-red">See event</a></div>
 
 </section>
 <!-- HISTORY -->
@@ -26,7 +36,7 @@ include __DIR__ . '/../header.php';
     <div class="right-round" id="history-picture-round">
         <img src="/img/overview-history.png" class="picture-right" alt="picture" id="overview-right-pic">
     </div>
-    <div class="left-text" id="history-left"><p><h1>Historical walk</h1> <br>Visit Haarlem’s most beautiful sights and get to learn more about it’s rich and interesting history. Join an informational tour throughout the city today!</p><a href="/history" class="btn-red">See event</a></div>
+    <div class="left-text" id="history-left"><p><?php echo $contentById[9]; ?></p><a href="/history" class="btn-red">See event</a></div>
 
 </section>
 <!-- DANCE -->
@@ -40,7 +50,7 @@ include __DIR__ . '/../header.php';
 <div class="left-round" id="jazz-picture-round">
     <img src="/img/overview-jazz.png" class="picture-left" alt="picture" id="overview-left-pic">
 </div>
-<div class="right-text"><p><h1>Haarlem Jazz</h1><br>Annually, the Grote Markt in the heart of the historic capital of Haarlem hosts the concert series known as Haarlem Jazz. Both well-known and unknown Dutch musicians will perform for the audience's amazement. We're here waiting for you.</p><a href="/jazz" class="btn-red">see event</a></div>
+<div class="right-text"><p><?php echo $contentById[10]; ?></p><a href="/jazz" class="btn-red">see event</a></div>
 
 </section>
 <!-- KIDS -->
@@ -48,7 +58,7 @@ include __DIR__ . '/../header.php';
     <div class="right-round" id="kids-picture-round">
         <img src="/img/overview-kids.png" class="picture-right" alt="picture" id="overview-right-pic">
     </div>
-    <div class="left-text"><p><h1>Teylers Museum</h1><br> In this event, children play and learn while solving the mystery of the event. Teylers museum contains ancient and fascinating artefacts that will amaze everyone. </p><a href="/kids" class="btn-red">see event</a></div>
+    <div class="left-text"><p><?php echo $contentById[11]; ?></p><a href="/kids" class="btn-red">see event</a></div>
 </section>
 <!-- SCHEDULE OVERVIEW -->
 <section class="schedule-section" id="schedule-section">

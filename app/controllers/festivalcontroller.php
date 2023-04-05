@@ -1,17 +1,16 @@
 <!-- <?php
 require __DIR__ . '/controller.php';
-//require __DIR__ . '/../services/userservice.php';
-//require __DIR__ . '/../services/restaurantservice.php';
+require __DIR__ . '/../services/editorservice.php';
 
 class FestivalController extends Controller {
-
-    //private $userService;
+    private $editorService;
 
     public function __construct(){
-        //$this->userService = new UserService();
+        $this->editorService = new EditorService();
     }
 
     public function index(){
+        $contents= $this->editorService->getAll();
         require __DIR__ . '/../views/festival/overview.php';
     }
 

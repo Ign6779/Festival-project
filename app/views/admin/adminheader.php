@@ -35,6 +35,8 @@ function returnSelected($id)
     <title>Haarlem festival</title>
     <link rel="stylesheet" href="/css/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/components.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="/css/homepage.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="/css/overview.css?v=<?php echo time(); ?>">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -51,6 +53,12 @@ function returnSelected($id)
     <script src="https://hammerjs.github.io/dist/hammer.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- for the editor - summernote -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 
 <body>
@@ -80,6 +88,8 @@ function returnSelected($id)
             </div>
 
             <div id="menu-list" class="menu-list">
+                <a href="/editor" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Homepage</a>
+                <a href="/editfestival" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Festivalpage</a>
                 <a href="/order" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Orders</a>
 
                 <select name="CRUD" id="CRUD" onchange="redirct(this.value)"
