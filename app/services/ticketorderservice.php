@@ -1,6 +1,6 @@
 
 <?php
-require __DIR__ . '/..repositories/ticketorderrepository.php';
+require __DIR__ . '/../repositories/ticketorderrepository.php';
 class TicketOrderService{
     private $repository;
 
@@ -12,6 +12,9 @@ class TicketOrderService{
         $ticketOrder=$this->repository->getAll();
         return $ticketOrder;
     }
-}
 
+    public function insertOrderTicket($orderTicket){
+        $this->repository->insertOrderTicket($orderTicket);
+    }
+}
 ?>
