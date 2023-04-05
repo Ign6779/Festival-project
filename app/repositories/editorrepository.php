@@ -23,7 +23,7 @@ class EditorRepository extends Repository{
             SET content = :content, created = NOW()
             WHERE id = :id";
             $stmt = $this->db->prepare($sql);
-            $stmt->bindParam(':content', $newContent);
+            $stmt->bindParam(':content', $Content);
             $stmt->bindParam(':id', $id);
             return $stmt->execute();
         } catch (PDOException $e) {
