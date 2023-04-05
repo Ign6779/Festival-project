@@ -21,7 +21,7 @@ try{
 </section>
 <section class="homepage-context">
 
-    <h2><?php echo $contentById[1]; ?></h2>
+    <h2><?php echo html_entity_decode($contentById[1]); ?></h2>
     <br><a class="btn-red" href="festival">View Festival Activities</a>
 </section>
 
@@ -37,7 +37,7 @@ try{
         <img id="homepage-history-4" src="/img/homepage-history-4.png" />
     </div>
     <div id="homepage-history-text">
-        <h3><?php echo $contentById[2]; ?></h3>
+        <h3><?php echo html_entity_decode($contentById[2]); ?></h3>
     </div>
 
 </div>
@@ -45,7 +45,7 @@ try{
 <!-- Food section -->
 <section class="homepage-food">
     <div>
-        <h3 class="white-text"><?php echo $contentById[3]; ?></h3>
+        <h3 class="white-text"><?php echo html_entity_decode($contentById[3]); ?></h3>
     </div>
     <div id="homepage-food-mid-section">
         <h2 id="for-foodies-text">For Foodies!</h2>
@@ -61,21 +61,21 @@ try{
     <section class="homepage-music">
         <h2 id="homepage-music-h2">Music</h2>
         <img src="/img/homepage-music.png" alt="Music-Artist" width=95%>
-        <h3><?php echo $contentById[4]; ?></h3>
+        <h3><?php echo html_entity_decode($contentById[4]); ?></h3>
     </section>
 
     <!-- Theatre section -->
     <section class="homepage-theatre">
         <h2>Theatre</h2>
         <img src="/img/homepage-theatre.png" alt="Theatre" width=95%>
-        <h3><?php echo $contentById[5]; ?></h3>
+        <h3><?php echo html_entity_decode($contentById[5]); ?></h3>
     </section>
 
     <!-- Museums section -->
     <section class="homepage-museums">
         <h2>Museums</h2>
         <img src="/img/homepage-museums.png" alt="Museums" width=95%>
-        <h3><?php echo $contentById[6]; ?>
+        <h3><?php echo html_entity_decode($contentById[6]); ?>
         </h3>
     </section>
 </div>

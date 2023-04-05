@@ -20,7 +20,7 @@ try{
 </div>
 <div class="festival-description-block">
     <div class="white-block">
-        <p class="description"><?php echo $contentById[7]; ?></p>
+        <p class="description"><?php echo html_entity_decode($contentById[7]); ?></p>
     </div>
 </div>
 <!-- YUMMY -->
@@ -28,7 +28,7 @@ try{
     <div class="left-round" id="yummy-round">
         <img src="/img/overview-yummy.png" class="picture-left" alt="picture" id="overview-left-pic">
     </div>
-    <div class="right-text" id="yummy-right"><p><?php echo $contentById[8]; ?></p><a href="/yummy" class="btn-red">See event</a></div>
+    <div class="right-text" id="yummy-right"><p><?php echo html_entity_decode($contentById[8]); ?></p><a href="/yummy" class="btn-red">See event</a></div>
 
 </section>
 <!-- HISTORY -->
@@ -36,7 +36,7 @@ try{
     <div class="right-round" id="history-picture-round">
         <img src="/img/overview-history.png" class="picture-right" alt="picture" id="overview-right-pic">
     </div>
-    <div class="left-text" id="history-left"><p><?php echo $contentById[9]; ?></p><a href="/history" class="btn-red">See event</a></div>
+    <div class="left-text" id="history-left"><p><?php echo html_entity_decode($contentById[9]); ?></p><a href="/history" class="btn-red">See event</a></div>
 
 </section>
 <!-- DANCE -->
@@ -50,7 +50,7 @@ try{
 <div class="left-round" id="jazz-picture-round">
     <img src="/img/overview-jazz.png" class="picture-left" alt="picture" id="overview-left-pic">
 </div>
-<div class="right-text"><p><?php echo $contentById[10]; ?></p><a href="/jazz" class="btn-red">see event</a></div>
+<div class="right-text"><p><?php echo html_entity_decode($contentById[10]); ?></p><a href="/jazz" class="btn-red">see event</a></div>
 
 </section>
 <!-- KIDS -->
@@ -58,7 +58,7 @@ try{
     <div class="right-round" id="kids-picture-round">
         <img src="/img/overview-kids.png" class="picture-right" alt="picture" id="overview-right-pic">
     </div>
-    <div class="left-text"><p><?php echo $contentById[11]; ?></p><a href="/kids" class="btn-red">see event</a></div>
+    <div class="left-text"><p><?php echo html_entity_decode($contentById[11]); ?></p><a href="/kids" class="btn-red">see event</a></div>
 </section>
 <!-- SCHEDULE OVERVIEW -->
 <section class="schedule-section" id="schedule-section">
