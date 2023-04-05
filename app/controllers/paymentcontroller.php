@@ -6,15 +6,21 @@ use Mollie\Api\MollieApiClient;
 
 require_once __DIR__ . '/controller.php';
 require_once __DIR__ . '/../services/orderservice.php';
+require_once __DIR__ . '/../services/ticketorderservice.php';
+require_once __DIR__ . '/../services/eventservice.php';
 
 class PaymentController extends Controller
 {
     private $orderService;
+    private $ticketOrdeService;
+    private $eventService;
     private $mollie;
 
     public function __construct()
     {
         $this->orderService = new OrderService();
+        $this->ticketOrdeService = new TicketOrderService();
+        $this->eventService = new EventService();
         $this->mollie = new MollieApiClient();
         $this->mollie->setApiKey('test_5qajcu3h8GHTq5CS68PaAWTsNfPpxh');
     }
@@ -29,7 +35,7 @@ class PaymentController extends Controller
         try {
             // Save order in database with payment status 'pending'
             $userId = $_SESSION['user'];
-            $amount = 20.35;
+            $amount = $this->totalAmount();
             $paymentMethod = $_POST['paymentMethod'];
             $payment = $this->mollie->payments->create([
                 "amount" => [
@@ -44,7 +50,7 @@ class PaymentController extends Controller
                 ],
                 "method" => $paymentMethod,
             ]);
-
+            $_SESSION['paymentid'] = $payment->id;
             $order = new Order();
             $order->setUserId($userId);
             $order->setAmount($amount);
@@ -53,9 +59,7 @@ class PaymentController extends Controller
             $order->setTimeOfPurchase(date('Y-m-d H:i:s'));
             $order->setPaymentId($payment->id);
             $this->orderService->createOrder($order);
-
-            $_SESSION['paymentid'] = $payment->id;
-
+            $this->insertOrderItems();
             header("Location: " . $payment->getCheckoutUrl());
             exit;
         } catch (ApiException $e) {
@@ -101,6 +105,7 @@ class PaymentController extends Controller
                     echo 'Unknown payment status: ' . $order->getStatus();
                     break;
             }
+
         } catch (ApiException $e) {
             // Handle API exception
             // You can log the error message or show an error page to the user
@@ -108,7 +113,34 @@ class PaymentController extends Controller
         }
     }
 
-    
+    public function insertOrderItems()
+    {
+        $order = $this->orderService->getOrderByPaymentId($_SESSION['paymentid']);
+        $cart = $_SESSION['cart'];
+        foreach ($cart as $productid => $quantity) {
+            $ticketOrder = new TickerOrder();
+            $ticketOrder->setOrderId($order->getId());
+            $ticketOrder->setTicketId($productid);
+            $ticketOrder->setQRCode("qrcode ");
+            $ticketOrder->setIsScanned(false);
+            $this->ticketOrdeService->insertOrderTicket($ticketOrder);
+        }
+    }
+
+    public function totalAmount()
+    {
+        $amount = 0;
+        $cart = $_SESSION['cart'];
+        foreach ($cart as $productid => $qnt) {
+            $item = $this->eventService->getById($productid);
+            $amount += $item->getPrice();
+        }
+        return $amount;
+    }
+
+    public function qrcode(){
+        require __DIR__ . '/../views/payment/qrcode.php';
+    }
 }
 
 ?>

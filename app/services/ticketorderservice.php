@@ -1,5 +1,4 @@
-
-<?php
+<?
 require __DIR__ . '/../repositories/ticketorderrepository.php';
 class TicketOrderService{
     private $repository;

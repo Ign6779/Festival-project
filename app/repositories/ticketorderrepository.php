@@ -6,7 +6,7 @@ class TicketOrderRepository extends Repository
 {
     function getAll()
     {
-        try{
+        try {
             $stmt = $this->connection->prepare("SELECT * FROM order_ticket;");
             $stmt->execute();
 
@@ -14,24 +14,25 @@ class TicketOrderRepository extends Repository
             $ticketOrder = $stmt->fetchAll();
 
             return $ticketOrder;
-        } catch (PDOException $e){
+        } catch (PDOException $e) {
             echo $e;
         }
     }
 
-    function insertOrderTicket($orderTicket){
+    function insertOrderTicket($orderTicket)
+    {
         try {
-            $order_id=$orderTicket->getOrderId();
-            $event_id=$orderTicket->getEventId();
-            $qr_code=$orderTicket->getQrCode();
-            $is_scanned=false;
+            $order_id = $orderTicket->getOrderId();
+            $event_id = $orderTicket->getTicketId();
+            $qr_code = $orderTicket->getQrCode();
+            $is_scanned = false;
 
-            $stmt=$this->connection->prepare("INSERT INTO `order_ticket`(`order_id`, `event_id`, `qr_code`, `is_scaned`) VALUES (:order_id,:event_id,:qr_code,:is_scanned)");
+            $stmt = $this->connection->prepare("INSERT INTO `order_ticket`(`order_id`, `event_id`, `qr_code`, `is_scaned`) VALUES (:order_id,:event_id,:qr_code,:is_scanned)");
 
-            $stmt->bindParam(':order_id',$order_id);
-            $stmt->bindParam(':event_id',$event_id);
-            $stmt->bindParam(':qr_code',$qr_code);
-            $stmt->bindParam(':is_scanned',$is_scanned);
+            $stmt->bindParam(':order_id', $order_id);
+            $stmt->bindParam(':event_id', $event_id);
+            $stmt->bindParam(':qr_code', $qr_code);
+            $stmt->bindParam(':is_scanned', $is_scanned, PDO::PARAM_BOOL);
 
             $stmt->execute();
         } catch (PDOException $e) {
@@ -40,4 +41,3 @@ class TicketOrderRepository extends Repository
     }
 
 }
-?>
