@@ -9,7 +9,7 @@ class TickerOrder implements \JsonSerializable{
 
     private string $qr_code;
 
-    private bool $paid;
+    private bool $is_scanned;
 
     #[ReturnTypeWillChange]
     public function jsonSerialize(){
@@ -48,11 +48,11 @@ class TickerOrder implements \JsonSerializable{
         return $this; 
     }
 
-    public function getPaid(): bool{
-        return $this->paid;
+    public function getIsScanned(): bool{
+        return $this->is_scanned;
     }
-    public function setPaid($paid): self{
-        $this->paid = $paid;
+    public function setIsScanned($is_scanned): self{
+        $this->is_scanned = $is_scanned;
         return $this; 
     }
 
