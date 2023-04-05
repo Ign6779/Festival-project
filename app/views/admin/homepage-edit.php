@@ -22,19 +22,14 @@ var save = function(index) {
   var markup = $('#editor-' + index).summernote('code');
   $(`.click2edit:eq(${index})`).html(markup); // update HTML content
   var editedContent = $(`.click2edit:eq(${index})`).html();
-  console.log('Edited content:', editedContent); // log edited content for testing
   saveContent(index, editedContent);
   $('#editor-' + index).summernote('destroy');
 };
 
 function saveContent(index, newContent) {
-    data = {id: index, content: newContent};
-    fetch(`http://localhost/api/editor/updateContent?id=${index}&content=${newContent}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    //   body: JSON.stringify(data),
+    console.log('Edited content:', newContent); // log edited content for testing
+    fetch(`http://localhost/api/editor/updateContent?id=${index + 1}&content=${newContent}`, {
+      method: 'GET',
       })
       .then(response => {
         if (!response.ok) {

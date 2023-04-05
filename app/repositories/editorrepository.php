@@ -22,8 +22,8 @@ class EditorRepository extends Repository{
             $sql = "UPDATE editor
             SET content = :content, created = NOW()
             WHERE id = :id";
-            $stmt = $this->db->prepare($sql);
-            $stmt->bindParam(':content', $Content);
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(':content', $content);
             $stmt->bindParam(':id', $id);
             return $stmt->execute();
         } catch (PDOException $e) {

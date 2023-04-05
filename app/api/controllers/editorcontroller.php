@@ -20,9 +20,9 @@ class EditorController
 
     public function updateContent()
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $id = htmlspecialchars($_POST['id']);
-            $content = htmlspecialchars($_POST['content']);
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            $id = htmlspecialchars($_GET['id']);
+            $content = htmlspecialchars($_GET['content']);
             $this->editorService->update($id, $content);
         }
     }
