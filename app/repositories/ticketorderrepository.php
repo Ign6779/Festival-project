@@ -18,5 +18,26 @@ class TicketOrderRepository extends Repository
             echo $e;
         }
     }
+
+    function insertOrderTicket($orderTicket){
+        try {
+            $order_id=$orderTicket->getOrderId();
+            $event_id=$orderTicket->getEventId();
+            $qr_code=$orderTicket->getQrCode();
+            $is_scanned=false;
+
+            $stmt=$this->connection->prepare("INSERT INTO `order_ticket`(`order_id`, `event_id`, `qr_code`, `is_scaned`) VALUES (:order_id,:event_id,:qr_code,:is_scanned)");
+
+            $stmt->bindParam(':order_id',$order_id);
+            $stmt->bindParam(':event_id',$event_id);
+            $stmt->bindParam(':qr_code',$qr_code);
+            $stmt->bindParam(':is_scanned',$is_scanned);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
 }
 ?>

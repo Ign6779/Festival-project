@@ -93,5 +93,15 @@ class Event implements \JsonSerializable
         $this->price = $price;
         return $this;
     }
+
+    // checks if the event still has available seats to be reserved
+    public function checkAvaiableSeats($seats):bool{
+        if($seats<=$this->seats){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
 ?>
