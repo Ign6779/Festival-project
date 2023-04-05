@@ -101,7 +101,9 @@ class SessionRepository extends Repository {
             WHERE s.id = :id");
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             return $stmt->execute();
-        } 
+        } catch (PDOException $e) {
+            echo $e;
+        }
     }
 
     public function createSession(Session $session) {

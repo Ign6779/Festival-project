@@ -24,18 +24,14 @@ var save = function(index) {
   var markup = $('#editor-' + index).summernote('code');
   $(`.click2edit:eq(${index})`).html(markup); // update HTML content
   var editedContent = $(`.click2edit:eq(${index})`).html();
+  editedContent = encodeURIComponent(editedContent); // encode special characters
   $('#editor-' + index).summernote('destroy');
-  saveContent(index, editedContent);
+  saveContent((index + 7), editedContent);
 };
 
 function saveContent(index, newContent) {
-    data = {id: index, content: newContent};
     fetch(`http://localhost/api/editor/updateContent?id=${index}&content=${newContent}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    //   body: JSON.stringify(data),
+      method: 'GET',
       })
       .then(response => {
         if (!response.ok) {
@@ -58,7 +54,7 @@ function saveContent(index, newContent) {
     <div class="white-block">
         <button id="edit" class="btn btn-primary" onclick="edit(0)" type="button">Edit</button>
         <button id="save" class="btn btn-primary" onclick="save(0)" type="button">Save</button>
-        <div class="click2edit"><?php echo $contentById[7]; ?></div>
+        <div class="click2edit"><?php echo html_entity_decode($contentById[7]); ?></div>
     </div>
 </div>
 <!-- YUMMY -->
@@ -69,7 +65,7 @@ function saveContent(index, newContent) {
     <div class="right-text" id="yummy-right">
     <button id="edit" class="btn btn-primary" onclick="edit(1)" type="button">Edit</button>
     <button id="save" class="btn btn-primary" onclick="save(1)" type="button">Save</button>
-    <div class="click2edit"><?php echo $contentById[8]; ?></div>
+    <div class="click2edit"><?php echo html_entity_decode($contentById[8]); ?></div>
 
 </section>
 <!-- HISTORY -->
@@ -80,7 +76,7 @@ function saveContent(index, newContent) {
     <div class="left-text" id="history-left">
     <button id="edit" class="btn btn-primary" onclick="edit(2)" type="button">Edit</button>
     <button id="save" class="btn btn-primary" onclick="save(2)" type="button">Save</button>
-        <div class="click2edit"><?php echo $contentById[9]; ?></div>
+        <div class="click2edit"><?php echo html_entity_decode($contentById[9]); ?></div>
 </section>
 <!-- DANCE -->
 <section class="event-section" id="dance-section">
@@ -95,7 +91,7 @@ function saveContent(index, newContent) {
 <div class="right-text">
     <button id="edit" class="btn btn-primary" onclick="edit(3)" type="button">Edit</button>
     <button id="save" class="btn btn-primary" onclick="save(3)" type="button">Save</button>
-    <div class="click2edit"><?php echo $contentById[10]; ?></div>
+    <div class="click2edit"><?php echo html_entity_decode($contentById[10]); ?></div>
 
 </section>
 <!-- KIDS -->
@@ -106,5 +102,5 @@ function saveContent(index, newContent) {
     <div class="left-text">
     <button id="edit" class="btn btn-primary" onclick="edit(4)" type="button">Edit</button>
     <button id="save" class="btn btn-primary" onclick="save(4)" type="button">Save</button>
-        <div class="click2edit"><?php echo $contentById[11]; ?></div>
+        <div class="click2edit"><?php echo html_entity_decode($contentById[11]); ?></div>
 </section>
