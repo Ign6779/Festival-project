@@ -56,33 +56,37 @@ include __DIR__ . '/../header.php';
         const creditCardRadio = document.getElementById("credit");
         const debitCardRadio = document.getElementById("debit");
 
-        fetch('http://localhost/api/payment' {
-            method: 'GET'
-        })
-            .then(response => response.json())
-            .then(data => {
-                const issuers = data.issuers;
-                const bankSelect = document.getElementById('bank');
-
-                // Add options to the select element for each issuer
-                issuers.forEach(issuer => {
-                    const option = document.createElement('option');
-                    option.value = issuer.id;
-                    option.text = issuer.name;
-                    bankSelect.appendChild(option);
-                });
+        function loadBanckOption() {
+            fetch('http://localhost/api/payment', {
+                method: 'GET'
             })
-            .catch(error => {
-                console.error('Error retrieving iDEAL issuers:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    const issuers = data.issuers;
+                    const bankSelect = document.getElementById('bank');
 
+                    // Add options to the select element for each issuer
+                    issuers.forEach(issuer => {
+                        const option = document.createElement('option');
+                        option.value = issuer.id;
+                        option.text = issuer.name;
+                        bankSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error retrieving iDEAL issuers:', error);
+                });
+        }
         // Create the payment form fields for each payment method
         const idealFields = `
     <div class="row">
         <div class="col-md-6 mb-3">
             <label for="bank">Bank</label>
             <select class="custom-select d-block w-100" id="bank" required>
-                
+                <option value="">Choose...</option>
+                <option value="ideal_INGBNL2A">ING</option>
+                <option value="ideal_ABNANL2A">ABN AMRO</option>
+                <option value="ideal_RABONL2U">Rabobank</option>
             </select>
             <div class="invalid-feedback">
                 Please select a valid bank.

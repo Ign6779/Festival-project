@@ -14,7 +14,7 @@ class PaymentController
     {
         $this->orderService = new OrderService();
         $this->mollie = new MollieApiClient();
-        $this->mollie->setApiKey('test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8');
+        $this->mollie->setApiKey('test_5qajcu3h8GHTq5CS68PaAWTsNfPpxh');
     }
 
     public function index()

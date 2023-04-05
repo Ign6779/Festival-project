@@ -11,14 +11,12 @@ class PaymentController extends Controller
 {
     private $orderService;
     private $mollie;
-    private string $paymentid;
 
     public function __construct()
     {
         $this->orderService = new OrderService();
         $this->mollie = new MollieApiClient();
-        $this->mollie->setApiKey('test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8');
-        $this->paymentid = "";
+        $this->mollie->setApiKey('test_5qajcu3h8GHTq5CS68PaAWTsNfPpxh');
     }
 
     public function index()
@@ -40,11 +38,10 @@ class PaymentController extends Controller
                     "value" => number_format($amount, 2, '.', ''),
                 ],
                 "description" => "Festival ticket payment for user $userId",
-                "redirectUrl" => "https://dc2d-87-209-230-169.eu.ngrok.io/payment/paymentStatus",
-                "webhookUrl" => "https://dc2d-87-209-230-169.eu.ngrok.io/payment/handleWebhook",
+                "redirectUrl" => "https://9cc3-87-209-230-169.eu.ngrok.io/payment/paymentStatus",
+                "webhookUrl" => " https://9cc3-87-209-230-169.eu.ngrok.io/payment/handleWebhook",
                 "metadata" => [
                     "user_id" => $userId,
-
                 ],
                 "method" => $paymentMethod,
             ]);
@@ -58,14 +55,11 @@ class PaymentController extends Controller
             $order->setPaymentId($payment->id);
             $this->orderService->createOrder($order);
 
-            $this->paymentid = $payment->id;
+            $_SESSION['paymentid'] = $payment->id;
 
-            // Redirect user to Mollie payment page
             header("Location: " . $payment->getCheckoutUrl());
             exit;
         } catch (ApiException $e) {
-            // Handle API exception
-            // You can log the error message or show an error page to the user
             echo 'Error: ' . htmlspecialchars($e->getMessage());
         }
     }
@@ -76,7 +70,6 @@ class PaymentController extends Controller
 
             // Retrieve Mollie payment
             $payment = $this->mollie->payments->get($_POST['id']);
-
             // Update order in database with payment status
             $order = $this->orderService->getOrderByPaymentId($payment->id);
             if ($order) {
@@ -94,21 +87,7 @@ class PaymentController extends Controller
     {
 
         try {
-            // Retrieve payment from Mollie API
-            // $payment = $this->mollie->payments->get($_POST["id"]);
-
-            // // Get the current status of the payment
-            // $status = $payment->status;
-
-            // Do something with the status (e.g. update order status in database, show a message to the user, etc.)
-            // For example, you can update the order status in the database based on the payment status:
-            $order = $this->orderService->getOrderByPaymentId($this->paymentid);
-            // if ($order) {
-            //     $order->setStatus($order->getStatus());
-            //     $this->orderService->updateOrder($order);
-            // }
-
-            // Show a message to the user based on the payment status
+            $order = $this->orderService->getOrderByPaymentId($_SESSION['paymentid']);
             switch ($order->getStatus()) {
                 case 'paid':
                     echo 'Thank you for your payment.';
