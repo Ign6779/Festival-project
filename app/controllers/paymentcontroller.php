@@ -4,8 +4,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Mollie\Api\Exceptions\ApiException;
 use Mollie\Api\MollieApiClient;
 
-require __DIR__ . '/controller.php';
-require __DIR__ . '/../services/orderservice.php';
+require_once __DIR__ . '/controller.php';
+require_once __DIR__ . '/../services/orderservice.php';
 
 class PaymentController extends Controller
 {
@@ -31,7 +31,6 @@ class PaymentController extends Controller
             $userId = $_SESSION['user'];
             $amount = 20.35;
             $paymentMethod = $_POST['paymentMethod'];
-
             $payment = $this->mollie->payments->create([
                 "amount" => [
                     "currency" => "EUR",
@@ -109,7 +108,7 @@ class PaymentController extends Controller
         }
     }
 
-
+    
 }
 
 ?>
