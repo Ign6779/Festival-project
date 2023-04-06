@@ -14,21 +14,19 @@ $result = Builder::create()
     ->data('Custom QR code contents')
     ->encoding(new Encoding('UTF-8'))
     ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
-    // ->size(300)
-    // ->margin(10)
-    // ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
-    // ->labelText('This is the label')
-    // ->labelFont(new NotoSans(20))
-    // ->labelAlignment(new LabelAlignmentCenter())
     ->validateResult(false)
     ->build();
 
-header('Content-Type: ' . $result->getMimeType());
+  header('Content-Type: ' . $result->getMimeType());
 echo $result->getString();
 
-// Save it to a file
-$result->saveToFile(__DIR__ . '/qrcode.png');
+$base64Data = base64_encode($result->getString());
 
-// Generate a data URI to include image data inline (i.e. inside an <img> tag)
-$dataUri = $result->getDataUri();
+// // Output the base64 string
+// echo $base64Data;
+// // Save it to a file
+// $result->saveToFile(__DIR__ . '/qrcode.png');
+
+// // Generate a data URI to include image data inline (i.e. inside an <img> tag)
+// $dataUri = $result->getDataUri();
 ?>

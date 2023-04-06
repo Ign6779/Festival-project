@@ -3,11 +3,20 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use Mollie\Api\Exceptions\ApiException;
 use Mollie\Api\MollieApiClient;
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
+use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
+use Endroid\QrCode\Label\Font\NotoSans;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
 
 require_once __DIR__ . '/controller.php';
 require_once __DIR__ . '/../services/orderservice.php';
 require_once __DIR__ . '/../services/ticketorderservice.php';
 require_once __DIR__ . '/../services/eventservice.php';
+require_once __DIR__ . '/../services/userservice.php';
+
 
 class PaymentController extends Controller
 {
@@ -15,12 +24,14 @@ class PaymentController extends Controller
     private $ticketOrdeService;
     private $eventService;
     private $mollie;
+    private $userService;
 
     public function __construct()
     {
         $this->orderService = new OrderService();
         $this->ticketOrdeService = new TicketOrderService();
         $this->eventService = new EventService();
+        $this->userService = new UserService();
         $this->mollie = new MollieApiClient();
         $this->mollie->setApiKey('test_5qajcu3h8GHTq5CS68PaAWTsNfPpxh');
     }
@@ -43,8 +54,8 @@ class PaymentController extends Controller
                     "value" => number_format($amount, 2, '.', ''),
                 ],
                 "description" => "Festival ticket payment for user $userId",
-                "redirectUrl" => "https://9cc3-87-209-230-169.eu.ngrok.io/payment/paymentStatus",
-                "webhookUrl" => " https://9cc3-87-209-230-169.eu.ngrok.io/payment/handleWebhook",
+                "redirectUrl" => "https://0abe-87-209-230-169.eu.ngrok.io/payment/paymentStatus",
+                "webhookUrl" => "https://0abe-87-209-230-169.eu.ngrok.io/payment/handleWebhook",
                 "metadata" => [
                     "user_id" => $userId,
                 ],
@@ -70,7 +81,6 @@ class PaymentController extends Controller
     public function handleWebhook()
     {
         try {
-
             // Retrieve Mollie payment
             $payment = $this->mollie->payments->get($_POST['id']);
             // Update order in database with payment status
@@ -80,8 +90,6 @@ class PaymentController extends Controller
                 $this->orderService->updateOrder($order);
             }
         } catch (ApiException $e) {
-            // Handle API exception
-            // You can log the error message or show an error page to the user
             echo 'Error: ' . htmlspecialchars($e->getMessage());
         }
     }
@@ -91,9 +99,11 @@ class PaymentController extends Controller
 
         try {
             $order = $this->orderService->getOrderByPaymentId($_SESSION['paymentid']);
+            $user = $this->userService->getUserById($order->getUserId());
             switch ($order->getStatus()) {
                 case 'paid':
                     echo 'Thank you for your payment.';
+
                     break;
                 case 'cancelled':
                     echo 'Your payment has been cancelled.';
@@ -107,8 +117,6 @@ class PaymentController extends Controller
             }
 
         } catch (ApiException $e) {
-            // Handle API exception
-            // You can log the error message or show an error page to the user
             echo 'Error: ' . htmlspecialchars($e->getMessage());
         }
     }
@@ -118,12 +126,22 @@ class PaymentController extends Controller
         $order = $this->orderService->getOrderByPaymentId($_SESSION['paymentid']);
         $cart = $_SESSION['cart'];
         foreach ($cart as $productid => $quantity) {
+            $result = Builder::create()
+                ->writer(new PngWriter())
+                ->writerOptions([])
+                ->data($productid . "" . $order->getId())
+                ->encoding(new Encoding('UTF-8'))
+                ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
+                ->validateResult(false)
+                ->build();
+            $base64Data = base64_encode($result->getString());
             $ticketOrder = new TickerOrder();
             $ticketOrder->setOrderId($order->getId());
             $ticketOrder->setTicketId($productid);
-            $ticketOrder->setQRCode("qrcode ");
+            $ticketOrder->setQRCode($base64Data);
             $ticketOrder->setIsScanned(false);
             $this->ticketOrdeService->insertOrderTicket($ticketOrder);
+            $result = null;
         }
     }
 
@@ -138,7 +156,8 @@ class PaymentController extends Controller
         return $amount;
     }
 
-    public function qrcode(){
+    public function qrcode()
+    {
         require __DIR__ . '/../views/payment/qrcode.php';
     }
 }
