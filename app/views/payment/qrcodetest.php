@@ -1,23 +1,25 @@
 <?php
 require_once __DIR__ . '/../../vendor/autoload.php';
+use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\Writer\PngWriter;
 use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
 use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
 use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
-use Endroid\QrCode\Writer\PngWriter;
+
 
 $result = Builder::create()
-    ->writer(new PngWriter())
-    ->writerOptions([])
-    ->data('Custom QR code contents')
-    ->encoding(new Encoding('UTF-8'))
-    ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
-    ->validateResult(false)
-    ->build();
+  ->writer(new PngWriter())
+  ->writerOptions([])
+  ->data('Custom QR code contents')
+  ->encoding(new Encoding('UTF-8'))
+  ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
+  ->validateResult(false)
+  ->build();
 
-  header('Content-Type: ' . $result->getMimeType());
+header('Content-Type: ' . $result->getMimeType());
 echo $result->getString();
 
 $base64Data = base64_encode($result->getString());

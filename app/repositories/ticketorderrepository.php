@@ -40,4 +40,20 @@ class TicketOrderRepository extends Repository
         }
     }
 
+    function getItemsByOrderId($order_id)
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM order_ticket WHERE order_id = :id");
+            $stmt->bindParam(':id', $order_id);
+            $stmt->execute();
+
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'TicketOrder');
+            $ticketOrder = $stmt->fetchAll();
+
+            return $ticketOrder;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
 }
