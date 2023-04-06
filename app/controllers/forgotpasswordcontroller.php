@@ -22,12 +22,6 @@ class ForgotPasswordController extends Controller
         require_once __DIR__ . '/../views/login/forgotpassword.php';
     }
 
-    // public function forgotpassword()
-    // {
-    //     require_once __DIR__ . '/../views/login/forgotpassword.php';
-    // }
-
-
     public function sendEmailToRest()
     {
         if (isset($_POST['sendRestEmail'])) {

@@ -70,7 +70,14 @@ function returnSelected($id)
                 <? if (isset($_SESSION["user"])) {
                     ?>
                     <a href="/login/logout" class="btn btn-danger">Logout</a>
-                    <a href="/user/edituser"><i id="account-icon" class="fa-solid fa-user"></i></a>
+                    <?php
+                    $userService = new UserService();
+                    $user = $userService->getUserById($_SESSION["user"]);
+
+                    $image = $user->getImage() ? $user->getImage() : 'account.png';
+                    ?>
+                    <a href="/user/edituser"><img id="account-icon" class="fa-solid fa-user"
+                    src="/img/<?php echo $image; ?>" alt="account"></a>
                 <?
                 } else {
                     ?>

@@ -158,5 +158,26 @@ class UserRepository extends Repository
         }
     }
 
+    function editUserProfile($user)
+    {
+        try {
+            $id = $user->getId();
+            $username = $user->getUsername();
+            $email = $user->getEmail();
+            $image = $user->getImage();
+            $password = $user->getPassword();
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $stmt = $this->connection->prepare("UPDATE users SET username=:username, email=:email, image=:image, password=:password WHERE id = :id");
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':image', $image);
+            $stmt->bindParam(':password', $hashedPassword);
+        
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 }
 ?>

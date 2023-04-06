@@ -14,6 +14,7 @@ class User implements \JsonSerializable
     private string $registration;
     private ?string $reset_token;
     private ?DateTime $reset_token_expiration;
+    private ?string $image;
 
     #[ReturnTypeWillChange]
 
@@ -117,7 +118,14 @@ class User implements \JsonSerializable
     public function setTokenExpirationDate(?DateTime $date): void
     {
         $this->reset_token_expiration =  $date;
-      
+    }
+
+    public function getImage(): ?string {
+        return $this->image;
+    }
+    public function setImage(?string $image): self {
+        $this->image = $image;
+        return $this;
     }
 }
 ?>

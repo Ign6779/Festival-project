@@ -142,13 +142,12 @@ label {
 }
 
 #account-icon {
-    font-size: 24px;
+    height: 56px;
     position: relative;
-    top: 5px;
 }
 
 #account-icon:hover {
-    color: #d9534f;
+    opacity: 0.8;
   }
 
 #btn-back {
