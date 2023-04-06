@@ -64,5 +64,10 @@ class UserService
     {
         $this->repository->updateUser($user);
     }
+
+    function editUserProfile($user)
+    {
+        $this->repository->editUserProfile($user);
+    }
 }
 ?>
