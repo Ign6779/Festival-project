@@ -99,7 +99,7 @@ try{
 // query the user media
 
 $fields = "id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username";
-$token = "IGQVJXbW56Y0RkNW5WQjNzSkt3amVrMllOeFcwY1lqU0RMYk1JOHNqSEVoX0lLS0YxczRWLURPQUVmS0VPMDM4dGNhU0drTDl4TUJTR3dSX19pSVMxTWZAfeHREQTAxREt5WEpFYXpqS2tGTmNaZADFSSQZDZD";
+$token = "IGQVJWd1E3eUxDcV8tWHlyZAU5qVGVFVmR3QzVFU005OXJ0VGJaemV6ZAHZAmN0dMeHk5WnZASWTZALRmZAsS1pGckJtYUtmNTNMeTVqRkFXcFkxMWN2U2Y1TlhiMGZAfWGNubDZAJTy11c0tRWVFxVnRqb0NuLQZDZD";
 $limit = 10;
 
 $json_feed_url = "https://graph.instagram.com/me/media?fields={$fields}&access_token={$token}&limit={$limit}";
