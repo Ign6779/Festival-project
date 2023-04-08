@@ -14,6 +14,7 @@
             <th scope="col">Description</th>
             <th scope="col">Song</th>
             <th scope="col">Top song</th>
+            <th scope="col">Type</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -36,33 +37,36 @@
     }
 
     function load(artistInput) {
-        var tbody = document.getElementsByTagName("tbody")[0];
-        tr = document.createElement("tr");
-        tdId = document.createElement("td");
-        tdId.innerHTML = artistInput.id;
-        tdName = document.createElement("td");
-        tdName.innerHTML = artistInput.name;
-        tdDescription = document.createElement("td");
-        tdDescription.innerHTML = artistInput.description;
-        tdSong = document.createElement("td");
-        tdSong.innerHTML = artistInput.song;
-        tdTopSong = document.createElement("td");
-        tdTopSong.innerHTML = artistInput.topSong;
-        tdButtons = document.createElement("td");
-        aEdit = document.createElement("a");
-        aDelete = document.createElement("a");
-        aEdit.className = "btn btn-warning me-2";
-        aDelete.className = "btn btn-danger";
-        aEdit.innerHTML = "Edit";
-        aDelete.innerHTML = "Delete";
-        aEdit.href = "/artist/editArtistForm?artistId=" + artistInput.id;
-        aDelete.onclick = function () {
-            deleteArtist(artistInput.id);
-        };
-        tdButtons.append(aEdit, aDelete);
-        tr.append(tdId, tdName, tdDescription, tdSong, tdTopSong, tdButtons)
-        tbody.appendChild(tr);
-    }
+    var tbody = document.getElementsByTagName("tbody")[0];
+    tr = document.createElement("tr");
+    tdId = document.createElement("td");
+    tdId.innerHTML = artistInput.id;
+    tdName = document.createElement("td");
+    tdName.innerHTML = artistInput.name;
+    tdDescription = document.createElement("td");
+    tdDescription.innerHTML = artistInput.description;
+    tdSong = document.createElement("td");
+    tdSong.innerHTML = artistInput.song;
+    tdTopSong = document.createElement("td");
+    tdTopSong.innerHTML = artistInput.topSong;
+    tdType = document.createElement("td"); 
+    tdType.innerHTML = artistInput.type;
+    tdButtons = document.createElement("td");
+    aEdit = document.createElement("a");
+    aDelete = document.createElement("a");
+    aEdit.className = "btn btn-warning me-2";
+    aDelete.className = "btn btn-danger";
+    aEdit.innerHTML = "Edit";
+    aDelete.innerHTML = "Delete";
+    aEdit.href = "/artist/editArtistForm?artistId=" + artistInput.id;
+    aDelete.onclick = function () {
+        deleteArtist(artistInput.id);
+    };
+    tdButtons.append(aEdit, aDelete);
+    tr.append(tdId, tdName, tdDescription, tdSong, tdTopSong, tdType, tdButtons);
+    tbody.appendChild(tr);
+}
+
 
     function deleteArtist(id) {
         fetch('http://localhost/api/artist/deleteArtist?artistid=' + id, {

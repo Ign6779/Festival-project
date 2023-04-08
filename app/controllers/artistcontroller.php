@@ -28,7 +28,8 @@ class ArtistController extends Controller
             $description = htmlspecialchars($_POST['artistdescription']);
             $song = htmlspecialchars($_POST['artistSong']);
             $topSong = htmlspecialchars($_POST['artisttopsong']);
-            $this->artistService->insertArtist($name, $description, $song, $topSong);
+            $type = strtolower(htmlspecialchars($_POST['artisttype'])); // Convert to lowercase
+            $this->artistService->insertArtist($name, $description, $song, $topSong, $type); 
             $artist = $this->artistService->getByname($name);
             for ($x = 0; $x < count($_FILES['images']['name']); $x++) {
                 $imageName = htmlspecialchars($_FILES['images']['name'][$x]);
@@ -40,6 +41,7 @@ class ArtistController extends Controller
             $this->index();
         }
     }
+    
 
     public function editArtistForm()
     {
@@ -59,7 +61,8 @@ class ArtistController extends Controller
             $description = htmlspecialchars($_POST['artistdescription']);
             $song = htmlspecialchars($_POST['artistSong']);
             $topSong = htmlspecialchars($_POST['artisttopsong']);
-            $this->artistService->update($id, $name, $description, $song, $topSong);
+            $type = strtolower(htmlspecialchars($_POST['artisttype'])); // Convert to lowercase
+            $this->artistService->update($id, $name, $description, $song, $topSong, $type); 
             $artist = $this->artistService->getOne($id);
             foreach ($artist->getImages() as $image) {
                 $imageName = htmlspecialchars($_FILES['imagesup']['name'][$count]);
@@ -72,6 +75,7 @@ class ArtistController extends Controller
             $this->index();
         }
     }
+    
 }
 
 

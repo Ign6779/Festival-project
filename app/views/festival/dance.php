@@ -2,15 +2,8 @@
 include __DIR__ . '/../header.php';
 $danceArtists = [];
 foreach ($artists as $artist) {
-    foreach ($danceEvents as $event){
-        $eventArtists = $event->getArtists();
-        foreach ($eventArtists as $a){
-            // Check if artist ID is not already in $danceArtists array
-            if (!isset($danceArtists[$a->getId()])) {
-                // Add artist ID to $danceArtists array
-                $danceArtists[$a->getId()] = $a;
-            }
-        }
+    if($artist->getType() == 'dance'){
+        $danceArtists[$artist->getId()] = $artist;
     }
 } 
 ?>

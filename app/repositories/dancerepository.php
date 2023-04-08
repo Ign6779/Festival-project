@@ -57,7 +57,7 @@ class DanceRepository extends Repository
     public function getArtists()
     {
         try {
-            $stmt = $this->connection->prepare("SELECT artist.id, artist.name AS name, artist.description AS description, artist.song AS song, artist.top_song AS top_song, artistImages.image AS artistImage, artistImages.id AS imageId FROM artist INNER JOIN artistImages ON artist.id = artistImages.artist_id;");
+            $stmt = $this->connection->prepare("SELECT artist.id, artist.name AS name, artist.description AS description, artist.song AS song, artist.top_song AS top_song, artist.Type AS type, artistImages.image AS artistImage, artistImages.id AS imageId FROM artist INNER JOIN artistImages ON artist.id = artistImages.artist_id;");
             $stmt->execute();
             $artists = [];
             while ($row = $stmt->fetch()) {
@@ -74,6 +74,7 @@ class DanceRepository extends Repository
                         $artist->setTopSong($row['top_song']);
                     }
                     $artist->setDescription($row['description']);
+                    $artist->setType($row['type']);
                     $artists[$artistId] = $artist;
                 }
                 $image = new Image();
