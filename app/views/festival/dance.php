@@ -74,9 +74,9 @@ function openDetailPage(artistID) {
 
 <!-- schedule overview -->
 <div class="text-center container-fluid" id="schedule">
-    <h1 class="Dance-Title"> schedule overview </h1>
+    <!-- <h1 class="Dance-Title"> schedule overview </h1> -->
     <div class="text-center container" id="transparent-block">
-        <div class="text-center container" id="artist-list-left"><b>FRIDAY ARTISTS</b>
+        <div class="text-center container" id="artist-list-left"><h3><b>FRIDAY ARTISTS</b></h3>
         <?php
             foreach ($danceEvents as $dance) {
                 if (date('Y-m-d', strtotime($dance->getDate())) === '2023-07-27') {
@@ -91,7 +91,7 @@ function openDetailPage(artistID) {
             }
         ?>
         </div>
-        <div class="text-center container"id="artist-list-mid"><b>SATURDAY ARTISTS</b>
+        <div class="text-center container"id="artist-list-mid"><h3><b>SATURDAY ARTISTS</b></h3>
         <?php
             foreach ($danceEvents as $dance) {
                 if (date('Y-m-d', strtotime($dance->getDate())) === '2023-07-28') {
@@ -106,7 +106,7 @@ function openDetailPage(artistID) {
             }
         ?>
         </div>
-        <div class="text-center container" id="artist-list-right"><b>SUNDAY ARTIST</b>
+        <div class="text-center container" id="artist-list-right"><h3><b>SUNDAY ARTIST</b></h3>
         <?php
             foreach ($danceEvents as $dance) {
                 if (date('Y-m-d', strtotime($dance->getDate())) === '2023-07-27') {
@@ -122,7 +122,7 @@ function openDetailPage(artistID) {
         ?>
         </div>
     <div class="text-center container" id="three-day-section">
-        <div class="text-center container" id="artist-list-right"><h3>Three day pass price</h3> <br> <p>Get the ultimate 3-day ticket and get access to all the events listed below!
+        <div class="text-center container" id="artist-list-right"><h3><b>THREE DAY PASS</b></h3> <br> <p>Get the ultimate 3-day ticket and get access to all the events listed below!
 All access: €250,00</p>    <div class="text-center container justify-content-center">
         <a href="/ticket" class="btn-purple" id="three-day-btn">3 Day Pass</a>
     </div></div>
@@ -272,34 +272,22 @@ All access: €250,00</p>    <div class="text-center container justify-content-c
         var location6 = { lat: 52.38133850935916, lng: 4.635226413569577 };
 
         var map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 12,
-            center: location
-        });
-        var marker1 = new google.maps.Marker({
-            position: location1,
-            map: map
-        });
-        var marker2 = new google.maps.Marker({
-            position: location2,
-            map: map
-        });
-        var marker3 = new google.maps.Marker({
-            position: location3,
-            map: map
-        });
-        var marker4 = new google.maps.Marker({
-            position: location4,
-            map: map
-        });
-        var marker5 = new google.maps.Marker({
-            position: location5,
-            map: map
-        });
-        var marker6 = new google.maps.Marker({
-            position: location6,
-            map: map
-        });
-    }
+    zoom: 12,
+    center: location
+});
+
+var locations = [location1, location2, location3, location4, location5, location6];
+var markers = [];
+
+for (var i = 0; i < locations.length; i++) {
+    var marker = new google.maps.Marker({
+        position: locations[i],
+        map: map
+    });
+    markers.push(marker);
+}
+
+}
 </script>
 
 <script async defer
