@@ -1,5 +1,18 @@
 <?php
 include __DIR__ . '/../header.php';
+$danceArtists = [];
+foreach ($artists as $artist) {
+    foreach ($danceEvents as $event){
+        $eventArtists = $event->getArtists();
+        foreach ($eventArtists as $a){
+            // Check if artist ID is not already in $danceArtists array
+            if (!isset($danceArtists[$a->getId()])) {
+                // Add artist ID to $danceArtists array
+                $danceArtists[$a->getId()] = $a;
+            }
+        }
+    }
+} 
 ?>
 <!-- top section with title and picture carasol -->
 <div class="text-center container-fluid" id="top-section">
@@ -25,17 +38,36 @@ include __DIR__ . '/../header.php';
     <img src="/img/dance-carousel-9.jpg" alt="image 10" />
   </div>
 </div>
-<!-- detail pages 1 -->
-<?php
-$idForDetailPage = 25;
-include __DIR__ . '/../components/page.php';
+    <label for="artist">Artists:</label>
+    <div style="display: flex; flex-direction: row; gap: 10px;">
+        <!-- Replace `artists` with your actual list of artists -->
+        <?php foreach ($danceArtists as $artist) { ?>
+            <button type="button" onclick="goToArtistDetailPage('<?php echo $artist->getId(); ?>')" style="margin-right: 10px;"><?php echo $artist->getName(); ?></button>
+        <?php } ?>
+    </div>
+    <script>
+        // JavaScript method to navigate to the artist's detail page
+        function goToArtistDetailPage(artistId) {
+            $idForDetailPage = artistId;
+            <?php include __DIR__ . '/../components/page.php'; ?>
+        }
+
+//  detail page 1
+        <?php if (isset($idForContentPage)) { ?>
+            <?php include __DIR__ . '/../components/page.php'; ?>
+        <?php } else{
+            $idForContentPage = 25;
+            include __DIR__ . '/../components/page.php';
+        } ?>
+        </script>
+
+<?
+foreach ($danceArtists as $artist){ 
+ $idForDetailPage = $artist->getId();
+//  include __DIR__ . '/../components/page.php';
+ }
 ?>
 
-<!-- detail pages 2 -->
-<?php
-$idForDetailPage = 27;
-include __DIR__ . '/../components/page.php';
-?>
 
 <!-- schedule overview -->
 <div class="text-center container-fluid" id="schedule">

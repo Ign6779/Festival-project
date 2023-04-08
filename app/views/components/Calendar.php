@@ -47,7 +47,7 @@ $eventType = "jazz-event";
                 </div>
                 <div id="26th" class="events">
                     <!-- <div class="event start-<?php echo $eventStartTime; ?> end-<?php echo $eventEndTime; ?> <?php echo $eventType; ?>">
-            <p id="event-text" class="time" style="font-size: 6px;">EVENT NAME <br> <?php echo $eventStartTime; ?> - <?php echo $eventEndTime; ?></p>
+            <p id="event-text" class="time">EVENT NAME <br> <?php echo $eventStartTime; ?> until <?php echo $eventEndTime; ?></p>
             </div> -->
                 </div>
             </div>
