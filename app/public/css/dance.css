@@ -182,6 +182,7 @@
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
+    margin-bottom: 10px;
     transition: 0.3s;
     color: white;
   }
