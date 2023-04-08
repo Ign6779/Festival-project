@@ -18,6 +18,10 @@ class RestaurantService {
         return $restaurants;
     }
 
+    public function getOne(int $id) {
+        return $this->repository->getOne($id);
+    }
+
     public function getById(int $id) {
         $restaurant = $this->repository->getById($id);
         return $restaurant;

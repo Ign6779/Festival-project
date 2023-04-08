@@ -27,6 +27,6 @@ class TourService {
     }
 
     public function deleteTour(int $id) {
-        $this->repository->deleteTour($tour);
+        $this->repository->deleteTour($id);
     }
 }

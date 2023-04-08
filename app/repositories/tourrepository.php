@@ -64,7 +64,6 @@ class TourRepository extends Repository
 
             $stmt1->bindValue(':title', 'Walk through historical Haarlem ' . $tour->getLanguage, PDO::PARAM_STR);
             $stmt1->bindValue(':date', $tour->getDate(), PDO::PARAM_STR);
-            $stmt1->bindValue(':date', $tour->getDate(), PDO::PARAM_STR);
             $stmt1->bindValue(':start_time', $tour->getStartTime(), PDO::PARAM_STR);
             $stmt1->bindValue(':end_time', $tour->getEndTime(), PDO::PARAM_STR);
             $stmt1->bindValue(':event_type', 'history');

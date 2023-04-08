@@ -86,6 +86,35 @@ class RestaurantRepository extends Repository
         return $restaurants;
     }
 
+    public function getOne(int $id) {
+        try {
+            $stmt = $this->connection->prepare("SELECT * 
+            FROM restaurants
+            WHERE id = :id");
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $restaurant = new Restaurant();
+
+            while ($row = $stmt->fetch()) {
+                $restaurant->setId($row['id']);
+                $restaurant->setName($row['name']);
+                $restaurant->setLocation($row['location']);
+                $restaurant->setDescription($row['description']);
+                $restaurant->setContent($row['content']);
+                $restaurant->setDuration($row['duration']);
+                $restaurant->setHalal($row['halal']);
+                $restaurant->setVegan($row['vegan']);
+                $restaurant->setStars($row['stars']);
+                $restaurant->setImage($row['image']);
+
+                return $restaurant;
+            }
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
     public function getById(int $id)
     {
         try {

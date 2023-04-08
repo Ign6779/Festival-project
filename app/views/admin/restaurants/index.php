@@ -81,7 +81,7 @@
         rDelete.className = "btn btn-danger";
         rEdit.innerHTML = "Edit";
         rDelete.innerHTML = "Delete";
-        rEdit.href = "/restaurant/editRestaurantForm?restaurantId" + restaurantInput.id;
+        rEdit.href = "/restaurant/editRestaurantForm?restaurantId=" + restaurantInput.id;
         rDelete.onclick = function() {
             deleteRestaurant(restaurantInput.id);
         };
@@ -89,6 +89,18 @@
         tr.append(tdId, tdName, tdLocation, tdDescription, tdContent, tdHalal, tdVegan, tdStars, tdDuration, tdImage, tdButtons);
         tbody.appendChild(tr);
 
+    }
+
+    function deleteRestaurant(id) {
+        fetch ('http://localhost/api/restaurant/deleteRestaurant?restaurantId=' + id, {
+            method: 'GET'
+        })
+        .then(result => {
+            console.log(result)
+        })
+        .catch(error => console.log(error));
+
+        refresh();
     }
 
 </script>
