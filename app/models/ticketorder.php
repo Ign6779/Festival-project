@@ -6,9 +6,6 @@ class TickerOrder implements \JsonSerializable{
     private int $order_id;
 
     private int $ticket_id;
-
-    private string $qr_code;
-
     private bool $is_scanned;
 
     #[ReturnTypeWillChange]
@@ -40,13 +37,6 @@ class TickerOrder implements \JsonSerializable{
         return $this; 
     }
 
-    public function getQRCode(): string{
-        return $this->qr_code;
-    }
-    public function setQRCode($qr_code): self{
-        $this->qr_code = $qr_code;
-        return $this; 
-    }
 
     public function getIsScanned(): bool{
         return $this->is_scanned;

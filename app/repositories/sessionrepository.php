@@ -135,8 +135,8 @@ class SessionRepository extends Repository {
             $sessionId = $this->connection->lastInsertId(); //if THIS works i am even more of a fucking genius
             $stmt3 = $this->connection->prepare("UPDATE events SET title = :title WHERE id = :id");
             $stmt3->bindValue(':title', $session->getRestaurantName($sessionId));
-            $smtm3->bindValue(':id', $eventId);
-            $smtm3->execute();
+            $stmt3->bindValue(':id', $eventId);
+            $stmt3->execute();
 
         } catch (PDOException $e) {
             echo $e;
