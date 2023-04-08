@@ -76,7 +76,7 @@ function openDetailPage(artistID) {
 <div class="text-center container-fluid" id="schedule">
     <h1 class="Dance-Title"> schedule overview </h1>
     <div class="text-center container" id="transparent-block">
-        <div class="text-center container" id="artist-list-left">FRIDAY ARTISTS
+        <div class="text-center container" id="artist-list-left"><b>FRIDAY ARTISTS</b>
         <?php
             foreach ($danceEvents as $dance) {
                 if (date('Y-m-d', strtotime($dance->getDate())) === '2023-07-27') {
@@ -90,9 +90,8 @@ function openDetailPage(artistID) {
                 }
             }
         ?>
-        <br>DAYPASS PRICE HERE
         </div>
-        <div class="text-center container"id="artist-list-mid">SATURDAY ARTISTS
+        <div class="text-center container"id="artist-list-mid"><b>SATURDAY ARTISTS</b>
         <?php
             foreach ($danceEvents as $dance) {
                 if (date('Y-m-d', strtotime($dance->getDate())) === '2023-07-28') {
@@ -106,9 +105,8 @@ function openDetailPage(artistID) {
                 }
             }
         ?>
-        <br>DAYPASS PRICE HERE
         </div>
-        <div class="text-center container" id="artist-list-right">SUNDAY ARTIST
+        <div class="text-center container" id="artist-list-right"><b>SUNDAY ARTIST</b>
         <?php
             foreach ($danceEvents as $dance) {
                 if (date('Y-m-d', strtotime($dance->getDate())) === '2023-07-27') {
@@ -122,19 +120,14 @@ function openDetailPage(artistID) {
                 }
             }
         ?>
-        <br>DAYPASS PRICE HERE
         </div>
-    </div>
-    <div class="text-center container justify-content-center" id="transparent-block">
-        <a href="/ticket" class="btn-purple">1 Day Pass</a>
-    </div>
-    <div class="text-center container" id="transparent-block">
-        <div class="text-center container" id="artist-list-right"><h3>Three day pass price</h3> <br> Get the ultimate 3-day ticket and get access to all the events listed below!
-All access: €250,00</div>
-    </div>
-    <div class="text-center container justify-content-center" id="transparent-block">
+    <div class="text-center container" id="three-day-section">
+        <div class="text-center container" id="artist-list-right"><h3>Three day pass price</h3> <br> <p>Get the ultimate 3-day ticket and get access to all the events listed below!
+All access: €250,00</p>    <div class="text-center container justify-content-center">
         <a href="/ticket" class="btn-purple" id="three-day-btn">3 Day Pass</a>
+    </div></div>
     </div>
+        </div>
 </div>
 
 <!-- friday tickets -->
