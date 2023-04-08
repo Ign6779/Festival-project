@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Mar 30, 2023 at 10:09 PM
--- Server version: 10.11.2-MariaDB-1:10.11.2+maria~ubu2204
--- PHP Version: 8.1.16
+-- Generation Time: Apr 08, 2023 at 06:07 AM
+-- Server version: 10.9.4-MariaDB-1:10.9.4+maria~ubu2204
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -192,6 +192,35 @@ INSERT INTO `danceArtist` (`id`, `danceId`, `artistId`) VALUES
 (16, 11, 26),
 (17, 12, 25),
 (18, 13, 27);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `editor`
+--
+
+CREATE TABLE `editor` (
+  `id` int(11) NOT NULL,
+  `content` text NOT NULL,
+  `created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `editor`
+--
+
+INSERT INTO `editor` (`id`, `content`, `created`) VALUES
+(1, 'Welcome to the city of endless possibilities: A charming historic district, fascinating museums, unique shops, a wide variety of dining options, and a lovely beach, &lt;br&gt;&lt;b&gt; Haarlem really has it all.&lt;/b&gt;', '2023-04-05 10:01:49'),
+(2, 'Haarlem has been an important Dutch city since 1245, functioning initially as a shipping sea port. The majority of Haarlem&#039;s old gorgeous buildings have stayed intact and are what make the atmosphere in Haarlem truly amazing. Well known for its beer making, Haarlem is home to the wonderful Jopenkerk andwindmill de Adriaan from 1779.', '2023-04-05 10:01:59'),
+(3, 'No matter when, dining in Haarlem is guaranteed to be an incredible experience.            Not only does Haarlem have some of the best restaurants with quality food, the atmosphere of the city is            what makes it all the more special.', '2023-04-05 10:02:05'),
+(4, 'The city of Haarlem comes alive with music in July. The days are longer and warmer, making it the ideal            time to go see both well-known and unknown Dutch musicians play for the delightz of the crowd.', '2023-04-05 10:02:11'),
+(5, 'When it comes to entertainment, Haarlem is perfect. Theatres such as: Het Kennenmer Theatre, and Philharmonie will guarantee you won&#039;t leave Haarlem disappointed. Don&#039;t miss out on the beautiful dramas and the high quality productions!', '2023-04-05 10:02:20'),
+(6, 'If you want to see some amazing historical artefacts and you want to learn their history, then come to\r\n            Haarlem\'s museums!<br>Some great choices include:\r\n            <br>&#x2022;The corrie ten boom house\r\n            <br>&#x2022;Teylers Museum\r\n            <br>&#x2022;Frans hals museum\r\n            <br>&#x2022;Museum van de geest', '2023-04-04 10:37:12'),
+(7, '&lt;h3&gt;The Haarlem Festival is suitable for anyone and everyone&lt;/h3&gt;.&lt;br&gt; No matter your tastes, age or nationality. &lt;br&gt;Check out our local artists at the jazz event, learn about Haarlem history, enjoy a personalized eating experience or dance the night away! We also have a fun experience for the younger ones: an exciting treasure hunt at the acclaimed Teylers museum!', '2023-04-05 10:03:20'),
+(8, '<h1>Yummy!</h1><br>If you want to celebrate a festival, you have to do it on a full stomach! Restaurants all over Haarlem have joined to create a special menu for the occasion. Being such an international city, you are sure to enjoy your evening, whether it be with your family or on a romantic dinner with your partner!', '2023-04-05 06:58:13'),
+(9, '<h1>Historical walk</h1> <br>Visit Haarlem’s most beautiful sights and get to learn more about it’s rich and interesting history. Join an informational tour throughout the city today!', '2023-04-05 06:59:53'),
+(10, '<h1>Haarlem Jazz</h1><br>Annually, the Grote Markt in the heart of the historic capital of Haarlem hosts the concert series known as Haarlem Jazz. Both well-known and unknown Dutch musicians will perform for the audience\'s amazement. We\'re here waiting for you.', '2023-04-05 06:59:53'),
+(11, '&lt;h1&gt;Teylers Museum&lt;/h1&gt;&lt;br&gt;in this event, children play and learn while solving the mystery of the event. Teylers museum contains ancient and fascinating artefacts that will amaze everyone.', '2023-04-05 09:55:09');
 
 -- --------------------------------------------------------
 
@@ -676,6 +705,12 @@ ALTER TABLE `danceArtist`
   ADD KEY `fk_danceArtist_danceId` (`danceId`);
 
 --
+-- Indexes for table `editor`
+--
+ALTER TABLE `editor`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
@@ -784,6 +819,12 @@ ALTER TABLE `dance`
 --
 ALTER TABLE `danceArtist`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `editor`
+--
+ALTER TABLE `editor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `events`

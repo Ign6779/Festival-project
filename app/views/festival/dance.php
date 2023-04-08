@@ -131,7 +131,7 @@ All access: €250,00</div>
                 }
         ?>
         </table>
-        <div class="text-center container justify-content-center">
+        <div class="text-center justify-content-center">
             <a href="/ticket" class="btn-purple">Get a Ticket</a>
         </div>
     </div>
@@ -171,7 +171,7 @@ All access: €250,00</div>
                 }
         ?>
             </table>
-            <div class="text-center container justify-content-center">
+            <div class="text-center justify-content-center">
                 <a href="/ticket" class="btn-purple">Get a Ticket</a>
             </div>
         </div>
@@ -206,7 +206,7 @@ All access: €250,00</div>
                 }
         ?>
         </table>
-        <div class="text-center container justify-content-center">
+        <div class="text-center justify-content-center">
             <a href="/ticket" class="btn-purple">Get a Ticket</a>
         </div>
     </div>

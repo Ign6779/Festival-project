@@ -120,6 +120,8 @@ include __DIR__ . '/../header.php';
     cardTitle.className = "card-title";
     var price = document.createElement("p");
     price.className = "ticket-price";
+    var times = document.createElement("p");
+    times.className = "ticket-times";
     var addTocart = document.createElement("a");
     addTocart.className = "btn btn-danger";
     addTocart.innerHTML = "Add to cart";
@@ -132,8 +134,7 @@ include __DIR__ . '/../header.php';
     // Format the ticketInput price as a currency with Euro symbol
     var formattedPrice = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(ticketInput.price);
     price.innerHTML = formattedPrice;
-    // price.innerHTML = ticketInput.price;
-    divCardBody.append(cardTitle, price, addTocart);
+    divCardBody.append(cardTitle, price, times, addTocart);
     divCard.appendChild(divCardBody);
     tickets.appendChild(divCard);
   }

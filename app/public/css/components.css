@@ -488,6 +488,10 @@ body {
   font-weight: 100;
 }
 
+.time{
+  font-size: 12px;
+}
+
 /* SHARE BUTTONS */
 .share {
   position: relative;
