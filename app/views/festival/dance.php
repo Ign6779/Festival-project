@@ -38,35 +38,45 @@ foreach ($artists as $artist) {
     <img src="/img/dance-carousel-9.jpg" alt="image 10" />
   </div>
 </div>
-    <label for="artist">Artists:</label>
-    <div style="display: flex; flex-direction: row; gap: 10px;">
-        <!-- Replace `artists` with your actual list of artists -->
-        <?php foreach ($danceArtists as $artist) { ?>
-            <button type="button" onclick="goToArtistDetailPage('<?php echo $artist->getId(); ?>')" style="margin-right: 10px;"><?php echo $artist->getName(); ?></button>
-        <?php } ?>
+<h2 class="detail-page-title">Artist Information Pages</h2>
+<div class="tab">
+    <?php foreach ($danceArtists as $artist) { ?>
+        <button class="tablinks" onclick="openDetailPage(<?php echo $artist->getId(); ?>)"><?php echo $artist->getName(); ?></button>
+    <?php } ?>
+</div>
+
+<?php foreach ($danceArtists as $artist) { ?>
+    <div id="<?php echo $artist->getId(); ?>" class="tabcontent" style="display:none;"> <!-- Updated: set display:none initially -->
+        <?php 
+        $idForDetailPage = $artist->getId();
+        include __DIR__ . '/../components/page.php'; ?>
     </div>
-    <script>
-        // JavaScript method to navigate to the artist's detail page
-        function goToArtistDetailPage(artistId) {
-            $idForDetailPage = artistId;
-            <?php include __DIR__ . '/../components/page.php'; ?>
-        }
+<?php } ?>
 
-//  detail page 1
-        <?php if (isset($idForContentPage)) { ?>
-            <?php include __DIR__ . '/../components/page.php'; ?>
-        <?php } else{
-            $idForContentPage = 25;
-            include __DIR__ . '/../components/page.php';
-        } ?>
-        </script>
+<script>
+function openDetailPage(artistID) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
 
-<?
-foreach ($danceArtists as $artist){ 
- $idForDetailPage = $artist->getId();
-//  include __DIR__ . '/../components/page.php';
- }
-?>
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(artistID).style.display = "block";
+  // evt.currentTarget.className += " active"; // commented out as evt is not defined
+}
+</script>
+
+
 
 
 <!-- schedule overview -->
