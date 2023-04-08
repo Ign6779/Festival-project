@@ -10,7 +10,7 @@ class Restaurant implements \JsonSerializable {
     private bool $halal;
     private bool $vegan;
     private int $stars;
-    private array $sessions; //we store them in an array; its the only way i could bring the erd into php
+    private array $sessions = []; //we store them in an array; its the only way i could bring the erd into php
     private float $duration;
     private string $image;
 

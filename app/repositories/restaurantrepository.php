@@ -68,7 +68,9 @@ class RestaurantRepository extends Repository
                 $restaurant = new Restaurant();
                 $restaurant->setId($row['id']);
                 $restaurant->setName($row['name']);
+                $restaurant->setLocation($row['location']);
                 $restaurant->setDescription($row['description']);
+                $restaurant->setContent($row['content']);
                 $restaurant->setDuration($row['duration']);
                 $restaurant->setHalal($row['halal']);
                 $restaurant->setVegan($row['vegan']);
