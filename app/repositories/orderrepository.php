@@ -19,12 +19,12 @@ class OrderRepository extends Repository
             $timeOfPurchase = $order->getTimeOfPurchase();
             $paymentId = $order->getPaymentId();
 
-            $stmt = $this->connection->prepare("INSERT INTO `order`( `user_id`, `amount`, `status`, `payment_method`, `time_of_purchase`, `payment_id`) VALUES (:userId, :amount,:stat, :pm, :timePurchase, :paymentId)");
+            $stmt = $this->connection->prepare("INSERT INTO `order`( `user_id`, `amount`, `status`, `payment_method`, `time_of_purchase`, `payment_id`) VALUES (:userId, :amount,:stat, :pm, NOW(), :paymentId)");
             $stmt->bindParam(':userId', $userId);
             $stmt->bindParam(':amount', $amount);
             $stmt->bindParam(':stat', $status);
             $stmt->bindParam(':pm', $paymentMethod);
-            $stmt->bindParam(':timePurchase', $timeOfPurchase);
+            // $stmt->bindParam(':timePurchase', $timeOfPurchase);
             $stmt->bindParam(':paymentId', $paymentId);
             $stmt->execute();
         } catch (PDOException $e) {
