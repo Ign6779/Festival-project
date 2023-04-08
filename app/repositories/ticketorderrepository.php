@@ -55,4 +55,15 @@ class TicketOrderRepository extends Repository
         }
     }
 
+    function changeScannedStatus($order_id){
+        try {
+            $stmt = $this->connection->prepare("UPDATE `order_ticket` SET `is_scaned`='1' WHERE order_id= :order_id;");
+            $stmt->bindParam(':order_id', $order_id);
+            $stmt->execute();
+
+        } catch (Exception $e) {
+            echo $e;
+        }
+    }
+
 }
