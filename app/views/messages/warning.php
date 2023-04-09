@@ -19,7 +19,7 @@
       <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
         <use xlink:href="#exclamation-triangle-fill" />
       </svg>
-      <? echo $message ?><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <? echo $message ?>
 
     </div>
   </div>

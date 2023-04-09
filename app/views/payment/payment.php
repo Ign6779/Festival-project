@@ -1,49 +1,63 @@
 <?php
 include __DIR__ . '/../header.php';
-?>
-<div class="payment-body">
-    <div class="cal-body">
-        <?php
-        include '/app/views/components/Calendar.php';
-        ?>
-    </div>
+if (!isset($_SESSION["user"]) && !isset($_SESSION["cart"])) {
+    $message = "To procceed to payment please login and fill in your cart.";
+    include __DIR__ . '/../messages/warning.php';
+} elseif (!isset($_SESSION["user"]) && isset($_SESSION["cart"])) {
+    $message = "To procceed to payment please login.";
+    include __DIR__ . '/../messages/warning.php';
+} elseif (isset($_SESSION["user"]) && !isset($_SESSION["cart"])) {
+    $message = "To procceed to payment please fill in your cart.";
+    include __DIR__ . '/../messages/warning.php';
 
+} else {
+    ?>
 
-    <div class="container">
-        <div class="row">
-            <form id="payment-form" method="POST" action="/payment/processPayment">
-                <div class="col-md-8 order-md-7">
-                    <h4 class="mb-3">Payment</h4>
-
-                    <div class="d-block my-3">
-                        <div class="custom-control custom-radio">
-                            <input id="ideal" name="paymentMethod" type="radio" class="custom-control-input"
-                                value="ideal" checked required>
-                            <label class="custom-control-label" for="ideal">iDEAL</label>
-                        </div>
-
-                        <div class="custom-control custom-radio">
-                            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input"
-                                value="creditcard" required>
-                            <label class="custom-control-label" for="credit">Credit card</label>
-                        </div>
-
-                        <div class="custom-control custom-radio">
-                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input"
-                                value="debitcard" required>
-                            <label class="custom-control-label" for="debit">Debit card</label>
-                        </div>
-                    </div>
-
-                    <div id="payment-details"></div>
-
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-                </div>
-            </form>
+    <div class="payment-body">
+        <div class="cal-body">
+            <?php
+            include '/app/views/components/Calendar.php';
+            ?>
         </div>
-    </div>
 
 
+        <div class="container">
+            <div class="row">
+                <form id="payment-form" method="POST" action="/payment/processPayment">
+                    <div class="col-md-8 order-md-7">
+                        <h4 class="mb-3">Payment</h4>
+
+                        <div class="d-block my-3">
+                            <div class="custom-control custom-radio">
+                                <input id="ideal" name="paymentMethod" type="radio" class="custom-control-input"
+                                    value="ideal" checked required>
+                                <label class="custom-control-label" for="ideal">iDEAL</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input"
+                                    value="creditcard" required>
+                                <label class="custom-control-label" for="credit">Credit card</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input"
+                                    value="debitcard" required>
+                                <label class="custom-control-label" for="debit">Debit card</label>
+                            </div>
+                        </div>
+
+                        <div id="payment-details"></div>
+
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    <?
+}
+?>
 
     <script>
         window.onload = addToCalender;

@@ -78,8 +78,8 @@ class PaymentController extends Controller
                     "value" => number_format($amount, 2, '.', ''),
                 ],
                 "description" => "Festival ticket payment for user $userId",
-                "redirectUrl" => "  https://cf53-87-209-230-169.ngrok-free.app/payment/paymentStatus",
-                "webhookUrl" => "  https://cf53-87-209-230-169.ngrok-free.app/payment/handleWebhook",
+                "redirectUrl" => "   https://36f6-87-209-230-169.ngrok-free.app/payment/paymentStatus",
+                "webhookUrl" => "   https://36f6-87-209-230-169.ngrok-free.app/payment/handleWebhook",
                 "metadata" => [
                     "user_id" => $userId,
                 ],
@@ -296,11 +296,11 @@ class PaymentController extends Controller
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'sallah.ag.03@gmail.com';
-        $mail->Password = 'vhtlnmijfjhbcgec';
+        $mail->Username = 'miedema.myrthe@gmail.com';
+        $mail->Password = 'nhnzekhsbijcbllx';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
-        $mail->setFrom('sallah.ag.03@gmail.com', 'Haarlem festival');
+        $mail->setFrom('miedema.myrthe@gmail.com', 'Haarlem festival');
         $mail->addAddress($user->getEmail());
         $mail->isHTML(true);
     }
@@ -317,9 +317,9 @@ class PaymentController extends Controller
             $mail = new PHPMailer(true);
             $this->configureEmail($mail, $user);
             $mail->Subject = "Failed Payment";
-            $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Your payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.<br><br>The link: <a href=" https://cf53-87-209-230-169.ngrok-free.app/payment?token=' . $token . '">Pay Later</a><br><br>Thank you,<br>Haarlem festival';
-            $mail->AltBody = 'Dear ' . $user->getUsername() . ',\n\nYour payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.\n\nThe link:  https://cf53-87-209-230-169.ngrok-free.app/payment?token=' . $token . '\n\nThank you,\nHaarlem festival';
-
+            $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Your payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.<br><br>The link: <a href="https://36f6-87-209-230-169.ngrok-free.app/payment?token=' . $token . '">Pay Later</a><br><br>Thank you,<br>Haarlem festival';
+            $mail->AltBody = 'Dear ' . $user->getUsername() . ',\n\nYour payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.\n\nThe link: https://36f6-87-209-230-169.ngrok-free.app/payment?token=' . $token . '\n\nThank you,\nHaarlem festival';
+            $mail->send();
         } else {
 
             $message = 'The payment timeframe has expired.';
