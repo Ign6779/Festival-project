@@ -5,5 +5,6 @@ class Controller {
         $view = debug_backtrace()[1]['function'];
         require __DIR__ . "/../views/$directory/$view.php";
     }
+
 }
 ?>

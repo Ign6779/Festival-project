@@ -8,8 +8,7 @@ class TicketOrder implements \JsonSerializable
 
     private int $event_id;
 
-    private string $qr_code;
-
+    
     private bool $is_scanned;
 
     #[ReturnTypeWillChange]
@@ -45,16 +44,6 @@ class TicketOrder implements \JsonSerializable
     public function setTicketId($ticket_id): self
     {
         $this->event_id = $ticket_id;
-        return $this;
-    }
-
-    public function getQRCode(): string
-    {
-        return $this->qr_code;
-    }
-    public function setQRCode($qr_code): self
-    {
-        $this->qr_code = $qr_code;
         return $this;
     }
 
