@@ -9,6 +9,7 @@ class Order implements \JsonSerializable
     private string $payment_method;
     private string $time_of_purchase;
     private string $payment_id;
+    private ?string $pay_later_token;
 
 
     #[ReturnTypeWillChange]
@@ -85,6 +86,15 @@ class Order implements \JsonSerializable
     {
         $this->payment_id = $id;
         return $this;
+    }
+    public function getToken(): ?string
+    {
+        return $this->pay_later_token ?? null;
+    }
+    public function setToken(?string $pay_later_token): void
+    {
+        $this->pay_later_token = $pay_later_token;
+
     }
 
 }
