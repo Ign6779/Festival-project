@@ -7,7 +7,7 @@ class ArtistRepository extends Repository
     function getAll()
     {
         try {
-            $stmt = $this->connection->prepare("SELECT artist.id, artist.name AS name, artist.description AS description, artist.song AS song, artist.top_song AS top_song, artistImages.image AS artistImage, artistImages.id AS imageId FROM artist INNER JOIN artistImages ON artist.id = artistImages.artist_id;");
+            $stmt = $this->connection->prepare("SELECT artist.id, artist.name AS name, artist.description AS description, artist.song AS song, artist.top_song AS top_song, artist.Type AS type, artistImages.image AS artistImage, artistImages.id AS imageId FROM artist INNER JOIN artistImages ON artist.id = artistImages.artist_id;");
             $stmt->execute();
             $artists = [];
             while ($row = $stmt->fetch()) {
@@ -24,6 +24,7 @@ class ArtistRepository extends Repository
                         $artist->setTopSong($row['top_song']);
                     }
                     $artist->setDescription($row['description']);
+                    $artist->setType($row['type']);
                     $artists[$artistId] = $artist;
                 }
                 $image = new Image();
@@ -38,24 +39,22 @@ class ArtistRepository extends Repository
         } catch (PDOException $e) {
             echo $e;
         }
-
-
     }
 
-    function insertArtist($name, $description, $song, $topSong)
+    function insertArtist($name, $description, $song, $topSong, $type)
     {
         try {
-            $stmt = $this->connection->prepare("INSERT INTO artist (id, name, description, song, top_song) VALUES (NULL, :name, :des, :song, :top_song)");
+            $stmt = $this->connection->prepare("INSERT INTO artist (id, name, description, song, top_song, Type) VALUES (NULL, :name, :des, :song, :top_song, :type)"); // Add :type parameter
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':des', $description);
             $stmt->bindParam(':song', $song);
             $stmt->bindParam(':top_song', $topSong);
+            $stmt->bindParam(':type', $type);
             $stmt->execute();
         } catch (PDOException $e) {
             echo $e;
         }
     }
-
     function insetImage($artistId, $image)
     {
         try {
@@ -71,7 +70,7 @@ class ArtistRepository extends Repository
     function getOne($id)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT artist.id, artist.name AS name, artist.description AS description, artist.song AS song, artist.top_song AS top_song, artistImages.image AS artistImage, artistImages.id AS imageId FROM `artist` 
+            $stmt = $this->connection->prepare("SELECT artist.id, artist.name AS name, artist.description AS description, artist.song AS song, artist.top_song AS top_song, artistImages.image AS artistImage, artistImages.id AS imageId, artist.Type AS type FROM `artist` 
             inner JOIN artistImages on artistImages.artist_id= artist.id where artist.id = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
@@ -80,6 +79,7 @@ class ArtistRepository extends Repository
                 $artist = new Artist();
                 $artist->setId($row['id']);
                 $artist->setName($row['name']);
+                $artist->setType($row['type']);
                 if ($row['song'] == null && $row['top_song'] == null) {
                     $artist->setSong("");
                     $artist->setTopSong("");
@@ -121,6 +121,7 @@ class ArtistRepository extends Repository
                     $artist->setTopSong($row['top_song']);
                 }
                 $artist->setDescription($row['description']);
+                $artist->setType($row['Type']);
             }
             return $artist;
         } catch (PDOException $e) {
@@ -128,15 +129,16 @@ class ArtistRepository extends Repository
         }
     }
 
-    function update($id, $name, $description, $song, $topSong)
+    function update($id, $name, $description, $song, $topSong, $type)
     {
         try {
-            $stmt = $this->connection->prepare("UPDATE artist SET name=:name, description=:des, song=:song, top_song=:topsong WHERE id = :id");
+            $stmt = $this->connection->prepare("UPDATE artist SET name=:name, description=:des, song=:song, top_song=:topsong, Type=:type WHERE id = :id");
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':des', $description);
             $stmt->bindParam(':song', $song);
             $stmt->bindParam(':topsong', $topSong);
+            $stmt->bindParam(':type', $topSong);
             $stmt->execute();
         } catch (PDOException $e) {
             echo $e;

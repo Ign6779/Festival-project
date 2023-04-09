@@ -120,6 +120,10 @@ include __DIR__ . '/../header.php';
     cardTitle.className = "card-title";
     var price = document.createElement("p");
     price.className = "ticket-price";
+    var times = document.createElement("p");
+    times.className = "ticket-times";
+    var venue = document.createElement("p");
+    venue.className = "ticket-venue";
     var addTocart = document.createElement("a");
     addTocart.className = "btn btn-danger";
     addTocart.innerHTML = "Add to cart";
@@ -129,11 +133,14 @@ include __DIR__ . '/../header.php';
       addToCalender();
     };
     cardTitle.innerHTML = ticketInput.title;
-    // Format the ticketInput price as a currency with Euro symbol
+    // Format the price
     var formattedPrice = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(ticketInput.price);
+    //format the time
+    var startTime = ticketInput.start_time.substring(0, 5);
+    var endTime = ticketInput.end_time.substring(0, 5);
     price.innerHTML = formattedPrice;
-    // price.innerHTML = ticketInput.price;
-    divCardBody.append(cardTitle, price, addTocart);
+    times.innerHTML = startTime + " - " + endTime;
+    divCardBody.append(cardTitle, price, times, addTocart);
     divCard.appendChild(divCardBody);
     tickets.appendChild(divCard);
   }

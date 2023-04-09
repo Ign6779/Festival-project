@@ -33,6 +33,13 @@
                 value="<? echo $artist->getTopSong(); ?>" required>
         </div>
     </div>
+    <div class="form-group row justify-content-center">
+        <div class="col-5">
+            <label for="artisttype">Artist Type</label>
+            <input type="text" class="form-control" id="artisttype" name="artisttype"
+                value="<? echo $artist->getType(); ?>" required>
+        </div>
+    </div>
 
     <div class="form-group row justify-content-center">
         <div class="col-5">

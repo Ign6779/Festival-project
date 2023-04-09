@@ -6,23 +6,27 @@
 .ticketpage{
     display: grid;
     grid-template-columns: 200px 1fr;
+    background-color: #9EADEA;
 }
 .filter_events{
     position:sticky;
     top: 0;
   }
+  #tickets{
+    background-color: #9EADEA;
+  }
+
   .ticket-comp {
     height: 200px;
     position: relative;
     border: 2px solid black;
-    background-color: #fff8f0;
-    /* background: #21DC84; */
+    background: rgb(46,155,123);
+background: linear-gradient(90deg, rgba(46,155,123,0.5019257703081232) 0%, rgba(255,255,255,1) 50%, rgba(46,155,123,0.499124649859944) 100%);
     padding: 1%;
     color: black;
     padding: 1em 2em;
     width: 50%;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     margin-left: 250px;
     box-shadow: 14px 15px 6px #7a7a7a;
   

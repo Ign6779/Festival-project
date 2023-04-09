@@ -146,17 +146,14 @@ function returnSelected($id)
 
 
                 <div id="items-in-cart" class="items-in-cart" style="overflow:hidden; overflow-y: scroll; ">
-                    My cart
-                    <div id="cartamount">
-
+                    <h4 class="cardtitle">My Cart(<div id="cartamount"></div>)</h4>
+                    
+                    <div>
+                        <a href="/payment" id="cartbtn" class="btn btn-primary">Go to Payment</a>
                     </div>
 
                     <div id="items">
 
-                    </div>
-
-                    <div>
-                        <a href="/payment" class="btn btn-primary">Payment</a>
                     </div>
 
 
@@ -190,11 +187,17 @@ function returnSelected($id)
         function loadItems(ticketInput) {
             var items = document.getElementById("items");
             divTicket = document.createElement("div");
+            divTicket.className = "cart-tick";
             ticketp = document.createElement("p");
-            ticketp.innerHTML = ticketInput.title + "<br>" + ticketInput.date;
+            ticketp.className = "cart-ticket-text";
+            ticketp.innerHTML = "<b>" + ticketInput.title + "</b>";
+            ticketpt = document.createElement("p");
+            ticketpt.className = "cart-ticket-date";
+            ticketpt.innerHTML = ticketInput.date;
             aIncrease = document.createElement("a");
             aDecrease = document.createElement("a");
             input = document.createElement("input");
+            input.className = "number-of-tickets-in-cart";
             input.id = "amountOfItem" + ticketInput.id;
             aIncrease.innerHTML = "+";
             aDecrease.innerHTML = "-";
@@ -208,7 +211,7 @@ function returnSelected($id)
             aDecrease.onclick = function () {
                 decreaseItem(ticketInput.id);
             };
-            divTicket.append(ticketp, aDecrease, input, aIncrease);
+            divTicket.append(ticketp, ticketpt, aDecrease, input, aIncrease);
             items.appendChild(divTicket);
         }
 

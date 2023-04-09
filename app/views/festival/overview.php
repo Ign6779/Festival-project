@@ -116,17 +116,12 @@ try{
 <!-- VENUES -->
 <section class="venue-section">
     <div class="card">
-        <div class="venue-map-container">
-            <!-- MAP HERE -->
-            <img src="" alt="" class="map">
+    <div id="map">
         </div>
         <div class="venue-addresses">
             <!-- ADDRESSES HERE -->
             <ul class="venue-list">
-                <li><img src="/img/dance-symbol.png" alt="dance icon"><br>Lichtfabriek (Minckelersweg 2, 2031 EM Haarlem)
-                    (09:00 - 17:00) <br> Jopenkerk (Gedempte Voldersgracht 2, 2011 WD Haarlem)
-                    (10:00 - 01:00) <br> XO the Club (Grote Markt 8, 2011 RD Haarlem)
-                    (09:00 - 04:00)</li>
+                <li><img src="/img/dance-symbol.png" alt="dance icon"><br>Lichtfabriek (Minckelersweg 2, 2031 EM Haarlem)(09:00 - 17:00) <br> Jopenkerk (Gedempte Voldersgracht 2, 2011 WD Haarlem)(10:00 - 01:00) <br> XO the Club (Grote Markt 8, 2011 RD Haarlem)(09:00 - 04:00)</li>
                 <li><img src="/img/museum-symbol.png" alt="museum icon"><br>Teylers Museum(Spaarne 16, 2011 CH Haarlem) (10:00 - 17:00)<br>Patronaat (Zijlsingel 2 2013 DN Haarlem) (18:00 - 22:00)</li>
                 <li><img src="/img/jazz-symbol.png" alt="jazz icon"><br>Grote Markt, Haarlem (15:00 - 21:00)</li>
                 <li><img src="/img/history-symbol.png" alt="history icon"><br>De Adriaan (Papentorenvest 1a, 2011AV Haarlem) (13:00-17:00)<br>Proveniershof (Grote Houtstraat 142D, 2011 SV Haarlem) (00:00-00:00)</li>
@@ -136,6 +131,7 @@ try{
     </div>
 </section>
 
+
 <!-- pointer to the top of the page -->
 <div class="pointer-to-top">
 <a class="arrow-up" href="#top">&#8593</a>
@@ -144,3 +140,41 @@ try{
 <?php
 include __DIR__ . '/../footer.php';
 ?>
+
+<script>
+    function initMap() {
+        var location = { lat: 52.387, lng: 4.646 };
+        var location1 = { lat: 52.38646249857356, lng: 4.651785284733283 };
+        var location2 = { lat: 52.38139130065097, lng: 4.629720769386906 };
+        var location3 = { lat: 52.38133850935916, lng: 4.635226413569577 };
+        var location4 = { lat: 52.38043621751223, lng: 4.640355527059932 };
+        var location5 = { lat: 52.383057466443, lng: 4.6285929828773735 };
+        var location6 = { lat: 52.381442811230166, lng: 4.636273882877305 };
+        var location7 = { lat: 52.38395560046487, lng: 4.642705241757498 }; 
+        var location8 = { lat: 52.377500368688786, lng: 4.630899900079037 };
+        var location9 = { lat: 52.378773920717, lng: 4.637502198223354 };
+        var location10 = { lat: 52.372354383879255, lng: 4.634186469386519 };
+
+
+        var map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 12,
+    center: location
+});
+
+var locations = [location1, location2, location3, location4, location5, location6, location7, location8, location9, location10];
+var markers = [];
+
+for (var i = 0; i < locations.length; i++) {
+    var marker = new google.maps.Marker({
+        position: locations[i],
+        map: map
+    });
+    markers.push(marker);
+}
+
+}
+</script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC87xRP5re_yw-jqZE9wjTViX80gXYntHw&callback=initMap">
+    </script>
