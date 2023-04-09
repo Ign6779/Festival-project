@@ -55,10 +55,10 @@ class TicketOrderRepository extends Repository
         }
     }
 
-    function changeScannedStatus($order_id){
+    function changeScannedStatus($id){
         try {
-            $stmt = $this->connection->prepare("UPDATE `order_ticket` SET `is_scaned`='1' WHERE order_id= :order_id;");
-            $stmt->bindParam(':order_id', $order_id);
+            $stmt = $this->connection->prepare("UPDATE `order_ticket` SET `is_scaned`='1' WHERE order_id= :id;");
+            $stmt->bindParam(':id', $id);
             $stmt->execute();
 
         } catch (Exception $e) {
@@ -66,4 +66,17 @@ class TicketOrderRepository extends Repository
         }
     }
 
+    function getScannerInformation($id){
+        try{
+            $stmt = $this->connection->prepare("SELECT o.id, e.title, u.username, e.start_time, e.date, ot.is_scaned FROM order_ticket as ot
+            LEFT JOIN 	`order` AS o ON ot.order_id = o.id
+            LEFT JOIN events AS e on e.id = ot.id
+            LEFT JOIN users AS u on o.user_id = u.id
+            WHERE ot.id = :id");
+            $stmt->bindParam(':id',$id);
+            $stmt->execute();
+        } catch (Exception $e) {
+            echo $e;
+        }
+    }
 }
