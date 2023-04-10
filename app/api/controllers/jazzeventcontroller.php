@@ -18,8 +18,7 @@ class JazzEventController {
     public function deleteJazzEvent() {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $id = htmlspecialchars($_GET['jazzEventId']);
-            $this->jazzService->deleteJazzEvent($id);
-            echo 'finished';
+            $this->jazzService->deleteJazz($id);
         }
     }
 }

@@ -40,7 +40,7 @@ class JazzService {
     }
 
     public function deleteJazz(int $id) {
-        $this->repository->deleteJazz($jazz);
+        $this->repository->deleteJazz($id);
     }
 
     public function getBasicInfo() {

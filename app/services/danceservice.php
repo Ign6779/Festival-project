@@ -12,17 +12,25 @@ class DanceService {
         $danceEvents = $this->repository->getAll();
         return $danceEvents;
     }
+    
+    public function getBasicInfo() {
+        return $this->repository->getBasicInfo();
+    }
+
+    public function getById(int $id) {
+        return $this->repository->getById($id);
+    }
 
     public function getArtists() {
         $artists = $this->repository->getArtists();
         return $artists;
     }
 
-    public function createDance(Dance $dance) {
+    public function createDance(DanceEvent $dance) {
         $this->repository->createDance($dance);
     }
 
-    public function updateDance(Dance $dance) {
+    public function updateDance(DanceEvent $dance) {
         $this->repository->updateDance($dance);
     }
 

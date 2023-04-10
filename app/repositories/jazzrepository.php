@@ -104,7 +104,7 @@ class JazzRepository extends Repository
                 $jazz->setPrice($row['price']);
                 $jazz->setEventId($row['event_id']);
                 $jazz->setVenueId($row['venueId']);
-                            }
+            }
             return $jazz;
         } catch (PDOException $e) {
             echo $e;
