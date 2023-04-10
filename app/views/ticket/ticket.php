@@ -25,7 +25,7 @@ include __DIR__ . '/../header.php';
       </div>
       <div>
         <input type="radio" id="" name="event_type" value="all-access">
-        <label for="filter_jazz">All-Access passes</label>
+        <label for="filter_all-acess">Daypasses</label>
       </div>
 
     </fieldset>
