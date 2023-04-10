@@ -85,12 +85,6 @@ try{
     <h2 id="homepage-check-festival-text">Check out the festival here!</h2>
     <a class="btn-purple" href="festival" id="homepage-check-festival-button">See festival events</a>
 </section>
-
-<!-- Mobile section -->
-<section class="homepage-mobile">
-    <h2>Visit us on mobile.</h2>
-    <h3> Scan the QR code with your phone.</h3>
-</section>
 <!-- instagram feed -->
 <div class="homepage-instagram">
     <h2 class="ig-title">Keep up with our instragram below!</h2>
