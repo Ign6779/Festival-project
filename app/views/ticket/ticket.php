@@ -23,6 +23,10 @@ include __DIR__ . '/../header.php';
         <input type="radio" id="" name="event_type" value="jazz">
         <label for="filter_jazz">Jazz</label>
       </div>
+      <div>
+        <input type="radio" id="" name="event_type" value="all-access">
+        <label for="filter_jazz">All-Access passes</label>
+      </div>
 
     </fieldset>
 
