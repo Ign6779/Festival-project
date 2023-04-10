@@ -67,7 +67,7 @@
         rDelete.innerHTML = "Delete";
         rEdit.href = "/session/editSessionForm?sessionId=" + sessionInput.id;
         rDelete.onclick = function () {
-            deleteSession(sessionInput.id);
+            deleteSession(sessionInput.eventId);
         };
         tdButtons.append(rEdit, rDelete);
         tr.append(tdId, tdDate, tdStartTime, tdEndTime, tdSeats, tdPrice, tdRestaurant, tdButtons);
