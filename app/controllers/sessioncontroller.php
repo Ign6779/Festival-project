@@ -53,8 +53,7 @@ class SessionController extends Controller {
             $session->setEndTime(htmlspecialchars($_POST['endtime']));
             $session->setSeats(htmlspecialchars($_POST['seats']));
             $session->setPrice(htmlspecialchars($_POST['price']));
-            $session->setRestaurantId(htmlspecialchars($_POST['restaurantId']));
-            $session->setEventid(htmlspecialchars($_POST['eventId']));
+            $session->setEventid(htmlspecialchars((int)$_POST['eventId']));
             $this->sessionService->updateSession($session);
         } else {
             echo "something has gone wrong";

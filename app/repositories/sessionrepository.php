@@ -35,10 +35,10 @@ class SessionRepository extends Repository {
 
     public function getById(int $id) {
         try {
-            $stmt = $this->connection->prepare("SELECT e.date, e.start_time AS startTime, e.end_time AS endTime, e.seats, e.price s.*
-            FROM sessions s
+            $stmt = $this->connection->prepare("SELECT e.date, e.start_time AS startTime, e.end_time AS endTime, e.seats, e.price, s.* 
+            FROM sessions s 
             LEFT JOIN events e ON e.id = s.event_id
-            WHERE id = :id");
+            WHERE s.id = :id");
 
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
@@ -101,7 +101,14 @@ class SessionRepository extends Repository {
             WHERE s.id = :id");
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
-            return $stmt->fetch();
+            
+            $restaurantName;
+
+            while ($row = $stmt->fetch()) {
+                $restaurantName = $row['name'];
+            }
+
+            return $restaurantName;
         } catch (PDOExecption $e) {
             echo $e;
         }
@@ -155,14 +162,7 @@ class SessionRepository extends Repository {
             $stmt->bindValue(':startTime', $session->getStartTime(), PDO::PARAM_STR);
             $stmt->bindValue(':endTime', $session->getEndTime(), PDO::PARAM_STR);
             $stmt->bindValue(':seats', $session->getSeats(), PDO::PARAM_INT);
-            $stmt->bindValue(':price', $session->getSeats(), PDO::PARAM_STR);
-            $stmt->execute();
-
-            // Update session record
-            $stmt = $this->connection->prepare("UPDATE sessions 
-            SET restaurantId = :restaurantId WHERE id = :id");
-            $stmt->bindValue(':id', $session->getId(), PDO::PARAM_INT);
-            $stmt->bindValue(':restaurantId', $session->getRestaurantId());
+            $stmt->bindValue(':price', $session->getPrice(), PDO::PARAM_STR);
             $stmt->execute();
         } catch (PDOException $e) {
             echo $e;
