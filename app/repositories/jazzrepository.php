@@ -52,6 +52,65 @@ class JazzRepository extends Repository
         }
     }
 
+    public function getBasicInfo() {
+        try {
+            $stmt = $this->connection->prepare("SELECT e.title, e.date, e.start_time as startTime, e.end_time as endTime, j.*, e.seats, e.price 
+            FROM jazz j
+            LEFT JOIN events e ON e.id = j.event_id");
+
+            $stmt->execute();
+
+            $jazzevents = [];
+            while ($row = $stmt->fetch()) {
+                $jazz = new JazzEvent();
+                $jazz->setId($row['id']);
+                $jazz->setTitle($row['title']);
+                $jazz->setDate($row['date']);
+                $jazz->setStartTime($row['startTime']);
+                $jazz->setEndTime($row['endTime']);
+                $jazz->setSeats($row['seats']);
+                $jazz->setPrice($row['price']);
+                $jazz->setEventId($row['event_id']);
+                $jazz->setVenueId($row['venueId']);
+                
+                $jazzevents[] = $jazz;
+            }
+            return $jazzevents;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function getById(int $id) {
+        try {
+            $stmt = $this->connection->prepare("SELECT e.title, e.date, e.start_time as startTime, e.end_time as endTime, j.*, e.seats, e.price 
+            FROM jazz j
+            LEFT JOIN events e ON e.id = j.event_id 
+            WHERE j.id = :id");
+
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            $jazz = new JazzEvent();
+
+            while ($row = $stmt->fetch()) {
+                $jazz->setId($row['id']);
+                $jazz->setTitle($row['title']);
+                $jazz->setDate($row['date']);
+                $jazz->setStartTime($row['startTime']);
+                $jazz->setEndTime($row['endTime']);
+                $jazz->setSeats($row['seats']);
+                $jazz->setPrice($row['price']);
+                $jazz->setEventId($row['event_id']);
+                $jazz->setVenueId($row['venueId']);
+            }
+            return $jazz;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
     public function getDatesOfEvents()
     {
         try {
@@ -171,26 +230,26 @@ class JazzRepository extends Repository
 
     }
 
-    public function createJazz(Jazz $jazz) {
+    public function createJazz(JazzEvent $jazz) {
         try {
             $stmt1 = $this->connection->prepare("INSERT INTO events (title, date, start_time, end_time, event_type, seats, price)
-            VALUES (:date, :start_time, :end_time, :event_type, :seats)");
+            VALUES (:title, :date, :start_time, :end_time, :event_type, :seats, :price)");
 
-            $stmt1->bindValue(':title', $jazz->artists[0]->getName(), PDO::PARAM_INT);
+            $stmt1->bindValue(':title', $jazz->getTitle(), PDO::PARAM_STR);
             $stmt1->bindValue(':date', $jazz->getDate(), PDO::PARAM_STR);
             $stmt1->bindValue(':start_time', $jazz->getStartTime(), PDO::PARAM_STR);
             $stmt1->bindValue(':end_time', $jazz->getEndTime(), PDO::PARAM_STR);
             $stmt1->bindValue(':event_type', 'jazz');
-            $stmt1->bindValue(':seats', $jazz->getAvailableTickets(), PDO::PARAM_INT);
+            $stmt1->bindValue(':seats', $jazz->getSeats(), PDO::PARAM_INT);
             $stmt1->bindValue(':price', $jazz->getPrice(), PDO::PARAM_STR);
 
             $stmt1->execute();
 
             $eventId = $this->connection->lastInsertId();//if this works i am a fucking genius
-            $stmt2 = $this->connection->prepare("INSERT INTO jazz (venueId, session, price, event_id) 
+            $stmt2 = $this->connection->prepare("INSERT INTO jazz (venueId, event_id) 
             VALUES (:venueId, :event_id)");
             
-            $stmt2->bindValue(':venueId', $jazz->getVenue(), PDO::PARAM_STR);
+            $stmt2->bindValue(':venueId', $jazz->getVenueId(), PDO::PARAM_STR);
             $stmt2->bindValue(':event_id', $eventId);
 
             $stmt2->execute();
@@ -199,18 +258,18 @@ class JazzRepository extends Repository
         }
     }
 
-    public function updateJazz(Jazz $jazz) {
+    public function updateJazz(JazzEvent $jazz) {
         try {
         $stmt = $this->connection->prepare("UPDATE events 
             SET title = :title, date = :date, start_time = :startTime, end_time = :endTime, seats = :seats, price = :price 
             WHERE id = :eventId");
 
-            $stmt->bindValue(':title', $jazz->artists[0]->getName(), PDO::PARAM_INT);
+            $stmt->bindValue(':title', $jazz->getTitle(), PDO::PARAM_STR);
             $stmt->bindValue(':eventId', $jazz->getEventId(), PDO::PARAM_INT);
             $stmt->bindValue(':date', $jazz->getDate(), PDO::PARAM_STR);
             $stmt->bindValue(':startTime', $jazz->getStartTime(), PDO::PARAM_STR);
             $stmt->bindValue(':endTime', $jazz->getEndTime(), PDO::PARAM_STR);
-            $stmt->bindValue(':seats', $jazz->getAvailableTickets(), PDO::PARAM_INT);
+            $stmt->bindValue(':seats', $jazz->getSeats(), PDO::PARAM_INT);
             $stmt->bindValue(':price', $jazz->getPrice(), PDO::PARAM_STR);
             
             $stmt->execute();
@@ -219,10 +278,10 @@ class JazzRepository extends Repository
             SET venueId = :venueId  
             WHERE id = :id");
 
-            $stmt->bindValue(':venueId', $jazz->getVenue(), PDO::PARAM_STR);
+            $stmt->bindValue(':venueId', $jazz->getVenueId(), PDO::PARAM_STR);
             $stmt->bindVAlue(':id', $jazz->getId(), PDO::PARAM_INT);
 
-            $stmt->exectute();
+            $stmt->execute();
     } catch (PDOException $e) {
         echo $e;
     }}

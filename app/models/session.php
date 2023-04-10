@@ -13,8 +13,9 @@ class Session extends Event implements \JsonSerializable {
 
     #[ReturnTypeWillChange]
     public function jsonSerialize() {
+        $parentVars = parent::jsonSerialize();
         $vars = get_object_vars($this);
-        return $vars;
+        return array_merge($parentVars, $vars);
     }
 
     public function getId():int {

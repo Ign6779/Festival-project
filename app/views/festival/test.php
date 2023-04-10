@@ -22,7 +22,7 @@ this is the test page.
 <button id="edit" class="btn btn-primary" onclick="edit()" type="button">Edit</button>
 <button id="save" class="btn btn-primary" onclick="save()" type="button">Save</button>
 <div class="click2edit">click2edit</div>
-
+  
 <script>
     var edit = function() {
   $('.click2edit').summernote({focus: true});
@@ -35,5 +35,3 @@ var save = function() {
 </script>
 </body>
 </html>
-
-    

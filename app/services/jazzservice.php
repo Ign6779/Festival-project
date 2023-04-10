@@ -18,6 +18,10 @@ class JazzService {
         return $dates;
     }
 
+    public function getById(int $id) {
+        return $this->repository->getById($id);
+    }
+
     public function getByDate($date) {
         return $this->repository->getByDate($date);
     }
@@ -27,15 +31,19 @@ class JazzService {
         return $artists;
     }
 
-    public function createJazz(Jazz $jazz) {
+    public function createJazz(JazzEvent $jazz) {
         $this->repository->createJazz($jazz);
     }
 
-    public function updateJazz(Jazz $jazz) {
+    public function updateJazz(JazzEvent $jazz) {
         $this->repository->updateJazz($jazz);
     }
 
     public function deleteJazz(int $id) {
-        $this->repository->deleteJazz($jazz);
+        $this->repository->deleteJazz($id);
+    }
+
+    public function getBasicInfo() {
+        return $this->repository->getBasicInfo();
     }
 }

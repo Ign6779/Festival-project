@@ -5,25 +5,29 @@ require __DIR__ . '/event.php';
 
 class DanceEvent extends Event implements \JsonSerializable {
     private int $id;
-    private Venue $venue;
+    private ?Venue $venue = null;
+    private int $venueId;
     //private string $date;
     //private string $startTime;
     //private string $endTime;
     private string $session;
     //private int $availableTickets;
     //private float $price;
-    private array $artists;
+    private array $artists = [];
     private int $eventId;
 
     #[ReturnTypeWillChange]
 
     public function jsonSerialize() {
+        $parentVars = parent::jsonSerialize();
         $vars = get_object_vars($this);
-        $vars['venue'] = $this->venue->jsonSerialize();
+        if ($this->venue !== null) {
+            $vars['venue'] = $this->venue->jsonSerialize();
+        }        
         $vars['artists'] = array_map(function ($artist) {
             return $artist->jsonSerialize();
         }, $this->artists);
-        return $vars;
+        return array_merge($parentVars, $vars);
     }
 
     public function getId(): int {
@@ -39,6 +43,14 @@ class DanceEvent extends Event implements \JsonSerializable {
     }
     public function setVenue(Venue $venue): self {
         $this->venue = $venue;
+        return $this;
+    }
+
+    public function getVenueId():int {
+        return $this->venueId;
+    }
+    public function setVenueId(int $id):self {
+        $this->venueId = $id;
         return $this;
     }
 

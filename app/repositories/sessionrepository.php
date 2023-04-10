@@ -5,7 +5,7 @@ require __DIR__ . '/../models/session.php';
 class SessionRepository extends Repository {
     public function getAll() {
         try {
-            $stmt = $this->connection->prepare("SELECT e.date, e.start_time AS startTime, e.end_time AS endTime, e.seats, e.price s.*
+            $stmt = $this->connection->prepare("SELECT e.date, e.start_time AS startTime, e.end_time AS endTime, e.seats, e.price, s.*
             FROM sessions s
             LEFT JOIN events e ON e.id = s.event_id");
             $stmt->execute();
@@ -35,10 +35,10 @@ class SessionRepository extends Repository {
 
     public function getById(int $id) {
         try {
-            $stmt = $this->connection->prepare("SELECT e.date, e.start_time AS startTime, e.end_time AS endTime, e.seats, e.price s.*
-            FROM sessions s
+            $stmt = $this->connection->prepare("SELECT e.date, e.start_time AS startTime, e.end_time AS endTime, e.seats, e.price, s.* 
+            FROM sessions s 
             LEFT JOIN events e ON e.id = s.event_id
-            WHERE id = :id");
+            WHERE s.id = :id");
 
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
@@ -93,15 +93,23 @@ class SessionRepository extends Repository {
         }
     }
 
-    public function getRestaurantName(int $id):string {
+    public function getRestaurantName(int $id) {
         try {
             $stmt = $this->connection->prepare("SELECT r.name
             FROM sessions s
             LEFT JOIN restaurants r ON r.id = s.restaurantId 
             WHERE s.id = :id");
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-            return $stmt->execute();
-        } catch (PDOException $e) {
+            $stmt->execute();
+            
+            $restaurantName;
+
+            while ($row = $stmt->fetch()) {
+                $restaurantName = $row['name'];
+            }
+
+            return $restaurantName;
+        } catch (PDOExecption $e) {
             echo $e;
         }
     }
@@ -111,8 +119,8 @@ class SessionRepository extends Repository {
             //setting in on two statements since it fills two tables. can be done in one, but for better understanding
 
             //filling in the events table part
-            $stmt1 = $this->connection->prepare("INSERT INTO events (title, date, start_time, end_time, event_type, seats, price)
-            VALUES (:title, :date, :start_time, :end_time, :event_type, :seats, :price)");
+            $stmt1 = $this->connection->prepare("INSERT INTO events (date, start_time, end_time, event_type, seats, price)
+            VALUES (:date, :start_time, :end_time, :event_type, :seats, :price)");
             $stmt1->bindValue(':date', $session->getDate(), PDO::PARAM_STR);
             $stmt1->bindValue(':start_time', $session->getStartTime(), PDO::PARAM_STR);
             $stmt1->bindValue(':end_time', $session->getEndTime(), PDO::PARAM_STR);
@@ -124,7 +132,7 @@ class SessionRepository extends Repository {
 
             //filling in the sessions table part
             $eventId = $this->connection->lastInsertId();//if this works i am a fucking genius
-            $stmt2 = $this->connection->prepare("INSERT INTO sessions (restaurantId, price, event_id) 
+            $stmt2 = $this->connection->prepare("INSERT INTO sessions (restaurantId, event_id) 
             VALUES (:restaurantId, :event_id)");
             
             $stmt2->bindValue(':restaurantId', $session->getRestaurantId(), PDO::PARAM_STR);
@@ -134,9 +142,9 @@ class SessionRepository extends Repository {
 
             $sessionId = $this->connection->lastInsertId(); //if THIS works i am even more of a fucking genius
             $stmt3 = $this->connection->prepare("UPDATE events SET title = :title WHERE id = :id");
-            $stmt3->bindValue(':title', $session->getRestaurantName($sessionId));
-            $smtm3->bindValue(':id', $eventId);
-            $smtm3->execute();
+            $stmt3->bindValue(':title', $this->getRestaurantName($sessionId));
+            $stmt3->bindValue(':id', $eventId);
+            $stmt3->execute();
 
         } catch (PDOException $e) {
             echo $e;
@@ -154,14 +162,7 @@ class SessionRepository extends Repository {
             $stmt->bindValue(':startTime', $session->getStartTime(), PDO::PARAM_STR);
             $stmt->bindValue(':endTime', $session->getEndTime(), PDO::PARAM_STR);
             $stmt->bindValue(':seats', $session->getSeats(), PDO::PARAM_INT);
-            $stmt->bindValue(':price', $session->getSeats(), PDO::PARAM_STR);
-            $stmt->execute();
-
-            // Update session record
-            $stmt = $this->connection->prepare("UPDATE sessions 
-            SET restaurantId = :restaurantId WHERE id = :id");
-            $stmt->bindValue(':id', $session->getId(), PDO::PARAM_INT);
-            $stmt->bindValue(':restaurantId', $session->getRestaurantId());
+            $stmt->bindValue(':price', $session->getPrice(), PDO::PARAM_STR);
             $stmt->execute();
         } catch (PDOException $e) {
             echo $e;

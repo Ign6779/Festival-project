@@ -4,26 +4,31 @@ require __DIR__ . '/artist.php';
 require __DIR__ . '/event.php';
 
 class JazzEvent extends Event implements \JsonSerializable {
+    private string $title;
     private int $id;
-    private Venue $venue;
+    private ?Venue $venue = null;
+    private int $venueId;
     // private string $date;
     // private string $startTime;
     // private string $endTime;
     // private int $availableTickets;
     // private float $price;
-    private array $artists;
+    private array $artists = [];
     private string $imgSource;
     private int $eventId;
 
     #[ReturnTypeWillChange]
 
     public function jsonSerialize() {
+        $parentVars = parent::jsonSerialize();
         $vars = get_object_vars($this);
-        $vars['venue'] = $this->venue->jsonSerialize();
+        if ($this->venue !== null) {
+            $vars['venue'] = $this->venue->jsonSerialize();
+        }
         $vars['artists'] = array_map(function ($artist) {
             return $artist->jsonSerialize();
         }, $this->artists);
-        return $vars;
+        return array_merge($parentVars, $vars);
     }
 
     public function getId(): int {
@@ -34,11 +39,27 @@ class JazzEvent extends Event implements \JsonSerializable {
         return $this;
     }
 
+    public function getTitle():string {
+        return $this->title;
+    }
+    public function setTitle(string $title):self {
+        $this->title = $title;
+        return $this;
+    }
+
     public function getVenue(): Venue {
         return $this->venue;
     }
     public function setVenue(Venue $venue): self {
         $this->venue = $venue;
+        return $this;
+    }
+
+    public function getVenueId():int {
+        return $this->venueId;
+    }
+    public function setVenueId(int $id):self {
+        $this->venueId = $id;
         return $this;
     }
 
@@ -101,7 +122,7 @@ class JazzEvent extends Event implements \JsonSerializable {
         return $this;
     }
 
-    public function getEventId():id {
+    public function getEventId():int {
         return $this->eventId;
     }
     public function setEventId(int $eventId):self {
