@@ -83,7 +83,7 @@ class LoginController extends Controller
     public function logout()
     {
         $_SESSION["user"] = null;
-        require_once __DIR__ . '/../views/home/homePage.php';
+        header('location:/');
     }
 }
 ?>
