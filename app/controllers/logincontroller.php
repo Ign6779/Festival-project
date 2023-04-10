@@ -43,7 +43,7 @@ class LoginController extends Controller
 
                     case $user->getRole() == "customer":
                         $_SESSION["user"] = $user->getId();
-                        require __DIR__ . '/../views/home/homepage.php';
+                        header('location:/');
                         break;
 
                     case $user->getRole() == "employee":
