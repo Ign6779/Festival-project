@@ -15,9 +15,9 @@ class ArtistService
         return $this->repository->getAll();
     }
 
-    public function insertArtist($name, $description, $song, $topSong)
+    public function insertArtist($name, $description, $song, $topSong, $type)
     {
-        $this->repository->insertArtist($name, $description, $song, $topSong);
+        $this->repository->insertArtist($name, $description, $song, $topSong, $type);
     }
 
     public function insetImage($artistId, $image)
@@ -35,9 +35,9 @@ class ArtistService
         return $this->repository->getByname($name);
     }
 
-    public function update($id, $name, $description, $song, $topSong)
+    public function update($id, $name, $description, $song, $topSong, $type)
     {
-        $this->repository->update($id, $name, $description, $song, $topSong);
+        $this->repository->update($id, $name, $description, $song, $topSong, $type);
     }
 
     public function delete($id)

@@ -3,11 +3,11 @@ require __DIR__ . '/controller.php';
 
 class AdminController extends Controller
 {
-    public function __construct()
+
+    function __construct()
     {
 
     }
-
 
     public function index()
     {

@@ -23,6 +23,10 @@ include __DIR__ . '/../header.php';
         <input type="radio" id="" name="event_type" value="jazz">
         <label for="filter_jazz">Jazz</label>
       </div>
+      <div>
+        <input type="radio" id="" name="event_type" value="all-access">
+        <label for="filter_all-acess">Daypasses</label>
+      </div>
 
     </fieldset>
 
@@ -109,27 +113,38 @@ include __DIR__ . '/../header.php';
       })
       .catch(error => console.log(error));
   }
+  
 
   function loadTicket(ticketInput) {
     var divCard = document.createElement("div");
-    divCard.className = "card w-50";
+    divCard.className = "ticket-comp";
     var divCardBody = document.createElement("div");
     divCardBody.className = "ticket-card-body";
-    var cardTitle = document.createElement("h1");
+    var cardTitle = document.createElement("h2");
     cardTitle.className = "card-title";
     var price = document.createElement("p");
-    price.className = "card-text";
+    price.className = "ticket-price";
+    var times = document.createElement("p");
+    times.className = "ticket-times";
+    var venue = document.createElement("p");
+    venue.className = "ticket-venue";
     var addTocart = document.createElement("a");
-    addTocart.className = "btn btn-primary";
+    addTocart.className = "btn btn-danger";
     addTocart.innerHTML = "Add to cart";
     addTocart.onclick = function () {
       addToCart(ticketInput.id);
-      // addToCalender(ticketInput);
+      
       addToCalender();
     };
     cardTitle.innerHTML = ticketInput.title;
-    price.innerHTML = ticketInput.price;
-    divCardBody.append(cardTitle, price, addTocart);
+    // Format the price
+    var formattedPrice = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(ticketInput.price);
+    //format the time
+    var startTime = ticketInput.start_time.substring(0, 5);
+    var endTime = ticketInput.end_time.substring(0, 5);
+    price.innerHTML = formattedPrice;
+    times.innerHTML = startTime + " - " + endTime;
+    divCardBody.append(cardTitle, price, times, addTocart);
     divCard.appendChild(divCardBody);
     tickets.appendChild(divCard);
   }

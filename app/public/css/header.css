@@ -126,11 +126,14 @@ label {
     border-radius: 0px;
     background: white;
     width: 300px;
+    display: flex;
     display: none;
     top: 20%;
     margin-right: 17%;
     position: absolute;
     z-index: 200;
+    padding: 10px;
+    border: 2px solid black;
 }
 
 .cart {
@@ -139,4 +142,39 @@ label {
     border-radius: 0px;
     background: #111D4A;
     display: block;
+}
+
+#account-icon {
+    height: 56px;
+    position: relative;
+}
+
+#account-icon:hover {
+    opacity: 0.8;
+  }
+
+#btn-back {
+    margin: 20px;
+}
+.cart-ticket-text{
+    font-size: 14px;
+}
+.cart-ticket-date{
+    font-size: 10px;
+    float: right;
+}
+.number-of-tickets-in-cart{
+    width: 30px;
+}
+.cart-tick{
+    background-color: rgba(136, 136, 136, 0.2);
+    margin-bottom: 5px;
+}
+#cartbtn{
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+.cardtitle{
+    display: flex;
 }

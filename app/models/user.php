@@ -5,16 +5,16 @@ class User implements \JsonSerializable
 {
 
     private int $id;
-    // private Role $role;
-
     private string $role;
     private string $username;
     private string $password;
-    private int $phoneNumber;
-    private string $address;
-    private string $phone;
+    private ?string $address;
+    private ?int $phone;
     private string $email;
     private string $registration;
+    private ?string $reset_token;
+    private ?DateTime $reset_token_expiration;
+    private ?string $image;
 
     #[ReturnTypeWillChange]
 
@@ -55,7 +55,7 @@ class User implements \JsonSerializable
         return $this;
     }
 
-    public function getEmail():  string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -76,33 +76,55 @@ class User implements \JsonSerializable
         return $this;
     }
 
-    public function getPhone(): int
+    public function getPhone(): ?int
     {
-        return $this->phoneNumber;
+        return $this->phone ?? null;
     }
-    public function setPhone(int $phoneNumber): self
+    public function setPhone(?int $phoneNumber): void
     {
-        $this->phoneNumber = $phoneNumber;
-        return $this;
+        $this->phone = $phoneNumber;
     }
 
-    public function getAddress(): string
+    public function getAddress(): ?string
     {
-        return $this->address;
+        return $this->address ?? null;
     }
-    public function setAddress(string $address): self
+    public function setAddress(?string $address): void
     {
         $this->address = $address;
+    }
+    public function getRegistration(): string
+    {
+        return $this->registration;
+    }
+    public function setRegistration(string $registration): self
+    {
+        $this->registration = $registration;
         return $this;
     }
-
-    public function getDate(): date
-    { //might not be a basic datatype
-        return $this->date;
-    }
-    public function setDate(date $date): self
+    public function getToken(): ?string
     {
-        $this->date = $date;
+        return $this->reset_token ?? null;
+    }
+    public function setToken(?string $reset_token): void
+    {
+        $this->reset_token = $reset_token;
+      
+    }
+    public function getTokenExpirationDate(): ?DateTime
+    {
+        return $this->reset_token_expiration ?? null;
+    }
+    public function setTokenExpirationDate(?DateTime $date): void
+    {
+        $this->reset_token_expiration =  $date;
+    }
+
+    public function getImage(): ?string {
+        return $this->image;
+    }
+    public function setImage(?string $image): self {
+        $this->image = $image;
         return $this;
     }
 }

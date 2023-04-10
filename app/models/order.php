@@ -1,58 +1,101 @@
 <?php
 
-class Order implements \JsonSerializable {
+class Order implements \JsonSerializable
+{
     private int $id;
     private int $user_id;
-    private bool $paid;
+    private float $amount;
+    private string $status;
+    private string $payment_method;
     private string $time_of_purchase;
-
-    private array $boughtTickets;
+    private string $payment_id;
+    private ?string $pay_later_token;
 
 
     #[ReturnTypeWillChange]
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         $vars = get_object_vars($this);
         return $vars;
     }
 
-    public function getId(): int {
+    public function getId(): int
+    {
         return $this->id;
     }
-    public function setId(int $id): self {
+    public function setId(int $id): self
+    {
         $this->id = $id;
         return $this;
     }
-    public function getUserId(): int {
+    public function getUserId(): int
+    {
         return $this->user_id;
     }
-    public function setUserId(int $user_id): self {
+    public function setUserId(int $user_id): self
+    {
         $this->user_id = $user_id;
         return $this;
     }
-    public function getPaid(): bool {
-        return $this->paid;
+    public function getAmount(): float
+    {
+        return $this->amount;
     }
-    public function setpaid(bool $paid): self {
-        $this->paid = $paid;
+    public function setAmount(float $amount): self
+    {
+        $this->amount = $amount;
         return $this;
     }
-    public function getTimeOfPurchase(): string {
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    public function getPaymentMethod(): string
+    {
+        return $this->payment_method;
+    }
+
+    public function setPaymentMethod(string $payment_method): self
+    {
+        $this->payment_method = $payment_method;
+        return $this;
+    }
+
+    public function getTimeOfPurchase(): string
+    {
         return $this->time_of_purchase;
     }
-    public function setEventId(string $time_of_purchase): self {
+
+    public function setTimeOfPurchase(string $time_of_purchase): self
+    {
         $this->time_of_purchase = $time_of_purchase;
         return $this;
     }
-    public function getBoughtTickets(): array {
-        return $this->boughtTickets;
+
+    public function getPaymentId(): string
+    {
+        return $this->payment_id;
     }
-    public function setBoughtTicket(array $boughtTickets): self {
-        $this->boughtTickets = $boughtTickets;
+    public function setPaymentId(string $id): self
+    {
+        $this->payment_id = $id;
         return $this;
     }
-    //get the type of the error in the addBoughtTicket...
-    public function addBoughtTiket($boughtTicket) {
-        $this->boughtTickets[] = $boughtTicket;
+    public function getToken(): ?string
+    {
+        return $this->pay_later_token ?? null;
     }
+    public function setToken(?string $pay_later_token): void
+    {
+        $this->pay_later_token = $pay_later_token;
+
+    }
+
 }
 ?>

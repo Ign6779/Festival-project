@@ -28,6 +28,12 @@
             <input type="text" class="form-control" id="artisttopsong" name="artisttopsong" required>
         </div>
     </div>
+    <div class="form-group row justify-content-center">
+        <div class="col-5">
+            <label for="artisttype">Artist Type</label>
+            <input type="text" class="form-control" id="artisttype" name="artisttype" required>
+        </div>
+    </div>
 
     <div class="form-group row justify-content-center">
         <div class="col-5">

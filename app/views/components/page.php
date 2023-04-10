@@ -13,6 +13,7 @@
             $topSong = $artist->getTopSong();
         }
     }
+    
 ?>
 <div class="text-center container-fluid" id="detailPage">
     <div class="text-center container" id="detail-page-block">

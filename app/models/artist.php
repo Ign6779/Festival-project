@@ -8,6 +8,7 @@ class Artist implements \JsonSerializable {
     private string $song;
     private string $topSong;
     private array $images;
+    private string $type;
 
     #[ReturnTypeWillChange]
     public function jsonSerialize() {
@@ -68,5 +69,13 @@ class Artist implements \JsonSerializable {
     public function addImage(Image $Image) {
         $this->images[] = $Image;
     }
+    public function getType(): string {
+        return $this->type;
+    }
+    public function setType(string $type): self {
+        $this->type = $type;
+        return $this;
+    }
+
 }
 ?>

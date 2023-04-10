@@ -1,6 +1,12 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 require_once __DIR__ . '/controller.php';
 require_once __DIR__ . '/../services/userservice.php';
+require_once __DIR__ . '/../lib/phpEmaiLib/Exception.php';
+require_once __DIR__ . '/../lib/phpEmaiLib/PHPMailer.php';
+require_once __DIR__ . '/../lib/phpEmaiLib/SMTP.php';
 
 class LoginController extends Controller
 {
@@ -31,33 +37,28 @@ class LoginController extends Controller
                         break;
 
                     case $user->getRole() == "admin":
-                        $_SESSION["user"] = $user;
+                        $_SESSION["user"] = $user->getId();
                         require __DIR__ . '/../views/admin/index.php';
                         break;
 
                     case $user->getRole() == "customer":
-                        $_SESSION["user"] = $user;
-                        require __DIR__ . '/../views/home/homepage.php';
+                        $_SESSION["user"] = $user->getId();
+                        header('location:/');
                         break;
 
                     case $user->getRole() == "employee":
-                        $_SESSION["user"] = $user;
+                        $_SESSION["user"] = $user->getId();
                         //require the page for the employee
                         break;
                 }
-
             }
+            
         }
     }
 
     public function register()
     {
         require_once __DIR__ . '/../views/login/register.php';
-    }
-
-    public function forgotpassword()
-    {
-        require_once __DIR__ . '/../views/login/forgotpassword.php';
     }
 
     public function signUp()
@@ -70,42 +71,19 @@ class LoginController extends Controller
                 $usernameToCheck = $this->userService->getByUsername($username);
                 $emailToCheck = $this->userService->getUserByEmail($email);
                 if ($usernameToCheck == null && $emailToCheck == null) {
-                    //when address and phone input fields are added
-                    // $this->userService->createUser($role, $email, $password, $address, $phone);
-                    $this->userService->createUser(0, $email, $password, date("Y/m/d"), $username);
+                    $this->userService->createUser('customer', $username, $email, null, null, $password, date("Y/m/d"));
                     require_once __DIR__ . '/../views/home/homePage.php';
                 } else {
                     $message = "username or email already in use! please try something else";
                     require_once __DIR__ . '/../views/login/register.php';
                 }
-
             }
         }
     }
-
-    public function resetpassword()
-    {
-        if (isset($_POST["reset-request-submit"])) {
-
-            $selector = bin2hex(random_bytes(8));
-            $token = random_bytes(32);
-
-            $url = "the site url?selector=" . $selector . "&validator=" . bin2hex($token);
-
-            $expires = date("U") + 1800;
-
-
-
-        } else {
-            //in case the request isn't sent
-        }
-        require_once __DIR__ . '/../views/login/resetpassword.php';
-    }
-
     public function logout()
     {
         $_SESSION["user"] = null;
-        require_once __DIR__ . '/../views/home/homePage.php';
+        header('location:/');
     }
 }
 ?>

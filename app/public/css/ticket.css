@@ -6,8 +6,61 @@
 .ticketpage{
     display: grid;
     grid-template-columns: 200px 1fr;
+    background-color: #9EADEA;
 }
-/* .cal-section-on-ticketpage{
+.filter_events{
+    position:sticky;
+    top: 0;
+  }
+  #tickets{
+    background-color: #9EADEA;
+  }
 
-} */
+  .ticket-comp {
+    height: 200px;
+    position: relative;
+    border: 2px solid black;
+    background: rgb(46,155,123);
+background: linear-gradient(90deg, rgba(46,155,123,0.5019257703081232) 0%, rgba(255,255,255,1) 50%, rgba(46,155,123,0.499124649859944) 100%);
+    padding: 1%;
+    color: black;
+    padding: 1em 2em;
+    width: 50%;
+    margin-bottom: 25px;
+    margin-left: 250px;
+    box-shadow: 14px 15px 6px #7a7a7a;
+  
+  }
+  .ticket-comp:before,
+  .ticket-comp:after{
+    height:200px;
+    width:70px;
+    content: '';
+    position: absolute;
+    top: 3em;
+    top: 40%;
+    height: 2em;
+    width: 1.6em;
+    border: 2px solid black;
+  }
+  .ticket-comp:before {
+    left: -2px;
+    border-radius: 0 1em 1em 0;
+    border-left-color: #fff8f0;
+  }
+  .ticket-comp:after {
+    right: -2px;
+    border-radius: 1em 0 0 1em;
+    border-right-color: #fff8f0;
+  }
+.ticket-comp a{
+    background-color: #92140C;
+    right: 20px;
+    bottom: 20px;
+    position: absolute;
+}
+  .ticket-price {
+    float: center;
+    font-weight: 600;
+  }
 

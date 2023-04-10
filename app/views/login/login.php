@@ -50,9 +50,9 @@ function returnVisible($message)
           </div>
 
           <div class="d-flex justify-content-between align-items-center">
-            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/login/register"
+            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register"
                 class="link-danger">Register</a></p>
-            <a href="/login/forgotpassword" class="text-body">Forgot password?</a>
+            <a href="/forgotpassword" class="text-body">Forgot password?</a>
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">
