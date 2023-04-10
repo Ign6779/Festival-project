@@ -2,8 +2,15 @@
 require __DIR__ . '/../adminheader.php';
 ?>
 
-<a href="/tour" class="btn btn-primary">Back</a>
-<form method="POST" action="/tour/addTour" class="container">
+<a href="/jazzevent" class="btn btn-primary">Back</a>
+<form method="POST" action="/jazzevent/addJazzEvent" class="container">
+    <div class="form-group row justify-content-center">
+        <div class="col-5">
+            <label for="title">Event name</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+    </div>
+
     <div class="form-group row justify-content-center">
         <div class="col-5">
             <label for="date">Date</label>
@@ -41,18 +48,13 @@ require __DIR__ . '/../adminheader.php';
 
     <div class="form-group row justify-content-center">
         <div class="col-5">
-            <label for="language">Language</label>
-            <select class="form-control" id="language" name="language" required>
-                <option value="" selected disabled>Select language</option>
-                <option value="dutch">Dutch</option>
-                <option value="english">English</option>
-                <option value="chinese">Chinese</option>
-            </select>
+            <label for="venueId">Venue ID</label>
+            <input type="number" class="form-control" id="venueId" name="venueId" required>
         </div>
     </div>
 
     <div class="row justify-content-center">
-        <button type="submit" class="btn btn-primary col-5" name="addtour">Add</button>
+        <button type="submit" class="btn btn-primary col-5" name="addjazzevent">Add</button>
     </div>
 
     <div class="row justify-content-center">

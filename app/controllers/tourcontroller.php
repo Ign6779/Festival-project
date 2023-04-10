@@ -31,7 +31,7 @@ class TourController extends Controller {
             $this->tourService->createTour($tour);
         }
 
-        $this->index();
+        header('Location: /tour');
     }
 
     public function editTourForm() {
@@ -45,7 +45,7 @@ class TourController extends Controller {
     }
 
     public function updateTour() {
-        if (isset($_POST['updateTour'])) {
+        if (isset($_POST['updateTour']) && isset($_GET['tourId'])) {
             $tour = new Tour();
             $tour->setId(htmlspecialchars((int)$_GET['tourId']));
             $tour->setDate(htmlspecialchars($_POST['date']));
@@ -54,8 +54,11 @@ class TourController extends Controller {
             $tour->setSeats(htmlspecialchars($_POST['seats']));
             $tour->setPrice(htmlspecialchars($_POST['price']));
             $tour->setLanguage(htmlspecialchars($_POST['language']));
-            $this->tourService->createTour($tour);
+            $tour->setEventid(htmlspecialchars($_POST['eventId']));
+            $this->tourService->updateTour($tour);
+        } else {
+            echo "something has gone wrong";
         }
-
+        header('Location: /tour');
     }
 }

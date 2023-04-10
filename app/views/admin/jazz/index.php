@@ -1,7 +1,7 @@
 <? include __DIR__ . '/../adminheader.php' ?>
 
 <div class="row justify-content-end mt-5">
-    <div class="col-md-2 "><a href="/tour/addTourForm" class="btn btn-primary">Add a tour
+    <div class="col-md-2"><a href="/jazzevent/addJazzEventForm" class="btn btn-primary">Add a jazz event
     </a>
     </div>
 </div>
@@ -10,12 +10,13 @@
     <thead>
         <tr>
             <th scope="col">Id</th>
+            <th scope="col">Name</th>
             <th scope="col">Date</th>
             <th scope="col">Start time</th>
             <th scope="col">End time</th>
             <th scope="col">Seats</th>
             <th scope="col">Price</th>
-            <th scope="col">Language</th>
+            <th scope="col">Venue ID</th>
         </tr>
     </thead>
     <tbody>
@@ -28,7 +29,7 @@
 
     function refresh() {
     document.getElementsByTagName("tbody")[0].innerHTML = "";
-    fetch('http://localhost/api/tour')
+    fetch('http://localhost/api/jazzevent')
     .then(result=>result.json())
     .then((data) => {
         console.log(data);
@@ -36,30 +37,33 @@
     }).catch(err => console.error(err));
     }
 
-    function load(tourInput) {
+    function load(jazzInput) {
         var tbody = document.getElementsByTagName("tbody")[0];
         tr = document.createElement("tr");
 
         tdId = document.createElement("td");
-        tdId.innerHTML = tourInput.id;
+        tdId.innerHTML = jazzInput.id;
+
+        tdTitle = document.createElement("td");
+        tdTitle.innerHTML = jazzInput.title;
 
         tdDate = document.createElement("td");
-        tdDate.innerHTML = tourInput.date;
+        tdDate.innerHTML = jazzInput.date;
 
         tdStartTime = document.createElement("td");
-        tdStartTime.innerHTML = tourInput.start_time;
+        tdStartTime.innerHTML = jazzInput.start_time;
 
         tdEndTime = document.createElement("td");
-        tdEndTime.innerHTML = tourInput.end_time;
+        tdEndTime.innerHTML = jazzInput.end_time;
 
         tdSeats = document.createElement("td");
-        tdSeats.innerHTML = tourInput.seats;
+        tdSeats.innerHTML = jazzInput.seats;
 
         tdPrice = document.createElement("td");
-        tdPrice.innerHTML = tourInput.price;
+        tdPrice.innerHTML = jazzInput.price;
 
-        tdLanguage = document.createElement("td");
-        tdLanguage.innerHTML = tourInput.language;
+        tdVenueId = document.createElement("td");
+        tdVenueId.innerHTML = jazzInput.venueId;
 
         tdButtons = document.createElement("td");
         rEdit = document.createElement("a");
@@ -68,23 +72,23 @@
         rDelete.className = "btn btn-danger";
         rEdit.innerHTML = "Edit";
         rDelete.innerHTML = "Delete";
-        rEdit.href = "/tour/editTourForm?tourId=" + tourInput.id;
+        rEdit.href = "/jazzevent/editJazzEventForm?jazzEventId=" + jazzInput.id;
         rDelete.onclick = function() {
-            deleteTour(tourInput.event_id);
+            deleteJazz(jazzInput.event_id);
         };
         tdButtons.append(rEdit, rDelete);
-        tr.append(tdId, tdDate, tdStartTime, tdEndTime, tdSeats, tdPrice, tdLanguage, tdButtons);
+        tr.append(tdId, tdTitle, tdDate, tdStartTime, tdEndTime, tdSeats, tdPrice, tdVenueId, tdButtons);
         tbody.appendChild(tr);
 
     }
 
-    function deleteTour(id) {
-        fetch ('http://localhost/api/tour/deleteTour?tourId=' + id, {
+    function deleteJazz(id) {
+        fetch ('http://localhost/api/jazz/deleteJazz?jazzEventId=' + id, {
             method: 'GET'
         })
         .then(result => {
             console.log(result);
-            window.location.href = 'http://localhost/tour';
+            window.location.href = 'http://localhost/jazzevent';
         })
         .catch(error => console.log(error));
 

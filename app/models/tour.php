@@ -16,8 +16,9 @@ class Tour extends Event implements \JsonSerializable
 
     public function jsonSerialize()
     {
+        $parentVars = parent::jsonSerialize();
         $vars = get_object_vars($this);
-        return $vars;
+        return array_merge($parentVars, $vars);
     }
 
     public function getId(): int

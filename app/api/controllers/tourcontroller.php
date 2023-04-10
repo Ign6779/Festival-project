@@ -18,7 +18,10 @@ class TourController {
     public function deleteTour() {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $id = htmlspecialchars($_GET['tourId']);
+            var_dump($id); // check if $id has a value
+            var_dump($this->tourService); // check if $this->tourService is set correctly
             $this->tourService->deleteTour($id);
+            echo 'finished';
         }
     }
 }
