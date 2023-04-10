@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Apr 08, 2023 at 01:42 PM
+-- Generation Time: Apr 10, 2023 at 03:13 PM
 -- Server version: 10.9.4-MariaDB-1:10.9.4+maria~ubu2204
 -- PHP Version: 8.0.25
 
@@ -334,7 +334,10 @@ INSERT INTO `events` (`id`, `title`, `date`, `start_time`, `end_time`, `event_ty
 (87, 'Walk through historical Haarlem-Chinese', '2023-07-29', '13:00:00', '15:30:00', 'history', 24, 17.5),
 (88, 'Walk through historical Haarlem-English', '2023-07-29', '16:00:00', '18:30:00', 'history', 12, 17.5),
 (89, 'Walk through historical Haarlem-Dutch', '2023-07-29', '16:00:00', '18:30:00', 'history', 12, 17.5),
-(90, 'Walk through historical Haarlem-Chinese', '2023-07-29', '16:00:00', '18:30:00', 'history', 0, 17.5);
+(90, 'Walk through historical Haarlem-Chinese', '2023-07-29', '16:00:00', '18:30:00', 'history', 0, 17.5),
+(101, 'Friday All-Access daypass', '2023-07-27', '00:00:00', '23:59:00', 'all-access', 3000, 125),
+(102, 'Saturday All-Access daypass', '2023-07-28', '00:00:00', '23:59:00', 'all-access', 3000, 150),
+(103, 'Sunday All-Access daypass', '2023-07-29', '00:00:00', '23:59:00', 'all-access', 3000, 150);
 
 -- --------------------------------------------------------
 
@@ -831,7 +834,7 @@ ALTER TABLE `editor`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `jazz`
