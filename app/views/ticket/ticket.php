@@ -126,8 +126,8 @@ include __DIR__ . '/../header.php';
     price.className = "ticket-price";
     var times = document.createElement("p");
     times.className = "ticket-times";
-    var venue = document.createElement("p");
-    venue.className = "ticket-venue";
+    var date = document.createElement("p");
+    date.className = "ticket-date";
     var addTocart = document.createElement("a");
     addTocart.className = "btn btn-danger";
     addTocart.innerHTML = "Add to cart";
@@ -144,7 +144,22 @@ include __DIR__ . '/../header.php';
     var endTime = ticketInput.end_time.substring(0, 5);
     price.innerHTML = formattedPrice;
     times.innerHTML = startTime + " - " + endTime;
-    divCardBody.append(cardTitle, price, times, addTocart);
+    //format the date
+    var dateObj = new Date(ticketInput.date);
+    var day = dateObj.getDate();
+    var month = dateObj.toLocaleString('en-us', { month: 'long' });
+    if (day == 1 || day == 21 || day == 31) {
+        day += 'st';
+    } else if (day == 2 || day == 22) {
+        day += 'nd';
+    } else if (day == 3 || day == 23) {
+        day += 'rd';
+    } else {
+        day += 'th';
+    }
+    var formattedDate = day + ' ' + month;
+    date.innerHTML = formattedDate;
+    divCardBody.append(cardTitle, price, times, formattedDate, addTocart);
     divCard.appendChild(divCardBody);
     tickets.appendChild(divCard);
   }
