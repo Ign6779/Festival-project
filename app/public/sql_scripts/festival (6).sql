@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Apr 10, 2023 at 03:13 PM
+-- Generation Time: Apr 11, 2023 at 12:34 PM
 -- Server version: 10.9.4-MariaDB-1:10.9.4+maria~ubu2204
 -- PHP Version: 8.0.25
 
@@ -457,9 +457,21 @@ INSERT INTO `kids` (`id`, `activity_title`, `activity_description`, `img`) VALUE
 CREATE TABLE `order` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `paid` tinyint(1) NOT NULL,
-  `time_of_purchase` date NOT NULL
+  `amount` float NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `payment_method` varchar(255) NOT NULL,
+  `time_of_purchase` datetime NOT NULL,
+  `payment_id` varchar(255) NOT NULL,
+  `pay_later_token` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`id`, `user_id`, `amount`, `status`, `payment_method`, `time_of_purchase`, `payment_id`, `pay_later_token`) VALUES
+(84, 2, 135, 'paid', 'ideal', '2023-04-09 15:21:23', 'tr_vfxHfUKZvx', NULL),
+(85, 2, 135, 'failed', 'ideal', '2023-04-09 15:22:11', 'tr_LsdinCLWEK', 'e8eb2e59353d63ee89e566d0f724d96961eb8fc1fc61b6551837cda8c1adae9e');
 
 -- --------------------------------------------------------
 
@@ -471,9 +483,21 @@ CREATE TABLE `order_ticket` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
-  `qr_code` varchar(240) NOT NULL,
-  `is_scaned` tinyint(1) NOT NULL
+  `is_scaned` tinyint(1) NOT NULL,
+  `uuid` varchar(36) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_ticket`
+--
+
+INSERT INTO `order_ticket` (`id`, `order_id`, `event_id`, `is_scaned`, `uuid`) VALUES
+(170, 84, 1, 0, ''),
+(171, 84, 1, 0, ''),
+(172, 84, 1, 0, ''),
+(173, 85, 1, 0, ''),
+(174, 85, 1, 0, ''),
+(175, 85, 1, 0, '');
 
 -- --------------------------------------------------------
 
@@ -858,13 +882,13 @@ ALTER TABLE `kids`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `order_ticket`
 --
 ALTER TABLE `order_ticket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
 
 --
 -- AUTO_INCREMENT for table `restaurants`
