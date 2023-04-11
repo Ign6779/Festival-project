@@ -60,7 +60,7 @@
         rEdit.innerHTML = "Edit";
         rEdit.href = "/order/editOrderForm?orderId=" + orderInput.id;
 
-        rDownloadPdf = document.createElement("a");
+        rDownloadPdf = document.createElement("button");
         rDownloadPdf.className = "btn btn-warning me-2";
         rDownloadPdf.innerHTML = "DownloadPdf";
         rDownloadPdf.addEventListener('click', function () {
