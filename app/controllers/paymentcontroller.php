@@ -258,10 +258,10 @@ class PaymentController extends Controller
         }
         $pdf->SetFont('dejavusans', 'B', 12);
         $vatRate = 1.21;
-        $totalWithVat = $total * $vatAmount;
+        $totalWithVat = $total * $vatRate;
         $pdf->Cell(120, 10, 'Total(inc VAT):', 0, 0, 'R');
         $pdf->SetFont('dejavusans', '', 12);
-        $pdf->Cell(60, 10, '€' . number_format($totalwithVat, 2), 0, 1, 'C');
+        $pdf->Cell(60, 10, '€' . number_format($totalWithVat, 2), 0, 1, 'C');
     }
 
     function createTicketsTemplate($pdf, $orderItems)
