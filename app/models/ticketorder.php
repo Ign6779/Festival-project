@@ -6,10 +6,12 @@ class TicketOrder implements \JsonSerializable
 
     private bool $is_scanned;
 
+    private Order $order;
+
     private Event $event;
 
     private User $user;
-    
+
     private string $uuid;
 
 
@@ -37,6 +39,17 @@ class TicketOrder implements \JsonSerializable
     public function setIsScanned($is_scanned): self
     {
         $this->is_scanned = $is_scanned;
+        return $this;
+    }
+
+    public function getOrder(): Order
+    {
+        return $this->order;
+    }
+
+    public function setOrder(Order $order): self
+    {
+        $this->order = $order;
         return $this;
     }
 

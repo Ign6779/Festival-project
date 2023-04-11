@@ -3,6 +3,7 @@ require_once __DIR__ . '/repository.php';
 require_once __DIR__ . '/../models/ticketorder.php';
 require_once __DIR__ . '/../services/eventservice.php';
 require_once __DIR__ . '/../services/userservice.php';
+require_once __DIR__ . '/../services/orderservice.php';
 
 class TicketOrderRepository extends Repository
 {
@@ -33,8 +34,8 @@ class TicketOrderRepository extends Repository
     function insertOrderTicket($orderTicket)
     {
         try {
-            $order_id = $orderTicket->getOrderId();
-            $event_id = $orderTicket->getTicketId();
+            $order_id = $orderTicket->getOrder()->getId();
+            $event_id = $orderTicket->getEvent()->getId();
             $uuid = $orderTicket->getUuId();
             $is_scanned = false;
             $stmt = $this->connection->prepare("INSERT INTO `order_ticket`(`order_id`, `event_id`, `is_scaned` , `uuid`) VALUES (:order_id,:event_id,:is_scanned,:uuid)");
@@ -51,7 +52,7 @@ class TicketOrderRepository extends Repository
     function getItemsByOrderId($order_id)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT ot.*, o.user_id FROM order_ticket ot LEFT JOIN `order` o ON ot.order_id = o.id WHERE order_id = :id");
+            $stmt = $this->connection->prepare("SELECT ot.*, o.user_id FROM order_ticket ot LEFT JOIN `order` o ON ot.order_id = o.id WHERE ot.order_id = :id");
             $stmt->bindParam(':id', $order_id);
             $stmt->execute();
             $orderTickets = [];
@@ -62,6 +63,7 @@ class TicketOrderRepository extends Repository
                 $user = $this->userService->getUserById($row['user_id']);
                 $orderTicket->setEvent($event);
                 $orderTicket->setUser($user);
+                $orderTicket->setUuId($row['uuid']);
                 array_push($orderTickets, $orderTicket);
             }
 
