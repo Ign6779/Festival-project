@@ -145,7 +145,8 @@ include __DIR__ . '/../header.php';
     price.innerHTML = formattedPrice;
     times.innerHTML = startTime + " - " + endTime;
     //format the date
-    var dateObj = new Date(ticketInput.date);
+    if (ticketInput.title != "All-Access for Whole Festival"){
+      var dateObj = new Date(ticketInput.date);
     var day = dateObj.getDate();
     var month = dateObj.toLocaleString('en-us', { month: 'long' });
     if (day == 1 || day == 21 || day == 31) {
@@ -158,6 +159,9 @@ include __DIR__ . '/../header.php';
         day += 'th';
     }
     var formattedDate = day + ' ' + month;
+  }else{
+      var formattedDate = "All Festival Days";
+    }
     date.innerHTML = formattedDate;
     divCardBody.append(cardTitle, price, times, formattedDate, addTocart);
     divCard.appendChild(divCardBody);
