@@ -26,11 +26,14 @@ class ScannerController{
         }
     }
 
-    public function getScannerInformation($id){
-        if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            $this->ticketOrderService->getScannerInformation($id);
-           
+    public function getScannerInformation(){
+        if(isset($_GET['ticketOrder'])){
+            $id=htmlspecialchars($_GET['ticketOrder']);
+            $ticketOrder = $this->ticketOrderService->getScannerInformation($id);
+            require_once __DIR__ . '/../../views/employee/scanner.php';
         }
+            
+            
     }
 }
 

@@ -32,9 +32,5 @@ class TicketOrderService
     public function getScannerInformation($id){
         return $this->repository->getScannerInformation($id);
     }
-
-    public function isScannedStatus(){
-        
-    }
 }
 ?>

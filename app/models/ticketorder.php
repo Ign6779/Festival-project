@@ -12,6 +12,9 @@ class TicketOrder implements \JsonSerializable
 
     private bool $is_scanned;
 
+    private Event $event;
+
+
     #[ReturnTypeWillChange]
     public function jsonSerialize()
     {
@@ -57,5 +60,17 @@ class TicketOrder implements \JsonSerializable
         $this->is_scanned = $is_scanned;
         return $this;
     }
+
+    public function getEvent(): Event
+    {
+        return $this->event;
+    }
+
+    public function setEvent(Event $event) :self{
+        $this->event = $event;
+        return $this;
+    }
+
+
 
 } ?>

@@ -1,27 +1,17 @@
-<div class="col-md-1 "><a href="/homepage" class="btn btn-primary">Finish Checking</a>
+<link rel="stylesheet" href="/css/components.css?v=<?php echo time(); ?>">
+
+
+    <h1> <?echo $ticketOrder->getEvent()->getTitle(); ?> </h1>
+    <h2> <?echo "Date of event: ". $ticketOrder->getEvent()->getDate(); ?> </h2>
+    <h2><? echo "Start hour: ".$ticketOrder->getEvent()->getStartTime(); ?> </h2>
+     <p id="is_scanned_status"> </p>
+
     </div>
 
+    <div class="col-md-1 "><a href="/homepage" class="btn-red" onclick="updateScannedtatus">Finish Checking</a>
+    
 
 <script>
-
-    function load(){
-
-        orderTicketInput = getScannerInformation($id);
-        var eventName = document.createElement("h1");
-        eventName.innerHTML = orderTicketInput.eventName;
-        var username = document.createElement("h2");
-        username.innerHTML = orderTicketInput.username;
-        var date = document.createElement("p");
-        date.innerHTML = orderTicketInput.date;
-        var startTime = document.createElement("p");
-        startTime.innerHTML = orderTicketInput.startTime;
-        var is_scanned = document.createElement("p");
-        is_scanned.innerHTML = isScannedStatus(orderTicketInput.is_scanned);
-
-        h1.appendChild(eventName);
-        h2.appendChild(username);
-        p.appendChild(date, startTime, is_scanned);
-    }
 
     function updateScannedStatus(id){
         fetch('http://localhost/api/changeScannedStatus?orderid=' + id, {
@@ -34,9 +24,15 @@
 
     }
 
-    function isScannedStatus(is_scanned){
-        if(is_scanned == 0)
-        return "Ticket has not been scanned!";
-        else return "Ticket has been scanned!";
+    function isScannedStatus(){
+        var is_scanned = document.getElementById("is_scanned_status");
+        if($ticketOrder->getIsScanned() == 0)
+        {
+            is_scanned.innerHTML = "Ticket has not been scanned";
+        }
+        else 
+        {
+            is_scanned.innerHTML =  "Ticket has been scanned!";
+        } 
     }
 </script>

@@ -1,9 +1,17 @@
 <?php
 require_once __DIR__ . '/repository.php';
 require_once __DIR__ . '/../models/ticketorder.php';
+require_once __DIR__ . '/../services/eventservice.php';
+
 
 class TicketOrderRepository extends Repository
 {
+    private $eventService;
+    function __construct(){
+        parent::__construct();
+        $this->eventService = new EventService();
+    }
+
     function getAll()
     {
         try {
@@ -68,13 +76,22 @@ class TicketOrderRepository extends Repository
 
     function getScannerInformation($id){
         try{
-            $stmt = $this->connection->prepare("SELECT o.id, e.title, u.username, e.start_time, e.date, ot.is_scaned FROM order_ticket as ot
-            LEFT JOIN 	`order` AS o ON ot.order_id = o.id
-            LEFT JOIN events AS e on e.id = ot.id
-            LEFT JOIN users AS u on o.user_id = u.id
+            $stmt = $this->connection->prepare("SELECT * FROM order_ticket as ot
             WHERE ot.id = :id");
             $stmt->bindParam(':id',$id);
             $stmt->execute();
+            
+            while ($row = $stmt->fetch()){
+                $orderTicket = new TicketOrder();
+                $orderTicket->setId($row['id']);
+                $orderTicket->setOrderId($row['order_id']);
+                //IMPORTANT !!!!!!
+                $orderTicket->setTicketId($row['event_id']);
+                $event = $this->eventService->getById($row['event_id']);
+                $orderTicket->setEvent($event);
+            }
+
+            return $orderTicket;
         } catch (Exception $e) {
             echo $e;
         }
