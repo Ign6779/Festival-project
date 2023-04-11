@@ -34,7 +34,7 @@ $eventType = "jazz-event";
             <div class="time-marker">21 PM</div>
             <div class="time-marker">22 PM</div>
             <div class="time-marker">23 PM</div>
-            <div class="time-marker">24 AM</div>
+            <div class="time-marker">00 AM</div>
             <div class="time-marker">1 AM</div>
             <div class="time-marker">2 AM</div>
         </div>
@@ -46,9 +46,6 @@ $eventType = "jazz-event";
                     <p class="date-day">Thu</p>
                 </div>
                 <div id="26th" class="events">
-                    <!-- <div class="event start-<?php echo $eventStartTime; ?> end-<?php echo $eventEndTime; ?> <?php echo $eventType; ?>">
-            <p id="event-text" class="time">EVENT NAME <br> <?php echo $eventStartTime; ?> until <?php echo $eventEndTime; ?></p>
-            </div> -->
                 </div>
             </div>
             <!-- THE 27TH -->
