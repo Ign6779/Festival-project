@@ -28,7 +28,7 @@ class TicketController
             if (isset($_GET['event']) && isset($_GET['date'])) {
                 $optionEvent = htmlspecialchars($_GET['event']);
                 $optionDate = htmlspecialchars($_GET['date']);
-                if ($event->getType() == $optionEvent && $event->getDate() == $optionDate) {
+                if ($event->getType() == $optionEvent && $event->getDate() == $optionDate && $event->getSeats() != 0) {
                     array_push($filteredEvents, $event);
                 }
             } elseif (isset($_GET['event']) && !isset($_GET['date'])) {
