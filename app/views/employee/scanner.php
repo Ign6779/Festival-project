@@ -8,7 +8,7 @@
 
      <p id="is_scanned_status"> </p>
     
-     <a href="/homepage" class="btn-red" onclick="updateScannedtatus">Finish Checking</a>
+     <a href="/scanner" class="btn-red" onclick="updateScannedtatus">Finish Checking</a>
     
 
 <script>
