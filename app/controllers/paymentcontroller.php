@@ -171,11 +171,11 @@ class PaymentController extends Controller
         foreach ($cart as $productid => $quantity) {
             for ($i = 0; $i < $quantity; $i++) {
                 $ticketOrder = new TicketOrder();
-            $ticketOrder->setOrderId($order->getId());
-            $ticketOrder->setTicketId($productid);
-            $ticketOrder->setUuId(Uuid::uuid4()->toString());
-            $ticketOrder->setIsScanned(false);
-            $this->ticketOrdeService->insertOrderTicket($ticketOrder);
+                $ticketOrder->setOrder($order);
+                $ticketOrder->setEvent($this->eventService->getById($productid));
+                $ticketOrder->setUuId(Uuid::uuid4()->toString());
+                $ticketOrder->setIsScanned(false);
+                $this->ticketOrdeService->insertOrderTicket($ticketOrder);
             }
 
         }
@@ -272,7 +272,7 @@ class PaymentController extends Controller
                 $y = 10; // Reset Y position to top of page
             }
             // Generate QR code
-            $qrCodeData = $orderItem->getId() . "|" . $orderItem->getOrderId();
+            $qrCodeData = "https://44df-145-81-199-236.ngrok-free.app/scanner?orderUid=" . $orderItem->getUuId();
             $qrCode = Builder::create()
                 ->writer(new PngWriter())
                 ->writerOptions([])
@@ -283,7 +283,7 @@ class PaymentController extends Controller
                 ->margin(10)
                 ->validateResult(false)
                 ->build();
-            $event = $this->eventService->getById($orderItem->getTicketId());
+            $event = $this->eventService->getById($orderItem->getEvent()->getId());
             // Save QR code image to a temporary file
             $qrCodeImageFile = tempnam(sys_get_temp_dir(), 'qrcode');
             $qrCode->saveToFile($qrCodeImageFile);
@@ -301,11 +301,11 @@ class PaymentController extends Controller
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'miedema.myrthe@gmail.com';
-        $mail->Password = 'nhnzekhsbijcbllx';
+        $mail->Username = 'sallah.ag.03@gmail.com';
+        $mail->Password = 'vhtlnmijfjhbcgec';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
-        $mail->setFrom('miedema.myrthe@gmail.com', 'Haarlem festival');
+        $mail->setFrom('sallah.ag.03@gmail.com', 'Haarlem festival');
         $mail->addAddress($user->getEmail());
         $mail->isHTML(true);
     }
