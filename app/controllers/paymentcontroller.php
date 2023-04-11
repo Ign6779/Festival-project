@@ -13,7 +13,6 @@ use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-use Ramsey\Uuid\Uuid;
 
 require_once __DIR__ . '/../services/userservice.php';
 require_once __DIR__ . '/../lib/phpEmaiLib/Exception.php';
@@ -72,7 +71,7 @@ class PaymentController extends Controller
         try {
             $paymentMethod = $_POST['paymentMethod'];
             $userId = $_SESSION['user'];
-            $amount = $this->totalAmount();
+            $amount = $this->ticketOrdeService->totalAmount();
             $payment = $this->mollie->payments->create([
                 "amount" => [
                     "currency" => "EUR",
@@ -80,13 +79,14 @@ class PaymentController extends Controller
                 ],
                 "description" => "Festival ticket payment for user $userId",
 
-                "redirectUrl" => "https://44df-145-81-199-236.ngrok-free.app/payment/paymentStatus",
-                "webhookUrl" => "https://44df-145-81-199-236.ngrok-free.app/payment/handleWebhook",
+                "redirectUrl" => "https://e013-87-209-230-169.ngrok-free.app/payment/paymentStatus",
+                "webhookUrl" => "https://e013-87-209-230-169.ngrok-free.app/payment/handleWebhook",
 
                 "metadata" => [
                     "user_id" => $userId,
                 ],
                 "method" => $paymentMethod,
+                "issuer" => $_POST['bank']
             ]);
 
             if (!isset($_SESSION['paymentid'])) {
@@ -99,7 +99,8 @@ class PaymentController extends Controller
                 $order->setTimeOfPurchase(date('Y-m-d H:i:s'));
                 $order->setPaymentId($payment->id);
                 $this->orderService->createOrder($order);
-                $this->insertOrderItems();
+                $order = $this->orderService->getOrderByPaymentId($_SESSION['paymentid']);
+                $this->ticketOrdeService->insertOrderItems($order);
             } else {
                 $order = $this->orderService->getOrderByPaymentId($_SESSION['paymentid']);
                 $order->setPaymentId($payment->id);
@@ -117,7 +118,6 @@ class PaymentController extends Controller
     public function handleWebhook()
     {
         try {
-            // Retrieve Mollie payment
             $payment = $this->mollie->payments->get($_POST['id']);
             // Update order in database with payment status
             $order = $this->orderService->getOrderByPaymentId($payment->id);
@@ -162,34 +162,6 @@ class PaymentController extends Controller
         } catch (ApiException $e) {
             echo 'Error: ' . htmlspecialchars($e->getMessage());
         }
-    }
-
-    public function insertOrderItems()
-    {
-        $order = $this->orderService->getOrderByPaymentId($_SESSION['paymentid']);
-        $cart = $_SESSION['cart'];
-        foreach ($cart as $productid => $quantity) {
-            for ($i = 0; $i < $quantity; $i++) {
-                $ticketOrder = new TicketOrder();
-                $ticketOrder->setOrder($order);
-                $ticketOrder->setEvent($this->eventService->getById($productid));
-                $ticketOrder->setUuId(Uuid::uuid4()->toString());
-                $ticketOrder->setIsScanned(false);
-                $this->ticketOrdeService->insertOrderTicket($ticketOrder);
-            }
-
-        }
-    }
-
-    public function totalAmount()
-    {
-        $amount = 0;
-        $cart = $_SESSION['cart'];
-        foreach ($cart as $productid => $qnt) {
-            $item = $this->eventService->getById($productid);
-            $amount += $item->getPrice() * $qnt;
-        }
-        return $amount;
     }
 
     public function sendInvoiceAndTickets($order, $user)
@@ -276,7 +248,7 @@ class PaymentController extends Controller
                 $y = 10; // Reset Y position to top of page
             }
             // Generate QR code
-            $qrCodeData = "https://44df-145-81-199-236.ngrok-free.app/scanner?orderUid=" . $orderItem->getUuId();
+            $qrCodeData = "https://e013-87-209-230-169.ngrok-free.app/scanner?orderUid=" . $orderItem->getUuId();
             $qrCode = Builder::create()
                 ->writer(new PngWriter())
                 ->writerOptions([])
@@ -313,6 +285,7 @@ class PaymentController extends Controller
         $mail->addAddress($user->getEmail());
         $mail->isHTML(true);
     }
+
     function payLater($order, $user)
     {
         $currentTime = time();
@@ -326,11 +299,10 @@ class PaymentController extends Controller
             $mail = new PHPMailer(true);
             $this->configureEmail($mail, $user);
             $mail->Subject = "Failed Payment";
-            $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Your payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.<br><br>The link: <a href="https://44df-145-81-199-236.ngrok-free.app/payment?token=' . $token . '">Pay Later</a><br><br>Thank you,<br>Haarlem festival';
-            $mail->AltBody = 'Dear ' . $user->getUsername() . ',\n\nYour payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.\n\nThe link: https://44df-145-81-199-236.ngrok-free.app/payment?token=' . $token . '\n\nThank you,\nHaarlem festival';
+            $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Your payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.<br><br>The link: <a href="https://e013-87-209-230-169.ngrok-free.app/payment?token=' . $token . '">Pay Later</a><br><br>Thank you,<br>Haarlem festival';
+            $mail->AltBody = 'Dear ' . $user->getUsername() . ',\n\nYour payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.\n\nThe link: https://e013-87-209-230-169.ngrok-free.app/payment?token=' . $token . '\n\nThank you,\nHaarlem festival';
             $mail->send();
         } else {
-
             $message = 'The payment timeframe has expired.';
             include __DIR__ . '/../views/messages/error.php';
         }

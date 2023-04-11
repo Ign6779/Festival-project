@@ -9,7 +9,7 @@ $eventType = "jazz-event";
 // }
 ?>
 <!-- the correct time and event name will show up on ticket but position of event itself is just based on closest hour -->
-<div class="cal-component">
+<div class="d-flex justify-content-center row-md-12">
     <button class="card w-75" id="calendar-toggle" onclick="CalClicked()">
         <div class="card-body" id="cal-text">
             <h3>Calendar</h3>

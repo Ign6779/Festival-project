@@ -20,17 +20,6 @@ function returnVisible($message)
       </div>
       <div class="col-md-3">
         <form id="registerform" method="post">
-          <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-            <p class="lead fw-normal mb-0 me-3">Sign in with</p>
-
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-google"></i>
-            </button>
-          </div>
-
-          <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0">Or</p>
-          </div>
 
           <!-- Userame input -->
           <div class="form-outline mb-4">
@@ -55,9 +44,15 @@ function returnVisible($message)
 
           <!-- Repeat Password input -->
           <div class="form-outline mb-3">
-            <input type="password" id="form3Example4" name="repeatPassInput" class="form-control form-control-lg"
-              placeholder="Repeat Password" />
-            <label class="form-label" for="form3Example4">Password</label>
+            <input type="number" id="form3Example4" name="phoneNumber" class="form-control form-control-lg"
+              placeholder="062345263" required/>
+            <label class="form-label" for="form3Example4">Number</label>
+          </div>
+
+          <div class="form-outline mb-3">
+            <input type="text" id="form3Example4" name="addressInput" class="form-control form-control-lg"
+              placeholder="Address" required/>
+            <label class="form-label" for="form3Example4">Address</label>
           </div>
 
           <div class="g-recaptcha" data-sitekey="6LeOjOgkAAAAAMCoe4KB9sd146Bkg3DEabH1cFVt"></div>

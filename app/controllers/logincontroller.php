@@ -52,7 +52,7 @@ class LoginController extends Controller
                         break;
                 }
             }
-            
+
         }
     }
 
@@ -70,11 +70,19 @@ class LoginController extends Controller
                 $password = htmlspecialchars($_POST['passInput']);
                 $usernameToCheck = $this->userService->getByUsername($username);
                 $emailToCheck = $this->userService->getUserByEmail($email);
+                $phoneNumber = htmlspecialchars($_POST['phoneNumber']);
+                $address = htmlspecialchars($_POST['addressInput']);
                 if ($usernameToCheck == null && $emailToCheck == null) {
-                    $this->userService->createUser('customer', $username, $email, null, null, $password, date("Y/m/d"));
-                    require_once __DIR__ . '/../views/home/homePage.php';
+                    $this->userService->createUser('customer', $username, $email, $address, $phoneNumber, $password, date("Y/m/d"));
+                    header('location:/');
+                } else if ($usernameToCheck != null && $emailToCheck == null) {
+                    $message = "Username already in use! please try something else";
+                    require_once __DIR__ . '/../views/login/register.php';
+                } else if ($usernameToCheck == null && $emailToCheck != null) {
+                    $message = "Email already in use! please try something else";
+                    require_once __DIR__ . '/../views/login/register.php';
                 } else {
-                    $message = "username or email already in use! please try something else";
+                    $message = "Username and Email already in use! please try something else";
                     require_once __DIR__ . '/../views/login/register.php';
                 }
             }

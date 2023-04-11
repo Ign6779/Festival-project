@@ -13,18 +13,14 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["cart"])) {
 } else {
     ?>
 
-    <div class="payment-body">
-        <div class="cal-body">
-            <?php
-            include '/app/views/components/Calendar.php';
-            ?>
-        </div>
-
-
-        <div class="container">
-            <div class="row">
+    <div class="payment-body container-fluid">
+        <?php
+        include '/app/views/components/Calendar.php';
+        ?>
+        <div class="container-fluid">
+            <div class="d-flex justify-content-center row-md-12">
                 <form id="payment-form" method="POST" action="/payment/processPayment">
-                    <div class="col-md-8 order-md-7">
+                    <div class="col-md-12">
                         <h4 class="mb-3">Payment</h4>
 
                         <div class="d-block my-3">
@@ -49,54 +45,53 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["cart"])) {
 
                         <div id="payment-details"></div>
 
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                        <button class="btn btn-primary btn-lg " type="submit">Continue to checkout</button>
                     </div>
                 </form>
             </div>
         </div>
-
-    <?
+    </div>
+<?
 }
 ?>
+<script>
+    window.onload = addToCalender;
+    // Get the payment form and payment details container
+    const paymentForm = document.getElementById("payment-form");
+    const paymentDetails = document.getElementById("payment-details");
 
-    <script>
-        window.onload = addToCalender;
-        // Get the payment form and payment details container
-        const paymentForm = document.getElementById("payment-form");
-        const paymentDetails = document.getElementById("payment-details");
+    // Get the radio buttons
+    const idealRadio = document.getElementById("ideal");
+    const creditCardRadio = document.getElementById("credit");
+    const debitCardRadio = document.getElementById("debit");
 
-        // Get the radio buttons
-        const idealRadio = document.getElementById("ideal");
-        const creditCardRadio = document.getElementById("credit");
-        const debitCardRadio = document.getElementById("debit");
+    function loadBanckOption() {
+        fetch('http://localhost/api/payment', {
+            method: 'GET'
+        })
+            .then(response => response.json())
+            .then(data => {
+                const issuers = data.issuers;
+                const bankSelect = document.getElementById('bank');
 
-        function loadBanckOption() {
-            fetch('http://localhost/api/payment', {
-                method: 'GET'
-            })
-                .then(response => response.json())
-                .then(data => {
-                    const issuers = data.issuers;
-                    const bankSelect = document.getElementById('bank');
-
-                    // Add options to the select element for each issuer
-                    issuers.forEach(issuer => {
-                        const option = document.createElement('option');
-                        option.value = issuer.id;
-                        option.text = issuer.name;
-                        bankSelect.appendChild(option);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error retrieving iDEAL issuers:', error);
+                // Add options to the select element for each issuer
+                issuers.forEach(issuer => {
+                    const option = document.createElement('option');
+                    option.value = issuer.id;
+                    option.text = issuer.name;
+                    bankSelect.appendChild(option);
                 });
-        }
-        // Create the payment form fields for each payment method
-        const idealFields = `
+            })
+            .catch(error => {
+                console.error('Error retrieving iDEAL issuers:', error);
+            });
+    }
+    // Create the payment form fields for each payment method
+    const idealFields = `
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-12 mb-3">
             <label for="bank">Bank</label>
-            <select class="custom-select d-block w-100" id="bank" required>
+            <select class="custom-select d-block w-100" name="bank" id="bank" required>
                 <option value="">Choose...</option>
                 <option value="ideal_INGBNL2A">ING</option>
                 <option value="ideal_ABNANL2A">ABN AMRO</option>
@@ -109,7 +104,7 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["cart"])) {
     </div>
 `;
 
-        const creditCardFields = `
+    const creditCardFields = `
     <div class="row">
         <div class="col-md-6 mb-3">
             <label for="cc-name">Name on card</label>
@@ -145,7 +140,7 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["cart"])) {
         </div>
 `;
 
-        const debitCardFields = `
+    const debitCardFields = `
     <div class="row">
         <div class="col-md-6 mb-3">
             <label for="cc-name">Name on card</label>
@@ -182,28 +177,28 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["cart"])) {
     </div>
 `;
 
-        // Function to update the payment details container based on the selected radio button
-        function updatePaymentDetails() {
-            // Clear the payment details container
-            paymentDetails.innerHTML = "";
+    // Function to update the payment details container based on the selected radio button
+    function updatePaymentDetails() {
+        // Clear the payment details container
+        paymentDetails.innerHTML = "";
 
-            // Determine which radio button is selected
-            if (idealRadio.checked) {
-                paymentDetails.innerHTML = idealFields;
-            } else if (creditCardRadio.checked) {
-                paymentDetails.innerHTML = creditCardFields;
-            } else if (debitCardRadio.checked) {
-                paymentDetails.innerHTML = debitCardFields;
-            }
+        // Determine which radio button is selected
+        if (idealRadio.checked) {
+            paymentDetails.innerHTML = idealFields;
+        } else if (creditCardRadio.checked) {
+            paymentDetails.innerHTML = creditCardFields;
+        } else if (debitCardRadio.checked) {
+            paymentDetails.innerHTML = debitCardFields;
         }
+    }
 
-        // Call the updatePaymentDetails function on page load and whenever a radio button is clicked
-        updatePaymentDetails();
-        idealRadio.addEventListener("click", updatePaymentDetails);
-        creditCardRadio.addEventListener("click", updatePaymentDetails);
-        debitCardRadio.addEventListener("click", updatePaymentDetails);
+    // Call the updatePaymentDetails function on page load and whenever a radio button is clicked
+    updatePaymentDetails();
+    idealRadio.addEventListener("click", updatePaymentDetails);
+    creditCardRadio.addEventListener("click", updatePaymentDetails);
+    debitCardRadio.addEventListener("click", updatePaymentDetails);
 
-    </script>
-    <?php
-    include __DIR__ . '/../footer.php';
-    ?>
+</script>
+<?php
+include __DIR__ . '/../footer.php';
+?>

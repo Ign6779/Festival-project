@@ -319,6 +319,7 @@ body {
 .start-9 {
   grid-row-start: 1;
 }
+
 .start-00 {
   grid-row-start: 1;
 }
@@ -474,6 +475,7 @@ body {
 .yummy-event {
   background: var(--eventColor4);
 }
+
 .all-access-event {
   background: var(--eventColor5);
 }
@@ -495,7 +497,7 @@ body {
   font-weight: 100;
 }
 
-.time{
+.time {
   font-size: 13px;
 }
 
