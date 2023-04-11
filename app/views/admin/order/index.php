@@ -17,6 +17,8 @@
     </tbody>
 </table>
 
+<script src="../../../../lib/jspdf.js"></script>
+
 <script>
     window.onload = refresh();
 
@@ -88,19 +90,4 @@
         // Save the PDF as a file
         doc.save('order.pdf');
     }
-
-    // Add a click event listener to the "Download PDF" button
-    // document.getElementById('downloadBtn').addEventListener('click', exportToPDF(orderInput) {
-    //   var orderInput = {
-    //     username: 'JohnDoe',
-    //     amount: '$100',
-    //     status: 'Completed',
-    //     payment_method: 'Credit Card',
-    //     time_of_purchase: '2023-04-11 10:30 AM'
-    //   };
-
-    //   exportToPDF(orderInput);
-    // });
-
-    exportToPDF(orderInput);
 </script>
