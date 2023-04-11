@@ -11,7 +11,7 @@ class ScannerController extends Controller
 
     public function index()
     {
-        require __DIR__ . '/../views/employee/scanner.php';
+        require __DIR__ . '/../views/employee/index.php';
     }
 
     

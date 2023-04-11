@@ -7,10 +7,8 @@
     <h2><? echo "Start hour: ".$ticketOrder->getEvent()->getStartTime(); ?> </h2>
 
      <p id="is_scanned_status"> </p>
-
-    </div>
-
-    <div class="col-md-1 "><a href="/homepage" class="btn-red" onclick="updateScannedtatus">Finish Checking</a>
+    
+     <a href="/homepage" class="btn-red" onclick="updateScannedtatus">Finish Checking</a>
     
 
 <script>
