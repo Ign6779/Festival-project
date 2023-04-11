@@ -21,13 +21,13 @@
     window.onload = refresh();
 
     function refresh() {
-    document.getElementsByTagName("tbody")[0].innerHTML = "";
-    fetch('http://localhost/api/order')
-    .then(result=>result.json())
-    .then((data) => {
-        console.log(data);
-        Object.values(data).forEach(load);
-    }).catch(err => console.error(err));
+        document.getElementsByTagName("tbody")[0].innerHTML = "";
+        fetch('http://localhost/api/order')
+            .then(result => result.json())
+            .then((data) => {
+                console.log(data);
+                Object.values(data).forEach(load);
+            }).catch(err => console.error(err));
     }
 
     function load(orderInput) {
@@ -61,15 +61,46 @@
         rDownloadPdf = document.createElement("a");
         rDownloadPdf.className = "btn btn-warning me-2";
         rDownloadPdf.innerHTML = "DownloadPdf";
+        rDownloadPdf.addEventListener('click', function () {
+            exportToPDF(orderInput);
+        });
 
         rExport = document.createElement("a");
         rExport.className = "btn btn-warning me-2";
         rExport.innerHTML = "Export";
 
-        rDownloadPdf
-        rDownloadPdf
         tdButtons.append(rEdit, rDownloadPdf);
         tr.append(tdId, tdUsername, tdAmount, tdStatus, tdPaymentMethod, tdTimeOfPurchase, tdButtons);
         tbody.appendChild(tr);
     }
+
+    function exportToPDF(orderInput) {
+        // Create a new jsPDF instance
+        var doc = new jsPDF();
+
+        // Add orderInput data to the PDF
+        doc.text(10, 10, 'Username: ' + orderInput.username);
+        doc.text(10, 20, 'Amount: ' + orderInput.amount);
+        doc.text(10, 30, 'Status: ' + orderInput.status);
+        doc.text(10, 40, 'Payment Method: ' + orderInput.payment_method);
+        doc.text(10, 50, 'Time of Purchase: ' + orderInput.time_of_purchase);
+
+        // Save the PDF as a file
+        doc.save('order.pdf');
+    }
+
+    // Add a click event listener to the "Download PDF" button
+    // document.getElementById('downloadBtn').addEventListener('click', exportToPDF(orderInput) {
+    //   var orderInput = {
+    //     username: 'JohnDoe',
+    //     amount: '$100',
+    //     status: 'Completed',
+    //     payment_method: 'Credit Card',
+    //     time_of_purchase: '2023-04-11 10:30 AM'
+    //   };
+
+    //   exportToPDF(orderInput);
+    // });
+
+    exportToPDF(orderInput);
 </script>
