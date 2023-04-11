@@ -232,8 +232,10 @@ class PaymentController extends Controller
         $pdf->SetFont('dejavusans', '', 12);
         $pdf->Cell(0, 10, 'Invoice Number: ' . $order->getId(), 0, 1);
         $pdf->Cell(0, 10, 'Invoice Date: ' . date('Y-m-d'), 0, 1);
-        $pdf->Cell(0, 10, 'Customer Name: ' . $user->getUsername(), 0, 1);
-        $pdf->Cell(0, 10, 'Customer Email: ' . $user->getEmail(), 0, 1);
+        $pdf->Cell(0, 10, 'Name: ' . $user->getUsername(), 0, 1);
+        $pdf->Cell(0, 10, 'Email: ' . $user->getEmail(), 0, 1);
+        $pdf->Cell(0, 10, 'Phone Number: ' . $user->getPhone(), 0, 1);
+        $pdf->Cell(0, 10, 'Address: ' . $user->getAddress(), 0, 1);
         $pdf->SetFont('dejavusans', 'B', 12);
         $pdf->Cell(0, 10, 'Invoice Items:', 0, 1);
         $pdf->SetFont('dejavusans', 'B', 12);
@@ -250,9 +252,11 @@ class PaymentController extends Controller
             $total += $event->getPrice() * $quantity;
         }
         $pdf->SetFont('dejavusans', 'B', 12);
-        $pdf->Cell(120, 10, 'Total:', 0, 0, 'R');
+        $vatRate = 1.21;
+        $totalWithVat = $total * $vatAmount;
+        $pdf->Cell(120, 10, 'Total(inc VAT):', 0, 0, 'R');
         $pdf->SetFont('dejavusans', '', 12);
-        $pdf->Cell(60, 10, '€' . number_format($total, 2), 0, 1, 'C');
+        $pdf->Cell(60, 10, '€' . number_format($totalwithVat, 2), 0, 1, 'C');
     }
 
     function createTicketsTemplate($pdf, $orderItems)
