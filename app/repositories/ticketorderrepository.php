@@ -8,7 +8,8 @@ class TicketOrderRepository extends Repository
 {
     private $eventService;
     private $userService;
-    function __construct(){
+    function __construct()
+    {
         parent::__construct();
         $this->eventService = new EventService();
         $this->userService = new UserService();
@@ -34,15 +35,13 @@ class TicketOrderRepository extends Repository
         try {
             $order_id = $orderTicket->getOrderId();
             $event_id = $orderTicket->getTicketId();
-            $qr_code = $orderTicket->getQrCode();
+            $uuid = $orderTicket->getUuId();
             $is_scanned = false;
-
-            $stmt = $this->connection->prepare("INSERT INTO `order_ticket`(`order_id`, `event_id`, `is_scaned`) VALUES (:order_id,:event_id,:is_scanned)");
-
+            $stmt = $this->connection->prepare("INSERT INTO `order_ticket`(`order_id`, `event_id`, `is_scaned` , `uuid`) VALUES (:order_id,:event_id,:is_scanned,:uuid)");
             $stmt->bindParam(':order_id', $order_id);
             $stmt->bindParam(':event_id', $event_id);
             $stmt->bindParam(':is_scanned', $is_scanned, PDO::PARAM_BOOL);
-
+            $stmt->bindParam(':uuid', $uuid);
             $stmt->execute();
         } catch (PDOException $e) {
             echo $e;
@@ -52,20 +51,30 @@ class TicketOrderRepository extends Repository
     function getItemsByOrderId($order_id)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT * FROM order_ticket WHERE order_id = :id");
+            $stmt = $this->connection->prepare("SELECT ot.*, o.user_id FROM order_ticket ot LEFT JOIN `order` o ON ot.order_id = o.id WHERE order_id = :id");
             $stmt->bindParam(':id', $order_id);
             $stmt->execute();
+            $orderTickets = [];
+            while ($row = $stmt->fetch()) {
+                $orderTicket = new TicketOrder();
+                $orderTicket->setId($row['id']);
+                $orderTicket->setOrderId($row['order_id']);
+                $orderTicket->setTicketId($row['event_id']);
+                $event = $this->eventService->getById($row['event_id']);
+                $user = $this->userService->getUserById($row['user_id']);
+                $orderTicket->setEvent($event);
+                $orderTicket->setUser($user);
+                array_push($orderTickets, $orderTicket);
+            }
 
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'TicketOrder');
-            $ticketOrder = $stmt->fetchAll();
-
-            return $ticketOrder;
+            return $orderTickets;
         } catch (PDOException $e) {
             echo $e;
         }
     }
 
-    function changeScannedStatus($id){
+    function changeScannedStatus($id)
+    {
         try {
             $stmt = $this->connection->prepare("UPDATE `order_ticket` SET `is_scaned`='1' WHERE order_id= :id;");
             $stmt->bindParam(':id', $id);
@@ -76,14 +85,15 @@ class TicketOrderRepository extends Repository
         }
     }
 
-    function getScannerInformation($id){
-        try{
+    function getScannerInformation($id)
+    {
+        try {
             $stmt = $this->connection->prepare("SELECT ot.*, o.user_id FROM order_ticket ot LEFT JOIN `order` o ON ot.order_id = o.id
             WHERE ot.id = :id");
-            $stmt->bindParam(':id',$id);
+            $stmt->bindParam(':id', $id);
             $stmt->execute();
-            
-            while ($row = $stmt->fetch()){
+
+            while ($row = $stmt->fetch()) {
                 $orderTicket = new TicketOrder();
                 $orderTicket->setId($row['id']);
                 $orderTicket->setOrderId($row['order_id']);

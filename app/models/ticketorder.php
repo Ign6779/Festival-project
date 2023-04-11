@@ -15,6 +15,8 @@ class TicketOrder implements \JsonSerializable
     private Event $event;
 
     private User $user;
+    
+    private string $uuid;
 
 
     #[ReturnTypeWillChange]
@@ -68,7 +70,8 @@ class TicketOrder implements \JsonSerializable
         return $this->event;
     }
 
-    public function setEvent(Event $event) :self{
+    public function setEvent(Event $event): self
+    {
         $this->event = $event;
         return $this;
     }
@@ -78,11 +81,19 @@ class TicketOrder implements \JsonSerializable
         return $this->user;
     }
 
-    public function setUser(User $user) :self
+    public function setUser(User $user): self
     {
         $this->user = $user;
         return $this;
     }
 
-
+    public function getUuId(): string
+    {
+        return $this->uuid;
+    }
+    public function setUuId($id): self
+    {
+        $this->uuid = $id;
+        return $this;
+    }
 } ?>

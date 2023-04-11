@@ -13,6 +13,7 @@ use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use Ramsey\Uuid\Uuid;
 
 require_once __DIR__ . '/../services/userservice.php';
 require_once __DIR__ . '/../lib/phpEmaiLib/Exception.php';
@@ -61,8 +62,8 @@ class PaymentController extends Controller
                     "value" => number_format($amount, 2, '.', ''),
                 ],
                 "description" => "Festival ticket payment for user $userId",
-                "redirectUrl" => "https://0abe-87-209-230-169.eu.ngrok.io/payment/paymentStatus",
-                "webhookUrl" => "https://0abe-87-209-230-169.eu.ngrok.io/payment/handleWebhook",
+                "redirectUrl" => "https://44df-145-81-199-236.ngrok-free.app/payment/paymentStatus",
+                "webhookUrl" => "https://44df-145-81-199-236.ngrok-free.app/payment/handleWebhook",
                 "metadata" => [
                     "user_id" => $userId,
                 ],
@@ -133,22 +134,12 @@ class PaymentController extends Controller
         $order = $this->orderService->getOrderByPaymentId($_SESSION['paymentid']);
         $cart = $_SESSION['cart'];
         foreach ($cart as $productid => $quantity) {
-            // $result = Builder::create()
-            //     ->writer(new PngWriter())
-            //     ->writerOptions([])
-            //     ->data($productid . "" . $order->getId())
-            //     ->encoding(new Encoding('UTF-8'))
-            //     ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
-            //     ->validateResult(false)
-            //     ->build();
-            // $base64Data = base64_encode($result->getString());
             $ticketOrder = new TicketOrder();
             $ticketOrder->setOrderId($order->getId());
             $ticketOrder->setTicketId($productid);
-            $ticketOrder->setQRCode(" ");
+            $ticketOrder->setUuId(Uuid::uuid4()->toString());
             $ticketOrder->setIsScanned(false);
             $this->ticketOrdeService->insertOrderTicket($ticketOrder);
-            $result = null;
         }
     }
 
@@ -158,7 +149,7 @@ class PaymentController extends Controller
         $cart = $_SESSION['cart'];
         foreach ($cart as $productid => $qnt) {
             $item = $this->eventService->getById($productid);
-            $amount += $item->getPrice();
+            $amount += $item->getPrice() * $qnt;
         }
         return $amount;
     }
