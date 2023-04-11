@@ -17,7 +17,7 @@
     </tbody>
 </table>
 
-<script src="../../../../lib/jspdf.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
 
 <script>
     window.onload = refresh();
