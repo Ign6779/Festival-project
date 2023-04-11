@@ -6,8 +6,66 @@ class OrderRepository extends Repository
 {
     public function getAll()
     {
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM order");
+            $stmt->execute();
 
+            $orders = [];
+
+            while ($row = $stmt->fetch()) {
+                $orderId = $row['id'];
+
+                if (!isset($orders[$orderId])) {
+                    $order = new order();
+                    $order->setId($row['id']);
+                    $order->setUserId($row['date']);
+                    $order->setAmount($row['startTime']);
+                    $order->setStatus($row['endTime']);
+                    $order->setPaymentMethod($row['availableTickets']);
+                    $order->setTimeOfPurchase($row['price']);
+                    $order->setPaymentId($row['event_id']);
+
+                    $orders[$orderId] = $order;
+                }
+            }
+
+            return array_values($orders);
+        } catch (PDOException $e) {
+            echo $e;
+        }
     }
+
+    public function getById(int $id)
+    {
+        // try {
+        //     $stmt = $this->connection->prepare("SELECT e.title, e.date, e.start_time as startTime, e.end_time as endTime, j.*, e.seats, e.price 
+        //     FROM jazz j
+        //     LEFT JOIN events e ON e.id = j.event_id 
+        //     WHERE j.id = :id");
+
+        //     $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+        //     $stmt->execute();
+
+        //     $order = new order();
+
+        //     while ($row = $stmt->fetch()) {
+        //         $jazz->setId($row['id']);
+        //         $jazz->setTitle($row['title']);
+        //         $jazz->setDate($row['date']);
+        //         $jazz->setStartTime($row['startTime']);
+        //         $jazz->setEndTime($row['endTime']);
+        //         $jazz->setSeats($row['seats']);
+        //         $jazz->setPrice($row['price']);
+        //         $jazz->setEventId($row['event_id']);
+        //         $jazz->setVenueId($row['venueId']);
+        //     }
+        //     return $jazz;
+        // } catch (PDOException $e) {
+        //     echo $e;
+        // }
+    }
+
 
     public function createOrder($order)
     {
@@ -83,7 +141,7 @@ class OrderRepository extends Repository
     {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM `order` WHERE `pay_later_token` = :token");
-            $stmt->bindParam(':token', $token );
+            $stmt->bindParam(':token', $token);
             $stmt->execute();
 
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Order');
