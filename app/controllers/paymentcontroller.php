@@ -13,6 +13,7 @@ use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use Ramsey\Uuid\Uuid;
 
 require_once __DIR__ . '/../services/userservice.php';
 require_once __DIR__ . '/../lib/phpEmaiLib/Exception.php';
@@ -78,8 +79,10 @@ class PaymentController extends Controller
                     "value" => number_format($amount, 2, '.', ''),
                 ],
                 "description" => "Festival ticket payment for user $userId",
-                "redirectUrl" => "   https://36f6-87-209-230-169.ngrok-free.app/payment/paymentStatus",
-                "webhookUrl" => "   https://36f6-87-209-230-169.ngrok-free.app/payment/handleWebhook",
+
+                "redirectUrl" => "https://44df-145-81-199-236.ngrok-free.app/payment/paymentStatus",
+                "webhookUrl" => "https://44df-145-81-199-236.ngrok-free.app/payment/handleWebhook",
+
                 "metadata" => [
                     "user_id" => $userId,
                 ],
@@ -168,11 +171,13 @@ class PaymentController extends Controller
         foreach ($cart as $productid => $quantity) {
             for ($i = 0; $i < $quantity; $i++) {
                 $ticketOrder = new TicketOrder();
-                $ticketOrder->setOrderId($order->getId());
-                $ticketOrder->setTicketId($productid);
-                $ticketOrder->setIsScanned(false);
-                $this->ticketOrdeService->insertOrderTicket($ticketOrder);
+            $ticketOrder->setOrderId($order->getId());
+            $ticketOrder->setTicketId($productid);
+            $ticketOrder->setUuId(Uuid::uuid4()->toString());
+            $ticketOrder->setIsScanned(false);
+            $this->ticketOrdeService->insertOrderTicket($ticketOrder);
             }
+
         }
     }
 

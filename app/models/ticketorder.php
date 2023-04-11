@@ -4,12 +4,14 @@ class TicketOrder implements \JsonSerializable
 {
     private int $id;
 
-    private int $order_id;
-
-    private int $event_id;
-
-    
     private bool $is_scanned;
+
+    private Event $event;
+
+    private User $user;
+    
+    private string $uuid;
+
 
     #[ReturnTypeWillChange]
     public function jsonSerialize()
@@ -28,25 +30,6 @@ class TicketOrder implements \JsonSerializable
         return $this;
     }
 
-    public function getOrderId(): int
-    {
-        return $this->order_id;
-    }
-    public function setOrderId($order_id): self
-    {
-        $this->order_id = $order_id;
-        return $this;
-    }
-    public function getTicketId(): int
-    {
-        return $this->event_id;
-    }
-    public function setTicketId($ticket_id): self
-    {
-        $this->event_id = $ticket_id;
-        return $this;
-    }
-
     public function getIsScanned(): bool
     {
         return $this->is_scanned;
@@ -57,4 +40,35 @@ class TicketOrder implements \JsonSerializable
         return $this;
     }
 
+    public function getEvent(): Event
+    {
+        return $this->event;
+    }
+
+    public function setEvent(Event $event): self
+    {
+        $this->event = $event;
+        return $this;
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    public function getUuId(): string
+    {
+        return $this->uuid;
+    }
+    public function setUuId($id): self
+    {
+        $this->uuid = $id;
+        return $this;
+    }
 } ?>

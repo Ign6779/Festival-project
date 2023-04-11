@@ -2,8 +2,10 @@
 require __DIR__ . '/repository.php';
 require __DIR__ . '/../models/session.php';
 
-class SessionRepository extends Repository {
-    public function getAll() {
+class SessionRepository extends Repository
+{
+    public function getAll()
+    {
         try {
             $stmt = $this->connection->prepare("SELECT e.date, e.start_time AS startTime, e.end_time AS endTime, e.seats, e.price, s.*
             FROM sessions s
@@ -33,7 +35,8 @@ class SessionRepository extends Repository {
         }
     }
 
-    public function getById(int $id) {
+    public function getById(int $id)
+    {
         try {
             $stmt = $this->connection->prepare("SELECT e.date, e.start_time AS startTime, e.end_time AS endTime, e.seats, e.price, s.* 
             FROM sessions s 
@@ -62,7 +65,8 @@ class SessionRepository extends Repository {
         }
     }
 
-    public function getByRestaurant(int $id) {
+    public function getByRestaurant(int $id)
+    {
         try {
             $stmt = $this->connection->prepare("SELECT e.date, e.start_time AS startTime, e.end_time AS endTime, e.seats, e.price, s.* 
             FROM sessions s
@@ -93,7 +97,8 @@ class SessionRepository extends Repository {
         }
     }
 
-    public function getRestaurantName(int $id) {
+    public function getRestaurantName(int $id)
+    {
         try {
             $stmt = $this->connection->prepare("SELECT r.name
             FROM sessions s
@@ -101,20 +106,21 @@ class SessionRepository extends Repository {
             WHERE s.id = :id");
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
-            
-            $restaurantName;
+
+            $restaurantName = null;
 
             while ($row = $stmt->fetch()) {
                 $restaurantName = $row['name'];
             }
-            
+
             return $restaurantName;
         } catch (PDOExecption $e) {
             echo $e;
         }
     }
 
-    public function createSession(Session $session) {
+    public function createSession(Session $session)
+    {
         try {
             //setting in on two statements since it fills two tables. can be done in one, but for better understanding
 
@@ -131,10 +137,10 @@ class SessionRepository extends Repository {
             $stmt1->execute();
 
             //filling in the sessions table part
-            $eventId = $this->connection->lastInsertId();//if this works i am a fucking genius
+            $eventId = $this->connection->lastInsertId(); //if this works i am a fucking genius
             $stmt2 = $this->connection->prepare("INSERT INTO sessions (restaurantId, event_id) 
             VALUES (:restaurantId, :event_id)");
-            
+
             $stmt2->bindValue(':restaurantId', $session->getRestaurantId(), PDO::PARAM_STR);
             $stmt2->bindValue(':event_id', $eventId);
 
@@ -143,6 +149,7 @@ class SessionRepository extends Repository {
             $sessionId = $this->connection->lastInsertId(); //if THIS works i am even more of a fucking genius
             $stmt3 = $this->connection->prepare("UPDATE events SET title = :title WHERE id = :id");
             $stmt3->bindValue(':title', $this->getRestaurantName($sessionId));
+
             $stmt3->bindValue(':id', $eventId);
             $stmt3->execute();
 
@@ -151,7 +158,8 @@ class SessionRepository extends Repository {
         }
     }
 
-    public function updateSession(Session $session) {
+    public function updateSession(Session $session)
+    {
         try {
             // Update event record
             $stmt = $this->connection->prepare("UPDATE events 
@@ -169,12 +177,13 @@ class SessionRepository extends Repository {
         }
     }
 
-    public function deleteSession(int $id) {
+    public function deleteSession(int $id)
+    {
         try {
             $stmt = $this->connection->prepare("DELETE FROM events WHERE id = :id"); //IF the foreign keys are set correctly, this *should* work
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
-        } catch  (PDOException $e) {
+        } catch (PDOException $e) {
             echo $e;
         }
     }

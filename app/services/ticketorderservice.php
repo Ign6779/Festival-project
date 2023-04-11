@@ -24,5 +24,13 @@ class TicketOrderService
     {
         return $this->repository->getItemsByOrderId($order_id);
     }
+
+    public function changeScannedStatus($id){
+        return $this->repository->changeScannedStatus($id);
+    }
+
+    public function getScannerInformation($id){
+        return $this->repository->getScannerInformation($id);
+    }
 }
 ?>

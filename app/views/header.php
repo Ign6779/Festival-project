@@ -1,4 +1,5 @@
 <?
+require_once __DIR__ . '/../services/userservice.php';
 function returnStyle($id)
 {
     $style = "";
@@ -71,13 +72,13 @@ function returnSelected($id)
                     ?>
                     <a href="/login/logout" class="btn btn-danger">Logout</a>
                     <?php
-                    // $userService = new UserService();
-                    // $user = $userService->getUserById($_SESSION["user"]);
+                    $userService = new UserService();
+                    $user = $userService->getUserById($_SESSION["user"]);
+                    $image = $user->getImage() ? $user->getImage() : 'account.png';
 
-                    // $image = $user->getImage() ? $user->getImage() : 'account.png';
                     ?>
                     <a href="/user/edituser"><img id="account-icon" class="fa-solid fa-user"
-                    src="/img/<?php echo $image; ?>" alt="account"></a>
+                            src="/img/<?php echo $image; ?>" alt="account"></a>
                 <?
                 } else {
                     ?>
@@ -147,7 +148,7 @@ function returnSelected($id)
 
                 <div id="items-in-cart" class="items-in-cart" style="overflow:hidden; overflow-y: scroll; ">
                     <h4 class="cardtitle">My Cart(<div id="cartamount"></div>)</h4>
-                    
+
                     <div>
                         <a href="/payment" id="cartbtn" class="btn btn-primary">Go to Payment</a>
                     </div>

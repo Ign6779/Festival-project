@@ -2,6 +2,7 @@
     "require": {
         "mollie/mollie-api-php": "^2.52",
         "endroid/qr-code": "^4.8",
-        "tecnickcom/tcpdf": "^6.6"
+        "tecnickcom/tcpdf": "^6.6",
+        "ramsey/uuid": "^4.7"
     }
 }

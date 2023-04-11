@@ -140,6 +140,9 @@ th,tr{
     padding-left: 30px;
     padding-top: 20px;
 }
+.getLocation-paragraph{
+    padding-left: 20px;
+}
 
 /* Problems I ran into: */
 /* can't position button and Haarlem History i the middle */
