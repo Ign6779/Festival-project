@@ -157,7 +157,7 @@ function returnSelected($id)
 
                     </div>
 
-                    <button>Share link</button>
+                    <button onclick="genarteCartShareUrl()">Share link</button>
                     <input type="text" value="" id="cartUrlLink">
                 </div>
 
@@ -309,14 +309,12 @@ function returnSelected($id)
 
         function genarteCartShareUrl() {
             var link = document.getElementById("cartUrlLink");
+            link.value = "";
             fetch('http://localhost/api/cart/cartToUrl').then(result => result.json()
             )
                 .then((data) => {
                     console.log(data);
-                    // data.forEach(element => {
-                    //     loadCalender(element);
-                    // });
-
+                    link.value = 'http://localhost/?' + data;
                 })
                 .catch(error => console.log(error));
         }
