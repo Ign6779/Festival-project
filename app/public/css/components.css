@@ -269,10 +269,11 @@ body {
   --timeHeight: 40px;
   --calBgColor: #fff;
   --eventBorderColor: #f2d3d8;
-  --eventColor1: #8A50A0;
+  --eventColor1: #b18ac0;
   --eventColor2: #BEE7FF;
   --eventColor3: #FF9090;
   --eventColor4: #CDF0D5;
+  --eventColor5: #ffcf69;
 }
 
 .calendar {
@@ -316,6 +317,9 @@ body {
 
 /* Place on Timeline */
 .start-9 {
+  grid-row-start: 1;
+}
+.start-00 {
   grid-row-start: 1;
 }
 
@@ -469,6 +473,9 @@ body {
 
 .yummy-event {
   background: var(--eventColor4);
+}
+.all-access-event {
+  background: var(--eventColor5);
 }
 
 .date {
