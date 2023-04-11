@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Apr 11, 2023 at 12:34 PM
+-- Generation Time: Apr 11, 2023 at 03:17 PM
 -- Server version: 10.9.4-MariaDB-1:10.9.4+maria~ubu2204
 -- PHP Version: 8.0.25
 
@@ -293,33 +293,33 @@ INSERT INTO `events` (`id`, `title`, `date`, `start_time`, `end_time`, `event_ty
 (46, 'Han Bennink', '2023-07-28', '18:00:00', '19:00:00', 'jazz', 150, 10),
 (47, 'The Nordanians', '2023-07-28', '19:30:00', '20:30:00', 'jazz', 150, 10),
 (48, 'Lilith Merlot', '2023-07-28', '21:00:00', '22:00:00', 'jazz', 150, 10),
-(49, 'Ruis Soundsystem', '2023-07-29', '15:00:00', '16:00:00', 'jazz', 0, 0),
-(50, 'Wicked Jazz Sounds', '2023-07-29', '16:00:00', '17:00:00', 'jazz', 0, 0),
-(51, 'Evolve', '2023-07-29', '17:00:00', '18:00:00', 'jazz', 0, 0),
-(52, 'The Nordanians', '2023-07-29', '18:00:00', '19:00:00', 'jazz', 0, 0),
-(53, 'Gumbo Kings', '2023-07-29', '19:00:00', '20:00:00', 'jazz', 0, 0),
-(54, 'Gare du Nord', '2023-07-29', '20:00:00', '21:00:00', 'jazz', 0, 0),
+(49, 'Ruis Soundsystem', '2023-07-29', '15:00:00', '16:00:00', 'jazz', 2000, 0),
+(50, 'Wicked Jazz Sounds', '2023-07-29', '16:00:00', '17:00:00', 'jazz', 2000, 0),
+(51, 'Evolve', '2023-07-29', '17:00:00', '18:00:00', 'jazz', 2000, 0),
+(52, 'The Nordanians', '2023-07-29', '18:00:00', '19:00:00', 'jazz', 2000, 0),
+(53, 'Gumbo Kings', '2023-07-29', '19:00:00', '20:00:00', 'jazz', 2000, 0),
+(54, 'Gare du Nord', '2023-07-29', '20:00:00', '21:00:00', 'jazz', 2000, 0),
 (55, 'Walk through historical Haarlem-English', '2023-07-26', '10:00:00', '12:30:00', 'history', 12, 17.5),
 (56, 'Walk through historical Haarlem-Dutch', '2023-07-26', '10:00:00', '12:30:00', 'history', 12, 17.5),
-(57, 'Walk through historical Haarlem-Chinese', '2023-07-26', '10:00:00', '12:30:00', 'history', 0, 17.5),
+(57, 'Walk through historical Haarlem-Chinese', '2023-07-26', '10:00:00', '12:30:00', 'history', 2000, 17.5),
 (58, 'Walk through historical Haarlem-English', '2023-07-26', '13:00:00', '15:30:00', 'history', 12, 17.5),
 (59, 'Walk through historical Haarlem-Dutch', '2023-07-26', '13:00:00', '15:30:00', 'history', 12, 17.5),
-(60, 'Walk through historical Haarlem-Chinese', '2023-07-26', '13:00:00', '15:30:00', 'history', 0, 17.5),
+(60, 'Walk through historical Haarlem-Chinese', '2023-07-26', '13:00:00', '15:30:00', 'history', 2000, 17.5),
 (61, 'Walk through historical Haarlem-English', '2023-07-26', '16:00:00', '18:30:00', 'history', 12, 17.5),
 (62, 'Walk through historical Haarlem-Dutch', '2023-07-26', '16:00:00', '18:30:00', 'history', 12, 17.5),
-(63, 'Walk through historical Haarlem-Chinese', '2023-07-26', '16:00:00', '18:30:00', 'history', 0, 17.5),
+(63, 'Walk through historical Haarlem-Chinese', '2023-07-26', '16:00:00', '18:30:00', 'history', 2000, 17.5),
 (64, 'Walk through historical Haarlem-English', '2023-07-27', '10:00:00', '12:30:00', 'history', 12, 17.5),
 (65, 'Walk through historical Haarlem-Dutch', '2023-07-27', '10:00:00', '12:30:00', 'history', 12, 17.5),
-(66, 'Walk through historical Haarlem-Chinese', '2023-07-27', '10:00:00', '12:30:00', 'history', 0, 17.5),
+(66, 'Walk through historical Haarlem-Chinese', '2023-07-27', '10:00:00', '12:30:00', 'history', 2000, 17.5),
 (67, 'Walk through historical Haarlem-English', '2023-07-27', '13:00:00', '15:30:00', 'history', 12, 17.5),
 (68, 'Walk through historical Haarlem-Dutch', '2023-07-27', '13:00:00', '15:30:00', 'history', 12, 17.5),
 (69, 'Walk through historical Haarlem-Chinese', '2023-07-27', '13:00:00', '15:30:00', 'history', 12, 17.5),
 (70, 'Walk through historical Haarlem-English', '2023-07-27', '16:00:00', '18:30:00', 'history', 12, 17.5),
 (71, 'Walk through historical Haarlem-Dutch', '2023-07-27', '16:00:00', '18:30:00', 'history', 12, 17.5),
-(72, 'Walk through historical Haarlem-Chinese', '2023-07-27', '16:00:00', '18:30:00', 'history', 0, 17.5),
+(72, 'Walk through historical Haarlem-Chinese', '2023-07-27', '16:00:00', '18:30:00', 'history', 2000, 17.5),
 (73, 'Walk through historical Haarlem-English', '2023-07-28', '10:00:00', '12:30:00', 'history', 24, 17.5),
 (74, 'Walk through historical Haarlem-Dutch', '2023-07-28', '10:00:00', '12:30:00', 'history', 24, 17.5),
-(75, 'Walk through historical Haarlem-Chinese', '2023-07-28', '10:00:00', '12:30:00', 'history', 0, 17.5),
+(75, 'Walk through historical Haarlem-Chinese', '2023-07-28', '10:00:00', '12:30:00', 'history', 2000, 17.5),
 (76, 'Walk through historical Haarlem-English', '2023-07-28', '13:00:00', '15:30:00', 'history', 24, 17.5),
 (77, 'Walk through historical Haarlem-Dutch', '2023-07-28', '13:00:00', '15:30:00', 'history', 24, 17.5),
 (78, 'Walk through historical Haarlem-Chinese', '2023-07-28', '13:00:00', '15:30:00', 'history', 12, 17.5),
@@ -334,11 +334,10 @@ INSERT INTO `events` (`id`, `title`, `date`, `start_time`, `end_time`, `event_ty
 (87, 'Walk through historical Haarlem-Chinese', '2023-07-29', '13:00:00', '15:30:00', 'history', 24, 17.5),
 (88, 'Walk through historical Haarlem-English', '2023-07-29', '16:00:00', '18:30:00', 'history', 12, 17.5),
 (89, 'Walk through historical Haarlem-Dutch', '2023-07-29', '16:00:00', '18:30:00', 'history', 12, 17.5),
-(90, 'Walk through historical Haarlem-Chinese', '2023-07-29', '16:00:00', '18:30:00', 'history', 0, 17.5),
+(90, 'Walk through historical Haarlem-Chinese', '2023-07-29', '16:00:00', '18:30:00', 'history', 2000, 17.5),
 (101, 'Friday All-Access daypass', '2023-07-27', '00:00:00', '23:59:00', 'all-access', 3000, 125),
 (102, 'Saturday All-Access daypass', '2023-07-28', '00:00:00', '23:59:00', 'all-access', 3000, 150),
-(103, 'Sunday All-Access daypass', '2023-07-29', '00:00:00', '23:59:00', 'all-access', 3000, 150),
-(104, 'All-Access for Whole Festival', '2023-07-25', '00:00:00', '00:00:00', 'all-access', 3000, 250);
+(103, 'Sunday All-Access daypass', '2023-07-29', '00:00:00', '23:59:00', 'all-access', 3000, 150);
 
 -- --------------------------------------------------------
 
@@ -471,8 +470,7 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id`, `user_id`, `amount`, `status`, `payment_method`, `time_of_purchase`, `payment_id`, `pay_later_token`) VALUES
-(84, 2, 135, 'paid', 'ideal', '2023-04-09 15:21:23', 'tr_vfxHfUKZvx', NULL),
-(85, 2, 135, 'failed', 'ideal', '2023-04-09 15:22:11', 'tr_LsdinCLWEK', 'e8eb2e59353d63ee89e566d0f724d96961eb8fc1fc61b6551837cda8c1adae9e');
+(89, 2, 135, 'paid', 'ideal', '2023-04-11 14:25:39', 'tr_3vRA4C6Pc5', NULL);
 
 -- --------------------------------------------------------
 
@@ -493,12 +491,9 @@ CREATE TABLE `order_ticket` (
 --
 
 INSERT INTO `order_ticket` (`id`, `order_id`, `event_id`, `is_scaned`, `uuid`) VALUES
-(170, 84, 1, 0, ''),
-(171, 84, 1, 0, ''),
-(172, 84, 1, 0, ''),
-(173, 85, 1, 0, ''),
-(174, 85, 1, 0, ''),
-(175, 85, 1, 0, '');
+(178, 89, 1, 0, '9b1b275b-25e1-4827-b697-5f2a4a9bcc35'),
+(179, 89, 1, 0, 'af185f62-00b0-4aee-9de8-397b98065938'),
+(180, 89, 1, 0, '1fc4cd4e-8ff3-441c-9684-ecf789118d96');
 
 -- --------------------------------------------------------
 
@@ -663,17 +658,18 @@ CREATE TABLE `users` (
   `phone` int(15) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `registration` date NOT NULL
+  `registration` date NOT NULL,
+  `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `role`, `username`, `password`, `phone`, `address`, `email`, `registration`) VALUES
-(0, 'admin', 'gnas', '$2y$10$3i245PoMfgnkgnLc0YjFruWeYhmBcp1KubBKmKk9oQeCTffmAKQDy', 123456789, 'PurePainStreet, 4', 'ignas@gmail.com', '2023-02-01'),
-(2, 'customer', 'stupidCatalin', '$2y$10$P4yGos0mu6EQ56vyPLF/1enCAxYML9TUv8GNKQM5ZdoIzo9hcohUS', 12365489, 'test', 'catalin@gmail.com', '2023-03-08'),
-(3, 'employee', 'test', '$2y$10$JlZLGLdTcXQiCvRhbB/WAOlVpMPaH2vrlqOXe3.FMuLnno5cyZkKu', 12365489, 'test', 'sssss@gmail.com', '2023-03-09');
+INSERT INTO `users` (`id`, `role`, `username`, `password`, `phone`, `address`, `email`, `registration`, `image`) VALUES
+(0, 'admin', 'gnas', '$2y$10$3i245PoMfgnkgnLc0YjFruWeYhmBcp1KubBKmKk9oQeCTffmAKQDy', 123456789, 'PurePainStreet, 4', 'ignas@gmail.com', '2023-02-01', ''),
+(2, 'customer', 'stupidCatalin', '$2y$10$P4yGos0mu6EQ56vyPLF/1enCAxYML9TUv8GNKQM5ZdoIzo9hcohUS', 12365489, 'test', 'emaiiiitest86@gmail.com', '2023-03-08', ''),
+(3, 'employee', 'test', '$2y$10$JlZLGLdTcXQiCvRhbB/WAOlVpMPaH2vrlqOXe3.FMuLnno5cyZkKu', 12365489, 'test', 'sssss@gmail.com', '2023-03-09', '');
 
 -- --------------------------------------------------------
 
@@ -883,13 +879,13 @@ ALTER TABLE `kids`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `order_ticket`
 --
 ALTER TABLE `order_ticket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
 
 --
 -- AUTO_INCREMENT for table `restaurants`
