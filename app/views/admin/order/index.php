@@ -60,7 +60,7 @@
         rEdit.innerHTML = "Edit";
         rEdit.href = "/order/editOrderForm?orderId=" + orderInput.id;
 
-        rDownloadPdf = document.createElement("button");
+        rDownloadPdf = document.createElement("a");
         rDownloadPdf.className = "btn btn-warning me-2";
         rDownloadPdf.innerHTML = "DownloadPdf";
         rDownloadPdf.addEventListener('click', function () {
@@ -77,31 +77,17 @@
     }
 
     function exportToPDF(orderInput) {
-  // Create a new jsPDF instance
-  var doc = new jsPDF();
+        // Create a new jsPDF instance
+        var doc = new jsPDF();
 
-  // Add orderInput data to the PDF
-  doc.text(10, 10, 'Username: ' + orderInput.username);
-  doc.text(10, 20, 'Amount: ' + orderInput.amount);
-  doc.text(10, 30, 'Status: ' + orderInput.status);
-  doc.text(10, 40, 'Payment Method: ' + orderInput.payment_method);
-  doc.text(10, 50, 'Time of Purchase: ' + orderInput.time_of_purchase);
+        // Add orderInput data to the PDF
+        doc.text(10, 10, 'Username: ' + orderInput.username);
+        doc.text(10, 20, 'Amount: ' + orderInput.amount);
+        doc.text(10, 30, 'Status: ' + orderInput.status);
+        doc.text(10, 40, 'Payment Method: ' + orderInput.payment_method);
+        doc.text(10, 50, 'Time of Purchase: ' + orderInput.time_of_purchase);
 
-  // Convert the PDF to a Blob
-  var blob = doc.output('blob');
-
-  // Create a download link element
-  var downloadLink = document.createElement('a');
-  downloadLink.href = URL.createObjectURL(blob);
-  downloadLink.download = 'order.pdf';
-
-  // Append the download link to the document and trigger a click event
-  document.body.appendChild(downloadLink);
-  downloadLink.click();
-
-  // Clean up: remove the download link and revoke the Blob URL
-  document.body.removeChild(downloadLink);
-  URL.revokeObjectURL(downloadLink.href);
-}
-
+        // Save the PDF as a file
+        doc.save('order.pdf');
+    }
 </script>
