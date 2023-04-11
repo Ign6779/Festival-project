@@ -54,7 +54,7 @@ class PaymentController extends Controller
             $orderItems = $this->ticketOrdeService->getItemsByOrderId($order->getId());
             $cart = array();
             foreach ($orderItems as $orderItem) {
-                $id = $orderItem->getTicketId();
+                $id = $orderItem->getEvent()->getId();
                 if (in_array($id, array_keys($cart))) {
                     $cart[$id] += 1;
 
@@ -326,8 +326,8 @@ class PaymentController extends Controller
             $mail = new PHPMailer(true);
             $this->configureEmail($mail, $user);
             $mail->Subject = "Failed Payment";
-            $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Your payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.<br><br>The link: <a href="https://36f6-87-209-230-169.ngrok-free.app/payment?token=' . $token . '">Pay Later</a><br><br>Thank you,<br>Haarlem festival';
-            $mail->AltBody = 'Dear ' . $user->getUsername() . ',\n\nYour payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.\n\nThe link: https://36f6-87-209-230-169.ngrok-free.app/payment?token=' . $token . '\n\nThank you,\nHaarlem festival';
+            $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Your payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.<br><br>The link: <a href="https://44df-145-81-199-236.ngrok-free.app/payment?token=' . $token . '">Pay Later</a><br><br>Thank you,<br>Haarlem festival';
+            $mail->AltBody = 'Dear ' . $user->getUsername() . ',\n\nYour payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.\n\nThe link: https://44df-145-81-199-236.ngrok-free.app/payment?token=' . $token . '\n\nThank you,\nHaarlem festival';
             $mail->send();
         } else {
 
