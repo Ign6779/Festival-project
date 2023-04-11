@@ -80,8 +80,8 @@ class PaymentController extends Controller
                 ],
                 "description" => "Festival ticket payment for user $userId",
 
-                "redirectUrl" => "https://44df-145-81-199-236.ngrok-free.app/payment/paymentStatus",
-                "webhookUrl" => "https://44df-145-81-199-236.ngrok-free.app/payment/handleWebhook",
+                "redirectUrl" => "https://4ba5-145-81-193-216.ngrok-free.app/payment/paymentStatus",
+                "webhookUrl" => "https://4ba5-145-81-193-216.ngrok-free.app/payment/handleWebhook",
 
                 "metadata" => [
                     "user_id" => $userId,
@@ -276,7 +276,7 @@ class PaymentController extends Controller
                 $y = 10; // Reset Y position to top of page
             }
             // Generate QR code
-            $qrCodeData = "https://44df-145-81-199-236.ngrok-free.app/scanner?orderUid=" . $orderItem->getUuId();
+            $qrCodeData = "https://4ba5-145-81-193-216.ngrok-free.app/employee/getOrderTicketInformation?orderUid=" . $orderItem->getUuId();
             $qrCode = Builder::create()
                 ->writer(new PngWriter())
                 ->writerOptions([])

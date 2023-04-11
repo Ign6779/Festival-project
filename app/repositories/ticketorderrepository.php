@@ -89,7 +89,7 @@ class TicketOrderRepository extends Repository
     {
         try {
             $stmt = $this->connection->prepare("SELECT ot.*, o.user_id FROM order_ticket ot LEFT JOIN `order` o ON ot.order_id = o.id
-            WHERE ot.id = :id");
+            WHERE ot.uuid = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
 

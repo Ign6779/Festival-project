@@ -48,7 +48,7 @@ class LoginController extends Controller
 
                     case $user->getRole() == "employee":
                         $_SESSION["user"] = $user->getId();
-                        //require the page for the employee
+                        require __DIR__ . '/../views/employee/index.php';
                         break;
                 }
             }
