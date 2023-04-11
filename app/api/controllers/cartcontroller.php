@@ -84,5 +84,27 @@ class CartController
         echo json_encode($quantity);
     }
 
+    function cartToUrl()
+    {
+        //same as getItemsInCart for now
+        $cart = array();
+        if (isset($_SESSION["cart"])) {
+            $cart = $_SESSION["cart"];
+            echo json_encode(http_build_query(array('aParam' => $cart)));
+        }
+    }
 
+    function urlToCart()
+    {
+        if (isset($_GET['aParam'])) {
+            $data = $_GET['aParam'];
+            $items = array();
+            foreach ($data as $productId => $qnt) {
+                $item = $this->eventService->getById($productId);
+                array_push($items, $item);
+            }
+
+            echo json_encode($items);
+        }
+    }
 }
