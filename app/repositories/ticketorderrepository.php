@@ -2,14 +2,16 @@
 require_once __DIR__ . '/repository.php';
 require_once __DIR__ . '/../models/ticketorder.php';
 require_once __DIR__ . '/../services/eventservice.php';
-
+require_once __DIR__ . '/../services/userservice.php';
 
 class TicketOrderRepository extends Repository
 {
     private $eventService;
+    private $userService;
     function __construct(){
         parent::__construct();
         $this->eventService = new EventService();
+        $this->userService = new UserService();
     }
 
     function getAll()
@@ -76,7 +78,7 @@ class TicketOrderRepository extends Repository
 
     function getScannerInformation($id){
         try{
-            $stmt = $this->connection->prepare("SELECT * FROM order_ticket as ot
+            $stmt = $this->connection->prepare("SELECT ot.*, o.user_id FROM order_ticket ot LEFT JOIN `order` o ON ot.order_id = o.id
             WHERE ot.id = :id");
             $stmt->bindParam(':id',$id);
             $stmt->execute();
@@ -88,7 +90,9 @@ class TicketOrderRepository extends Repository
                 //IMPORTANT !!!!!!
                 $orderTicket->setTicketId($row['event_id']);
                 $event = $this->eventService->getById($row['event_id']);
+                $user = $this->userService->getUserById($row['user_id']);
                 $orderTicket->setEvent($event);
+                $orderTicket->setUser($user);
             }
 
             return $orderTicket;

@@ -2,8 +2,10 @@
 
 
     <h1> <?echo $ticketOrder->getEvent()->getTitle(); ?> </h1>
+    <h1><?echo $ticketOrder->getUser()->getUsername(); ?></h1>
     <h2> <?echo "Date of event: ". $ticketOrder->getEvent()->getDate(); ?> </h2>
     <h2><? echo "Start hour: ".$ticketOrder->getEvent()->getStartTime(); ?> </h2>
+
      <p id="is_scanned_status"> </p>
 
     </div>
