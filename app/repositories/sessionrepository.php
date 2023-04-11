@@ -107,7 +107,7 @@ class SessionRepository extends Repository {
             while ($row = $stmt->fetch()) {
                 $restaurantName = $row['name'];
             }
-
+            
             return $restaurantName;
         } catch (PDOExecption $e) {
             echo $e;
