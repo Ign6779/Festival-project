@@ -7,7 +7,7 @@ class OrderRepository extends Repository
     public function getAll()
     {
         try {
-            $stmt = $this->connection->prepare("SELECT * FROM order");
+            $stmt = $this->connection->prepare("SELECT * FROM `order`");
             $stmt->execute();
 
             $orders = [];
@@ -18,12 +18,12 @@ class OrderRepository extends Repository
                 if (!isset($orders[$orderId])) {
                     $order = new order();
                     $order->setId($row['id']);
-                    $order->setUserId($row['date']);
-                    $order->setAmount($row['startTime']);
-                    $order->setStatus($row['endTime']);
-                    $order->setPaymentMethod($row['availableTickets']);
-                    $order->setTimeOfPurchase($row['price']);
-                    $order->setPaymentId($row['event_id']);
+                    $order->setUserId($row['user_id']);
+                    $order->setAmount($row['amount']);
+                    $order->setStatus($row['status']);
+                    $order->setPaymentMethod($row['payment_method']);
+                    $order->setTimeOfPurchase($row['time_of_purchase']);
+                    $order->setPaymentId($row['payment_id']);
 
                     $orders[$orderId] = $order;
                 }
@@ -37,33 +37,28 @@ class OrderRepository extends Repository
 
     public function getById(int $id)
     {
-        // try {
-        //     $stmt = $this->connection->prepare("SELECT e.title, e.date, e.start_time as startTime, e.end_time as endTime, j.*, e.seats, e.price 
-        //     FROM jazz j
-        //     LEFT JOIN events e ON e.id = j.event_id 
-        //     WHERE j.id = :id");
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM `order` WHERE id = :id");
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
 
-        //     $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $order = new order();
 
-        //     $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $order = new order();
+                    $order->setId($row['id']);
+                    $order->setUserId($row['user_id']);
+                    $order->setAmount($row['amount']);
+                    $order->setStatus($row['status']);
+                    $order->setPaymentMethod($row['payment_method']);
+                    $order->setTimeOfPurchase($row['time_of_purchase']);
+                    $order->setPaymentId($row['payment_id']);
 
-        //     $order = new order();
-
-        //     while ($row = $stmt->fetch()) {
-        //         $jazz->setId($row['id']);
-        //         $jazz->setTitle($row['title']);
-        //         $jazz->setDate($row['date']);
-        //         $jazz->setStartTime($row['startTime']);
-        //         $jazz->setEndTime($row['endTime']);
-        //         $jazz->setSeats($row['seats']);
-        //         $jazz->setPrice($row['price']);
-        //         $jazz->setEventId($row['event_id']);
-        //         $jazz->setVenueId($row['venueId']);
-        //     }
-        //     return $jazz;
-        // } catch (PDOException $e) {
-        //     echo $e;
-        // }
+            }
+            return $order;
+        } catch (PDOException $e) {
+            echo $e;
+        }
     }
 
 

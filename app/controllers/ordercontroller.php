@@ -26,13 +26,10 @@ class OrderController extends Controller {
     public function updateOrder() {
         if (isset($_POST['updateOrder'])) {
             $order = new Order();
-            $order->setId(htmlspecialchars((int)$_GET['orderId']));
-            $order->setUserId(htmlspecialchars($_POST['user']));
-            $order->setAmount(htmlspecialchars($_POST['amount']));
+            $id = htmlspecialchars($_GET['orderId']);
+            $order = $this->orderService->getById($id);
             $order->setStatus(htmlspecialchars($_POST['status']));
-            $order->setPaymentMethod(htmlspecialchars($_POST['paymentMethod']));
-            $order->setTimeOfPurchase(htmlspecialchars($_POST['timeOfPurchase']));
-            $order->setPaymentId(htmlspecialchars($_POST['paymentId']));
+
             $this->orderService->updateOrder($order);
         
         } else {

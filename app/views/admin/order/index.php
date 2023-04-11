@@ -56,8 +56,19 @@
         rEdit = document.createElement("a");
         rEdit.className = "btn btn-warning me-2";
         rEdit.innerHTML = "Edit";
-        rEdit.href = "/order/editOrderForm?jazzEventId=" + orderInput.id;
-        tdButtons.append(rEdit, rDelete);
+        rEdit.href = "/order/editOrderForm?orderId=" + orderInput.id;
+
+        rDownloadPdf = document.createElement("a");
+        rDownloadPdf.className = "btn btn-warning me-2";
+        rDownloadPdf.innerHTML = "DownloadPdf";
+
+        rExport = document.createElement("a");
+        rExport.className = "btn btn-warning me-2";
+        rExport.innerHTML = "Export";
+
+        rDownloadPdf
+        rDownloadPdf
+        tdButtons.append(rEdit, rDownloadPdf);
         tr.append(tdId, tdUsername, tdAmount, tdStatus, tdPaymentMethod, tdTimeOfPurchase, tdButtons);
         tbody.appendChild(tr);
     }
