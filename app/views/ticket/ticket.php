@@ -149,21 +149,6 @@ include __DIR__ . '/../header.php';
     tickets.appendChild(divCard);
   }
 
-  // function loadQR(QrInput){
-  //   var divCard=document.createElement("div");
-  //   divCard.className = "qr-ticket";
-  //   var card_event_name= document.createElement("h1");
-  //   card_event_name.className = "card_event_name";
-  //   var card_customer_name = document.createElement("h2");
-  //   card_customer_name.className = "card_customer_name";
-  //   var card_event_date = document.createElement("p");
-  //   card_event_date.className = "card_event_date";
-  //   var card_event_time = document.createElement("p");
-  //   card_event_time.className = "card_event_time";
-  //   var is_scanned = document.createElement("p");
-  //   is_scanned.className = "is_scanned";
-  // }
-
   function cartCount() {
     var cartAmount = document.getElementById("cartamount");
     cartAmount.innerHTML = "";
