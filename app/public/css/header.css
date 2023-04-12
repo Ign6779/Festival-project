@@ -38,6 +38,11 @@ select {
     position: relative;
     left: -200px;
 }
+.admin-logo {
+    margin: 0 auto;
+    position: relative;
+    left: -100px;
+}
 
 label {
     display: none;

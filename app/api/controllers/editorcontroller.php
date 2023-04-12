@@ -26,6 +26,22 @@ class EditorController
             $this->editorService->update($id, $content);
         }
     }
+    public function updatePageContent()
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            $id = htmlspecialchars($_GET['id']);
+            $content = htmlspecialchars($_GET['content']);
+            $img = htmlspecialchars($_GET['img']);
+            $this->editorService->update($id, $content, $img);
+        }
+    }
+    public function deletePage()
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            $id = htmlspecialchars($_GET['pageid']);
+            $this->editorService->delete($id);
+        }
+    }
 }
 
 

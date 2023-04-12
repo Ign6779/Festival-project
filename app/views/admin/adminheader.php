@@ -37,6 +37,7 @@ function returnSelected($id)
     <link rel="stylesheet" href="/css/components.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/homepage.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/overview.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="/css/custompages.css?v=<?php echo time(); ?>">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -83,28 +84,25 @@ function returnSelected($id)
 
         <div class="nav-section2">
 
-            <div class="logo">
+            <div class="admin-logo">
                 <img src="/img/logo-of-page.png" alt="Logo">
             </div>
 
             <div id="menu-list" class="menu-list">
-                <a href="/editor" class="remove-style menu-list-option <? echo returnStyle("/editor"); ?>">Homepage</a>
-                <a href="/editfestival" class="remove-style menu-list-option <? echo returnStyle("/editfestival"); ?>">Festivalpage</a>
+                <a href="/editor" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Homepage</a>
+                <a href="/editfestival" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Festivalpage</a>
+                <a href="/custompage" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Custom</a>
                 <a href="/order" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Orders</a>
 
                 <select name="CRUD" id="CRUD" onchange="redirct(this.value)"
                     class="menu-list-option <? echo returnStyle("/user"); ?>">
                     <option <? echo returnSelected("/event"); ?> value="/event">Events</option>
-                    <option <? echo returnSelected("/artist"); ?> value="/artist">Artists</option>
-                    <option <? echo returnSelected("/jazz"); ?> value="/jazz">Jazz</option>
-                    <option <? echo returnSelected("/dance"); ?> value="/dance">Dance</option>
-                    <option <? echo returnSelected("/restaurant"); ?> value="/restaurant">Restaurants</option>
-                    <option <? echo returnSelected("/reservation"); ?> value="/reservation">Reservations</option>
-                    <option <? echo returnSelected("/session"); ?> value="/session">Sessions</option>
-                    <option <? echo returnSelected("/tours"); ?> value="/tours">Tours</option>
-                    <option <? echo returnSelected("/user"); ?> value="/user">Users</option>
                     <option <? echo returnSelected("/venue"); ?> value="/venue">Venues</option>
-                    
+                    <option <? echo returnSelected("/artist"); ?> value="/artist">Artists</option>
+                    <option <? echo returnSelected("/restaurant"); ?> value="/restaurant">Restaurants</option>
+                    <option <? echo returnSelected("/session"); ?> value="/session">Sessions</option>
+                    <option <? echo returnSelected("/reservation"); ?> value="/reservation">Reservations</option>
+                    <option <? echo returnSelected("/user"); ?> value="/user">Users</option>
                 </select>
             </div>
         </div>

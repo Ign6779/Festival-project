@@ -39,7 +39,7 @@ foreach ($artists as $artist) {
 </div>
 
 <?php foreach ($danceArtists as $artist) { ?>
-    <div id="<?php echo $artist->getId(); ?>" class="tabcontent" style="display:none;"> <!-- Updated: set display:none initially -->
+    <div id="<?php echo $artist->getId(); ?>" class="tabcontent" style="display:none;">
         <?php 
         $idForDetailPage = $artist->getId();
         include __DIR__ . '/../components/page.php'; ?>
