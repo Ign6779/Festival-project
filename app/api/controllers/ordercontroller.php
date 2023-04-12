@@ -44,11 +44,11 @@ class OrderController
             $cart = array();
             $orderItems = $this->ticketOrdeService->getItemsByOrderId($order->getId());
             foreach ($orderItems as $orderItem) {
-                if (in_array($orderItem->getTicketId(), array_keys($cart))) {
-                    $cart[$orderItem->getTicketId()] += 1;
+                if (in_array($orderItem->getEvent()->getId(), array_keys($cart))) {
+                    $cart[$orderItem->getEvent()->getId()] += 1;
 
                 } else {
-                    $cart[$orderItem->getTicketId()] = 1;
+                    $cart[$orderItem->getEvent()->getId()] = 1;
                 }
             }
             $pdf->SetMargins(15, 15, 15);
