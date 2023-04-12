@@ -76,7 +76,7 @@ class TicketOrderRepository extends Repository
     function changeScannedStatus($id)
     {
         try {
-            $stmt = $this->connection->prepare("UPDATE `order_ticket` SET `is_scaned`='1' WHERE order_id= :id;");
+            $stmt = $this->connection->prepare("UPDATE `order_ticket` SET `is_scaned`='1' WHERE id= :id;");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
 

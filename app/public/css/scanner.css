@@ -1,17 +1,30 @@
-@media screen and (max-width: 600px) {
-
 #employee-ticket-display{
-    width:300px;
+    width: 600px;
+    text-align: center;
+    padding-left: 200px;
+    margin-top: 70px;
 }
+
 #btn-finish-scanning{
-    margin: 20 auto 20 auto;
+    margin-top: 200px;
+    margin-left: 150px; 
+    width:300px;
+    height:50px;
+    background-color: #92140C;
+  border-radius: 25px;
+  border: none;
+  color: white;
+  padding: 15px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  box-shadow: 5px 10px #888888;
+  font-weight: bold;
 }
-#employee-main{
-    width: 300px;
-    height: 300px;
-    background-color: yellow;
+.scanner-p{
+    font-size: 50px;
 }
-
-
-
+#scanner-h1{
+    color: #111D4A;
 }
