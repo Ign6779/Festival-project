@@ -1,40 +1,38 @@
+<link rel="stylesheet" href="/css/scanner.css?v=<?php echo time(); ?>">
 <link rel="stylesheet" href="/css/components.css?v=<?php echo time(); ?>">
 
+    <div id="employee-ticket-display">
+    <h1 id="scanner-h1"> <?echo $ticketOrder->getEvent()->getTitle(); ?> </h1>
+    <p class="scanner-p"><?echo "Name: ".$ticketOrder->getUser()->getUsername(); ?></p>
+    <p class="scanner-p"> <?echo "Date of event: ". $ticketOrder->getEvent()->getDate(); ?> </p>
+    <p class="scanner-p"><? echo "Start hour: ".$ticketOrder->getEvent()->getStartTime(); ?> </p>
+    <p class="scanner-p"><? echo "Type of ticket:".$ticketOrder->getEvent()->getType(); ?> </p>
 
-    <h1> <?echo $ticketOrder->getEvent()->getTitle(); ?> </h1>
-    <h1><?echo $ticketOrder->getUser()->getUsername(); ?></h1>
-    <h2> <?echo "Date of event: ". $ticketOrder->getEvent()->getDate(); ?> </h2>
-    <h2><? echo "Start hour: ".$ticketOrder->getEvent()->getStartTime(); ?> </h2>
+    <?php if($ticketOrder->getIsScanned()): ?>
+    <p class="scanner-p">This ticket has been scanned.</p>
+    <?php else: ?>
+    <p class="scanner-p">This ticket has not been scanned yet.</p>
+    <?php endif; ?>
 
-     <p id="is_scanned_status"> </p>
+    <div ><a href="/employee" id="btn-finish-scanning" class="btn" onclick="">Finish Checking</a>
+  
+<style>
 
-    </div>
-
-    <div class="col-md-1 "><a href="/homepage" class="btn-red" onclick="updateScannedtatus">Finish Checking</a>
-    
+</style>
 
 <script>
+  const button = document.getElementById('btn-finish-scanning');
+  const orderId = "<?php echo $ticketOrder->getId(); ?>";
 
-    function updateScannedStatus(id){
-        fetch('http://localhost/api/changeScannedStatus?orderid=' + id, {
-            method: 'GET'
-        })
-            .then(result => {
-                console.log(result)
-            })
-            .catch(error => console.log(error));
-
-    }
-
-    function isScannedStatus(){
-        var is_scanned = document.getElementById("is_scanned_status");
-        if($ticketOrder->getIsScanned() == 0)
-        {
-            is_scanned.innerHTML = "Ticket has not been scanned";
-        }
-        else 
-        {
-            is_scanned.innerHTML =  "Ticket has been scanned!";
-        } 
-    }
+  button.addEventListener('click', () => {
+    fetch('http://localhost/api/scanner/changeScannedStatus?orderId=' + orderId)
+    .then(response => {
+      if (response.ok) {
+        alert('Scanned status changed successfully');
+      } else {
+        alert('Error changing scanned status');
+      }
+    })
+    .catch(error => console.error(error));
+  });
 </script>

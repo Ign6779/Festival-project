@@ -76,7 +76,7 @@ class TicketOrderRepository extends Repository
     function changeScannedStatus($id)
     {
         try {
-            $stmt = $this->connection->prepare("UPDATE `order_ticket` SET `is_scaned`='1' WHERE order_id= :id;");
+            $stmt = $this->connection->prepare("UPDATE `order_ticket` SET `is_scaned`='1' WHERE id= :id;");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
 
@@ -89,7 +89,7 @@ class TicketOrderRepository extends Repository
     {
         try {
             $stmt = $this->connection->prepare("SELECT ot.*, o.user_id FROM order_ticket ot LEFT JOIN `order` o ON ot.order_id = o.id
-            WHERE ot.id = :id");
+            WHERE ot.uuid = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
 
@@ -100,6 +100,7 @@ class TicketOrderRepository extends Repository
                 $user = $this->userService->getUserById($row['user_id']);
                 $orderTicket->setEvent($event);
                 $orderTicket->setUser($user);
+                $orderTicket->setIsScanned($row['is_scaned']);
             }
 
             return $orderTicket;
