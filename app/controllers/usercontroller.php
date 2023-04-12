@@ -2,8 +2,8 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require __DIR__ . '/controller.php';
-require __DIR__ . '/../services/userservice.php';
+require_once __DIR__ . '/controller.php';
+require_once __DIR__ . '/../services/userservice.php';
 require_once __DIR__ . '/../lib/phpEmaiLib/Exception.php';
 require_once __DIR__ . '/../lib/phpEmaiLib/PHPMailer.php';
 require_once __DIR__ . '/../lib/phpEmaiLib/SMTP.php';
@@ -56,30 +56,28 @@ class UserController extends Controller
             $user->setImage(htmlspecialchars($_FILES['imageup']['name']));
 
             move_uploaded_file($tmp_img, $destination);
-
-            //this should be fixed
-            // try {
-            //     $mail = new PHPMailer(true);
-            //     $mail->isSMTP();
-            //     $mail->Host = 'smtp.gmail.com';
-            //     $mail->SMTPAuth = true;
-            //     $mail->Username = 'haarlemfestival2023@gmail.com';
-            //     $mail->Password = 'huycjscntxlsxnit';
-            //     $mail->SMTPSecure = 'tls';
-            //     $mail->Port = 587;
-            //     $mail->setFrom('haarlemfestival2023@gmail.com', 'Haarlem festival');
-            //     $mail->addAddress($email);
-            //     $mail->isHTML(true);
-            //     $mail->Subject = "Chnage userdata";
-            //     $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Your userdata has been chnaged<br><br>';
-            //     $mail->send();
-            //     $this->userService->updateUser($user);
-            //     $message = "An confirmation email has been sent to you.";
-            //     include_once __DIR__ . '/../views/messages/success.php';
-            // } catch (Exception $e) {
-            //     $message = "Something went wrong, try again later.";
-            //     include_once __DIR__ . '/../views/messages/error.php';
-            // }
+            try {
+                $mail = new PHPMailer(true);
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'haarlemfestival2023@gmail.com';
+                $mail->Password = 'huycjscntxlsxnit';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+                $mail->setFrom('haarlemfestival2023@gmail.com', 'Haarlem festival');
+                $mail->addAddress($email);
+                $mail->isHTML(true);
+                $mail->Subject = "Chnage userdata";
+                $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Your userdata has been chnaged<br><br>';
+                $mail->send();
+                $this->userService->updateUser($user);
+                $message = "An confirmation email has been sent to you.";
+                include_once __DIR__ . '/../views/messages/success.php';
+            } catch (Exception $e) {
+                $message = "Something went wrong, try again later.";
+                include_once __DIR__ . '/../views/messages/error.php';
+            }
 
             $this->userService->editUserProfile($user);
             $this->homepage();
