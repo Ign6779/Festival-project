@@ -86,7 +86,7 @@ class OrderController
             }
             $pdfPath = $tempDir . '/invoice_' . $order->getId() . '.pdf'; // path for temporary PDF file
             $pdf->Output($pdfPath, 'F'); // save PDF to temporary file
-            $pdfUrl = 'http://localhost/api/order/download?orderId=' . $order->getId(); // URL to download the PDF
+            $pdfUrl = 'https://ccd6-145-81-206-178.ngrok-free.app/api/order/download?orderId=' . $order->getId(); // URL to download the PDF
             echo json_encode(array('pdfUrl' => $pdfUrl)); // send the PDF URL as JSON response
         }
     }

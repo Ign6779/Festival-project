@@ -50,8 +50,8 @@ class ForgotPasswordController extends Controller
                     $mail->addAddress($email);
                     $mail->isHTML(true);
                     $mail->Subject = "Rest password";
-                    $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Click the link below to reset your password:<br><br><a href="http://localhost/resetpassword?token=' . $resetToken . '">Reset Password</a><br><br>Alternatively, you can copy and paste the following URL into your browser:<br>http://localhost/resetPassword?token=' . $resetToken . '<br><br>Thank you,<br>Haarlem festival';
-                    $mail->AltBody = 'Dear ' . $user->getUsername() . ',\n\nClick the link below to reset your password:\nhttp://localhost/resetpassword?token=' . $resetToken . '\n\nAlternatively, you can copy and paste the following URL into your browser:\nhttp://localhost/resetPassword?token=' . $resetToken . '\n\nThank you,\nHaarlem festival';
+                    $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Click the link below to reset your password:<br><br><a href="https://ccd6-145-81-206-178.ngrok-free.app/resetpassword?token=' . $resetToken . '">Reset Password</a><br><br>Alternatively, you can copy and paste the following URL into your browser:<br>https://ccd6-145-81-206-178.ngrok-free.app/resetPassword?token=' . $resetToken . '<br><br>Thank you,<br>Haarlem festival';
+                    $mail->AltBody = 'Dear ' . $user->getUsername() . ',\n\nClick the link below to reset your password:\nhttps://ccd6-145-81-206-178.ngrok-free.app/resetpassword?token=' . $resetToken . '\n\nAlternatively, you can copy and paste the following URL into your browser:\nhttps://ccd6-145-81-206-178.ngrok-free.app/resetPassword?token=' . $resetToken . '\n\nThank you,\nHaarlem festival';
                     $mail->send();
                     $user->setToken($resetToken);
                     $user->setTokenExpirationDate($resetTokenExpirationDate);
