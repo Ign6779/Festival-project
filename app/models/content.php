@@ -3,7 +3,6 @@ class Content implements \JsonSerializable
 {
     private int $id;
     private string $content;
-    private ?string $title;
     private string $pagename;
     private ?string $img;
     private string $created;
@@ -34,17 +33,6 @@ class Content implements \JsonSerializable
     public function setContent(string $content): self
     {
         $this->content = $content;
-        return $this;
-    }
-
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
         return $this;
     }
 

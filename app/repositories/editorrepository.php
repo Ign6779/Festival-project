@@ -30,21 +30,44 @@ class EditorRepository extends Repository{
             echo $e;
         }
     }
-
-    function insertPage($pagename, $title, $img, $text)
-{
-    try {
-        $sql = "INSERT INTO editor (pagename, title, img, content, created)
-                VALUES (:pagename, :title, :img, :text, NOW())";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->bindParam(':pagename', $pagename);
-        $stmt->bindParam(':title', $title);
-        $stmt->bindParam(':img', $img);
-        $stmt->bindParam(':text', $text);
-        return $stmt->execute();
-    } catch (PDOException $e) {
-        echo $e;
+    function updatePage($id, $content, $img){
+        try {
+            $sql = "UPDATE editor
+                    SET content = :content, img = :img, created = NOW()
+                    WHERE id = :id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(':content', $content);
+            $stmt->bindParam(':img', $img); 
+            $stmt->bindParam(':id', $id);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
     }
-}
+    
 
+    function insertPage($pagename, $img, $text){
+        try {
+            $sql = "INSERT INTO editor (pagename, img, content, created)
+                    VALUES (:pagename, :img, :text, NOW())";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(':pagename', $pagename);
+            $stmt->bindParam(':img', $img);
+            $stmt->bindParam(':text', $text);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    function delete($id)
+    {
+        try {
+            $stmt = $this->connection->prepare("DELETE FROM editor WHERE id = :id");
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 }

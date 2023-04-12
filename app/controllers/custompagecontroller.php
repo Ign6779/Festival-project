@@ -20,25 +20,15 @@ class CustomPageController extends Controller {
     {
         if (isset($_POST['addpage'])) {
             $pagename = htmlspecialchars($_POST['pagename']);
-            $title = htmlspecialchars($_POST['title']);
             $text = htmlspecialchars($_POST['content']);
-            $imageName = 'img not uploaded';
-            // $imageName = $_FILE['addpage']['name'];
-            // $imagetype = $_FILE['addpage']['type'];
-            // $imagetemp = $_FILE['addpage']['tmp_name'];
-            // $destination = 'img/' . $_FILE['addpage']['name'];
+            // $imageName = htmlspecialchars($_POST['img']);
+            $image = $_FILES['image'];
+            // Move the uploaded file to a directory on your server
+            $target_dir = '/app/public/img/';
+            $target_file = $target_dir . basename($image['name']);
+            move_uploaded_file($image['tmp_name'], $target_file);
             
-            // if (is_uploaded_file($imagetemp)) {
-            //     if (move_uploaded_file($imagetemp, $destination)) {
-            //         echo "Successfully uploaded your image.";
-            //     } else {
-            //         echo "Failed to move your image.";
-            //     }
-            // } else {
-            //     echo "Failed to upload your image.";
-            // }
-            
-            $this->editorService->insertPage($pagename, $title, $imageName, $text);
+            $this->editorService->insertPage($pagename, $image['name'], $text);
             $this->index();
         }
     }

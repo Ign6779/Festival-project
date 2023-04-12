@@ -20,8 +20,18 @@ class EditorService
         $this->repository->update($id, $content);
     }
 
-    public function insertPage($pagename, $title, $img, $text){
-        $this->repository->insertPage($pagename, $title, $img, $text);
+    public function updatePage($id, $content, $img)
+    {
+        $this->repository->updatePage($id, $content, $img);
+    }
+
+    public function insertPage($pagename, $img, $text){
+        $this->repository->insertPage($pagename, $img, $text);
+    }
+    
+    public function delete($id)
+    {
+        $this->repository->delete($id);
     }
 
 }

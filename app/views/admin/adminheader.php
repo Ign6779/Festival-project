@@ -84,7 +84,7 @@ function returnSelected($id)
 
         <div class="nav-section2">
 
-            <div class="logo">
+            <div class="admin-logo">
                 <img src="/img/logo-of-page.png" alt="Logo">
             </div>
 
