@@ -37,3 +37,15 @@
     width: 60%;
     float: right;
 }
+.pagetabsinst{
+    background-color: #9EADEA;
+}
+.btm-footer{
+    position: relative;
+    padding-top: 300px;
+    background-color: #9EADEA;
+}
+.editpageimg{
+    width: 80%;
+    height: auto;
+}

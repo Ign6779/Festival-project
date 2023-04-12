@@ -5,6 +5,47 @@ foreach ($contents as $content) {
     $contentById[$content->getId()] = $content;
 }
 ?>
+
+<div class="custom-edit-section">
+<form action="/custompage/addPage" enctype="multipart/form-data" class="add-page" name ="addpage" method="post">
+    <div>
+        <h2>Add a custom page here</h2>
+    </div>
+    <input type="text" class="form-control" id="pagename" name="pagename" placeholder="Name of page" required>
+    <!-- <input id="img" type="file" name="image" accept=".jpg, .jpeg, .png" required> -->
+    <input type="file" class="form-control" id="image" name="image" accept=".png, .jpg, .jpeg" required>
+    <textarea id="customcontent" name="content" class="form-control" placeholder="Content"></textarea>
+    <button id="submitpage" type="submit" class="btn btn-primary col-5" name="addpage">Submit</button>
+</form>
+
+</div>
+<div class="wysiwyg-pages">
+    <!-- for each page in content, display page with wysiwyg editor -->
+    <?php 
+    $index = 0;
+    foreach($contents as $content){
+        if ($content->getPagename() != "home" && $content->getPagename() != "festival"){
+        ?>
+        <div class="seperator"></div>
+        <div class="single-custom">
+            <div class="customimg">
+                <img class="editpageimg" src="/../img/<?= $content->getImg() ?>" alt="Custom Page Image">
+            </div>
+            <div class="customcontent">
+                <button id="edit" class="btn btn-primary" onclick="edit(<?php echo $index ?>)" type="button">Edit</button>
+                <button id="save" class="btn btn-primary" onclick="save(<?php echo $index ?>, <?php echo $content->getId(); ?>)" type="button">Save</button>
+                <p class="click2edit"><?php echo html_entity_decode($content->getContent())?></p>
+                <?$index = $index + 1;?>
+            </div>
+            <button class="btn btn-danger col-2" name="delpage" onclick='deletePage(<?php echo $content->getId();?>)'>Delete</button>
+
+        </div>
+        <?php
+        }
+    }?>
+
+</div>
+
 <script>
 $(document).ready(function() {
   $('.click2edit').each(function() {
@@ -66,47 +107,3 @@ function saveContent(index, newContent) {
             .catch(error => console.log(error));
     }
 </script>
-
-<div class="custom-edit-section">
-<form action="/custompage/addPage" enctype="multipart/form-data" class="add-page" name ="addpage" method="post">
-    <div>
-        <h2>Add a custom page here</h2>
-    </div>
-    <div><p>im putting this here cuz </p></div>
-    <input type="text" class="form-control" id="pagename" name="pagename" placeholder="Name of page" required>
-    <!-- <input id="img" type="file" name="image" accept=".jpg, .jpeg, .png" required> -->
-    <input type="file" class="form-control" id="image" name="image" accept=".png, .jpg, .jpeg" required>
-    <textarea id="customcontent" name="content" class="form-control" placeholder="Content"></textarea>
-    <button id="submitpage" type="submit" class="btn btn-primary col-5" name="addpage">Submit</button>
-</form>
-
-</div>
-<div class="wysiwyg-pages">
-    <!-- for each page in content, display page with wysiwyg editor -->
-    <?php 
-    $index = 0;
-    foreach($contents as $content){
-        if ($content->getPagename() != "home" && $content->getPagename() != "festival"){
-        ?>
-        <div class="seperator"></div>
-        <div class="single-custom">
-            <div class="customimg">
-                <!-- <button id="edit" class="btn btn-primary" onclick="edit(<?php echo $index ?>)" type="button">Edit</button> -->
-                <!-- <button id="save" class="btn btn-primary" onclick="save(<?php echo $index ?>, <?php echo $content->getId(); ?>)" type="button">Save</button> -->
-                <img class="click2edit" src="/../img/<?= $content->getImg() ?>" alt="Custom Page Image">
-                <?$index = $index + 1;?>
-            </div>
-            <div class="customcontent">
-                <button id="edit" class="btn btn-primary" onclick="edit(<?php echo $index ?>)" type="button">Edit</button>
-                <button id="save" class="btn btn-primary" onclick="save(<?php echo $index ?>, <?php echo $content->getId(); ?>)" type="button">Save</button>
-                <p class="click2edit"><?php echo html_entity_decode($content->getContent())?></p>
-                <?$index = $index + 1;?>
-            </div>
-            <button class="btn btn-danger col-2" name="delpage" onclick='deletePage(<?php echo $content->getId();?>)'>Delete</button>
-
-        </div>
-        <?php
-        }
-    }?>
-
-</div>

@@ -12,6 +12,39 @@ try{
     echo $e;
 }
 ?>
+<div class="page-tabs">
+<h2 class="pagetabsinst">Select a page to open:</h2>
+<div class="tab">
+    <?php foreach ($contents as $content) {
+        if ($content->getPagename() !== "home" && $content->getPagename() !== "festival") {
+            ?>
+            <button class="tablinks" onclick="openPage(<?php echo $content->getId(); ?>)"><?php echo $content->getPagename(); ?></button>
+            <?php
+        }
+    } ?>
+</div>
+<?php foreach ($contents as $content) {
+    if ($content->getPagename() !== "home" && $content->getPagename() !== "festival") {
+        ?>
+        <div id="<?php echo $content->getId(); ?>" class="tabpagecontent" style="display:none;">
+            <?php
+            $idForPage = $content->getId();
+            // var_dump($content->getContent());
+            ?>
+            <img class="page-img" src="/../img/<?= $content->getImg() ?>" alt="<?php echo html_entity_decode($content->getImg()); ?>">
+            <p class="page-custom-content"><?php echo html_entity_decode($content->getContent()); ?></p>
+        </div>
+        <?php
+    }
+} 
+?>
+<div class="btm-footer">
+<?php
+include __DIR__ . '/../footer.php';
+?>
+</div>
+</div>
+
 <script>
 function openPage(id) {
   // Declare all variables
@@ -38,33 +71,3 @@ tablinks = document.getElementsByClassName("tablinks");
   document.getElementById(id).style.display = "block";
 }
 </script>
-<div class="page-tabs"></div>
-<div class="tab">
-    <?php foreach ($contents as $content) {
-        if ($content->getPagename() !== "home" && $content->getPagename() !== "festival") {
-            ?>
-            <button class="tablinks" onclick="openPage(<?php echo $content->getId(); ?>)"><?php echo $content->getPagename(); ?></button>
-            <?php
-        }
-    } ?>
-</div>
-
-<?php foreach ($contents as $content) {
-    if ($content->getPagename() !== "home" && $content->getPagename() !== "festival") {
-        ?>
-        <div id="<?php echo $content->getId(); ?>" class="tabpagecontent" style="display:none;">
-            <?php
-            $idForPage = $content->getId();
-            // var_dump($content->getContent());
-            ?>
-            <img class="page-img" src="/../img/<?= $content->getImg() ?>" alt="<?php echo html_entity_decode($content->getImg()); ?>">
-            <p class="page-custom-content"><?php echo html_entity_decode($content->getContent()); ?></p>
-        </div>
-        <?php
-    }
-} 
-?>
-<?php
-include __DIR__ . '/../footer.php';
-?>
-
