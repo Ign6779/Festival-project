@@ -5,7 +5,7 @@ foreach ($contents as $content) {
     $contentById[$content->getId()] = $content;
 }
 ?>
-
+<!-- WYSIWYG based off: https://summernote.org/examples/ -->
 <div class="custom-edit-section">
 <form action="/custompage/addPage" enctype="multipart/form-data" class="add-page" name ="addpage" method="post">
     <div>
@@ -34,7 +34,7 @@ foreach ($contents as $content) {
             <div class="customcontent">
                 <button id="edit" class="btn btn-primary" onclick="edit(<?php echo $index ?>)" type="button">Edit</button>
                 <button id="save" class="btn btn-primary" onclick="save(<?php echo $index ?>, <?php echo $content->getId(); ?>)" type="button">Save</button>
-                <p class="click2edit"><?php echo html_entity_decode($content->getContent())?></p>
+                <div class="click2edit"><?php echo html_entity_decode($content->getContent())?></div>
                 <?$index = $index + 1;?>
             </div>
             <button class="btn btn-danger col-2" name="delpage" onclick='deletePage(<?php echo $content->getId();?>)'>Delete</button>

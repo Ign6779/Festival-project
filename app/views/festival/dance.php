@@ -13,15 +13,12 @@ foreach ($artists as $artist) {
     <img src="/img/dancelogo.png" alt="DANCE" class="dance-logo">
 </div>
 
-<!-- Carousel -->
+<!-- Carousel: source: https://codepen.io/RileyB/pen/VgXaQr --> 
 <div class="carousel" data-carousel="1" data-speed="2000">
   <span class="carousel-control-left"></span>
   <span class="carousel-control-right"></span>
   <div class="carousel-content">
     <!-- add extra last pic first and extra first pic last for hover effect to work properly  -->
-    <!-- <img src="/img/dance-carousel-1.jpg" alt="image 5" /> -->
-    <!-- <img src="/img/dance-carousel-2.jpg" alt="image 1" /> -->
-    <!-- <img src="/img/dance-carousel-4.jpg" alt="image 3" /> -->
     <img src="/img/dance-carousel-5.webp" alt="image 4" />
     <img src="/img/dance-carousel-5.jpg" alt="image 6" />
     <img src="/img/dance-carousel-6.webp" alt="image 7" />

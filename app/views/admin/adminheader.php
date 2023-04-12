@@ -91,7 +91,7 @@ function returnSelected($id)
             <div id="menu-list" class="menu-list">
                 <a href="/editor" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Homepage</a>
                 <a href="/editfestival" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Festivalpage</a>
-                <a href="/custompage" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Custom</a>
+                <a href="/custompage" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Info Pages</a>
                 <a href="/order" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Orders</a>
 
                 <select name="CRUD" id="CRUD" onchange="redirct(this.value)"

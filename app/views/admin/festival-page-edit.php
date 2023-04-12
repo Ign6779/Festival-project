@@ -6,45 +6,7 @@ foreach ($contents as $content) {
     $contentById[$content->getId()] = $content->getContent();
 }
 ?>
-<script>
-$(document).ready(function() {
-  $('.click2edit').each(function() {
-    $(this).attr('id', 'editor-' + $(this).index('.click2edit'));
-  });
-});
-
-var edit = function(index) {
-    console.log('index:', index);
-  $('#editor-' + index).summernote({
-    focus: true
-  });
-};
-
-var save = function(index) {
-  var markup = $('#editor-' + index).summernote('code');
-  $(`.click2edit:eq(${index})`).html(markup); // update HTML content
-  var editedContent = $(`.click2edit:eq(${index})`).html();
-  editedContent = encodeURIComponent(editedContent); // encode special characters
-  $('#editor-' + index).summernote('destroy');
-  saveContent((index + 7), editedContent);
-};
-
-function saveContent(index, newContent) {
-    fetch(`http://localhost/api/editor/updateContent?id=${index}&content=${newContent}`, {
-      method: 'GET',
-      })
-      .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        console.log('Content updated successfully.');
-    })
-    .catch(error => {
-        console.error('Error updating content:', error);
-    });
-}
-
-</script>
+<!-- WYSIWYG based off: https://summernote.org/examples/ -->
 <h1>Edit Festival Page:</h1>
 <div class="festival-overview-header">
     <img src="/img/festival-overview-head.png" alt="Festival Image" id="overview-header-image">
@@ -104,3 +66,45 @@ function saveContent(index, newContent) {
     <button id="save" class="btn btn-primary" onclick="save(4)" type="button">Save</button>
         <div class="click2edit"><?php echo html_entity_decode($contentById[11]); ?></div>
 </section>
+
+
+<script>
+    
+$(document).ready(function() {
+  $('.click2edit').each(function() {
+    $(this).attr('id', 'editor-' + $(this).index('.click2edit'));
+  });
+});
+
+var edit = function(index) {
+    console.log('index:', index);
+  $('#editor-' + index).summernote({
+    focus: true
+  });
+};
+
+var save = function(index) {
+  var markup = $('#editor-' + index).summernote('code');
+  $(`.click2edit:eq(${index})`).html(markup); // update HTML content
+  var editedContent = $(`.click2edit:eq(${index})`).html();
+  editedContent = encodeURIComponent(editedContent); // encode special characters
+  $('#editor-' + index).summernote('destroy');
+  saveContent((index + 7), editedContent);
+};
+
+function saveContent(index, newContent) {
+    fetch(`http://localhost/api/editor/updateContent?id=${index}&content=${newContent}`, {
+      method: 'GET',
+      })
+      .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        console.log('Content updated successfully.');
+    })
+    .catch(error => {
+        console.error('Error updating content:', error);
+    });
+}
+
+</script>

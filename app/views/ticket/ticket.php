@@ -54,6 +54,7 @@ include __DIR__ . '/../header.php';
 
   </aside>
   <div class="cal-section-on-ticketpage">
+    <!-- calendar based off: https://codepen.io/alvarotrigo/pen/KKQzvdr -->
     <?php
     include __DIR__ . '/../components/Calendar.php';
     ?>
