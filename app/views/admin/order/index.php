@@ -68,7 +68,7 @@
         rDownloadPdf.className = "btn btn-warning me-2";
         rDownloadPdf.innerHTML = "DownloadPdf";
         rDownloadPdf.addEventListener('click', function () {
-            exportToPDF(orderInput);
+            exportToPDF(orderInput.id);
         });
 
         tdButtons.append(rEdit, rDownloadPdf);
@@ -76,18 +76,26 @@
         tbody.appendChild(tr);
     }
 
-    function exportToPDF(orderInput) {
-        // Create a new jsPDF instance
-        var doc = new jsPDF();
+    function exportToPDF(id) {
+        fetch('http://localhost/api/order/test?orderId=' + id)
+            .then(result => result.json())
+            .then((data) => {
+                console.log(data);
+            }).catch(err => console.error(err));
 
-        // Add orderInput data to the PDF
-        doc.text(10, 10, 'Username: ' + orderInput.username);
-        doc.text(10, 20, 'Amount: ' + orderInput.amount);
-        doc.text(10, 30, 'Status: ' + orderInput.status);
-        doc.text(10, 40, 'Payment Method: ' + orderInput.payment_method);
-        doc.text(10, 50, 'Time of Purchase: ' + orderInput.time_of_purchase);
-
-        // Save the PDF as a file
-        doc.save('order.pdf');
+        fetch('http://localhost/api/order/download?orderId=' + id)
+            .then(response => response.blob())
+            .then(blob => {
+                const downloadLink = document.createElement('a');
+                downloadLink.href = URL.createObjectURL(blob);
+                downloadLink.download = 'invoice_' + id + '.pdf';
+                downloadLink.style.display = 'none';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+                URL.revokeObjectURL(downloadLink.href);
+            })
+            .catch(err => console.error(err));
     }
+
 </script>
