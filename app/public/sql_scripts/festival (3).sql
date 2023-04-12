@@ -343,6 +343,7 @@ INSERT INTO `events` (`id`, `title`, `date`, `start_time`, `end_time`, `event_ty
 (101, 'Friday All-Access daypass', '2023-07-27', '00:00:00', '23:59:00', 'all-access', 3000, 125),
 (102, 'Saturday All-Access daypass', '2023-07-28', '00:00:00', '23:59:00', 'all-access', 3000, 150),
 (103, 'Sunday All-Access daypass', '2023-07-29', '00:00:00', '23:59:00', 'all-access', 3000, 150);
+(104, 'Whole Festival All-Access pass', '2023-07-25', '00:00:00', '23:59:00', 'all-access', 3000, 250);
 
 -- --------------------------------------------------------
 

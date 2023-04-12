@@ -146,7 +146,7 @@ include __DIR__ . '/../header.php';
     price.innerHTML = formattedPrice;
     times.innerHTML = startTime + " - " + endTime;
     //format the date
-    if (ticketInput.title != "All-Access for Whole Festival"){
+    if (ticketInput.title != "Whole Festival All-Access pass"){
       var dateObj = new Date(ticketInput.date);
     var day = dateObj.getDate();
     var month = dateObj.toLocaleString('en-us', { month: 'long' });
