@@ -88,19 +88,23 @@ function returnSelected($id)
             </div>
 
             <div id="menu-list" class="menu-list">
-                <a href="/editor" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Homepage</a>
-                <a href="/editfestival" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Festivalpage</a>
+                <a href="/editor" class="remove-style menu-list-option <? echo returnStyle("/editor"); ?>">Homepage</a>
+                <a href="/editfestival" class="remove-style menu-list-option <? echo returnStyle("/editfestival"); ?>">Festivalpage</a>
                 <a href="/order" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Orders</a>
 
                 <select name="CRUD" id="CRUD" onchange="redirct(this.value)"
                     class="menu-list-option <? echo returnStyle("/user"); ?>">
                     <option <? echo returnSelected("/event"); ?> value="/event">Events</option>
-                    <option <? echo returnSelected("/venue"); ?> value="/venue">Venues</option>
                     <option <? echo returnSelected("/artist"); ?> value="/artist">Artists</option>
+                    <option <? echo returnSelected("/jazz"); ?> value="/jazz">Jazz</option>
+                    <option <? echo returnSelected("/dance"); ?> value="/dance">Dance</option>
                     <option <? echo returnSelected("/restaurant"); ?> value="/restaurant">Restaurants</option>
-                    <option <? echo returnSelected("/session"); ?> value="/session">Sessions</option>
                     <option <? echo returnSelected("/reservation"); ?> value="/reservation">Reservations</option>
+                    <option <? echo returnSelected("/session"); ?> value="/session">Sessions</option>
+                    <option <? echo returnSelected("/tours"); ?> value="/tours">Tours</option>
                     <option <? echo returnSelected("/user"); ?> value="/user">Users</option>
+                    <option <? echo returnSelected("/venue"); ?> value="/venue">Venues</option>
+                    
                 </select>
             </div>
         </div>

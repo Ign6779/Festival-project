@@ -15,6 +15,10 @@ class OrderService
         return $this->repository->getAll();
     }
 
+    public function getById(int $id) {
+        return $this->repository->getById($id);
+    }
+
     public function createOrder($order)
     {
         $this->repository->createOrder($order);

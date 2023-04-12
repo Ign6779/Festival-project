@@ -6,8 +6,61 @@ class OrderRepository extends Repository
 {
     public function getAll()
     {
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM `order`");
+            $stmt->execute();
 
+            $orders = [];
+
+            while ($row = $stmt->fetch()) {
+                $orderId = $row['id'];
+
+                if (!isset($orders[$orderId])) {
+                    $order = new order();
+                    $order->setId($row['id']);
+                    $order->setUserId($row['user_id']);
+                    $order->setAmount($row['amount']);
+                    $order->setStatus($row['status']);
+                    $order->setPaymentMethod($row['payment_method']);
+                    $order->setTimeOfPurchase($row['time_of_purchase']);
+                    $order->setPaymentId($row['payment_id']);
+
+                    $orders[$orderId] = $order;
+                }
+            }
+
+            return array_values($orders);
+        } catch (PDOException $e) {
+            echo $e;
+        }
     }
+
+    public function getById(int $id)
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM `order` WHERE id = :id");
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $order = new order();
+
+            while ($row = $stmt->fetch()) {
+                $order = new order();
+                    $order->setId($row['id']);
+                    $order->setUserId($row['user_id']);
+                    $order->setAmount($row['amount']);
+                    $order->setStatus($row['status']);
+                    $order->setPaymentMethod($row['payment_method']);
+                    $order->setTimeOfPurchase($row['time_of_purchase']);
+                    $order->setPaymentId($row['payment_id']);
+
+            }
+            return $order;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
 
     public function createOrder($order)
     {
@@ -83,7 +136,7 @@ class OrderRepository extends Repository
     {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM `order` WHERE `pay_later_token` = :token");
-            $stmt->bindParam(':token', $token );
+            $stmt->bindParam(':token', $token);
             $stmt->execute();
 
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Order');
