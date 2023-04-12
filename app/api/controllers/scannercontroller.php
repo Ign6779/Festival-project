@@ -23,6 +23,7 @@ class ScannerController{
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $id = htmlspecialchars($_GET['orderid']);
             $this->ticketOrderService->changeScannedStatus($id);
+
         }
     }
 

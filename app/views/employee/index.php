@@ -1,11 +1,17 @@
-<!-- <input type="file" accept="image/*" capture="camera"> -->
-<input type="file" name="image" accept="image/*" capture="environment">
+<link rel="stylesheet" href="/css/scanner.css?v=<?php echo time(); ?>">
+<link rel="stylesheet" href="/css/components.css?v=<?php echo time(); ?>">
 
+<div id="employee-main">
+<input type="file" name="image" accept="image/*" capture="environment">
+<div>
 <div id="qr-reader" style="width:500px"></div>
 <div id="qr-reader-results"></div>
 
 <script src="https://unpkg.com/html5-qrcode"></script>
 <script src="https://raw.githubusercontent.com/mebjas/html5-qrcode/master/minified/html5-qrcode.min.js"></script>
+
+
+
 
 <script>
 

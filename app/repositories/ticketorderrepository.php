@@ -100,6 +100,7 @@ class TicketOrderRepository extends Repository
                 $user = $this->userService->getUserById($row['user_id']);
                 $orderTicket->setEvent($event);
                 $orderTicket->setUser($user);
+                $orderTicket->setIsScanned($row['is_scaned']);
             }
 
             return $orderTicket;
