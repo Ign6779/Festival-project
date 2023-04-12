@@ -69,6 +69,10 @@ function returnSelected($id)
                 <? if (isset($_SESSION["user"])) {
                     ?>
                     <a href="/login/logout" class="btn btn-danger">Logout</a>
+                    <?php
+                    $image = $user->getImage() ? $user->getImage() : 'account.png';
+                    ?>
+                    <a><img id="account-icon" class="fa-solid fa-user" src="/img/<?php echo $image; ?>" alt="account"></a>
                 <?
                 } else {
                     ?>
@@ -89,7 +93,8 @@ function returnSelected($id)
 
             <div id="menu-list" class="menu-list">
                 <a href="/editor" class="remove-style menu-list-option <? echo returnStyle("/editor"); ?>">Homepage</a>
-                <a href="/editfestival" class="remove-style menu-list-option <? echo returnStyle("/editfestival"); ?>">Festivalpage</a>
+                <a href="/editfestival"
+                    class="remove-style menu-list-option <? echo returnStyle("/editfestival"); ?>">Festivalpage</a>
                 <a href="/order" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Orders</a>
 
                 <select name="CRUD" id="CRUD" onchange="redirct(this.value)"
@@ -104,7 +109,7 @@ function returnSelected($id)
                     <option <? echo returnSelected("/tours"); ?> value="/tours">Tours</option>
                     <option <? echo returnSelected("/user"); ?> value="/user">Users</option>
                     <option <? echo returnSelected("/venue"); ?> value="/venue">Venues</option>
-                    
+
                 </select>
             </div>
         </div>

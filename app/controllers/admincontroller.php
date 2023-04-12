@@ -11,9 +11,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        require __DIR__ . '/../views/admin/index.php';
+        require __DIR__ . '/../views/admin/order/index.php';
     }
-
-    
 }
 ?>

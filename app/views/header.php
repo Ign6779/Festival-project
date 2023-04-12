@@ -72,8 +72,8 @@ function returnSelected($id)
                     ?>
                     <a href="/login/logout" class="btn btn-danger">Logout</a>
                     <?php
-                    $userService = new UserService();
-                    $user = $userService->getUserById($_SESSION["user"]);
+                     $userService = new UserService();
+                     $user = $userService->getUserById($_SESSION["user"]);
                     $image = $user->getImage() ? $user->getImage() : 'account.png';
 
                     ?>
