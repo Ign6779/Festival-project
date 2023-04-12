@@ -5,6 +5,9 @@ require_once __DIR__ . '/../../services/eventservice.php';
 require_once __DIR__ . '/../../services/userservice.php';
 require_once __DIR__ . '/../../services/ticketorderservice.php';
 
+require_once __DIR__ . '/../../lib/PhpSpreadsheet/Writer/Xlsx.php';
+require_once __DIR__ . '/../../lib/PhpSpreadsheet/Writer/BaseWriter.php';
+
 
 class OrderController
 {
@@ -29,7 +32,7 @@ class OrderController
         }
     }
 
-    public function test()
+    public function genaratePdf()
     {
         if (isset($_GET['orderId'])) {
             $id = htmlspecialchars($_GET['orderId']);
@@ -79,15 +82,14 @@ class OrderController
             $pdf->Cell(120, 10, 'Total:', 0, 0, 'R');
             $pdf->SetFont('dejavusans', '', 12);
             $pdf->Cell(60, 10, '€' . number_format($total, 2), 0, 1, 'C');
-
-            $tempDir = sys_get_temp_dir() . '/invoice'; // temporary directory path
+            $tempDir = sys_get_temp_dir() . '/invoice';
             if (!is_dir($tempDir)) {
-                mkdir($tempDir, 0777, true); // create the temporary directory if it doesn't exist
+                mkdir($tempDir, 0777, true);
             }
-            $pdfPath = $tempDir . '/invoice_' . $order->getId() . '.pdf'; // path for temporary PDF file
-            $pdf->Output($pdfPath, 'F'); // save PDF to temporary file
-            $pdfUrl = 'http://localhost/api/order/download?orderId=' . $order->getId(); // URL to download the PDF
-            echo json_encode(array('pdfUrl' => $pdfUrl)); // send the PDF URL as JSON response
+            $pdfPath = $tempDir . '/invoice_' . $order->getId() . '.pdf';
+            $pdf->Output($pdfPath, 'F');
+            $pdfUrl = 'http://localhost/api/order/download?orderId=' . $order->getId();
+            echo json_encode(array('pdfUrl' => $pdfUrl));
         }
     }
 
@@ -104,5 +106,20 @@ class OrderController
                 exit;
             }
         }
+    }
+
+    public function genarateExcel()
+    {
+        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'Hello World !');
+
+        // Save the spreadsheet to a temporary file
+        $tempFilePath = sys_get_temp_dir() . '/orders.xlsx';
+        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+        $writer->save($tempFilePath);
+
+        // Return the file path to JavaScript
+        echo json_encode(['file_path' => $tempFilePath]);
     }
 }

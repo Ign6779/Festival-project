@@ -4,6 +4,7 @@ class Order implements \JsonSerializable
 {
     private int $id;
     private int $user_id;
+    private User $user;
     private float $amount;
     private string $status;
     private string $payment_method;
@@ -94,8 +95,17 @@ class Order implements \JsonSerializable
     public function setToken(?string $pay_later_token): void
     {
         $this->pay_later_token = $pay_later_token;
-
     }
 
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
+        return $this;
+    }
 }
 ?>

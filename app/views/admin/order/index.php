@@ -1,7 +1,8 @@
 <? include __DIR__ . '/../adminheader.php' ?>
 
 <div>
-    <button class="btn btn-warning me-2" onclick="">Export</button>
+    <button class="btn btn-warning me-2" type="button" onclick="exportToExcel()">Export</button>
+    <a href="" class="btn btn-warning" onclick="exportToExcel()"></a>
 </div>
 
 <table class="container table">
@@ -44,7 +45,7 @@
         tdId.innerHTML = orderInput.id;
 
         tdUsername = document.createElement("td");
-        tdUsername.innerHTML = orderInput.username;
+        tdUsername.innerHTML = orderInput.user.username;
 
         tdAmount = document.createElement("td");
         tdAmount.innerHTML = orderInput.amount;
@@ -71,13 +72,14 @@
             exportToPDF(orderInput.id);
         });
 
+
         tdButtons.append(rEdit, rDownloadPdf);
         tr.append(tdId, tdUsername, tdAmount, tdStatus, tdPaymentMethod, tdTimeOfPurchase, tdButtons);
         tbody.appendChild(tr);
     }
 
     function exportToPDF(id) {
-        fetch('http://localhost/api/order/test?orderId=' + id)
+        fetch('http://localhost/api/order/genaratePdf?orderId=' + id)
             .then(result => result.json())
             .then((data) => {
                 console.log(data);
@@ -96,6 +98,16 @@
                 URL.revokeObjectURL(downloadLink.href);
             })
             .catch(err => console.error(err));
+    }
+
+
+
+    function exportToExcel() {
+        fetch('http://localhost/api/order/genarateExcel')
+            .then(result => result.json())
+            .then((data) => {
+                console.log(data);
+            }).catch(err => console.error(err));
     }
 
 </script>

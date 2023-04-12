@@ -1,9 +1,17 @@
 <?php
 require_once __DIR__ . '/repository.php';
 require_once __DIR__ . '/../models/order.php';
+require_once __DIR__ . '/../services/userservice.php';
 
 class OrderRepository extends Repository
 {
+    private $userService;
+    function __construct()
+    {
+        parent::__construct();
+        $this->userService = new UserService();
+    }
+
     public function getAll()
     {
         try {
@@ -24,7 +32,7 @@ class OrderRepository extends Repository
                     $order->setPaymentMethod($row['payment_method']);
                     $order->setTimeOfPurchase($row['time_of_purchase']);
                     $order->setPaymentId($row['payment_id']);
-
+                    $order->setUser($this->userService->getUserById($row['user_id']));
                     $orders[$orderId] = $order;
                 }
             }
@@ -46,13 +54,13 @@ class OrderRepository extends Repository
 
             while ($row = $stmt->fetch()) {
                 $order = new order();
-                    $order->setId($row['id']);
-                    $order->setUserId($row['user_id']);
-                    $order->setAmount($row['amount']);
-                    $order->setStatus($row['status']);
-                    $order->setPaymentMethod($row['payment_method']);
-                    $order->setTimeOfPurchase($row['time_of_purchase']);
-                    $order->setPaymentId($row['payment_id']);
+                $order->setId($row['id']);
+                $order->setUserId($row['user_id']);
+                $order->setAmount($row['amount']);
+                $order->setStatus($row['status']);
+                $order->setPaymentMethod($row['payment_method']);
+                $order->setTimeOfPurchase($row['time_of_purchase']);
+                $order->setPaymentId($row['payment_id']);
 
             }
             return $order;

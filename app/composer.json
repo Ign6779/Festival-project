@@ -3,6 +3,13 @@
         "mollie/mollie-api-php": "^2.52",
         "endroid/qr-code": "^4.8",
         "tecnickcom/tcpdf": "^6.6",
-        "ramsey/uuid": "^4.7"
+        "ramsey/uuid": "^4.7",
+        "maatwebsite/excel": "^2.1",
+        "shuchkin/simplexlsx": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
     }
 }
