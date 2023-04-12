@@ -220,7 +220,7 @@ function returnSelected($id)
         function itemCount(id) {
             var itemCount = document.getElementById("amountOfItem" + id);
             itemCount.value = "";
-            fetch('http://localhost/api/cart/qantityOfItem?ticketId=' + id).then(result => result.json())
+            fetch('https://ccd6-145-81-206-178.ngrok-free.app/api/cart/qantityOfItem?ticketId=' + id).then(result => result.json())
                 .then((data) => {
                     console.log(data);
                     itemCount.value = data;
@@ -266,7 +266,7 @@ function returnSelected($id)
         function loadCart() {
             var items = document.getElementById("items");
             items.innerHTML = "";
-            fetch('http://localhost/api/cart/getItemsInCart').then(result => result.json())
+            fetch('https://ccd6-145-81-206-178.ngrok-free.app/api/cart/getItemsInCart').then(result => result.json())
                 .then((data) => {
                     console.log(data);
                     data.forEach(element => {
@@ -279,7 +279,7 @@ function returnSelected($id)
         }
 
         function addToCalender() {
-            fetch('http://localhost/api/cart/getItemsInCart').then(result => result.json())
+            fetch('https://ccd6-145-81-206-178.ngrok-free.app/api/cart/getItemsInCart').then(result => result.json())
                 .then((data) => {
                     console.log(data);
                     data.forEach(element => {

@@ -79,8 +79,8 @@ class PaymentController extends Controller
                 ],
                 "description" => "Festival ticket payment for user $userId",
 
-                "redirectUrl" => "https://e013-87-209-230-169.ngrok-free.app/payment/paymentStatus",
-                "webhookUrl" => "https://e013-87-209-230-169.ngrok-free.app/payment/handleWebhook",
+                "redirectUrl" => "https://44df-145-81-199-236.ngrok-free.app/payment/paymentStatus",
+                "webhookUrl" => "https://44df-145-81-199-236.ngrok-free.app/payment/handleWebhook",
 
                 "metadata" => [
                     "user_id" => $userId,
@@ -248,7 +248,7 @@ class PaymentController extends Controller
                 $y = 10; // Reset Y position to top of page
             }
             // Generate QR code
-            $qrCodeData = "https://e013-87-209-230-169.ngrok-free.app/scanner?orderUid=" . $orderItem->getUuId();
+            $qrCodeData = "https://44df-145-81-199-236.ngrok-free.app/scanner?orderUid=" . $orderItem->getUuId();
             $qrCode = Builder::create()
                 ->writer(new PngWriter())
                 ->writerOptions([])
@@ -299,8 +299,8 @@ class PaymentController extends Controller
             $mail = new PHPMailer(true);
             $this->configureEmail($mail, $user);
             $mail->Subject = "Failed Payment";
-            $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Your payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.<br><br>The link: <a href="https://e013-87-209-230-169.ngrok-free.app/payment?token=' . $token . '">Pay Later</a><br><br>Thank you,<br>Haarlem festival';
-            $mail->AltBody = 'Dear ' . $user->getUsername() . ',\n\nYour payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.\n\nThe link: https://e013-87-209-230-169.ngrok-free.app/payment?token=' . $token . '\n\nThank you,\nHaarlem festival';
+            $mail->Body = 'Dear ' . $user->getUsername() . ',<br><br>Your payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.<br><br>The link: <a href="https://36f6-87-209-230-169.ngrok-free.app/payment?token=' . $token . '">Pay Later</a><br><br>Thank you,<br>Haarlem festival';
+            $mail->AltBody = 'Dear ' . $user->getUsername() . ',\n\nYour payment has failed please click on this link to pay again. Note you have 24 hours to pay or your order will be cancelled.\n\nThe link: https://36f6-87-209-230-169.ngrok-free.app/payment?token=' . $token . '\n\nThank you,\nHaarlem festival';
             $mail->send();
         } else {
             $message = 'The payment timeframe has expired.';

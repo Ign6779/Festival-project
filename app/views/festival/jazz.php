@@ -2,10 +2,10 @@
 include __DIR__ . '/../header.php';
 $jazzArtists = [];
 foreach ($artists as $artist) {
-    if($artist->getType() == 'jazz'){
+    if ($artist->getType() == 'jazz') {
         $jazzArtists[$artist->getId()] = $artist;
     }
-} 
+}
 ?>
 <div>
     <section class="jazz-header">
@@ -93,43 +93,44 @@ foreach ($artists as $artist) {
 <!-- Jazz Detailed Pages -->
 <section class="pages">
     <div class="detail-pages">
-    <h2 class="detail-page-title">Artist Information Pages</h2>
-<div class="tab">
-    <?php foreach ($jazzArtists as $artist) { ?>
-        <button class="tablinks" onclick="openDetailPage(<?php echo $artist->getId(); ?>)"><?php echo $artist->getName(); ?></button>
-    <?php } ?>
-</div>
+        <h2 class="detail-page-title">Artist Information Pages</h2>
+        <div class="tab">
+            <?php foreach ($jazzArtists as $artist) { ?>
+                <button class="tablinks" onclick="openDetailPage(<?php echo $artist->getId(); ?>)"><?php echo $artist->getName(); ?></button>
+            <?php } ?>
+        </div>
 
-<?php foreach ($jazzArtists as $artist) { ?>
-    <div id="<?php echo $artist->getId(); ?>" class="tabcontent" style="display:none;"> <!-- Updated: set display:none initially -->
-        <?php 
-        $idForDetailPage = $artist->getId();
-        include __DIR__ . '/../components/page.php'; ?>
-    </div>
-<?php } ?>
+        <?php foreach ($jazzArtists as $artist) { ?>
+            <div id="<?php echo $artist->getId(); ?>" class="tabcontent" style="display:none;">
+                <!-- Updated: set display:none initially -->
+                <?php
+                $idForDetailPage = $artist->getId();
+                include __DIR__ . '/../components/page.php'; ?>
+            </div>
+        <?php } ?>
 
-<script>
-function openDetailPage(artistID) {
-  // Declare all variables
-  var i, tabcontent, tablinks;
+        <script>
+            function openDetailPage(artistID) {
+                // Declare all variables
+                var i, tabcontent, tablinks;
 
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
+                // Get all elements with class="tabcontent" and hide them
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
 
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
+                // Get all elements with class="tablinks" and remove the class "active"
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
 
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(artistID).style.display = "block";
-  // evt.currentTarget.className += " active"; // commented out as evt is not defined
-}
-</script>
+                // Show the current tab, and add an "active" class to the button that opened the tab
+                document.getElementById(artistID).style.display = "block";
+                // evt.currentTarget.className += " active"; // commented out as evt is not defined
+            }
+        </script>
     </div>
 </section>
 
