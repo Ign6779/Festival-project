@@ -4,7 +4,7 @@ function returnStyle($id)
     $style = "";
     $uri = $_SERVER['REQUEST_URI'];
     $splitUri = explode('/', $uri);
-    if ($uri == $id || (($splitUri[1] == "festival" || $splitUri[1] == "kids" || $splitUri[1] == "jazz" || $splitUri[1] == "dance" || $splitUri[1] == "yummy" || $splitUri[1] == "history") && $id == "festival")) {
+    if ($uri == $id || (($splitUri[1] == "jazzevent" || $splitUri[1] == "venue" || $splitUri[1] == "artist" || $splitUri[1] == "restaurant" || $splitUri[1] == "session" || $splitUri[1] == "danceevent" || $splitUri[1] == "user"|| $splitUri[1] == "tour") && $id == "test")) {
         $style = "bg-white txt-color-bleu";
     } else {
         $style = "bg-bleu txt-color-white";
@@ -89,20 +89,21 @@ function returnSelected($id)
             </div>
 
             <div id="menu-list" class="menu-list">
-                <a href="/editor" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Homepage</a>
-                <a href="/editfestival" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Festivalpage</a>
-                <a href="/custompage" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Info Pages</a>
+                <a href="/editor" class="remove-style menu-list-option <? echo returnStyle("/editor"); ?>">Homepage</a>
+                <a href="/editfestival" class="remove-style menu-list-option <? echo returnStyle("/editfestival"); ?>">Festivalpage</a>
+                <a href="/custompage" class="remove-style menu-list-option <? echo returnStyle("/custompage"); ?>">Info Pages</a>
                 <a href="/order" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Orders</a>
 
                 <select name="CRUD" id="CRUD" onchange="redirct(this.value)"
-                    class="menu-list-option <? echo returnStyle("/user"); ?>">
-                    <option <? echo returnSelected("/event"); ?> value="/event">Events</option>
+                    class="menu-list-option <? echo returnStyle("test"); ?>">
                     <option <? echo returnSelected("/venue"); ?> value="/venue">Venues</option>
                     <option <? echo returnSelected("/artist"); ?> value="/artist">Artists</option>
                     <option <? echo returnSelected("/restaurant"); ?> value="/restaurant">Restaurants</option>
                     <option <? echo returnSelected("/session"); ?> value="/session">Sessions</option>
-                    <option <? echo returnSelected("/reservation"); ?> value="/reservation">Reservations</option>
                     <option <? echo returnSelected("/user"); ?> value="/user">Users</option>
+                    <option <? echo returnSelected("/jazzevent"); ?> value="/jazzevent">Jazz</option>
+                    <option <? echo returnSelected("/danceevent"); ?> value="/danceevent">Dance</option>
+                    <option <? echo returnSelected("/tour"); ?> value="/tour">Tour</option>
                 </select>
             </div>
         </div>
