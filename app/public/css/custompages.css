@@ -1,0 +1,51 @@
+.wysiwyg-pages{
+    display:grid;
+    gap:30px;
+    flex: center;
+}
+.single-custom{
+    display: block;
+}
+.customtitle, .customimg, .customcontent{
+    display:grid;
+    position: relative;
+    align-content: center;
+    width: 40%;
+    left: 20%;
+    margin-bottom: 2%;
+    margin-top: 1%;
+}
+.seperator{
+    width: 100%;
+    height: 20px;
+    background-color: grey;
+}
+#pagename, #submitpage, #customtitle, #custompic, #customcontent{
+    margin: 8px;
+    justify-self: center;
+}
+.tabpagecontent{
+    background-color: #9EADEA;
+    min-height: 600px;
+}
+.page-img{
+    width: 20%;
+    float: left;
+    margin: 30px;
+}
+.page-custom-content{
+    width: 60%;
+    float: right;
+}
+.pagetabsinst{
+    background-color: #9EADEA;
+}
+.btm-footer{
+    position: relative;
+    padding-top: 300px;
+    background-color: #9EADEA;
+}
+.editpageimg{
+    width: 80%;
+    height: auto;
+}

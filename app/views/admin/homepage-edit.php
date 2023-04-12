@@ -5,43 +5,7 @@ foreach ($contents as $content) {
     $contentById[$content->getId()] = $content->getContent();
 }
 ?>
-<script>
-$(document).ready(function() {
-  $('.click2edit').each(function() {
-    $(this).attr('id', 'editor-' + $(this).index('.click2edit'));
-  });
-});
-
-var edit = function(index) {
-  $('#editor-' + index).summernote({
-    focus: true
-  });
-};
-
-var save = function(index) {
-  var markup = $('#editor-' + index).summernote('code');
-  $(`.click2edit:eq(${index})`).html(markup); // update HTML content
-  var editedContent = $(`.click2edit:eq(${index})`).html();
-  saveContent(index, editedContent);
-  $('#editor-' + index).summernote('destroy');
-};
-
-function saveContent(index, newContent) {
-    fetch(`http://localhost/api/editor/updateContent?id=${index + 1}&content=${newContent}`, {
-      method: 'GET',
-      })
-      .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        console.log('Content updated successfully.');
-    })
-    .catch(error => {
-        console.error('Error updating content:', error);
-    });
-}
-
-</script>
+<!-- WYSIWYG based off: https://summernote.org/examples/ -->
 <h1>Edit homepage:</h1>
 <!-- Header of the homepage -->
 <section class="homepage-header">
@@ -122,3 +86,41 @@ function saveContent(index, newContent) {
 <?php
 include '/app/views/footer.php';
 ?>
+
+<script>
+$(document).ready(function() {
+  $('.click2edit').each(function() {
+    $(this).attr('id', 'editor-' + $(this).index('.click2edit'));
+  });
+});
+
+var edit = function(index) {
+  $('#editor-' + index).summernote({
+    focus: true
+  });
+};
+
+var save = function(index) {
+  var markup = $('#editor-' + index).summernote('code');
+  $(`.click2edit:eq(${index})`).html(markup); // update HTML content
+  var editedContent = $(`.click2edit:eq(${index})`).html();
+  saveContent(index, editedContent);
+  $('#editor-' + index).summernote('destroy');
+};
+
+function saveContent(index, newContent) {
+    fetch(`http://localhost/api/editor/updateContent?id=${index + 1}&content=${newContent}`, {
+      method: 'GET',
+      })
+      .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        console.log('Content updated successfully.');
+    })
+    .catch(error => {
+        console.error('Error updating content:', error);
+    });
+}
+
+</script>

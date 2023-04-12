@@ -87,16 +87,21 @@ include __DIR__ . '/../header.php';
 
             <form class="restaurant-form">
               <div class="mb-3">
-                <label for="restaurantFormName" class="form-label">Name</label>
-                <input type="text" class="form-control" id="restaurantFormName" placeholder="Name Surname">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date">
               </div>
               <div class="mb-3">
-                <label for="restaurantFormEmail" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="restaurantFormEmail" placeholder="name@example.com">
+                <label for="time" class="form-label">Time</label>
+                <input type="time" class="form-control" id="time">
               </div>
-              <h3>Select date</h3>
-              <h3>Session</h3>
-              <h3>Comments</h3>
+              <div class="mb-3">
+                <label for="comments" class="form-label">Comments</label>
+                <input type="text"class="form-control" id="time">
+              </div>
+              <div class="mb-3">
+                <input type="submit"class="btn btn-primary" id="time">
+              </div>
+
             </form>
           `;
 

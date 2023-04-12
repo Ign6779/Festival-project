@@ -46,7 +46,8 @@
             <label for="artistImages">Images</label>
             <input multiple="true" type="file" name="imagesup[]" accept=".jpg, .jpeg, .png"
                 onchange="validateFiles(this)" required />
-            <p>Note the old pictures will be delted when updated. So please chose pictures.
+            <p>
+                Note the old pictures will be delted when updated. So please chose pictures.
             </p>
         </div>
     </div>
