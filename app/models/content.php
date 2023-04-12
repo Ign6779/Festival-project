@@ -3,8 +3,11 @@ class Content implements \JsonSerializable
 {
     private int $id;
     private string $content;
-
+    private ?string $title;
+    private string $pagename;
+    private ?string $img;
     private string $created;
+
     #[ReturnTypeWillChange]
     public function jsonSerialize()
     {
@@ -34,6 +37,39 @@ class Content implements \JsonSerializable
         return $this;
     }
 
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    public function getPagename(): string
+    {
+        return $this->pagename;
+    }
+
+    public function setPagename(string $pagename): self
+    {
+        $this->pagename = $pagename;
+        return $this;
+    }
+
+    public function getImg(): string
+    {
+        return $this->img;
+    }
+
+    public function setImg(string $img): self
+    {
+        $this->img = $img;
+        return $this;
+    }
+
     public function getCreated(): string
     {
         return $this->created;
@@ -45,4 +81,5 @@ class Content implements \JsonSerializable
         return $this;
     }
 }
+
 ?>

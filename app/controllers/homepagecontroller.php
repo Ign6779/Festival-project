@@ -15,5 +15,10 @@ class HomepageController extends Controller {
         $contents= $this->editorService->getAll();
         require __DIR__ . '/../views/home/homepage.php';
     }
+
+    public function custom(){
+        $contents= $this->editorService->getAll();
+        require __DIR__ . '/../views/home/custom.php';
+    }
 }
 ?>

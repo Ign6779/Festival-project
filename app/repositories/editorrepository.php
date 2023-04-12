@@ -30,4 +30,21 @@ class EditorRepository extends Repository{
             echo $e;
         }
     }
+
+    function insertPage($pagename, $title, $img, $text)
+{
+    try {
+        $sql = "INSERT INTO editor (pagename, title, img, content, created)
+                VALUES (:pagename, :title, :img, :text, NOW())";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(':pagename', $pagename);
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':img', $img);
+        $stmt->bindParam(':text', $text);
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        echo $e;
+    }
+}
+
 }

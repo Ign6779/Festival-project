@@ -20,4 +20,8 @@ class EditorService
         $this->repository->update($id, $content);
     }
 
+    public function insertPage($pagename, $title, $img, $text){
+        $this->repository->insertPage($pagename, $title, $img, $text);
+    }
+
 }

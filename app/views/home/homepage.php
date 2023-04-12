@@ -85,6 +85,11 @@ try{
     <h2 id="homepage-check-festival-text">Check out the festival here!</h2>
     <a class="btn-purple" href="festival" id="homepage-check-festival-button">See festival events</a>
 </section>
+<!-- custom pages -->
+<div class="pages">
+    <!-- for each type in the contents table that isnt home or festival, add btn -->
+    <a href="/home/" class="btn-red" onclick="custom()">See event</a>
+</div>
 <!-- instagram feed -->
 <div class="homepage-instagram">
     <h2 class="ig-title">Keep up with our instragram below!</h2>

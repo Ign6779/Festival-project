@@ -1,0 +1,15 @@
+.wysiwyg-pages{
+    display:grid;
+    gap:200px;
+    flex: center;
+}
+#custom-title{
+    margin: 10%;
+}
+.single-custom{
+    display: block;
+}
+.customtitle{
+    flex:center;
+    width: 100%;
+}

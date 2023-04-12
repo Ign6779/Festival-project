@@ -37,6 +37,7 @@ function returnSelected($id)
     <link rel="stylesheet" href="/css/components.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/homepage.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="/css/overview.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="/css/custompages.css?v=<?php echo time(); ?>">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -90,6 +91,7 @@ function returnSelected($id)
             <div id="menu-list" class="menu-list">
                 <a href="/editor" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Homepage</a>
                 <a href="/editfestival" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Festivalpage</a>
+                <a href="/custompage" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Custom</a>
                 <a href="/order" class="remove-style menu-list-option <? echo returnStyle("/order"); ?>">Orders</a>
 
                 <select name="CRUD" id="CRUD" onchange="redirct(this.value)"
