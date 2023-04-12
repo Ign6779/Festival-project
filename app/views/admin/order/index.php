@@ -1,5 +1,9 @@
 <? include __DIR__ . '/../adminheader.php' ?>
 
+<div>
+    <button class="btn btn-warning me-2" onclick="">Export</button>
+</div>
+
 <table class="container table">
     <thead>
         <tr>
@@ -66,10 +70,6 @@
         rDownloadPdf.addEventListener('click', function () {
             exportToPDF(orderInput);
         });
-
-        rExport = document.createElement("a");
-        rExport.className = "btn btn-warning me-2";
-        rExport.innerHTML = "Export";
 
         tdButtons.append(rEdit, rDownloadPdf);
         tr.append(tdId, tdUsername, tdAmount, tdStatus, tdPaymentMethod, tdTimeOfPurchase, tdButtons);
